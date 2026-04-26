@@ -1173,7 +1173,7 @@
             if (!fullName || fullName.toLowerCase() === 'null') {
                 navUserName.textContent = 'Hi, Guest';
                 navUserName.title = 'Account';
-                accountLink.href = 'login.html';
+                accountLink.href = 'index.html';
                 return;
             }
 
@@ -1581,7 +1581,7 @@
         function closePaymentModal() { document.getElementById("payment-overlay").style.display = 'none'; }
         function logout() {
             clearAuthState();
-            window.location.href = "login.html";
+            window.location.href = "index.html";
         }
     </script>
 </body>

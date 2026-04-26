@@ -1364,7 +1364,7 @@ function renderNavUserName() {
     if (!fullName || fullName.toLowerCase() === "null") {
         navUserName.textContent = "Hi, Guest";
         navUserName.title = "Account";
-        accountLink.href = "login.html";
+        accountLink.href = "index.html";
         return;
     }
 
@@ -1416,7 +1416,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 function logout() { 
     localStorage.clear(); 
-    window.location.href = "login.html"; 
+    window.location.href = "index.html"; 
 }
 
 function showError(msg) {
@@ -1425,7 +1425,7 @@ function showError(msg) {
             <i class="fas fa-lock" style="color:var(--accent-orange)"></i>
             <p>${msg}</p>
             <br>
-            <a href="login.html" style="color:var(--accent-orange); text-decoration:none; font-weight:700; border: 1px solid var(--accent-orange); padding: 10px 20px; border-radius: 10px;">Bumalik sa Login</a>
+            <a href="index.html" style="color:var(--accent-orange); text-decoration:none; font-weight:700; border: 1px solid var(--accent-orange); padding: 10px 20px; border-radius: 10px;">Bumalik sa Login</a>
         </div>
     `;
 }
@@ -1682,7 +1682,7 @@ function closeModal(modalId) {
         ordersListEl.innerHTML = buildEmptyState(
             "fas fa-lock",
             message,
-            '<br><a href="login.html" style="color:var(--accent-orange); text-decoration:none; font-weight:700; border: 1px solid var(--accent-orange); padding: 10px 20px; border-radius: 10px;">Back to Login</a>'
+            '<br><a href="index.html" style="color:var(--accent-orange); text-decoration:none; font-weight:700; border: 1px solid var(--accent-orange); padding: 10px 20px; border-radius: 10px;">Back to Login</a>'
         );
     };
 

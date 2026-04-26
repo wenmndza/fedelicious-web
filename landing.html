@@ -1154,7 +1154,7 @@
         `;
     }
 
-    function getUserIconMarkup(target = "login.html") {
+    function getUserIconMarkup(target = "index.html") {
         return `
             <span class="user-circle">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -1166,7 +1166,7 @@
         `;
     }
 
-    function getUserAccountMarkup(name, target = "login.html") {
+    function getUserAccountMarkup(name, target = "index.html") {
         const firstName = (name && name.trim()) ? name.trim().split(/\s+/)[0] : "Guest";
 
         return `
@@ -1178,7 +1178,7 @@
     }
 
     function getGuestNavMarkup() {
-        return `${getCartIconMarkup()}${getUserAccountMarkup("", "login.html")}`;
+        return `${getCartIconMarkup()}${getUserAccountMarkup("", "index.html")}`;
     }
 
     function getLoggedInNavMarkup(name) {
@@ -1226,7 +1226,7 @@
     function logout() {
         logoutToLogin({
             message: "Sign out from Fedelicious?",
-            target: "login.html"
+            target: "index.html"
         });
     }
 

@@ -46,7 +46,7 @@
 
         if (!isAdmin) {
             clearAuthState();
-            window.location.replace("login.html");
+            window.location.replace("index.html");
             return null;
         }
 
@@ -243,7 +243,7 @@
     function logoutToLogin(options = {}) {
         const askConfirm = options.askConfirm !== false;
         const message = options.message || "Are you sure you want to sign out?";
-        const target = options.target || "login.html";
+        const target = options.target || "index.html";
         const preserveCart = options.preserveCart === true;
 
         if (askConfirm) {
