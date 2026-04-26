@@ -17,6 +17,7 @@
             --text-muted: #7f8c8d;
         }
 
+
         * {
             margin: 0;
             padding: 0;
@@ -32,6 +33,7 @@
             color: var(--text-dark);
         }
 
+
         .sidebar {
             width: 260px;
             background-color: var(--sidebar-green);
@@ -40,11 +42,13 @@
             flex-direction: column;
         }
 
+
         .sidebar h2 {
             font-weight: 800;
             font-size: 1.2rem;
             margin-bottom: 40px;
         }
+
 
         .nav-link {
             display: flex;
@@ -60,19 +64,23 @@
             transition: 0.3s;
         }
 
+
         .nav-link.active {
             background-color: #27ae60;
             color: white;
         }
 
+
         .nav-link:hover:not(.active) {
             background: rgba(255, 255, 255, 0.3);
         }
+
 
         .logout-link {
             margin-top: auto;
             color: #e74c3c;
         }
+
 
         .main-content {
             flex-grow: 1;
@@ -83,6 +91,7 @@
             border-bottom-left-radius: 40px;
         }
 
+
         .header {
             display: flex;
             justify-content: space-between;
@@ -90,17 +99,20 @@
             margin-bottom: 25px;
         }
 
+
         .header h1 {
             font-size: 1.6rem;
             font-weight: 800;
             text-transform: uppercase;
         }
 
+
         .dashboard-grid {
             display: grid;
             grid-template-columns: 1fr 350px;
             gap: 20px;
         }
+
 
         .left-column,
         .right-column {
@@ -109,6 +121,7 @@
             gap: 20px;
         }
 
+
         .card {
             background: white;
             padding: 25px;
@@ -116,6 +129,7 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
             height: fit-content;
         }
+
 
         .card-header {
             font-size: 1.1rem;
@@ -126,11 +140,13 @@
             padding-bottom: 10px;
         }
 
+
         table {
             width: 100%;
             border-collapse: collapse;
             text-align: left;
         }
+
 
         th {
             padding: 12px;
@@ -140,6 +156,7 @@
             border-bottom: 2px solid #eee;
         }
 
+
         td {
             padding: 15px 12px;
             font-size: 0.9rem;
@@ -148,6 +165,7 @@
             vertical-align: middle;
         }
 
+
         .badge {
             padding: 5px 12px;
             border-radius: 8px;
@@ -155,6 +173,7 @@
             font-weight: 700;
             text-transform: uppercase;
         }
+
 
         .bg-super {
             background: #d1c4e9;
@@ -166,6 +185,7 @@
             color: #2e7d32;
         }
 
+
         .btn-delete {
             background: #ffebee;
             color: var(--accent-red);
@@ -176,10 +196,12 @@
             transition: 0.2s;
         }
 
+
         .btn-delete:hover {
             background: var(--accent-red);
             color: white;
         }
+
 
         .btn-delete:disabled {
             background: #f0f0f0;
@@ -187,9 +209,11 @@
             cursor: not-allowed;
         }
 
+
         .form-group {
             margin-bottom: 15px;
         }
+
 
         .form-group label {
             display: block;
@@ -198,6 +222,7 @@
             color: var(--text-muted);
             margin-bottom: 5px;
         }
+
 
         .form-group input,
         .form-group select {
@@ -209,11 +234,13 @@
             outline: none;
         }
 
+
         input[type="file"] {
             padding: 7px;
             background: #f9f9f9;
             font-size: 0.8rem;
         }
+
 
         input[type="file"]::file-selector-button {
             background: var(--text-dark);
@@ -227,9 +254,11 @@
             transition: 0.2s;
         }
 
+
         input[type="file"]::file-selector-button:hover {
             background: #1a252f;
         }
+
 
         .btn-submit {
             width: 100%;
@@ -244,17 +273,21 @@
             margin-top: 10px;
         }
 
+
         .btn-submit:hover {
             background: #219653;
         }
+
 
         .btn-blue {
             background: #3498db;
         }
 
+
         .btn-blue:hover {
             background: #2980b9;
         }
+
 
         .qr-thumbnail {
             width: 60px;
@@ -266,11 +299,13 @@
             padding: 2px;
         }
 
+
         .preview-box {
             margin-top: 10px;
             text-align: center;
             display: none;
         }
+
 
         .preview-box img {
             width: 120px;
@@ -282,15 +317,18 @@
             padding: 5px;
         }
 
+
         .helper-text {
             font-size: 0.8rem;
             color: var(--text-muted);
             margin-top: 5px;
         }
 
+
         .qr-method {
             font-weight: 700;
         }
+
 
         .qr-accname {
             font-size: 0.8rem;
@@ -304,6 +342,7 @@
 </head>
 
 <body>
+
 
     <aside class="sidebar">
         <h2>FEDELICIOUS</h2>
@@ -321,6 +360,7 @@
             SIGN OUT</a>
     </aside>
 
+
     <main class="main-content">
         <div class="header">
             <div>
@@ -328,6 +368,7 @@
                 <p style="color: var(--text-muted); font-size: 0.9rem;">Manage dashboard access and payment settings</p>
             </div>
         </div>
+
 
         <div class="dashboard-grid">
             <div class="left-column">
@@ -350,6 +391,7 @@
                     </table>
                 </div>
 
+
                 <div class="card">
                     <div class="card-header">Manage Payment QR Codes</div>
                     <table>
@@ -369,6 +411,7 @@
                     </table>
                 </div>
             </div>
+
 
             <div class="right-column">
                 <div class="card">
@@ -399,6 +442,7 @@
                     </form>
                 </div>
 
+
                 <div class="card">
                     <div class="card-header">Upload New QR Code</div>
                     <form id="updateQrForm" onsubmit="uploadQR(event)">
@@ -411,11 +455,13 @@
                             <div class="helper-text">Ito ang payment method na makikita sa system.</div>
                         </div>
 
+
                         <div class="form-group">
                             <label>Account Name</label>
                             <input type="text" id="qrAccName" required placeholder="e.g. Mark Luis Fulinara">
                             <div class="helper-text">Ito ang pangalan ng account owner ng QR.</div>
                         </div>
+
 
                         <div class="form-group">
                             <label>Upload QR Image</label>
@@ -426,6 +472,7 @@
                             </div>
                         </div>
 
+
                         <button type="submit" class="btn-submit btn-blue" id="qrSubmitBtn">
                             <i class="fas fa-qrcode"></i> Save QR Code
                         </button>
@@ -435,6 +482,7 @@
         </div>
     </main>
 
+
     <script src="auth-session.js"></script>
     <script>
         const API_URL = "https://localhost:7201/api/AdminManagement";
@@ -442,41 +490,50 @@
         const adminSession = requireAdminAccess({ superAdminOnly: true });
         const currentUserId = adminSession ? adminSession.adminId : "";
 
+
         document.addEventListener("DOMContentLoaded", () => {
             if (!adminSession) {
                 return;
             }
+
 
             updateSuperAdminLink(adminSession.role);
             loadAdmins();
             loadQRs();
         });
 
+
         async function loadAdmins() {
             try {
                 const response = await fetch(API_URL);
+
 
                 if (!response.ok) {
                     throw new Error("Failed to fetch admins.");
                 }
 
+
                 const admins = await response.json();
                 const tbody = document.getElementById("adminTableBody");
                 tbody.innerHTML = "";
+
 
                 if (!admins || admins.length === 0) {
                     tbody.innerHTML = `<tr><td colspan="4" style="text-align:center; color:#999;">No admins found.</td></tr>`;
                     return;
                 }
 
+
                 admins.forEach(admin => {
                     const isMe = admin.admin_id == currentUserId;
                     const normalizedRole = (admin.role || "").trim().toLowerCase();
                     const roleClass = normalizedRole === "super admin" ? "bg-super" : "bg-admin";
 
+
                     const deleteBtn = isMe
                         ? `<button class="btn-delete" disabled title="Cannot delete yourself"><i class="fas fa-ban"></i></button>`
                         : `<button class="btn-delete" onclick="deleteAdmin(${admin.admin_id}, '${admin.full_name.replace(/'/g, "\\'")}')"><i class="fas fa-trash"></i></button>`;
+
 
                     tbody.innerHTML += `
                         <tr>
@@ -496,8 +553,10 @@
             }
         }
 
+
         async function registerAdmin(e) {
             e.preventDefault();
+
 
             const payload = {
                 admin_id: 0,
@@ -507,6 +566,7 @@
                 role: document.getElementById("newRole").value
             };
 
+
             try {
                 const response = await fetch(API_URL, {
                     method: "POST",
@@ -514,7 +574,9 @@
                     body: JSON.stringify(payload)
                 });
 
+
                 const data = await response.json();
+
 
                 if (response.ok) {
                     alert("Admin successfully created!");
@@ -528,14 +590,17 @@
             }
         }
 
+
         async function deleteAdmin(id, name) {
             if (!confirm(`WARNING: Are you sure you want to permanently delete admin "${name}"?`)) {
                 return;
             }
 
+
             try {
                 const response = await fetch(`${API_URL}/${id}`, { method: "DELETE" });
                 const data = await response.json();
+
 
                 if (response.ok) {
                     alert("Admin deleted.");
@@ -548,31 +613,38 @@
             }
         }
 
+
         async function loadQRs() {
             try {
                 const response = await fetch(QR_API_URL);
                 const tbody = document.getElementById("qrTableBody");
 
+
                 if (!response.ok) {
                     throw new Error("Failed to fetch QR codes.");
                 }
 
+
                 const qrs = await response.json();
                 tbody.innerHTML = "";
+
 
                 if (!qrs || qrs.length === 0) {
                     tbody.innerHTML = `<tr><td colspan="4" style="text-align:center; color: var(--text-muted);">No QR codes uploaded yet.</td></tr>`;
                     return;
                 }
 
+
                 qrs.forEach(qr => {
                     const statusUI = qr.is_active
                         ? `<span class="badge bg-admin" style="padding: 8px 15px;"><i class="fas fa-check-circle"></i> In Use</span>`
                         : `<button class="btn-submit btn-blue" style="padding: 5px 10px; font-size: 0.75rem; margin-top: 0; width: auto;" onclick="setActiveQR(${qr.paymentqr_id}, '${(qr.qr_name || '').replace(/'/g, "\\'")}')"><i class="fas fa-toggle-on"></i> Use This</button>`;
 
+
                     const imgSrc = qr.qr_image
                         ? `data:image/jpeg;base64,${qr.qr_image}`
                         : "";
+
 
                     tbody.innerHTML += `
                         <tr>
@@ -601,13 +673,16 @@
             }
         }
 
+
         async function setActiveQR(id, name) {
             try {
                 const response = await fetch(`${QR_API_URL}/set-active/${id}`, {
                     method: "PUT"
                 });
 
+
                 const data = await response.json();
+
 
                 if (response.ok) {
                     alert(`${name} is now the active QR code for customers!`);
@@ -620,18 +695,22 @@
             }
         }
 
+
         function previewQR(input) {
             const previewBox = document.getElementById("previewBox");
             const previewImage = document.getElementById("previewImage");
+
 
             if (input.files && input.files[0]) {
                 const file = input.files[0];
                 const reader = new FileReader();
 
+
                 reader.onload = function (e) {
                     previewImage.src = e.target.result;
                     previewBox.style.display = "block";
                 };
+
 
                 reader.readAsDataURL(file);
             } else {
@@ -640,25 +719,31 @@
             }
         }
 
+
         async function uploadQR(e) {
             e.preventDefault();
+
 
             const fileInput = document.getElementById("qrUpload");
             const paymentMethod = document.getElementById("paymentMethod").value;
             const qrAccName = document.getElementById("qrAccName").value.trim();
             const submitBtn = document.getElementById("qrSubmitBtn");
 
+
             if (!qrAccName) {
                 alert("Please enter the account name.");
                 return;
             }
+
 
             if (fileInput.files.length === 0) {
                 alert("Please select an image file first.");
                 return;
             }
 
+
             const file = fileInput.files[0];
+
 
             const formData = new FormData();
             formData.append("qr_name", paymentMethod);
@@ -666,8 +751,10 @@
             formData.append("qr_image", file);
             formData.append("is_active", "false");
 
+
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Uploading...';
             submitBtn.disabled = true;
+
 
             try {
                 const response = await fetch(QR_API_URL, {
@@ -675,7 +762,9 @@
                     body: formData
                 });
 
+
                 const data = await response.json();
+
 
                 if (response.ok) {
                     alert(`${paymentMethod} QR Code uploaded successfully!`);
@@ -695,17 +784,21 @@
             }
         }
 
+
         async function deleteQR(id, name) {
             if (!confirm(`Are you sure you want to delete the ${name} QR code?`)) {
                 return;
             }
+
 
             try {
                 const response = await fetch(`${QR_API_URL}/${id}`, {
                     method: "DELETE"
                 });
 
+
                 const data = await response.json();
+
 
                 if (response.ok) {
                     alert(`${name} QR Code deleted.`);
@@ -717,6 +810,7 @@
                 alert("Network error while deleting QR.");
             }
         }
+
 
         function logout() {
             logoutToLogin({
