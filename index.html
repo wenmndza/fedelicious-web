@@ -397,6 +397,15 @@
     <script>
         const BASE_URL = "https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net";
 
+        // Auto-redirect if already logged in
+        (function() {
+            const role = localStorage.getItem("role");
+            const fullName = localStorage.getItem("fullName");
+            if (role && fullName) {
+                window.location.replace(role.toLowerCase().includes("admin") ? "admin.html" : "landing.html");
+            }
+        })();
+
         // Toggle between login/register views
         function toggleView() {
             document.getElementById('loginView').classList.toggle('hidden');
@@ -472,7 +481,7 @@
                     errorDisplay.innerText = "Login Successful! Redirecting...";
 
                     setTimeout(() => {
-                        window.location.href = (finalRole.includes("Admin")) ? "admin.html" : "index.html";
+                        window.location.href = (finalRole.toLowerCase().includes("admin")) ? "admin.html" : "landing.html";
                     }, 800);
                 }
 
