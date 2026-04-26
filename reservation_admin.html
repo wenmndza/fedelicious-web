@@ -619,7 +619,7 @@
                 const isWaiting = statusText.toLowerCase().includes("waiting") || statusText.toLowerCase() === "pending";
                 const statusBg = getStatusColor(statusText);
 
-                const customerName = item.full_name || item.customerName || "GUEST CUSTOMER";
+                const customerName = item.full_name || item.fullName || item.Full_Name || item.customerName || item.Customer_Name || "GUEST CUSTOMER";
                 const reservationDate = formatDate(item.reservation_date);
                 const reservationTime = formatTime(item.reservation_time);
                 const referenceNumber = item.reference_number || "N/A";

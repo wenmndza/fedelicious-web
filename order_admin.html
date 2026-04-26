@@ -661,7 +661,7 @@
                 const orderId = o.order_id;
                 const orderStatus = o.order_status || 'Pending';
                 const orderDate = o.order_date;
-                const customerName = o.customerName || 'GUEST CUSTOMER';
+                const customerName = o.full_name || o.fullName || o.Full_Name || o.customerName || o.CustomerName || o.Customer_Name || 'GUEST CUSTOMER';
                 const refNum = o.reference_number || 'N/A';
                 const orderType = o.order_type || 'N/A';
                 const deliveryLoc = o.delivery_location || 'Store';

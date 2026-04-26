@@ -517,6 +517,7 @@
     <script>
         const API_URL = "https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net/api/AdminManagement";
         const QR_API_URL = "https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net/api/PaymentQr";
+        const adminSession = requireAdminAccess();
         const currentUserId = adminSession ? adminSession.adminId : "";
         document.addEventListener("DOMContentLoaded", () => {
             if (!adminSession) {
