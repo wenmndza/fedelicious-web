@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fedelicious | Super Admin Control</title>
-    <link rel="icon" type="image/png" href="images/icon1.png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -17,8 +17,20 @@
             --text-muted: #7f8c8d;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        body { background-color: var(--primary-green); display: flex; height: 100vh; overflow: hidden; color: var(--text-dark); }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--primary-green);
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+            color: var(--text-dark);
+        }
 
         .sidebar {
             width: 260px;
@@ -54,7 +66,7 @@
         }
 
         .nav-link:hover:not(.active) {
-            background: rgba(255,255,255,0.3);
+            background: rgba(255, 255, 255, 0.3);
         }
 
         .logout-link {
@@ -90,7 +102,8 @@
             gap: 20px;
         }
 
-        .left-column, .right-column {
+        .left-column,
+        .right-column {
             display: flex;
             flex-direction: column;
             gap: 20px;
@@ -100,7 +113,7 @@
             background: white;
             padding: 25px;
             border-radius: 20px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
             height: fit-content;
         }
 
@@ -143,8 +156,15 @@
             text-transform: uppercase;
         }
 
-        .bg-super { background: #d1c4e9; color: #4527a0; }
-        .bg-admin { background: #c8e6c9; color: #2e7d32; }
+        .bg-super {
+            background: #d1c4e9;
+            color: #4527a0;
+        }
+
+        .bg-admin {
+            background: #c8e6c9;
+            color: #2e7d32;
+        }
 
         .btn-delete {
             background: #ffebee;
@@ -279,113 +299,14 @@
             margin-top: 3px;
             display: block;
         }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding-left: 10px;
-        }
-
-
-        .logo-icon img {
-            width: 47px;
-            height: 47px;
-            background: var(--accent-orange);
-            padding: 2.5px;
-            border-radius: 50%;
-        }
-
-
-        .brand-name {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: white;
-            margin-left: -7px;
-        }
-
-        .custom-alert-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.45);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 99999;
-}
-
-.custom-alert-box {
-    width: 420px;
-    background: white;
-    border-radius: 18px;
-    padding: 25px 25px;
-    text-align: center;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-    border: 2px solid #98d8aa;
-    animation: popUp 0.25s ease;
-}
-
-.custom-alert-box h3 {
-    font-size: 1rem;
-    font-weight: 800;
-    color: #2c3e50;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-}
-
-.custom-alert-box p {
-    font-size: 0.95rem;
-    color: #7f8c8d;
-    font-weight: 500;
-    margin-bottom: 18px;
-}
-
-.custom-alert-box button {
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 12px;
-    background: #27ae60;
-    color: white;
-    font-size: 0.95rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.custom-alert-box button:hover {
-    background: #219653;
-}
-
-@keyframes popUp {
-    from {
-        transform: scale(0.9);
-        opacity: 0;
-    }
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-
     </style>
-
     <link rel="stylesheet" href="admin.css">
 </head>
+
 <body>
 
     <aside class="sidebar">
-        <div class="brand">
-            <div class="logo-icon">
-                <img src="images/fede.jpg" alt="Fedelicious Logo">
-            </div>
-            <span class="brand-name">FEDELICIOUS</span>
-        </div>
+        <h2>FEDELICIOUS</h2>
         <nav id="nav-menu">
             <a href="admin.html" class="nav-link"><i class="fas fa-th-large"></i> DASHBOARD</a>
             <a href="order_admin.html" class="nav-link"><i class="fas fa-shopping-cart"></i> ORDERS</a>
@@ -393,9 +314,11 @@
             <a href="menusetting.html" class="nav-link"><i class="fas fa-utensils"></i> MENU SETTINGS</a>
             <a href="salesreport.html" class="nav-link"><i class="fas fa-chart-line"></i> SALES REPORTS</a>
             <a href="customeractivity.html" class="nav-link"><i class="fas fa-users"></i> CUSTOMERS</a>
-            <a href="admin_management.html" class="nav-link active" id="superAdminLink"><i class="fas fa-user-shield"></i> SYSTEM ADMINS</a>
+            <a href="admin_management.html" class="nav-link active" id="superAdminLink"><i
+                    class="fas fa-user-shield"></i> SYSTEM ADMINS</a>
         </nav>
-        <a href="#" class="nav-link logout-link" onclick="logout(); return false;"><i class="fas fa-sign-out-alt"></i> SIGN OUT</a>
+        <a href="#" class="nav-link logout-link" onclick="logout(); return false;"><i class="fas fa-sign-out-alt"></i>
+            SIGN OUT</a>
     </aside>
 
     <main class="main-content">
@@ -420,7 +343,9 @@
                             </tr>
                         </thead>
                         <tbody id="adminTableBody">
-                            <tr><td colspan="4" style="text-align: center; color: #999;">Loading admins...</td></tr>
+                            <tr>
+                                <td colspan="4" style="text-align: center; color: #999;">Loading admins...</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -437,7 +362,9 @@
                             </tr>
                         </thead>
                         <tbody id="qrTableBody">
-                            <tr><td colspan="4" style="text-align: center; color: #999;">Loading QR Codes...</td></tr>
+                            <tr>
+                                <td colspan="4" style="text-align: center; color: #999;">Loading QR Codes...</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -457,7 +384,8 @@
                         </div>
                         <div class="form-group">
                             <label>Password</label>
-                            <input type="password" id="newPassword" required placeholder="********" pattern="^[^0-9]*$" title="Numbers are not allowed in the password">
+                            <input type="password" id="newPassword" required placeholder="********" pattern="^[^0-9]*$"
+                                title="Numbers are not allowed in the password">
                         </div>
                         <div class="form-group">
                             <label>Role</label>
@@ -466,7 +394,8 @@
                                 <option value="Super Admin">Super Admin</option>
                             </select>
                         </div>
-                        <button type="submit" class="btn-submit"><i class="fas fa-user-plus"></i> Create Account</button>
+                        <button type="submit" class="btn-submit"><i class="fas fa-user-plus"></i> Create
+                            Account</button>
                     </form>
                 </div>
 
@@ -490,7 +419,8 @@
 
                         <div class="form-group">
                             <label>Upload QR Image</label>
-                            <input type="file" id="qrUpload" accept="image/png, image/jpeg, image/jpg" required onchange="previewQR(this)">
+                            <input type="file" id="qrUpload" accept="image/png, image/jpeg, image/jpg" required
+                                onchange="previewQR(this)">
                             <div class="preview-box" id="previewBox">
                                 <img id="previewImage" src="" alt="QR Preview">
                             </div>
@@ -505,20 +435,13 @@
         </div>
     </main>
 
-    <div class="custom-alert-overlay" id="customAlertOverlay">
-    <div class="custom-alert-box">
-        <h3 id="customAlertTitle">Fedelicious</h3>
-        <p id="customAlertMessage">Message here...</p>
-        <button id="customAlertBtn">OK</button>
-    </div>
-</div>
-
     <script src="auth-session.js"></script>
     <script>
-        const API_URL = "https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net/api/AdminManagement";
-        const QR_API_URL = "https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net/api/PaymentQr";
-        const adminSession = requireAdminAccess();
+        const API_URL = "https://localhost:7201/api/AdminManagement";
+        const QR_API_URL = "https://localhost:7201/api/PaymentQr";
+        const adminSession = requireAdminAccess({ superAdminOnly: true });
         const currentUserId = adminSession ? adminSession.adminId : "";
+
         document.addEventListener("DOMContentLoaded", () => {
             if (!adminSession) {
                 return;
@@ -528,22 +451,6 @@
             loadAdmins();
             loadQRs();
         });
-
-        function customAlert(message, title = "NOTICE") {
-    const overlay = document.getElementById("customAlertOverlay");
-    const msg = document.getElementById("customAlertMessage");
-    const ttl = document.getElementById("customAlertTitle");
-    const btn = document.getElementById("customAlertBtn");
-
-    ttl.innerText = title;
-    msg.innerText = message;
-
-    overlay.style.display = "flex";
-
-    btn.onclick = function () {
-        overlay.style.display = "none";
-    };
-}
 
         async function loadAdmins() {
             try {
@@ -610,14 +517,14 @@
                 const data = await response.json();
 
                 if (response.ok) {
-                    customAlert("Admin successfully created!");
+                    alert("Admin successfully created!");
                     document.getElementById("addAdminForm").reset();
                     loadAdmins();
                 } else {
-                    customAlert(data.message || "Failed to create admin.");
+                    alert(data.message || "Failed to create admin.");
                 }
             } catch (error) {
-                customAlert("Network error. Please check if the API is running.");
+                alert("Network error. Please check if the API is running.");
             }
         }
 
@@ -631,13 +538,13 @@
                 const data = await response.json();
 
                 if (response.ok) {
-                    customAlert("Admin deleted.");
+                    alert("Admin deleted.");
                     loadAdmins();
                 } else {
-                    customAlert(data.message || "Failed to delete admin.");
+                    alert(data.message || "Failed to delete admin.");
                 }
             } catch (error) {
-                customAlert("Network error while deleting admin.");
+                alert("Network error while deleting admin.");
             }
         }
 
@@ -675,9 +582,9 @@
                             </td>
                             <td>
                                 ${imgSrc
-                                    ? `<img src="${imgSrc}" class="qr-thumbnail" alt="${qr.qr_name || "QR"}">`
-                                    : `<span style="color:#999;">No image</span>`
-                                }
+                            ? `<img src="${imgSrc}" class="qr-thumbnail" alt="${qr.qr_name || "QR"}">`
+                            : `<span style="color:#999;">No image</span>`
+                        }
                             </td>
                             <td>${statusUI}</td>
                             <td>
@@ -703,13 +610,13 @@
                 const data = await response.json();
 
                 if (response.ok) {
-                    customAlert(`${name} is now the active QR code for customers!`);
+                    alert(`${name} is now the active QR code for customers!`);
                     loadQRs();
                 } else {
-                    customAlert(data.message || "Failed to activate QR code.");
+                    alert(data.message || "Failed to activate QR code.");
                 }
             } catch (error) {
-                customAlert("Network error occurred.");
+                alert("Network error occurred.");
             }
         }
 
@@ -742,12 +649,12 @@
             const submitBtn = document.getElementById("qrSubmitBtn");
 
             if (!qrAccName) {
-                customAlert("Please enter the account name.");
+                alert("Please enter the account name.");
                 return;
             }
 
             if (fileInput.files.length === 0) {
-                customAlert("Please select an image file first.");
+                alert("Please select an image file first.");
                 return;
             }
 
@@ -771,17 +678,17 @@
                 const data = await response.json();
 
                 if (response.ok) {
-                    customAlert(`${paymentMethod} QR Code uploaded successfully!`);
+                    alert(`${paymentMethod} QR Code uploaded successfully!`);
                     document.getElementById("updateQrForm").reset();
                     document.getElementById("previewImage").src = "";
                     document.getElementById("previewBox").style.display = "none";
                     loadQRs();
                 } else {
-                    customAlert(data.message || "Failed to upload QR code.");
+                    alert(data.message || "Failed to upload QR code.");
                 }
             } catch (error) {
                 console.error("Upload error:", error);
-                customAlert("Network error. Could not upload the file.");
+                alert("Network error. Could not upload the file.");
             } finally {
                 submitBtn.innerHTML = '<i class="fas fa-qrcode"></i> Save QR Code';
                 submitBtn.disabled = false;
@@ -801,13 +708,13 @@
                 const data = await response.json();
 
                 if (response.ok) {
-                    customAlert(`${name} QR Code deleted.`);
+                    alert(`${name} QR Code deleted.`);
                     loadQRs();
                 } else {
-                    customAlert(data.message || "Failed to delete QR.");
+                    alert(data.message || "Failed to delete QR.");
                 }
             } catch (error) {
-                customAlert("Network error while deleting QR.");
+                alert("Network error while deleting QR.");
             }
         }
 
@@ -818,4 +725,5 @@
         }
     </script>
 </body>
+
 </html>

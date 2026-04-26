@@ -491,6 +491,24 @@
                 const data = await res.json();
                 allReservations = Array.isArray(data) ? data : [];
 
+                // NEW: Use customer_id to fetch the real name if the SP didn't join it
+                await Promise.all(allReservations.map(async (item) => {
+                    const existingName = item.full_name || item.fullName || item.Full_Name || item.customerName || item.Customer_Name;
+                    
+                    // If name is placeholder or missing, and we have a customer_id
+                    if ((!existingName || existingName === "GUEST CUSTOMER") && item.customer_id) {
+                        try {
+                            const authRes = await fetch(`https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net/api/Auth/getFullName/${item.customer_id}`);
+                            if (authRes.ok) {
+                                const authData = await authRes.json();
+                                item.full_name = authData.full_name;
+                            }
+                        } catch (err) {
+                            console.warn("Failed to fetch customer name for ID:", item.customer_id);
+                        }
+                    }
+                }));
+
                 updateDashboardUI();
             } catch (e) {
                 console.error("Load Reservation Error:", e);

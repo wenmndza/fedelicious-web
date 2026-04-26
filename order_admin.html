@@ -600,6 +600,22 @@
                 const result = await resp.json();
                 allOrders = Array.isArray(result) ? result : (result.data || result.orders || []);
 
+                // NEW: Fetch names for "GUEST CUSTOMER" if customer_id exists
+                await Promise.all(allOrders.map(async (o) => {
+                    const existingName = o.full_name || o.fullName || o.Full_Name || o.customerName || o.CustomerName || o.Customer_Name;
+                    if ((!existingName || existingName === "GUEST CUSTOMER") && o.customer_id) {
+                        try {
+                            const authRes = await fetch(`https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net/api/Auth/getFullName/${o.customer_id}`);
+                            if (authRes.ok) {
+                                const authData = await authRes.json();
+                                o.full_name = authData.full_name;
+                            }
+                        } catch (err) {
+                            console.warn("Failed to fetch name for ID:", o.customer_id);
+                        }
+                    }
+                }));
+
                 updateUI();
             } catch (e) {
                 console.error("API Error fetching orders:", e);
