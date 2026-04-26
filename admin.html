@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fedelicious Admin | Overview Intelligence</title>
+    <link rel="icon" type="image/png" href="images/icon1.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+    <style>
+        :root {
+            --primary-green: #b2eec7;
+            --sidebar-green: #98d8aa;
+            --surface-bg: #e8f5e9;
+            --accent-orange: #27ae60;
+            --card-bg: #ffffff;
+            --glass-white: rgba(255, 255, 255, 0.68);
+            --text-muted: #7f8c8d;
+            --text-dark: #2c3e50;
+            --white: #ffffff;
+            --panel-border: rgba(44, 62, 80, 0.08);
+            --card-shadow: 0 12px 28px rgba(44, 62, 80, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--primary-green);
+            color: var(--text-dark);
+            display: flex;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 280px;
+            background-color: var(--sidebar-green);
+            padding: 30px 20px;
+            position: fixed;
+            height: 100%;
+            border-right: 1px solid rgba(44, 62, 80, 0.08);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* NAV */
+        .nav-menu {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 20px;
+            color: var(--text-dark);
+            text-decoration: none;
+            border-radius: 12px;
+            transition: 0.3s;
+            margin-bottom: 8px;
+            font-size: 14px;
+            white-space: nowrap;
+            font-weight: 600;
+        }
+
+        .nav-link.active {
+            background-color: var(--accent-orange);
+            color: white;
+            box-shadow: 0 6px 20px rgba(255, 112, 67, 0.3);
+        }
+
+        .nav-link:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.35);
+            color: var(--text-dark);
+        }
+
+        /* MAIN */
+        .main-content {
+            flex-grow: 1;
+            margin-left: 280px;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            background: var(--surface-bg);
+            border-top-left-radius: 40px;
+            border-bottom-left-radius: 40px;
+        }
+
+        /* TOPBAR */
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: var(--glass-white);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--panel-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .topbar h2 {
+            font-size: clamp(18px, 3vw, 22px);
+        }
+
+        /* CONTENT */
+        .dashboard-container {
+            padding: 40px;
+        }
+
+        /* GRID */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .single-stat-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: 20px;
+        }
+
+        .action-header {
+            margin: 30px 0 20px;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        /* CARDS */
+        .stat-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 20px;
+            border-left: 4px solid var(--accent-orange);
+            box-shadow: var(--card-shadow);
+            margin-top: 20px;
+            border: 1px solid var(--panel-border);
+        }
+
+        .stat-card.blue {
+            border-left-color: #3498db;
+            margin-top: 20px;
+        }
+
+        .stat-card.green {
+            border-left-color: #27ae60;
+            margin-top: 20px;
+        }
+
+        .stat-card p {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .stat-card h3 {
+            font-size: clamp(18px, 2.5vw, 24px);
+            margin-top: 5px;
+        }
+
+        /* ACTION GRID */
+        .action-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .action-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 25px;
+            text-align: center;
+            transition: 0.3s;
+            border: 1px solid var(--panel-border);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: inherit;
+            box-shadow: var(--card-shadow);
+        }
+
+        .action-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent-orange);
+            box-shadow: 0 18px 34px rgba(44, 62, 80, 0.14);
+        }
+
+        .action-card i {
+            font-size: 40px;
+        }
+
+        /* BADGE */
+        .badge {
+            background: var(--accent-orange);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        /* ========================= */
+        /* RESPONSIVE */
+        /* ========================= */
+
+        /* TABLET */
+        @media (max-width: 1024px) {
+            .sidebar {
+                width: 220px;
+            }
+
+            .main-content {
+                margin-left: 220px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .action-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+
+            body {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+                flex-direction: row;
+                align-items: center;
+                overflow-x: auto;
+                padding: 15px;
+            }
+
+            .brand {
+                display: none;
+                position: flex;
+                margin-right: 20px;
+                margin-bottom: 30px;
+                margin-top: 30px;
+            }
+
+            .nav-menu {
+                flex-direction: row;
+                gap: 10px;
+            }
+
+            .nav-link {
+                justify-content: center;
+                padding: 10px;
+                font-size: 12px;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .topbar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+                padding: 15px 20px;
+            }
+
+            .dashboard-container {
+                padding: 20px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .action-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding-left: 10px;
+        }
+
+
+        .logo-icon img {
+            width: 47px;
+            height: 47px;
+            background: var(--accent-orange);
+            padding: 2px;
+            border-radius: 50%;
+        }
+
+
+        .brand-name {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white;
+            margin-left: 5px;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="logo-icon">
+                <img src="images/fede.jpg" alt="Fedelicious Logo">
+            </div>
+            <span class="brand-name">FEDELICIOUS</span>
+        </div>
+        <ul class="nav-menu" style="list-style: none;">
+            <li><a href="admin.html" class="nav-link active"><i class="fa-solid fa-gauge-high"></i> Dashboard</a></li>
+            <li><a href="order_admin.html" class="nav-link"><i class="fas fa-shopping-cart"></i> Orders</a></li>
+            <li><a href="reservation_admin.html" class="nav-link"><i class="fas fa-calendar-alt"></i> Reservations</a>
+            </li>
+            <li><a href="menusetting.html" class="nav-link"><i class="fa-solid fa-utensils"></i> Menu Settings</a></li>
+            <li><a href="salesreport.html" class="nav-link"><i class="fa-solid fa-chart-line"></i> Sales Report</a></li>
+            <a href="customeractivity.html" class="nav-link"><i class="fa fa-user"></i> CUSTOMER ACTIVITY</a>
+            <a href="admin_management.html" class="nav-link" id="superAdminLink"><i class="fas fa-user-shield"></i>
+                SYSTEM ADMINS</a>
+        </ul>
+        <a class="nav-link" onclick="logout()" style="margin-top:auto; color:#e74c3c;"><i
+                class="fa-solid fa-power-off"></i> Logout</a>
+    </aside>
+
+    <main class="main-content">
+        <div class="topbar">
+            <h2>Overview Dashboard</h2>
+            <div class="admin-profile" style="display: flex; align-items: center; gap: 10px;">
+                <span id="admin-name" style="font-weight: 600;">Admin</span>
+                <i class="fa-solid fa-circle-user" style="font-size: 32px; color: var(--dark-green);"></i>
+            </div>
+        </div>
+
+        <div class="dashboard-container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <p>Grand Total Sales (All-time)</p>
+                    <h3 id="grand-total-revenue">â‚±0.00</h3>
+                </div>
+                <div class="stat-card green">
+                    <p>Total Life-time Orders</p>
+                    <h3 id="confirmed-orders">0</h3>
+                </div>
+                <div class="stat-card blue">
+                    <p>Total Registered Customers</p>
+                    <h3 id="total-customers">0</h3>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <p>Revenue Today</p>
+                    <h3 id="today-revenue">â‚±0.00</h3>
+                </div>
+                <div class="stat-card blue">
+                    <p>Preparing / Ready Orders</p>
+                    <h3 id="active-orders">0</h3>
+                </div>
+                <div class="stat-card green">
+                    <p>Successful Arrivals</p>
+                    <h3 id="confirmed-res">0</h3>
+                </div>
+            </div>
+
+            <h2 class="action-header">Pending Intelligence</h2>
+            <div class="action-grid">
+                <a href="order_admin.html" class="action-card">
+                    <i class="fa-solid fa-truck-fast" style="color: #3498db; font-size: 40px;"></i>
+                    <h3>Order Verification</h3>
+                    <p>Verify GCash payments and manage pending orders.</p>
+                    <div class="badge" id="pending-orders-count">0 PENDING</div>
+                </a>
+
+                <a href="reservation_admin.html" class="action-card">
+                    <i class="fa-solid fa-table-list" style="color: #f39c12; font-size: 40px;"></i>
+                    <h3>Table Management</h3>
+                    <p>Confirm downpayments and seat reservations.</p>
+                    <div class="badge" id="pending-res-count">0 PENDING</div>
+                </a>
+            </div>
+
+            <h2 class="action-header">Menu Intelligence</h2>
+            <div class="single-stat-grid">
+                <div class="stat-card green">
+                    <p>Food Name</p>
+                    <h3 id="menu-food-name">N/A</h3>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="auth-session.js"></script>
+    <script>
+        const API_BASE = 'https://localhost:7201/api';
+        const VIEW_API_BASE = `${API_BASE}/View`;
+        const adminSession = requireAdminAccess();
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!adminSession) {
+                return;
+            }
+
+            document.getElementById('admin-name').innerText = adminSession.fullName || "Admin Intelligence";
+            updateSuperAdminLink(adminSession.role);
+            loadDashboardData();
+            setInterval(loadDashboardData, 15000);
+        });
+
+        async function loadDashboardData() {
+            try {
+                const fetchJson = async (url) => {
+                    const res = await fetch(url);
+                    if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+                    return await res.json();
+                };
+
+                const [grandData, allOrders, allReservations, todayDataArray, averageMenuData] = await Promise.all([
+                    fetchJson(`${API_BASE}/Sp/dashboard/grand-overview`).catch(() => ({})),
+                    fetchJson(`${API_BASE}/Sp/orders`).catch(() => []),
+                    fetchJson(`${API_BASE}/Sp/reservations`).catch(() => []),
+                    fetchJson(`${API_BASE}/Sp/dashboard/daily-revenue`).catch(() => []),
+                    fetchJson(`${VIEW_API_BASE}/average-menu`).catch(() => ({}))
+                ]);
+
+                const formatPHP = (val) => `PHP ${Number(val || 0).toLocaleString("en-PH", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                const extractTextValue = (data, preferredKeys = []) => {
+                    if (typeof data === 'string' && data.trim()) {
+                        return data;
+                    }
+
+                    if (Array.isArray(data)) {
+                        return data.length ? extractTextValue(data[0], preferredKeys) : 'N/A';
+                    }
+
+                    if (data && typeof data === 'object') {
+                        for (const key of preferredKeys) {
+                            const value = data[key];
+                            if (typeof value === 'string' && value.trim()) {
+                                return value;
+                            }
+                        }
+
+                        for (const value of Object.values(data)) {
+                            if (typeof value === 'string' && value.trim()) {
+                                return value;
+                            }
+                        }
+                    }
+
+                    return 'N/A';
+                };
+                const extractNumericValue = (data, preferredKeys = []) => {
+                    if (typeof data === 'number') {
+                        return data;
+                    }
+
+                    if (Array.isArray(data)) {
+                        return data.length ? extractNumericValue(data[0], preferredKeys) : 0;
+                    }
+
+                    if (data && typeof data === 'object') {
+                        for (const key of preferredKeys) {
+                            const value = Number(data[key]);
+                            if (Number.isFinite(value)) {
+                                return value;
+                            }
+                        }
+
+                        for (const value of Object.values(data)) {
+                            const numericValue = Number(value);
+                            if (Number.isFinite(numericValue)) {
+                                return numericValue;
+                            }
+                        }
+                    }
+
+                    return 0;
+                };
+
+                // --- 1. REVENUE TODAY ---
+                // Since Swagger shows an array [ { "daily_revenue": 132.92 } ], we access index [0]
+                let todayRev = 0;
+                if (Array.isArray(todayDataArray) && todayDataArray.length > 0) {
+                    todayRev = todayDataArray[0].daily_revenue || todayDataArray[0].Daily_revenue || 0;
+                }
+                document.getElementById('today-revenue').innerText = formatPHP(todayRev);
+
+                // --- 2. GRAND TOTAL ---
+                const grandRev = grandData.grand_total_sales ?? grandData.Grand_total_sales ?? 0;
+                document.getElementById('grand-total-revenue').innerText = formatPHP(grandRev);
+
+                // --- 3. COUNTS ---
+                document.getElementById('confirmed-orders').innerText = grandData.total_orders_count ?? 0;
+                document.getElementById('total-customers').innerText = grandData.total_customers_count ?? 0;
+
+                // --- 4. ORDER SYNC ---
+                if (Array.isArray(allOrders)) {
+                    const active = allOrders.filter(o => o.order_status === 'Ready' || o.order_status === 'Preparing').length;
+                    const pending = allOrders.filter(o => o.order_status === 'Pending').length;
+                    document.getElementById('active-orders').innerText = active;
+                    document.getElementById('pending-orders-count').innerText = `${pending} PENDING`;
+                }
+
+                // --- 5. RESERVATION SYNC ---
+                if (Array.isArray(allReservations)) {
+                    const confirmed = allReservations.filter(r => r.reservation_status === 'Confirmed').length;
+                    const pendingRes = allReservations.filter(r => (r.reservation_status || "").toLowerCase().includes('waiting')).length;
+                    document.getElementById('confirmed-res').innerText = confirmed;
+                    document.getElementById('pending-res-count').innerText = `${pendingRes} PENDING`;
+                }
+
+                document.getElementById('menu-food-name').innerText = extractTextValue(
+                    averageMenuData,
+                    ['food_name', 'foodName', 'menu_name', 'menuName', 'name']
+                );
+
+            } catch (error) {
+                console.error("Dashboard Global Error:", error);
+            }
+        }
+
+        function logout() {
+            logoutToLogin({
+                message: "Sign out from the admin dashboard?"
+            });
+        }
+    </script>
+</body>
+
+</html>

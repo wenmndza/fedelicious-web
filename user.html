@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Fedelicious | Account Settings</title>
+    <link rel="icon" type="image/png" href="images/icon1.png">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+
+
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="brand">
+                <div class="brand-icon"><img src="images/fede.jpg" alt="Fedelicious Logo"></div>
+                <span class="brand-name">Fedelicious</span>
+            </div>
+
+            <!-- ✅ Hamburger button -->
+            <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav-links">
+                <li><a href="landing.html">HOME</a></li>
+                <li><a href="menu.html">MENU</a></li>
+                <li><a href="reservation.html">RESERVATION</a></li>
+                <li><a href="orders.html">ORDERS</a></li>
+            </ul>
+
+
+
+
+            <div class="nav-actions">
+                <a href="cart.html" class="nav-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+                        <line x1="3" y1="6" x2="21" y2="6" />
+                        <path d="M16 10a4 4 0 0 1-8 0" />
+                    </svg>
+                </a>
+
+
+
+
+                <a href="user.html" class="nav-icon user-profile-link" aria-current="page">
+                    <span class="user-circle active">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                            <circle cx="12" cy="7" r="4" />
+                        </svg>
+                    </span>
+                    <span class="nav-user-name" id="nav-user-name">Account</span>
+                </a>
+            </div>
+        </div>
+
+
+
+
+        <!-- ✅ Mobile drawer menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <ul>
+                <li><a href="landing.html">HOME</a></li>
+                <li><a href="menu.html">MENU</a></li>
+                <li><a href="reservation.html">RESERVATION</a></li>
+                <li><a href="orders.html">ORDERS</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+
+    <main class="settings-wrapper">
+        <div class="settings-card">
+
+
+
+
+            <header class="settings-header">
+                <h1 class="settings-title">ACCOUNT SETTINGS</h1>
+                <button class="icon-btn settings-gear">⚙️</button>
+            </header>
+
+
+
+
+            <div class="profile-hero">
+                <div class="avatar-box">
+                    <img src="avatar.png" alt="User Avatar" id="display-avatar">
+                </div>
+                <h2 id="display-name" class="user-display-name">John Doe</h2>
+                <p class="membership-status">SUKI MEMBER SINCE <span id="display-member-year">2026</span></p>
+            </div>
+
+
+
+
+            <form id="profile-form" class="settings-form">
+
+
+
+
+                <div class="input-group">
+                    <label>FULL NAME</label>
+                    <div class="custom-field">
+                        <span class="field-icon">👤</span>
+                        <input type="text" id="edit-full-name" readonly>
+                    </div>
+                </div>
+
+
+
+
+                <div class="input-group">
+                    <label>GMAIL / EMAIL</label>
+                    <div class="custom-field">
+                        <span class="field-icon">✉️</span>
+                        <input type="email" id="edit-email" readonly>
+                    </div>
+                </div>
+
+
+
+
+                <div class="input-group">
+                    <label>DELIVERY ADDRESS</label>
+                    <div class="custom-field textarea-field">
+                        <span class="field-icon">📍</span>
+                        <textarea id="edit-address" readonly></textarea>
+                    </div>
+                </div>
+
+
+
+
+                <div class="form-actions">
+                    <button type="button" class="logout-btn" id="logout-btn" onclick="logout()"
+                        aria-label="Log out account">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        <span>LOG OUT</span>
+                    </button>
+                </div>
+            </form>
+
+
+
+
+        </div>
+    </main>
+    <style>
+        :root {
+            --primary-green: #0d2b1f;
+            --accent-orange: #ff7043;
+            --card-bg: #143528;
+            --text-muted: #8ca398;
+            --input-bg: #0a2118;
+            --nav-gradient: linear-gradient(to bottom, rgba(7, 20, 15, 0.95), transparent);
+        }
+
+
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+
+
+
+        body {
+            background-color: var(--primary-green);
+            color: white;
+            padding-top: 120px;
+            line-height: 1.6;
+        }
+
+
+
+
+        /* --- NAVBAR --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 25px 8%;
+            background: var(--nav-gradient);
+        }
+
+
+
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+
+
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+
+
+
+        .brand-icon img {
+            width: 47px;
+            height: 47px;
+            background: var(--accent-orange);
+            padding: 2px;
+            border-radius: 50%;
+        }
+
+
+
+
+        .brand-name {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: white;
+        }
+
+
+
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+
+
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+
+
+
+        .nav-links a.active,
+        .nav-links a:hover {
+            color: var(--accent-orange);
+            border-bottom: 2px solid var(--accent-orange);
+            padding-bottom: 5px;
+        }
+
+
+
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+
+
+
+        .nav-icon {
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+
+
+
+        .nav-icon:hover {
+            color: var(--accent-orange);
+        }
+
+
+
+
+        .user-circle {
+            background: var(--card-bg);
+            padding: 8px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+
+
+
+        .user-circle.active {
+            border-color: var(--accent-orange);
+        }
+
+
+        .user-profile-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+
+        .nav-user-name {
+            max-width: 140px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+        }
+
+
+        .user-profile-link:hover .nav-user-name {
+            color: var(--accent-orange);
+        }
+
+
+
+
+        /* ✅ Hamburger (same as menu page) */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 6px;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            z-index: 1100;
+        }
+
+
+
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: white;
+            border-radius: 2px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+
+
+
+        .hamburger.open span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+
+
+
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+
+
+
+        .hamburger.open span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+
+
+
+        /* ✅ Mobile drawer (same as menu page) */
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            background: rgba(7, 20, 15, 0.98);
+            padding: 0 8%;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, padding 0.35s ease;
+        }
+
+
+
+
+        .mobile-menu.open {
+            max-height: 300px;
+            padding: 20px 8%;
+        }
+
+
+
+
+        .mobile-menu ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+
+
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            transition: color 0.2s;
+            text-transform: uppercase;
+        }
+
+
+
+
+        .mobile-menu a.active,
+        .mobile-menu a:hover {
+            color: var(--accent-orange);
+        }
+
+
+
+
+        /* --- SETTINGS CARD --- */
+        .settings-wrapper {
+            min-height: calc(100vh - 120px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 8%;
+        }
+
+
+
+
+        .settings-card {
+            background: var(--card-bg);
+            width: 100%;
+            max-width: 600px;
+            padding: 50px 60px;
+            border-radius: 40px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+
+
+
+        .settings-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+
+
+
+        .settings-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: white;
+        }
+
+
+
+
+        .icon-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            transition: 0.3s;
+        }
+
+
+
+
+        .icon-btn:hover {
+            color: var(--accent-orange);
+        }
+
+
+
+
+        /* --- PROFILE HERO --- */
+        .profile-hero {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+
+
+
+        .avatar-box {
+            width: 120px;
+            height: 120px;
+            background: var(--input-bg);
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 15px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+
+
+
+        .avatar-box img {
+            width: 60%;
+            height: 60%;
+            object-fit: contain;
+        }
+
+
+
+
+        .user-display-name {
+            font-weight: 800;
+            font-size: 1.6rem;
+        }
+
+
+
+
+        .membership-status {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+
+
+
+
+        /* --- FORM FIELDS --- */
+        .settings-form {
+            margin-top: 30px;
+        }
+
+
+
+
+        .input-group {
+            margin-bottom: 25px;
+        }
+
+
+
+
+        label {
+            display: block;
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            font-weight: 800;
+            margin-bottom: 10px;
+            letter-spacing: 1.5px;
+        }
+
+
+
+
+        .custom-field {
+            width: 100%;
+            background: var(--input-bg);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 18px 25px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: 0.3s;
+        }
+
+
+
+
+        .custom-field:focus-within {
+            border-color: rgba(255, 112, 67, 0.6);
+            box-shadow: 0 0 18px rgba(255, 112, 67, 0.15);
+        }
+
+
+
+
+        .field-icon {
+            color: var(--text-muted);
+            opacity: 0.6;
+            font-size: 1rem;
+            width: 18px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+
+
+        .custom-field input,
+        .custom-field textarea {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 0.95rem;
+            width: 100%;
+            outline: none;
+            flex: 1;
+            font-weight: 600;
+        }
+
+
+
+
+        .custom-field input[readonly],
+        .custom-field textarea[readonly] {
+            opacity: 1;
+            cursor: default;
+        }
+
+
+
+
+        .textarea-field {
+            align-items: flex-start;
+        }
+
+
+
+
+        .textarea-field textarea {
+            height: 70px;
+            resize: none;
+        }
+
+
+
+
+        /* --- FORM ACTIONS --- */
+        .form-actions {
+            display: block;
+            margin-top: 40px;
+        }
+
+
+
+
+        .logout-btn {
+            background: rgba(255, 112, 67, 0.1);
+            color: var(--accent-orange);
+            width: 100%;
+            height: 60px;
+            padding: 0 24px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 112, 67, 0.2);
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+
+
+
+        .logout-btn:hover {
+            background: rgba(255, 112, 67, 0.2);
+            border-color: var(--accent-orange);
+        }
+
+
+
+
+        /* ✅ Responsive navbar + mobile menu behavior */
+        @media(max-width: 900px) {
+            .hamburger {
+                display: flex;
+            }
+
+
+
+
+            .nav-links {
+                display: none;
+            }
+
+
+            .nav-user-name {
+                display: none;
+            }
+
+
+
+
+            .mobile-menu {
+                display: flex;
+            }
+
+
+
+
+            .navbar {
+                padding: 18px 6%;
+                background: rgba(7, 20, 15, 0.97);
+            }
+
+
+
+
+            body {
+                padding-top: 80px;
+            }
+
+
+
+
+            .settings-card {
+                padding: 45px 30px;
+            }
+        }
+
+
+
+
+        @media(max-width: 480px) {
+            .navbar {
+                padding: 16px 5%;
+            }
+
+
+
+
+            body {
+                padding-top: 72px;
+            }
+
+
+
+
+            .brand-name {
+                font-size: 1.2rem;
+            }
+
+
+
+
+            .settings-title {
+                font-size: 1.5rem;
+            }
+
+
+
+
+            .form-actions {
+                flex-direction: column;
+            }
+
+
+
+
+            .logout-btn {
+                width: 100%;
+                height: 60px;
+                border-radius: 50px;
+            }
+        }
+    </style>
+
+
+
+
+    <script src="cart-ui.js"></script>
+    <script>
+        const API_BASE = "https://localhost:7201";
+        const USER_PROFILE_API = `${API_BASE}/api/Auth/getFullName`;
+        const AUTH_KEYS = ["role", "fullName", "email", "address", "adminId", "customer_id"];
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const profileFields = {
+            fullName: document.getElementById('edit-full-name'),
+            email: document.getElementById('edit-email'),
+            address: document.getElementById('edit-address')
+        };
+
+
+
+
+        hamburger.addEventListener('click', () => {
+            const isOpen = hamburger.classList.toggle('open');
+            mobileMenu.classList.toggle('open', isOpen);
+            hamburger.setAttribute('aria-expanded', isOpen);
+        });
+
+
+
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('open');
+                mobileMenu.classList.remove('open');
+                hamburger.setAttribute('aria-expanded', false);
+            });
+        });
+
+
+
+
+
+
+        function updateNavUserName(fullName = "") {
+            const navUserName = document.getElementById('nav-user-name');
+            const resolvedName = String(fullName || localStorage.getItem("fullName") || "").trim();
+
+
+            if (!navUserName) {
+                return;
+            }
+
+
+            if (!resolvedName || resolvedName.toLowerCase() === "null") {
+                navUserName.textContent = "Account";
+                navUserName.title = "Account";
+                return;
+            }
+
+
+            navUserName.textContent = resolvedName.split(/\s+/)[0];
+            navUserName.title = resolvedName;
+        }
+
+
+        function hasLocalCustomerData() {
+            const fullName = String(localStorage.getItem("fullName") || "").trim();
+            const email = String(localStorage.getItem("email") || "").trim();
+            return (fullName && fullName.toLowerCase() !== "null") || (email && email.toLowerCase() !== "null");
+        }
+
+
+        function ensureCustomerSession() {
+            const role = (localStorage.getItem("role") || "").trim().toLowerCase();
+            const customerId = localStorage.getItem("customer_id");
+
+
+            if (role && role !== "customer") {
+                clearAuthState();
+                window.location.replace("login.html");
+                return false;
+            }
+
+
+            if (!customerId && !hasLocalCustomerData()) {
+                clearAuthState();
+                window.location.replace("login.html");
+                return false;
+            }
+
+
+            return true;
+        }
+
+
+        function clearAuthState() {
+            AUTH_KEYS.forEach(key => localStorage.removeItem(key));
+            sessionStorage.clear();
+        }
+
+
+        function syncFieldIcons() {
+            const icons = document.querySelectorAll('.field-icon');
+            const iconMarkup = [
+                '<i class="fa-solid fa-user"></i>',
+                '<i class="fa-solid fa-envelope"></i>',
+                '<i class="fa-solid fa-location-dot"></i>'
+            ];
+
+            icons.forEach((icon, index) => {
+                if (iconMarkup[index]) {
+                    icon.innerHTML = iconMarkup[index];
+                }
+            });
+        }
+
+
+        function normalizeProfile(profile = {}) {
+            return {
+                customerId: String(
+                    profile.customer_id ||
+                    profile.customerId ||
+                    localStorage.getItem("customer_id") ||
+                    ""
+                ).trim(),
+                fullName: String(
+                    profile.full_name ||
+                    profile.fullName ||
+                    localStorage.getItem("fullName") ||
+                    "Guest User"
+                ).trim(),
+                email: String(
+                    profile.email ||
+                    localStorage.getItem("email") ||
+                    ""
+                ).trim(),
+                address: String(
+                    profile.address ||
+                    localStorage.getItem("address") ||
+                    ""
+                ).trim()
+            };
+        }
+
+
+        function renderProfile(profile = {}) {
+            const normalizedProfile = normalizeProfile(profile);
+            const { customerId, fullName, email, address } = normalizedProfile;
+
+
+            if (customerId) {
+                localStorage.setItem("customer_id", customerId);
+            }
+            localStorage.setItem("fullName", fullName);
+            localStorage.setItem("email", email);
+            localStorage.setItem("address", address);
+
+
+            updateNavUserName(fullName);
+            document.getElementById('display-name').innerText = fullName;
+            document.getElementById('display-member-year').innerText = new Date().getFullYear();
+
+
+            profileFields.fullName.value = fullName;
+            profileFields.email.value = email || "No email saved yet";
+            profileFields.address.value = address || "No saved delivery address yet";
+        }
+
+
+        async function loadProfile() {
+            const customerId = localStorage.getItem("customer_id");
+
+
+            if (!customerId) {
+                renderProfile();
+                return;
+            }
+
+
+            try {
+                const response = await fetch(`${USER_PROFILE_API}/${customerId}`, {
+                    headers: {
+                        "Accept": "application/json"
+                    }
+                });
+                const data = await response.json().catch(() => ({}));
+
+
+                if (!response.ok || !data || typeof data !== "object") {
+                    renderProfile();
+                    return;
+                }
+
+
+                renderProfile(data);
+            } catch (error) {
+                renderProfile();
+            }
+        }
+
+
+        function logout() {
+            if (confirm("Are you sure you want to sign out?")) {
+                clearAuthState();
+                window.location.replace("login.html");
+            }
+        }
+
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            document.querySelector('.settings-gear')?.remove();
+            syncFieldIcons();
+            updateNavUserName();
+
+
+            if (!ensureCustomerSession()) {
+                return;
+            }
+
+
+            await loadProfile();
+        });
+
+
+        window.addEventListener('pageshow', () => {
+            ensureCustomerSession();
+        });
+    </script>
+</body>
+
+
+</html>

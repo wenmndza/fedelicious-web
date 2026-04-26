@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fedelicious Admin | Menu Settings</title>
+    <link rel="icon" type="image/png" href="images/icon1.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-green: #b2eec7;
+            --sidebar-green: #98d8aa;
+            --surface-bg: #e8f5e9;
+            --accent-orange: #27ae60;
+            --card-bg: #ffffff;
+            --glass-white: rgba(255, 255, 255, 0.68);
+            --text-muted: #7f8c8d;
+            --text-dark: #2c3e50;
+            --white: #ffffff;
+            --status-green: #27ae60;
+            --status-red: #e74c3c;
+            --panel-border: rgba(44, 62, 80, 0.08);
+            --card-shadow: 0 12px 28px rgba(44, 62, 80, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* BODY */
+        body {
+            background-color: var(--primary-green);
+            color: var(--text-dark);
+            display: flex;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 280px;
+            background-color: var(--sidebar-green);
+            padding: 30px 20px;
+            position: fixed;
+            height: 100%;
+            border-right: 1px solid var(--panel-border);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar h2 {
+            color: var(--text-dark);
+            font-weight: 800;
+            margin-bottom: 40px;
+        }
+
+        .sidebar a {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 20px;
+            color: var(--text-dark);
+            text-decoration: none;
+            border-radius: 12px;
+            transition: 0.3s;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .sidebar a.active {
+            background-color: var(--accent-orange);
+            color: white;
+        }
+
+        .sidebar a:hover {
+            background: rgba(255, 255, 255, 0.35);
+            color: var(--text-dark);
+        }
+
+        /* MAIN */
+        .main {
+            margin-left: 280px;
+            padding: 30px 40px;
+            width: 100%;
+            min-height: 100vh;
+            background: var(--surface-bg);
+            border-top-left-radius: 40px;
+            border-bottom-left-radius: 40px;
+        }
+
+        /* HEADER */
+        .header-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .header-section h2 {
+            font-size: clamp(20px, 3vw, 26px);
+        }
+
+        .header-section p {
+            color: var(--text-muted);
+        }
+
+        .action-btns {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        /* BUTTONS */
+        .btn-add {
+            background: var(--card-bg);
+            color: var(--text-dark);
+            padding: 12px 18px;
+            border-radius: 12px;
+            border: 1px solid var(--panel-border);
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .btn-cat {
+            background: var(--accent-orange);
+            color: var(--white);
+        }
+
+        /* CATEGORY BAR */
+        .category-bar {
+            display: flex;
+            gap: 10px;
+            margin: 25px 0;
+            overflow-x: auto;
+        }
+
+        .cat-chip {
+            background: var(--card-bg);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            white-space: nowrap;
+            color: var(--text-dark);
+            border: 1px solid var(--panel-border);
+        }
+
+        .cat-chip.active {
+            background: var(--accent-orange);
+            color: white;
+        }
+
+        /* GRID */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        /* CARD */
+        .menu-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: 0.3s;
+            border: 1px solid var(--panel-border);
+            box-shadow: var(--card-shadow);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 30px rgba(44, 62, 80, 0.14);
+        }
+
+        .food-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        /* DETAILS */
+        .food-details {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            flex: 1;
+        }
+
+        .food-details h4 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .food-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            height: 40px;
+            overflow: hidden;
+        }
+
+        .food-price {
+            color: var(--accent-orange);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .food-topline {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .availability-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px 10px;
+            border-radius: 999px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .availability-badge.available {
+            background: rgba(39, 174, 96, 0.14);
+            color: #1f7a46;
+        }
+
+        .availability-badge.unavailable {
+            background: rgba(231, 76, 60, 0.14);
+            color: #b53c2e;
+        }
+
+        .food-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-muted);
+            font-size: 0.78rem;
+        }
+
+        /* FOOTER */
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            margin-top: auto;
+            padding-top: 8px;
+            border-top: 1px solid rgba(44, 62, 80, 0.08);
+        }
+
+        .card-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .status-toggle-btn {
+            border: none;
+            border-radius: 999px;
+            padding: 9px 12px;
+            font-size: 0.74rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .status-toggle-btn.available {
+            background: rgba(231, 76, 60, 0.12);
+            color: #b53c2e;
+        }
+
+        .status-toggle-btn.unavailable {
+            background: rgba(39, 174, 96, 0.14);
+            color: #1f7a46;
+        }
+
+        .status-toggle-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .btn-icon {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-edit {
+            color: var(--status-green);
+        }
+
+        .btn-delete {
+            color: var(--status-red);
+        }
+
+        /* MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 20px;
+            width: min(92vw, 420px);
+            box-shadow: var(--card-shadow);
+        }
+
+        .modal-content.food-modal {
+            width: min(92vw, 760px);
+            padding: 30px;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 22px;
+        }
+
+        .modal-header h3 {
+            font-size: 1.3rem;
+        }
+
+        .modal-header p {
+            margin-top: 6px;
+            color: var(--text-muted);
+            font-size: 0.88rem;
+        }
+
+        .modal-subtitle {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            margin: 6px 0 18px;
+        }
+
+        .modal-close {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            border: 1px solid var(--panel-border);
+            background: var(--card-bg);
+            color: var(--text-dark);
+            cursor: pointer;
+        }
+
+        .food-form-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr);
+            gap: 22px;
+        }
+
+        .form-panel,
+        .preview-panel,
+        .category-create-panel {
+            border: 1px solid var(--panel-border);
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.82);
+            box-shadow: var(--card-shadow);
+        }
+
+        .form-panel {
+            padding: 20px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        #foodForm {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        #foodForm .form-group:nth-of-type(2),
+        #foodForm .form-group:nth-of-type(5),
+        #foodForm .availability-field,
+        #foodForm>div:last-child {
+            grid-column: 1 / -1;
+        }
+
+        /* FORM */
+        .form-group label {
+            font-size: 0.82rem;
+            margin-bottom: 7px;
+            display: block;
+            color: var(--text-dark);
+            font-weight: 700;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid var(--panel-border);
+            background: #ffffff;
+            color: var(--text-dark);
+            outline: none;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus,
+        .category-input:focus {
+            border-color: rgba(39, 174, 96, 0.6);
+            box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.12);
+        }
+
+        .preview-panel {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .preview-panel h4 {
+            font-size: 1rem;
+        }
+
+        .preview-panel p {
+            color: var(--text-muted);
+            font-size: 0.86rem;
+            margin-top: 4px;
+        }
+
+        .availability-panel {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            border-radius: 18px;
+            background: rgba(39, 174, 96, 0.08);
+            border: 1px solid rgba(39, 174, 96, 0.14);
+        }
+
+        .availability-copy strong {
+            display: block;
+            font-size: 0.92rem;
+        }
+
+        .availability-copy span {
+            display: block;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            margin-top: 4px;
+        }
+
+        .switch {
+            position: relative;
+            width: 64px;
+            height: 34px;
+            flex-shrink: 0;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .switch-slider {
+            position: absolute;
+            inset: 0;
+            border-radius: 999px;
+            background: rgba(127, 140, 141, 0.4);
+            transition: 0.2s ease;
+        }
+
+        .switch-slider::before {
+            content: "";
+            position: absolute;
+            width: 26px;
+            height: 26px;
+            left: 4px;
+            top: 4px;
+            border-radius: 50%;
+            background: white;
+            transition: 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .switch input:checked+.switch-slider {
+            background: var(--accent-orange);
+        }
+
+        .switch input:checked+.switch-slider::before {
+            transform: translateX(30px);
+        }
+
+        /* IMAGE PREVIEW */
+        .preview-box {
+            width: 100%;
+            min-height: 220px;
+            border-radius: 18px;
+            background: linear-gradient(145deg, rgba(39, 174, 96, 0.08), rgba(255, 255, 255, 0.96));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px dashed rgba(39, 174, 96, 0.28);
+            overflow: hidden;
+            color: var(--text-muted);
+            text-align: center;
+            padding: 16px;
+        }
+
+        .preview-box img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .image-upload-copy {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .btn-secondary,
+        .btn-primary {
+            padding: 12px 18px;
+            border-radius: 12px;
+            font-weight: 700;
+            border: 1px solid transparent;
+            cursor: pointer;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border-color: var(--panel-border);
+            color: var(--text-dark);
+        }
+
+        .btn-primary {
+            background: var(--accent-orange);
+            color: var(--white);
+        }
+
+        .category-create-panel {
+            padding: 16px;
+            margin-bottom: 18px;
+        }
+
+        .category-create-panel h4 {
+            font-size: 0.98rem;
+        }
+
+        .category-create-panel p {
+            margin-top: 4px;
+            color: var(--text-muted);
+            font-size: 0.82rem;
+        }
+
+        .category-input-row {
+            display: flex;
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        .category-input {
+            flex: 1;
+            padding: 12px 14px;
+            border-radius: 12px;
+            border: 1px solid var(--panel-border);
+            background: #ffffff;
+            color: var(--text-dark);
+            outline: none;
+        }
+
+        .btn-create-category {
+            padding: 12px 16px;
+            border-radius: 12px;
+            border: none;
+            background: var(--accent-orange);
+            color: var(--white);
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .category-list-shell {
+            max-height: 320px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding-right: 4px;
+        }
+
+        .cat-list-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 14px 16px;
+            border-radius: 16px;
+            background: rgba(39, 174, 96, 0.07);
+            border: 1px solid rgba(39, 174, 96, 0.12);
+        }
+
+        .cat-list-copy strong {
+            display: block;
+            font-size: 0.92rem;
+        }
+
+        .cat-list-copy span {
+            display: block;
+            margin-top: 3px;
+            font-size: 0.76rem;
+            color: var(--text-muted);
+        }
+
+        .btn-del-small {
+            width: 38px;
+            height: 38px;
+            border: none;
+            border-radius: 12px;
+            background: rgba(231, 76, 60, 0.12);
+            color: var(--status-red);
+            cursor: pointer;
+        }
+
+        .category-empty {
+            padding: 24px;
+            text-align: center;
+            color: var(--text-muted);
+            border-radius: 16px;
+            border: 1px dashed var(--panel-border);
+        }
+
+        .modal-footer {
+            margin-top: 18px;
+        }
+
+        /* ========================= */
+        /* RESPONSIVE */
+        /* ========================= */
+
+        @media (max-width: 1024px) {
+            .sidebar {
+                width: 220px;
+            }
+
+            .main {
+                margin-left: 220px;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            body {
+                flex-direction: column;
+            }
+
+            .logo-icon img,
+            .brand-name,
+            .brand {
+                display: none;
+            }
+
+            .sidebar {
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+                height: 70px;
+                flex-direction: row;
+                justify-content: space-around;
+                padding: 0;
+            }
+
+            .sidebar h2 {
+                display: none;
+            }
+
+            .sidebar a {
+                flex-direction: row;
+                font-size: 8px;
+                padding: 5px;
+            }
+
+            .main {
+                margin-left: 0;
+                padding: 20px;
+                padding-bottom: 90px;
+            }
+
+            .food-form-grid,
+            .form-row,
+            #foodForm {
+                grid-template-columns: 1fr;
+            }
+
+            .category-input-row {
+                flex-direction: column;
+            }
+
+            .header-section {
+                align-items: stretch;
+            }
+
+            .action-btns {
+                width: 100%;
+                justify-content: stretch;
+            }
+
+            .btn-add {
+                flex: 1 1 220px;
+                justify-content: center;
+            }
+
+            .modal-content.food-modal {
+                padding: 22px;
+            }
+
+            .modal-actions {
+                flex-direction: column-reverse;
+            }
+
+            .btn-secondary,
+            .btn-primary,
+            .btn-create-category {
+                width: 100%;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding-left: 10px;
+        }
+
+
+        .logo-icon img {
+            width: 47px;
+            height: 47px;
+            background: var(--accent-orange);
+            padding: 2px;
+            border-radius: 50%;
+        }
+
+
+        .brand-name {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white;
+            margin-left: 5px;
+            letter-spacing: 1px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <aside class="sidebar">
+<div class="brand">
+            <div class="logo-icon">
+                <img src="images/fede.jpg" alt="Fedelicious Logo">
+            </div>
+            <span class="brand-name">FEDELICIOUS</span>
+        </div>        
+        <a href="admin.html"><i class="fa-solid fa-gauge-high"></i> DASHBOARD</a>
+        <a href="order_admin.html"><i class="fas fa-shopping-cart"></i> ORDERS</a>
+        <a href="reservation_admin.html"><i class="fas fa-calendar-alt"></i> RESERVATIONS</a>
+        <a href="menusetting.html" class="active"><i class="fas fa-utensils"></i> MENU SETTINGS</a>
+        <a href="salesreport.html"><i class="fas fa-chart-line"></i> SALES REPORT</a>
+        <a href="customeractivity.html" class="nav-link"><i class="fa fa-user"></i> CUSTOMER ACTIVITY</a>
+        <a href="admin_management.html" class="nav-link" id="superAdminLink"><i class="fas fa-user-shield"></i> SYSTEM
+            ADMINS</a>
+        <a href="#" style="margin-top: auto; color: #e74c3c;" onclick="logout()"><i class="fas fa-sign-out-alt"></i>
+            SIGN OUT</a>
+    </aside>
+
+    <main class="main">
+        <div class="header-section">
+            <div>
+                <h2>Menu Settings</h2>
+                <p>Manage your food items and categories</p>
+            </div>
+            <div class="action-btns">
+                <button class="btn-add btn-cat" onclick="openCatModal()"><i class="fas fa-edit"></i> Manage
+                    Categories</button>
+                <button class="btn-add" onclick="openFoodModal()"><i class="fas fa-plus"></i> Add Food</button>
+            </div>
+        </div>
+
+        <div class="category-bar" id="cat-filter-bar">
+            <div class="cat-chip active" onclick="filterMenu('all', this)">All Items</div>
+        </div>
+
+        <div class="menu-grid" id="menu-display"></div>
+    </main>
+
+    <div class="modal" id="foodModal">
+        <div class="modal-content food-modal">
+            <h3 id="foodModalTitle">Add New Food</h3>
+            <p class="modal-subtitle">Set the details, image, and customer visibility of this menu item.</p>
+            <form id="foodForm">
+                <input type="hidden" id="foodId">
+                <div class="form-group">
+                    <label>Food Name</label>
+                    <input type="text" id="foodName" required>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea id="description" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Price (₱)</label>
+                    <input type="number" step="0.01" id="price" required>
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="categoryId" required></select>
+                </div>
+                <div class="form-group">
+                    <label>Food Image</label>
+                    <input type="file" id="imageFile" accept="image/*" onchange="previewImage(this)">
+                    <div class="preview-box" id="imagePreview"><span>No image selected yet</span></div>
+                </div>
+                <div class="form-group availability-field">
+                    <label for="foodAvailability">Visibility</label>
+                    <div class="availability-panel">
+                        <div class="availability-copy">
+                            <strong id="availabilityTitle">Available to customers</strong>
+                            <span id="availabilityCaption">This item will appear on customer menu pages.</span>
+                        </div>
+                        <label class="switch" for="foodAvailability">
+                            <input type="checkbox" id="foodAvailability" checked>
+                            <span class="switch-slider"></span>
+                        </label>
+                    </div>
+                </div>
+                <div style="display:flex; gap:10px; margin-top: 20px;">
+                    <button type="button" onclick="closeModal()"
+                        style="flex:1; padding:12px; border-radius:10px; border:none;">Cancel</button>
+                    <button type="submit"
+                        style="flex:1; padding:12px; border-radius:10px; border:none; background:var(--accent-orange); color:white; font-weight:600;">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="catModal">
+        <div class="modal-content">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 20px;">
+                <h3>Manage Categories</h3>
+                <button class="modal-close" type="button" onclick="closeModal()" aria-label="Close category modal"><i
+                        class="fas fa-times"></i></button>
+            </div>
+            <p class="modal-subtitle">Organize sections like Add-ons, Appetizers, Desserts, Drinks, and Main Course.</p>
+            <div class="category-create-panel">
+                <h4>Add a New Category</h4>
+                <p>Create clean sections for your customer menu.</p>
+                <div class="category-input-row">
+                    <input type="text" id="newCategoryName" class="category-input"
+                        placeholder="e.g. Add-ons or Appetizers">
+                    <button type="button" class="btn-create-category" onclick="addNewCategoryRow()">Add
+                        Category</button>
+                </div>
+            </div>
+
+            <div id="category-list-container" class="category-list-shell"
+                style="max-height: 300px; overflow-y:auto; margin-bottom:20px; border-top:1px solid #eee;">
+            </div>
+
+            <button type="button" onclick="closeModal()"
+                style="width:100%; padding:12px; border-radius:10px; border:1px solid #ddd; background:none;">Close</button>
+        </div>
+    </div>
+
+    <script src="auth-session.js"></script>
+    <script>
+        const API_URL = "https://localhost:7201/api/Menu/admin";
+        const API_TOGGLE_AVAILABILITY_URL = "https://localhost:7201/api/Menu/toggle-availability";
+        const MENU_AVAILABILITY_KEY = "fede_menu_availability_overrides";
+        const adminSession = requireAdminAccess();
+        let base64Image = "";
+        let isEditMode = false;
+        let menuItemsData = [];
+        let categoriesData = [];
+        let activeCategoryFilter = "all";
+
+        async function init() {
+            await loadCategories();
+            await loadMenu();
+        }
+
+        function escapeHtml(value) {
+            return String(value ?? "")
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#39;");
+        }
+
+        function getAvailabilityOverrides() {
+            try {
+                return JSON.parse(localStorage.getItem(MENU_AVAILABILITY_KEY) || "{}");
+            } catch (error) {
+                return {};
+            }
+        }
+
+        function saveAvailabilityOverride(menuId, value) {
+            if (menuId == null) {
+                return;
+            }
+
+            const overrides = getAvailabilityOverrides();
+            overrides[String(menuId)] = Boolean(value);
+            localStorage.setItem(MENU_AVAILABILITY_KEY, JSON.stringify(overrides));
+        }
+
+        function removeAvailabilityOverride(menuId) {
+            if (menuId == null) {
+                return;
+            }
+
+            const overrides = getAvailabilityOverrides();
+            delete overrides[String(menuId)];
+            localStorage.setItem(MENU_AVAILABILITY_KEY, JSON.stringify(overrides));
+        }
+
+        function readAvailabilityValue(item) {
+            const rawValue = item?.is_available ?? item?.isAvailable ?? item?.available ?? item?.status ?? item?.availability;
+
+            if (typeof rawValue === "boolean") {
+                return rawValue;
+            }
+
+            if (typeof rawValue === "number") {
+                return rawValue === 1;
+            }
+
+            if (typeof rawValue === "string") {
+                const normalized = rawValue.trim().toLowerCase();
+
+                if (["false", "0", "inactive", "hidden", "not available", "unavailable"].includes(normalized)) {
+                    return false;
+                }
+
+                if (["true", "1", "active", "visible", "available"].includes(normalized)) {
+                    return true;
+                }
+            }
+
+            return true;
+        }
+
+        function normalizeMenuItem(item = {}) {
+            const menuId = item.menu_id ?? item.id ?? item.menuId;
+            const overrides = getAvailabilityOverrides();
+            const localOverride = menuId != null ? overrides[String(menuId)] : undefined;
+            const isAvailable = typeof localOverride === "boolean" ? localOverride : readAvailabilityValue(item);
+
+            return {
+                ...item,
+                menu_id: menuId,
+                food_name: item.food_name ?? item.foodName ?? item.name ?? "Unnamed Item",
+                description: item.description ?? "",
+                price: Number(item.price ?? 0),
+                image: item.image ?? "",
+                category_id: item.category_id ?? item.categoryId ?? "",
+                category_name: item.category_name ?? item.categoryName ?? item.category ?? "Uncategorized",
+                is_available: isAvailable
+            };
+        }
+
+        function renderAvailabilityState(available) {
+            const title = document.getElementById("availabilityTitle");
+            const caption = document.getElementById("availabilityCaption");
+
+            if (!title || !caption) {
+                return;
+            }
+
+            title.textContent = available ? "Available to customers" : "Hidden from customers";
+            caption.textContent = available
+                ? "This item will appear on customer menu pages."
+                : "This item will stay in admin only and will not show on customer pages.";
+        }
+
+        function previewImage(input) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    base64Image = event.target.result;
+                    document.getElementById("imagePreview").innerHTML = `<img src="${base64Image}" alt="Food preview">`;
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        async function loadMenu() {
+            const container = document.getElementById("menu-display");
+            try {
+                const res = await fetch(API_URL);
+                const rawItems = await res.json();
+                menuItemsData = (Array.isArray(rawItems) ? rawItems : []).map(normalizeMenuItem);
+                applyCurrentFilter();
+            } catch (error) {
+                container.innerHTML = "<p>Error loading menu.</p>";
+            }
+        }
+
+        function renderMenu(data) {
+            const container = document.getElementById('menu-display');
+            container.innerHTML = '';
+            if (!data.length) {
+                container.innerHTML = `<div class="category-empty">No menu items found in this category.</div>`;
+                return;
+            }
+            data.forEach((item) => {
+                const imageSrc = item.image || 'https://via.placeholder.com/300x180?text=No+Image';
+                const isAvailable = item.is_available !== false;
+                container.innerHTML += `
+                <div class="menu-card" data-category="${item.category_id}">
+                    <img src="${imageSrc}" class="food-img" alt="${escapeHtml(item.food_name)}">
+                    <div class="food-details">
+                        <div class="food-topline">
+                            <h4>${escapeHtml(item.food_name)}</h4>
+                            <span class="availability-badge ${isAvailable ? 'available' : 'unavailable'}">${isAvailable ? 'Available' : 'Not Available'}</span>
+                        </div>
+                        <p class="food-desc">${escapeHtml(item.description || '...')}</p>
+                        <p class="food-price">₱${parseFloat(item.price).toFixed(2)}</p>
+                        <div class="food-meta">
+                            <span>${escapeHtml(item.category_name)}</span>
+                            <span>ID: ${item.menu_id ?? '-'}</span>
+                        </div>
+                        <div class="card-footer">
+                            <button type="button" class="status-toggle-btn ${isAvailable ? 'available' : 'unavailable'}" onclick="toggleFoodAvailability(${item.menu_id})">
+                                ${isAvailable ? 'Not Available' : 'Set Available'}
+                            </button>
+                            <div class="card-actions">
+                                <button onclick="prepareEdit(${item.menu_id})" class="btn-icon btn-edit" title="Edit food item"><i class="fas fa-edit"></i></button>
+                                <button onclick="deleteFood(${item.menu_id})" class="btn-icon btn-delete" title="Delete food item"><i class="fas fa-trash-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+            });
+        }
+
+        async function loadCategories() {
+            try {
+                const res = await fetch(`${API_URL}/categories`);
+                categoriesData = await res.json();
+
+                document.getElementById('categoryId').innerHTML = categoriesData
+                    .map(c => `<option value="${c.category_id}">${escapeHtml(c.category_name)}</option>`)
+                    .join('');
+
+                const filterBar = document.getElementById('cat-filter-bar');
+                filterBar.innerHTML = `<div class="cat-chip ${activeCategoryFilter === 'all' ? 'active' : ''}" onclick="filterMenu('all', this)">All Items</div>`;
+                categoriesData.forEach(c => {
+                    const isActive = String(activeCategoryFilter) === String(c.category_id);
+                    filterBar.innerHTML += `<div class="cat-chip ${isActive ? 'active' : ''}" onclick="filterMenu(${c.category_id}, this)">${escapeHtml(c.category_name)}</div>`;
+                });
+
+                const listContainer = document.getElementById('category-list-container');
+                listContainer.innerHTML = categoriesData.length
+                    ? categoriesData.map(c => `
+                    <div class="cat-list-item">
+                        <div class="cat-list-copy">
+                            <strong>${escapeHtml(c.category_name)}</strong>
+                            <span>Customer menu category</span>
+                        </div>
+                        <button class="btn-del-small" onclick="deleteCategory(${c.category_id})" title="Delete category"><i class="fas fa-times"></i></button>
+                    </div>
+                `).join('')
+                    : `<div class="category-empty">No categories yet. Add your first menu section above.</div>`;
+
+            } catch (e) { console.error(e); }
+        }
+
+        function filterMenu(catId, element) {
+            activeCategoryFilter = catId;
+            document.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('active'));
+            element.classList.add('active');
+            applyCurrentFilter();
+        }
+
+        function applyCurrentFilter() {
+            if (activeCategoryFilter === 'all') {
+                renderMenu(menuItemsData);
+            } else {
+                const filtered = menuItemsData.filter(m => String(m.category_id) === String(activeCategoryFilter));
+                renderMenu(filtered);
+            }
+        }
+
+        async function addNewCategoryRow() {
+            const input = document.getElementById('newCategoryName');
+            const name = String(input?.value || "").trim();
+            if (!name) return;
+            await fetch(`${API_URL}/categories`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ category_name: name })
+            });
+            if (input) {
+                input.value = "";
+            }
+            loadCategories();
+        }
+
+        async function deleteCategory(id) {
+            if (!confirm("Delete this category? Menu items in this category might be affected.")) return;
+            await fetch(`${API_URL}/categories/${id}`, { method: 'DELETE' });
+            loadCategories();
+        }
+
+        document.getElementById('foodForm').onsubmit = async (e) => {
+            e.preventDefault();
+            const id = document.getElementById('foodId').value;
+            const isAvailable = document.getElementById('foodAvailability').checked;
+            const data = {
+                food_name: document.getElementById('foodName').value,
+                description: document.getElementById('description').value,
+                price: parseFloat(document.getElementById('price').value),
+                image: base64Image,
+                category_id: parseInt(document.getElementById('categoryId').value),
+                is_available: isAvailable,
+                available: isAvailable
+            };
+            const method = isEditMode ? 'PUT' : 'POST';
+            const url = isEditMode ? `${API_URL}/${id}` : API_URL;
+
+            const res = await fetch(url, {
+                method: method,
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            if (res.ok) {
+                const responseData = await res.json().catch(() => null);
+                let savedId = id || responseData?.menu_id || responseData?.id || responseData?.menuId;
+                if (!savedId) {
+                    await loadMenu();
+                    savedId = menuItemsData.find(item =>
+                        item.food_name === data.food_name &&
+                        String(item.category_id) === String(data.category_id) &&
+                        Number(item.price) === Number(data.price) &&
+                        String(item.description || "") === String(data.description || "")
+                    )?.menu_id;
+                }
+                if (savedId) {
+                    saveAvailabilityOverride(savedId, isAvailable);
+                }
+                closeModal();
+                loadMenu();
+            }
+        };
+
+        function prepareEdit(index) {
+            const item = menuItemsData.find(entry => String(entry.menu_id) === String(index));
+            if (!item) {
+                return;
+            }
+            isEditMode = true;
+            document.getElementById('foodModalTitle').innerText = "Edit Food Item";
+            document.getElementById('foodId').value = item.menu_id;
+            document.getElementById('foodName').value = item.food_name;
+            document.getElementById('description').value = item.description || "";
+            document.getElementById('price').value = item.price;
+            document.getElementById('categoryId').value = item.category_id;
+            document.getElementById('foodAvailability').checked = item.is_available !== false;
+            renderAvailabilityState(item.is_available !== false);
+            base64Image = item.image || "";
+            document.getElementById('imagePreview').innerHTML = item.image ? `<img src="${item.image}" alt="${escapeHtml(item.food_name)}">` : "<span>No image selected yet</span>";
+            document.getElementById('foodModal').style.display = 'flex';
+        }
+
+        async function toggleFoodAvailability(menuId) {
+            const item = menuItemsData.find(entry => String(entry.menu_id) === String(menuId));
+            if (!item) {
+                return;
+            }
+
+            const nextAvailability = !(item.is_available !== false);
+            const button = document.querySelector(`button.status-toggle-btn[onclick="toggleFoodAvailability(${menuId})"]`);
+
+            if (button) {
+                button.disabled = true;
+            }
+
+            try {
+                const response = await fetch(`${API_TOGGLE_AVAILABILITY_URL}/${menuId}`, {
+                    method: 'PUT'
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Toggle request failed with status ${response.status}`);
+                }
+
+                saveAvailabilityOverride(menuId, nextAvailability);
+                await loadMenu();
+            } catch (error) {
+                console.error('Failed to toggle menu item availability:', error);
+                alert('Unable to update menu availability right now. Please try again.');
+            } finally {
+                if (button) {
+                    button.disabled = false;
+                }
+            }
+        }
+
+        async function deleteFood(id) {
+            if (!confirm("Delete this food?")) return;
+            await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
+            removeAvailabilityOverride(id);
+            loadMenu();
+        }
+
+        function openFoodModal() {
+            isEditMode = false;
+            document.getElementById('foodForm').reset();
+            document.getElementById('foodModalTitle').innerText = "Add New Food";
+            document.getElementById('imagePreview').innerHTML = "<span>No image selected yet</span>";
+            document.getElementById('foodAvailability').checked = true;
+            renderAvailabilityState(true);
+            base64Image = "";
+            document.getElementById('foodModal').style.display = 'flex';
+        }
+
+        function openCatModal() {
+            const input = document.getElementById('newCategoryName');
+            if (input) {
+                input.value = "";
+            }
+            document.getElementById('catModal').style.display = 'flex';
+        }
+        function closeModal() { document.querySelectorAll('.modal').forEach(m => m.style.display = 'none'); }
+        function logout() {
+            logoutToLogin({
+                message: "Sign out from menu settings?"
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!adminSession) {
+                return;
+            }
+
+            updateSuperAdminLink(adminSession.role);
+            document.getElementById('foodAvailability')?.addEventListener('change', (event) => {
+                renderAvailabilityState(event.target.checked);
+            });
+            document.getElementById('newCategoryName')?.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    addNewCategoryRow();
+                }
+            });
+            init();
+        });
+    </script>
+</body>
+
+</html>

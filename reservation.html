@@ -1,0 +1,1589 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Fedelicious | Reservation</title>
+    <link rel="icon" type="image/png" href="images/icon1.png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="brand">
+                <div class="brand-icon">
+                    <img src="images/fede.jpg" alt="Logo">
+                </div>
+                <span class="brand-name">Fedelicious</span>
+            </div>
+
+            <!-- Hamburger button (mobile only) -->
+            <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav-links">
+                <li><a href="landing.html">HOME</a></li>
+                <li><a href="menu.html">MENU</a></li>
+                <li><a href="reservation.html" class="active">RESERVATION</a></li>
+                <li><a href="orders.html">ORDERS</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <a href="cart.html" class="nav-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+                        <line x1="3" y1="6" x2="21" y2="6" />
+                        <path d="M16 10a4 4 0 0 1-8 0" />
+                    </svg>
+                    <span id="cart-count" class="cart-badge">0</span>
+                </a>
+
+                <a href="user.html" class="nav-icon user-profile-link">
+                    <span class="nav-user-name" id="nav-user-name">Hi, Guest</span>
+                    <span class="user-circle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                            <circle cx="12" cy="7" r="4" />
+                        </svg>
+                    </span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Mobile drawer menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <ul>
+                <li><a href="landing.html">HOME</a></li>
+                <li><a href="menu.html">MENU</a></li>
+                <li><a href="reservation.html" class="active">RESERVATION</a></li>
+                <li><a href="orders.html">ORDERS</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- MAIN -->
+    <main class="res-container">
+        <div class="res-grid">
+
+            <div class="res-info">
+                <h1 class="res-title">TABLE <br><span>BOOKING</span></h1>
+                <div class="orange-bar"></div>
+
+                <p class="res-text">
+                    Experience the finest wings in Talisay. Secure your slot now.
+                    A <strong>₱50 downpayment</strong> is required to finalize your table.
+                </p>
+
+                <ul class="res-features">
+                    <li><span class="dot">✓</span> GUARANTEED SEATING</li>
+                    <li><span class="dot">✓</span> FASTER SERVICE</li>
+                    <li><span class="dot">✓</span> EXCLUSIVE PROMOS</li>
+                </ul>
+            </div>
+
+            <div class="res-card">
+                <div class="input-box">
+                    <label>SELECT CAPACITY</label>
+                    <select class="custom-field" id="guest_count">
+                        <option value="2">1-2 Persons</option>
+                        <option value="4">3-4 Persons</option>
+                        <option value="6">5-6 Persons</option>
+                    </select>
+                </div>
+
+                <div class="input-row">
+                    <div class="input-box">
+                        <label>PICK DATE</label>
+                        <div class="picker-field picker-trigger" onclick="openPicker('res_date')">
+                            <input type="date" class="custom-field picker-input" id="res_date">
+                            <span class="picker-display is-placeholder" id="res_date_display">mm/dd/yyyy</span>
+                            <span class="picker-inline-icon" aria-hidden="true">
+                                <i class="fa-regular fa-calendar"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="input-box">
+                        <label>PREFERRED TIME</label>
+                        <div class="picker-field picker-trigger" onclick="openPicker('res_time')">
+                            <input type="time" class="custom-field picker-input" id="res_time">
+                            <span class="picker-display is-placeholder" id="res_time_display">--:-- --</span>
+                            <span class="picker-inline-icon" aria-hidden="true">
+                                <i class="fa-regular fa-clock"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-box">
+                    <label>NOTES (OPTIONAL)</label>
+                    <input type="text" class="custom-field" id="res_notes" placeholder="Birthday, window seat, etc.">
+                </div>
+
+                <div class="fee-wrapper">
+                    <div class="fee-details">
+                        <span class="fee-sub">CONFIRMATION FEE</span>
+                        <span class="fee-main">₱50</span>
+                    </div>
+                    <span class="req-tag">REQUIRED</span>
+                </div>
+
+                <button class="confirm-btn" id="saveBtn" onclick="processReservation()">
+                    PROCEED TO PAYMENT <span class="arrow">→</span>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- MODAL -->
+    <div class="modal-overlay" id="payment-overlay">
+        <div class="payment-modal">
+            <h2 class="modal-title" id="modal-payment-title">GCash Payment</h2>
+            <span class="queue-badge" id="queue-no">Booking ID: saving...</span>
+            <div class="qr-container">
+                <img src="" id="modal-qr-img" alt="Loading QR Code...">
+            </div>
+            <div class="qr-details">
+                <div class="qr-detail-card">
+                    <span class="qr-detail-label">Method</span>
+                    <span class="qr-detail-value" id="modal-qr-method">GCash</span>
+                </div>
+                <div class="qr-detail-card">
+                    <span class="qr-detail-label">Account name</span>
+                    <span class="qr-detail-value" id="modal-qr-accname">Loading...</span>
+                </div>
+            </div>
+            <p class="modal-copy">
+                Please scan the QR and send
+                <strong id="modal-amount">PHP 50.00</strong>
+            </p>
+            <div class="payment-fields">
+                <div class="payment-field">
+                    <label for="gcash_num">Account number</label>
+                    <input type="tel" class="custom-field" id="gcash_num" placeholder="09xxxxxxxxx" maxlength="11"
+                        autocomplete="tel" inputmode="numeric">
+                </div>
+                <div class="payment-field">
+                    <label for="ref_num">Reference number</label>
+                    <input type="text" class="custom-field" id="ref_num" placeholder="13-digit code"
+                        inputmode="numeric">
+                </div>
+            </div>
+            <button class="confirm-btn" id="payment-btn" onclick="submitFinalPayment()">
+                Complete payment
+            </button>
+            <span class="cancel-btn" onclick="closePaymentModal()">Close and pay later</span>
+        </div>
+    </div>
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>Fedelicious</h3>
+                <p>Talisay's Premium Wing Boutique.<br>Excellence served on every platter.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Contact</h4>
+                <p>contact@fedelicious.com</p>
+                <p>Talisay, Batangas, Philippines</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Fedelicious Wings. Curated for the Bold.</p>
+        </div>
+    </footer>
+
+    <div class="fa-overlay" id="fa-overlay">
+        <div class="fa-box">
+            <div class="fa-title" id="fa-title">Notice</div>
+            <div class="fa-message" id="fa-message"></div>
+            <button class="fa-ok" onclick="closeAlert()">OK</button>
+            <button class="fa-cancel" id="fa-cancel" onclick="closeAlert()">Dismiss</button>
+        </div>
+    </div>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary-green: #103527;
+            --accent-orange: #ff7043;
+            --card-bg: #143528;
+            --text-muted: #8ca398;
+            --input-bg: #0a2118;
+        }
+
+        body {
+            background-color: var(--primary-green);
+            color: white;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .fa-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.72);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+        }
+
+        .fa-overlay.show {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .fa-box {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 112, 67, 0.35);
+            border-radius: 20px;
+            padding: 32px 28px 24px;
+            width: 320px;
+            max-width: 90%;
+        }
+
+        .fa-title {
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            color: var(--accent-orange);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .fa-message {
+            color: #d0e8de;
+            font-size: 0.97rem;
+            line-height: 1.55;
+            margin-bottom: 24px;
+        }
+
+        .fa-ok {
+            width: 100%;
+            padding: 13px;
+            border-radius: 50px;
+            background: var(--accent-orange);
+            color: white;
+            border: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .fa-cancel {
+            display: block;
+            width: 100%;
+            text-align: center;
+            margin-top: 12px;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            font-weight: 700;
+            cursor: pointer;
+            background: none;
+            border: none;
+            text-transform: uppercase;
+        }
+
+        /* ── NAVBAR ─────────────────────────────────────────────────── */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 25px 8%;
+            background: linear-gradient(to bottom, rgba(7, 20, 15, 0.95), transparent);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-icon img {
+            width: 47px;
+            height: 47px;
+            background: var(--accent-orange);
+            padding: 2px;
+            border-radius: 50%;
+        }
+
+        .brand-name {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        .nav-links a.active,
+        .nav-links a:hover {
+            color: var(--accent-orange);
+            border-bottom: 2px solid var(--accent-orange);
+            padding-bottom: 5px;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-icon {
+            color: white;
+            display: flex;
+            transition: 0.3s;
+            text-decoration: none;
+            position: relative;
+            overflow: visible;
+        }
+
+        .nav-icon:hover {
+            color: var(--accent-orange);
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            min-width: 20px;
+            height: 20px;
+            padding: 0 6px;
+            border-radius: 999px;
+            background: var(--accent-orange);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 800;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .user-circle {
+            background: #165438;
+            padding: 8px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            flex-shrink: 0;
+        }
+
+        .user-profile-link {
+            align-items: center;
+            gap: 10px;
+            padding: 6px 8px 6px 14px;
+            border-radius: 999px;
+            background: rgba(20, 53, 40, 0.92);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .nav-user-name {
+            max-width: 140px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+        }
+
+        .brand-icon img {
+            width: 46px;
+            height: 46px;
+            background: var(--accent-orange);
+            padding: 2px;
+            border-radius: 50%;
+        }
+
+        .user-profile-link:hover .nav-user-name {
+            color: var(--accent-orange);
+        }
+
+        /* ── Hamburger ──────────────────────────────────────────────── */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 6px;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            z-index: 1100;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: white;
+            border-radius: 2px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .hamburger.open span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.open span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        /* ── Mobile drawer ──────────────────────────────────────────── */
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            background: rgba(7, 20, 15, 0.98);
+            padding: 0 8%;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, padding 0.35s ease;
+        }
+
+        .mobile-menu.open {
+            max-height: 300px;
+            padding: 20px 8%;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            transition: color 0.2s;
+            text-transform: uppercase;
+        }
+
+        .mobile-menu a.active,
+        .mobile-menu a:hover {
+            color: var(--accent-orange);
+        }
+
+        /* ── RESERVATION LAYOUT ─────────────────────────────────────── */
+        .res-container {
+            min-height: 100vh;
+            padding: 160px 8% 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .res-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            max-width: 1300px;
+            width: 100%;
+            align-items: start;
+        }
+
+        .res-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        .res-title span {
+            color: var(--accent-orange);
+        }
+
+        .orange-bar {
+            width: 60px;
+            height: 4px;
+            background: var(--accent-orange);
+            margin-bottom: 30px;
+        }
+
+        .res-text {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 450px;
+            margin-bottom: 40px;
+        }
+
+        .res-features {
+            list-style: none;
+        }
+
+        .res-features li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 18px;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .dot {
+            width: 24px;
+            height: 24px;
+            border: 1px solid var(--accent-orange);
+            color: var(--accent-orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            flex-shrink: 0;
+        }
+
+        .res-card {
+            background: var(--card-bg);
+            padding: 50px;
+            border-radius: 40px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .input-box {
+            margin-bottom: 25px;
+        }
+
+        .input-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+
+        label {
+            display: block;
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            font-weight: 800;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .custom-field {
+            width: 100%;
+            background: var(--input-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 15px 20px;
+            color: white;
+            border-radius: 15px;
+            font-size: 1rem;
+            /* ≥16px prevents iOS zoom */
+            outline: none;
+            transition: 0.3s ease;
+        }
+
+        .picker-field {
+            position: relative;
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+            padding: 0 20px 0 22px;
+            border-radius: 22px;
+            background: #082419;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
+            overflow: hidden;
+        }
+
+        .picker-trigger {
+            cursor: pointer;
+        }
+
+        .picker-input {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+            z-index: 2;
+            padding: 0;
+            border: 0;
+            background: transparent;
+        }
+
+        .picker-display {
+            display: block;
+            width: 100%;
+            padding-right: 40px;
+            color: #ffffff;
+            font-size: 1.05rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            pointer-events: none;
+        }
+
+        .picker-display.is-placeholder {
+            color: rgba(255, 255, 255, 0.96);
+        }
+
+        .picker-inline-icon {
+            position: absolute;
+            right: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(140, 163, 152, 0.9);
+            font-size: 1rem;
+            pointer-events: none;
+        }
+
+        .picker-field:focus-within {
+            border-color: rgba(255, 112, 67, 0.45);
+            box-shadow: 0 0 0 4px rgba(255, 112, 67, 0.08);
+        }
+
+        .picker-input::-webkit-calendar-picker-indicator {
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .picker-input::-webkit-datetime-edit,
+        .picker-input::-webkit-datetime-edit-fields-wrapper,
+        .picker-input::-webkit-datetime-edit-text,
+        .picker-input::-webkit-datetime-edit-month-field,
+        .picker-input::-webkit-datetime-edit-day-field,
+        .picker-input::-webkit-datetime-edit-year-field,
+        .picker-input::-webkit-datetime-edit-hour-field,
+        .picker-input::-webkit-datetime-edit-minute-field,
+        .picker-input::-webkit-datetime-edit-ampm-field {
+            color: transparent;
+        }
+
+        .custom-field:focus {
+            border-color: var(--accent-orange);
+            box-shadow: 0 0 15px rgba(255, 112, 67, 0.1);
+        }
+
+
+        select.custom-field option {
+            background: var(--input-bg);
+            color: white;
+        }
+
+        .fee-wrapper {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 25px;
+            border-radius: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 30px 0;
+        }
+
+        .fee-sub {
+            display: block;
+            font-size: 0.6rem;
+            color: var(--text-muted);
+            font-weight: 800;
+        }
+
+        .fee-main {
+            font-size: 2.2rem;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .req-tag {
+            background: rgba(255, 112, 67, 0.1);
+            color: var(--accent-orange);
+            border: 1px solid var(--accent-orange);
+            padding: 6px 15px;
+            border-radius: 30px;
+            font-size: 0.65rem;
+            font-weight: 800;
+        }
+
+        .confirm-btn {
+            width: 100%;
+            background: var(--accent-orange);
+            color: white;
+            border: none;
+            padding: 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        .confirm-btn:hover {
+            background: #ff8a65;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 112, 67, 0.4);
+        }
+
+        /* ── MODAL ──────────────────────────────────────────────────── */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            padding: 20px;
+            overflow-y: auto;
+            overscroll-behavior: contain;
+        }
+
+        .payment-modal {
+            background: var(--card-bg);
+            padding: 50px;
+            border-radius: 40px;
+            width: 450px;
+            max-width: 95%;
+            text-align: center;
+            border: 1px solid rgba(255, 112, 67, 0.3);
+            margin: auto;
+            max-height: calc(100dvh - 40px);
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .modal-title {
+            margin: 0 0 14px;
+            color: white;
+            font-size: 1.9rem;
+            line-height: 1.05;
+            letter-spacing: 0.02em;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .qr-container {
+            background: white;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 20px;
+            border-radius: 15px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .qr-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .qr-details {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        .qr-detail-card {
+            padding: 16px 14px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+        }
+
+        .qr-detail-label {
+            display: block;
+            color: var(--text-muted);
+            font-size: 0.68rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .qr-detail-value {
+            display: block;
+            margin-top: 8px;
+            color: var(--accent-orange);
+            font-size: 1rem;
+            font-weight: 800;
+            line-height: 1.35;
+        }
+
+        .modal-copy {
+            color: var(--text-muted);
+            font-size: 0.84rem;
+            margin-bottom: 18px;
+        }
+
+        .modal-copy strong {
+            display: block;
+            margin-top: 8px;
+            color: var(--accent-orange);
+            font-size: 1.35rem;
+            line-height: 1.1;
+        }
+
+        .payment-fields {
+            display: grid;
+            gap: 14px;
+            margin-top: 2px;
+        }
+
+        .payment-field {
+            text-align: left;
+        }
+
+        .payment-field .custom-field {
+            border-radius: 18px;
+            padding: 18px 20px;
+        }
+
+        .queue-badge {
+            background: rgba(0, 0, 0, 0.2);
+            color: var(--accent-orange);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: inline-block;
+            border: 1px solid rgba(255, 112, 67, 0.2);
+        }
+
+        .cancel-btn {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            margin-top: 20px;
+            display: inline-block;
+            font-weight: 700;
+            text-transform: uppercase;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        footer {
+            padding: 80px 8% 40px;
+            background: #07140f;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 50px;
+        }
+
+        .footer-brand h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .footer-links h4 {
+            color: var(--accent-orange);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 30px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        /* ── Tablet landscape (≤1024px) ─────────────────────────────── */
+        @media (max-width: 1024px) {
+            .res-grid {
+                gap: 50px;
+            }
+
+            .res-card {
+                padding: 40px;
+            }
+        }
+
+        /* ── Tablet portrait / large phone landscape (≤1000px) ──────── */
+        @media (max-width: 1000px) {
+            .res-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .res-container {
+                padding: 120px 8% 60px;
+            }
+
+            .res-title {
+                text-align: center;
+                font-size: 3.5rem;
+            }
+
+            .orange-bar {
+                margin: 0 auto 30px;
+            }
+
+            .res-text {
+                margin: 0 auto 40px;
+                text-align: center;
+            }
+
+            .res-features {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .res-card {
+                padding: 40px 30px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+
+        /* ── Show hamburger at ≤900px ────────────────────────────────── */
+        @media (max-width: 900px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-user-name {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .navbar {
+                padding: 18px 6%;
+                background: rgba(7, 20, 15, 0.97);
+            }
+
+            .res-container {
+                padding: 100px 6% 60px;
+            }
+        }
+
+        /* ── Phone portrait (≤600px) ────────────────────────────────── */
+        @media (max-width: 600px) {
+            .modal-overlay {
+                padding: 14px;
+            }
+
+            .navbar {
+                padding: 16px 5%;
+            }
+
+            .brand-name {
+                font-size: 1.2rem;
+            }
+
+            .res-container {
+                padding: 90px 5% 50px;
+            }
+
+            .res-title {
+                font-size: 2.8rem;
+            }
+
+            .res-text {
+                font-size: 0.95rem;
+            }
+
+            .input-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .res-card {
+                padding: 30px 20px;
+                border-radius: 28px;
+            }
+
+            .fee-wrapper {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .fee-main {
+                font-size: 1.8rem;
+            }
+
+            .payment-modal {
+                padding: 30px 20px;
+                border-radius: 28px;
+            }
+
+            .modal-title {
+                font-size: 1.6rem;
+            }
+
+            .qr-container {
+                width: 160px;
+                height: 160px;
+            }
+
+            .qr-details {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-copy strong {
+                font-size: 1.18rem;
+            }
+
+            footer {
+                padding: 50px 5% 30px;
+            }
+        }
+
+        /* ── Very small phones (≤360px) ─────────────────────────────── */
+        @media (max-width: 360px) {
+            .res-title {
+                font-size: 2.2rem;
+            }
+
+            .res-card {
+                padding: 24px 16px;
+            }
+
+            .confirm-btn {
+                padding: 16px;
+                font-size: 0.82rem;
+            }
+        }
+
+        /* ── Touch-device tap states ────────────────────────────────── */
+        @media (hover: none) and (pointer: coarse) {
+            .confirm-btn:active {
+                background: #ff8a65;
+                transform: scale(0.98);
+            }
+
+            .cancel-btn:active {
+                color: var(--accent-orange);
+            }
+        }
+    </style>
+
+
+    <script src="cart-ui.js"></script>
+    <script>
+
+        const API_RES = 'https://localhost:7201/api/Reservation';
+        const API_PAYMENT = 'https://localhost:7201/api/Payment';
+        const API_GET_ID_BY_NAME = 'https://localhost:7201/api/Auth/getCustomerId/';
+        const API_ACTIVE_QR = 'https://localhost:7201/api/PaymentQr/active';
+        const AUTH_KEYS = ['role', 'fullName', 'email', 'address', 'adminId', 'customer_id'];
+
+        let currentResId = null;
+        let activePaymentMethodName = "GCash";
+        let activeQrId = null;
+        let activePaymentQrAccName = "Not Available";
+        const paymentOverlay = document.getElementById('payment-overlay');
+        const paymentModal = document.querySelector('#payment-overlay .payment-modal');
+        const reservationDateInput = document.getElementById('res_date');
+        const reservationTimeInput = document.getElementById('res_time');
+        const reservationDateDisplay = document.getElementById('res_date_display');
+        const reservationTimeDisplay = document.getElementById('res_time_display');
+
+
+        function renderNavUserName() {
+            const navUserName = document.getElementById('nav-user-name');
+            const accountLink = document.querySelector('.user-profile-link');
+            const fullName = (localStorage.getItem('fullName') || '').trim();
+
+
+            if (!navUserName || !accountLink) {
+                return;
+            }
+
+
+            if (!fullName || fullName.toLowerCase() === 'null') {
+                navUserName.textContent = 'Hi, Guest';
+                navUserName.title = 'Account';
+                accountLink.href = 'login.html';
+                return;
+            }
+
+
+            navUserName.textContent = 'Hi, ' + fullName.split(/\s+/)[0];
+            navUserName.title = fullName;
+            accountLink.href = 'user.html';
+        }
+
+        // Override native alert globally
+        window.alert = function (message) {
+            showAlert("Notice", message);
+        };
+        function showAlert(title, message, showCancel = false) {
+            document.getElementById('fa-title').textContent = title;
+            document.getElementById('fa-message').textContent = message;
+            document.getElementById('fa-cancel').style.display = showCancel ? 'block' : 'none';
+            document.getElementById('fa-overlay').classList.add('show');
+        }
+        function closeAlert() {
+            document.getElementById('fa-overlay').classList.remove('show');
+        }
+
+        function clearAuthState() {
+            AUTH_KEYS.forEach((key) => localStorage.removeItem(key));
+            sessionStorage.clear();
+        }
+
+
+        function getLocalTodayISO() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        }
+
+
+        function getRoundedCurrentTime(stepMinutes = 15) {
+            const now = new Date();
+            now.setSeconds(0, 0);
+
+
+            const minutes = now.getMinutes();
+            const remainder = minutes % stepMinutes;
+            if (remainder !== 0) {
+                now.setMinutes(minutes + (stepMinutes - remainder));
+            }
+
+
+            return `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+        }
+
+
+        function formatReservationDateDisplay(value) {
+            if (!value) {
+                return 'mm/dd/yyyy';
+            }
+
+            const [year, month, day] = String(value).split('-');
+            if (!year || !month || !day) {
+                return 'mm/dd/yyyy';
+            }
+
+            return `${month}/${day}/${year}`;
+        }
+
+
+        function formatReservationTimeDisplay(value) {
+            if (!value) {
+                return '--:-- --';
+            }
+
+            const [hourText, minuteText = '00'] = String(value).split(':');
+            const hourNumber = Number(hourText);
+            if (!Number.isFinite(hourNumber)) {
+                return '--:-- --';
+            }
+
+            const period = hourNumber >= 12 ? 'PM' : 'AM';
+            const hour12 = hourNumber % 12 || 12;
+            return `${String(hour12).padStart(2, '0')}:${minuteText} ${period}`;
+        }
+
+
+        function syncReservationPickerDisplays() {
+            if (reservationDateDisplay) {
+                reservationDateDisplay.textContent = formatReservationDateDisplay(reservationDateInput?.value);
+                reservationDateDisplay.classList.toggle('is-placeholder', !reservationDateInput?.value);
+            }
+
+            if (reservationTimeDisplay) {
+                reservationTimeDisplay.textContent = formatReservationTimeDisplay(reservationTimeInput?.value);
+                reservationTimeDisplay.classList.toggle('is-placeholder', !reservationTimeInput?.value);
+            }
+        }
+
+
+        function updateReservationDateTimeConstraints() {
+            const today = getLocalTodayISO();
+            reservationDateInput.min = today;
+            reservationTimeInput.step = 900;
+
+
+            if (reservationDateInput.value === today) {
+                reservationTimeInput.min = getRoundedCurrentTime();
+            } else {
+                reservationTimeInput.min = '';
+            }
+
+
+            if (reservationTimeInput.min && reservationTimeInput.value && reservationTimeInput.value < reservationTimeInput.min) {
+                reservationTimeInput.value = '';
+            }
+
+            syncReservationPickerDisplays();
+        }
+
+
+        function isPastDateTime(dateValue, timeValue) {
+            if (!dateValue || !timeValue) {
+                return false;
+            }
+
+
+            const selected = new Date(`${dateValue}T${timeValue}:00`);
+            return !Number.isNaN(selected.getTime()) && selected.getTime() < Date.now();
+        }
+
+
+        function openPicker(fieldId) {
+            const field = document.getElementById(fieldId);
+            if (!field) {
+                return;
+            }
+
+
+            if (typeof field.showPicker === 'function') {
+                field.showPicker();
+                return;
+            }
+
+
+            field.focus();
+            field.click();
+        }
+
+
+        function updateCartCount() {
+            if (window.FedeCart) {
+                window.FedeCart.updateBadge();
+                return;
+            }
+
+            const badge = document.getElementById('cart-count');
+            if (!badge) {
+                return;
+            }
+
+
+            let cart = [];
+
+
+            try {
+                cart = JSON.parse(localStorage.getItem('cart')) || [];
+            } catch (error) {
+                console.error('Failed to parse cart:', error);
+            }
+
+
+            const totalItems = cart.reduce((sum, item) => {
+                return sum + Math.max(1, Number(item.qty ?? item.quantity ?? 1) || 1);
+            }, 0);
+
+
+            badge.textContent = String(totalItems);
+            badge.style.display = totalItems > 0 ? 'flex' : 'none';
+        }
+
+
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+
+
+
+        hamburger.addEventListener('click', () => {
+            const isOpen = hamburger.classList.toggle('open');
+            mobileMenu.classList.toggle('open', isOpen);
+            hamburger.setAttribute('aria-expanded', isOpen);
+        });
+
+
+
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('open');
+                mobileMenu.classList.remove('open');
+                hamburger.setAttribute('aria-expanded', false);
+            });
+        });
+
+
+
+
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderNavUserName();
+            updateCartCount();
+            updateReservationDateTimeConstraints();
+            reservationDateInput.addEventListener('change', updateReservationDateTimeConstraints);
+            reservationDateInput.addEventListener('input', syncReservationPickerDisplays);
+            reservationTimeInput.addEventListener('focus', updateReservationDateTimeConstraints);
+            reservationTimeInput.addEventListener('change', syncReservationPickerDisplays);
+            reservationTimeInput.addEventListener('input', syncReservationPickerDisplays);
+            syncReservationPickerDisplays();
+
+
+            loadActiveQR();
+        });
+
+
+        async function loadActiveQR() {
+            try {
+                const res = await fetch(API_ACTIVE_QR);
+                if (res.ok) {
+                    const qrs = await res.json();
+                    if (qrs && qrs.length > 0) {
+                        const activeQr = qrs[0];
+                        activePaymentMethodName = activeQr.qr_name || "GCash";
+                        activePaymentQrAccName = activeQr.qr_accname || "Not Available";
+
+                        // NAKA-TUGMA NA ITO SA BINABATO NG C# (paymentqr_id)
+                        activeQrId = activeQr.paymentqr_id;
+
+                        document.getElementById('modal-payment-title').innerText = `${activePaymentMethodName} Payment`;
+                        document.getElementById('modal-qr-method').innerText = activePaymentMethodName;
+                        document.getElementById('modal-qr-accname').innerText = activePaymentQrAccName;
+
+                        if (activeQr.qr_image) {
+                            document.getElementById('modal-qr-img').src = `data:image/jpeg;base64,${activeQr.qr_image}`;
+                        } else {
+                            document.getElementById('modal-qr-img').alt = "No QR image available.";
+                        }
+                    } else {
+                        document.getElementById('modal-qr-img').alt = "No active QR found.";
+                        document.getElementById('modal-qr-accname').innerText = "No active QR found";
+                    }
+                }
+            } catch (e) {
+                console.error("Failed to fetch active QR. Using fallback UI.", e);
+                document.getElementById('modal-qr-img').alt = "No active QR found. Pay over counter.";
+                document.getElementById('modal-qr-method').innerText = activePaymentMethodName;
+                document.getElementById('modal-qr-accname').innerText = activePaymentQrAccName;
+            }
+        }
+
+        function openPaymentModal() {
+            if (!paymentOverlay) {
+                return;
+            }
+
+            paymentOverlay.style.display = 'flex';
+            paymentOverlay.scrollTop = 0;
+
+            if (paymentModal) {
+                paymentModal.scrollTop = 0;
+            }
+        }
+
+
+        async function processReservation() {
+            const date = document.getElementById("res_date").value;
+            const time = document.getElementById("res_time").value;
+            const fullName = localStorage.getItem("fullName");
+
+
+            if (!date || !time) return alert("Please select date and time.");
+            updateReservationDateTimeConstraints();
+            if (isPastDateTime(date, time)) return alert("Please choose a current or future reservation time.");
+            if (!fullName) return alert("Please login first.");
+
+
+            const btn = document.getElementById("saveBtn");
+            btn.disabled = true; btn.innerText = "SAVING...";
+
+
+            try {
+                const idRes = await fetch(`${API_GET_ID_BY_NAME}${encodeURIComponent(fullName)}`);
+                const userData = await idRes.json();
+                const cID = userData.customer_id;
+
+
+                const payload = {
+                    reservation_id: 0,
+                    customer_id: cID,
+                    reservation_date: date,
+                    reservation_time: time + ":00",
+                    number_of_guests: parseInt(document.getElementById("guest_count").value),
+                    reservation_status: "waiting for verification",
+                    notes: document.getElementById("res_notes").value || "N/A",
+                    downpayment_amount: 50.00
+                };
+
+
+                const res = await fetch(API_RES, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+
+                const result = await res.json();
+
+                if (res.ok) {
+                    currentResId = result.data ? result.data.reservation_id : result.reservation_id;
+
+                    if (currentResId) {
+                        localStorage.setItem("latest_res_id", currentResId);
+                        document.getElementById("queue-no").innerText = "Booking ID: #" + currentResId;
+                        document.getElementById("modal-amount").innerText = "PHP 50.00";
+                        openPaymentModal();
+                    } else {
+                        alert("System failed to retrieve Reservation ID.");
+                    }
+                } else {
+                    alert("Error: " + (result.message || "Failed to save."));
+                }
+            } catch (e) {
+                console.error(e);
+                alert("Server connection failed.");
+            } finally {
+                btn.disabled = false; btn.innerText = "Proceed to payment";
+            }
+        }
+
+
+        async function submitFinalPayment() {
+            const gNum = document.getElementById("gcash_num").value.trim();
+            const rNum = document.getElementById("ref_num").value.trim();
+
+            const resId = currentResId || localStorage.getItem("latest_res_id");
+
+
+            if (!resId) return alert("Reservation ID not found. Please try again.");
+            if (gNum.length !== 11 || rNum.length < 10) return alert("Please enter valid payment details.\nGCash: 11 digits\nReference: at least 10 digits");
+
+
+            const btn = document.getElementById("payment-btn");
+            btn.disabled = true; btn.innerText = "PROCESSING...";
+
+
+            // IPAPASA NA NATIN YUNG paymentqr_id DITO SA PAYLOAD
+            const payPayload = {
+                payment_id: 0,
+                reservation_id: parseInt(resId),
+                order_id: null,
+                payment_method: activePaymentMethodName,
+
+                // KUNG ANO ANG PANGALAN SA PAYMENT MODEL MO, DAPAT TUGMA ITO:
+                paymentqr_id: activeQrId,
+
+                amount: 50.00,
+                reference_number: rNum,
+                customer_phone: gNum,
+                payment_status: "Pending Verification",
+                payment_date: new Date().toISOString()
+            };
+
+
+            console.log("SENDING TO API:", payPayload);
+
+
+            try {
+                const res = await fetch(API_PAYMENT, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payPayload)
+                });
+
+                if (res.ok) {
+                    alert(`Success! ${activePaymentMethodName} Payment submitted for Reservation #${resId}`);
+                    localStorage.removeItem("latest_res_id");
+                    window.location.href = "orders.html";
+                } else {
+                    const err = await res.json();
+
+                    if (err.errors) {
+                        console.error("Validation Errors:", err.errors);
+                        alert("API Error: May kulang sa pinasang data. Paki-check ang console (F12).");
+                    } else {
+                        alert(err.message || "Payment submission failed.");
+                    }
+                }
+            } catch (e) {
+                alert("Payment server error.");
+            } finally {
+                btn.disabled = false; btn.innerText = "Complete payment";
+            }
+        }
+
+
+        function closePaymentModal() { document.getElementById("payment-overlay").style.display = 'none'; }
+        function logout() {
+            clearAuthState();
+            window.location.href = "login.html";
+        }
+    </script>
+</body>
+
+</html>

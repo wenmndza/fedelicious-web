@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fedelicious Admin | Order Intelligence</title>
+    <link rel="icon" type="image/png" href="images/icon1.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-green: #b2eec7;
+            --sidebar-green: #98d8aa;
+            --surface-bg: #e8f5e9;
+            --accent-orange: #27ae60;
+            --card-bg: #ffffff;
+            --glass-white: rgba(255, 255, 255, 0.68);
+            --text-muted: #7f8c8d;
+            --text-dark: #2c3e50;
+            --white: #ffffff;
+            --status-green: #27ae60;
+            --status-blue: #3498db;
+            --status-red: #e74c3c;
+            --panel-border: rgba(44, 62, 80, 0.08);
+            --card-shadow: 0 12px 28px rgba(44, 62, 80, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* BODY */
+        body {
+            background-color: var(--primary-green);
+            color: var(--text-dark);
+            display: flex;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* SIDEBAR (SAME AS DASHBOARD) */
+        .sidebar {
+            width: 280px;
+            background-color: var(--sidebar-green);
+            padding: 30px 20px;
+            position: fixed;
+            height: 100%;
+            border-right: 1px solid rgba(44, 62, 80, 0.08);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar h2 {
+            color: var(--text-dark);
+            font-weight: 800;
+            margin-bottom: 40px;
+        }
+
+        .sidebar a {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 20px;
+            color: var(--text-dark);
+            text-decoration: none;
+            border-radius: 12px;
+            transition: 0.3s;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .sidebar a.active {
+            background-color: var(--accent-orange);
+            color: white;
+        }
+
+        .sidebar a:hover {
+            background: rgba(255, 255, 255, 0.35);
+            color: var(--text-dark);
+        }
+
+        .logout-link {
+            margin-top: auto;
+            color: #e74c3c;
+        }
+
+        /* MAIN */
+        .main {
+            margin-left: 280px;
+            padding: 30px 40px;
+            width: 100%;
+            min-height: 100vh;
+            background: var(--surface-bg);
+            border-top-left-radius: 40px;
+            border-bottom-left-radius: 40px;
+        }
+
+        /* HEADER */
+        .header-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 4px;
+        }
+
+        .header-section h2 {
+            font-size: clamp(20px, 3vw, 26px);
+            color: var(--text-dark);
+        }
+
+        /* FILTER TABS */
+        .filter-tabs {
+            display: flex;
+            background: var(--card-bg);
+            padding: 5px;
+            border-radius: 15px;
+            gap: 5px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--panel-border);
+        }
+
+        .tab-btn {
+            padding: 10px 15px;
+            border-radius: 10px;
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .tab-btn.active {
+            background: var(--accent-orange);
+            color: white;
+        }
+
+        .tab-btn span {
+            background: rgba(39, 174, 96, 0.12);
+            color: var(--accent-orange);
+            padding: 2px 6px;
+            border-radius: 8px;
+            margin-left: 4px;
+        }
+
+        /* STATS */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 20px;
+            border-left: 4px solid var(--accent-orange);
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--panel-border);
+        }
+
+        .stat-card h3 {
+            font-size: clamp(18px, 2.5vw, 24px);
+        }
+
+        .stat-card p {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .stat-card.stat-confirmed {
+            border-left-color: var(--status-green);
+        }
+
+        .stat-card.stat-pending {
+            border-left-color: #f39c12;
+        }
+
+        .order-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        /* ORDER CARD */
+        .order-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 20px;
+            display: grid;
+            grid-template-columns: 60px 1fr auto auto;
+            gap: 20px;
+            align-items: center;
+            transition: 0.3s;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--panel-border);
+        }
+
+        .order-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 30px rgba(44, 62, 80, 0.14);
+        }
+
+        .avatar-box {
+            width: 55px;
+            height: 55px;
+            border-radius: 15px;
+            background: rgba(39, 174, 96, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-orange);
+        }
+
+        .info-content h4 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .meta-line {
+            display: flex;
+            gap: 15px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        /* DETAILS */
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .detail-item small {
+            font-size: 10px;
+            color: var(--text-muted);
+        }
+
+        .detail-item span {
+            font-size: 13px;
+        }
+
+        .ref-code {
+            color: var(--accent-orange);
+        }
+
+        /* STATUS */
+        .status-container {
+            text-align: center;
+        }
+
+        .status-badge {
+            color: white;
+            padding: 6px 14px;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /* ACTION */
+        .action-btns {
+            display: flex;
+            gap: 10px;
+        }
+
+        .manage-box select {
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid var(--panel-border);
+            background: #ffffff;
+            color: var(--text-dark);
+            outline: none;
+        }
+
+        /* DELETE */
+        .btn-delete {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            border: none;
+            background: rgba(231, 76, 60, 0.12);
+            color: #e74c3c;
+        }
+
+        .btn-delete:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .empty-state,
+        .loading-state,
+        .error-state {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            color: var(--text-muted);
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--panel-border);
+        }
+
+        /* ========================= */
+        /* RESPONSIVE */
+        /* ========================= */
+
+        /* TABLET */
+        @media (max-width: 1024px) {
+            .sidebar {
+                width: 220px;
+            }
+            .main {
+                margin-left: 220px;
+            }
+
+            .stats-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .order-card {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+
+            body {
+                flex-direction: column;
+            }
+
+            .brand,
+            .brand-name,
+            .logo-icon img {
+                display: none;
+            }
+
+            .sidebar {
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+                height: 70px;
+                flex-direction: row;
+                justify-content: space-around;
+                padding: 0;
+                z-index: 999;
+                border-top: 15px solid rgba(152, 216, 170, 0.95);
+            }
+
+            
+
+            .sidebar a {
+                flex-direction: row;
+                font-size: 8px;
+                padding: 5px;
+            }
+
+            .main {
+                margin-left: 0;
+                padding: 20px;
+                padding-bottom: 90px;
+            }
+
+            .stats-row {
+                grid-template-columns: 1fr;
+            }
+
+            .order-card {
+                grid-template-columns: 1fr;
+            }
+
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding-left: 10px;
+        }
+
+
+        .logo-icon img {
+            width: 47px;
+            height: 47px;
+            background: var(--accent-orange);
+            padding: 2px;
+            border-radius: 50%;
+        }
+
+
+        .brand-name {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white;
+            margin-left: 5px;
+            letter-spacing: 1px;
+        }
+
+        /* CUSTOM MODAL OVERLAY */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    backdrop-filter: blur(4px);
+}
+
+.modal-box {
+    background: white;
+    border-radius: 20px;
+    padding: 35px 30px;
+    width: 420px;
+    max-width: 90vw;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    text-align: center;
+    animation: popIn 0.2s ease;
+}
+
+@keyframes popIn {
+    from { transform: scale(0.85); opacity: 0; }
+    to   { transform: scale(1);    opacity: 1; }
+}
+
+.modal-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.modal-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+}
+
+.modal-subtitle {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+.modal-input {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 12px;
+    border: 1.5px solid var(--panel-border);
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    outline: none;
+    transition: border 0.2s;
+}
+
+.modal-input:focus {
+    border-color: var(--accent-orange);
+}
+
+.modal-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.modal-btn {
+    padding: 11px 28px;
+    border-radius: 12px;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.modal-btn-confirm {
+    background: var(--accent-orange);
+    color: white;
+}
+
+.modal-btn-confirm:hover { opacity: 0.88; }
+
+.modal-btn-cancel {
+    background: rgba(231,76,60,0.1);
+    color: #e74c3c;
+}
+
+.modal-btn-cancel:hover { background: rgba(231,76,60,0.2); }
+
+.modal-btn-delete {
+    background: #e74c3c;
+    color: white;
+}
+
+    </style>
+</head>
+
+<body>
+
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="logo-icon">
+                <img src="images/fede.jpg" alt="Fedelicious Logo">
+            </div>
+            <span class="brand-name">FEDELICIOUS</span>
+        </div>
+        <a href="admin.html"><i class="fa-solid fa-gauge-high"></i> DASHBOARD</a>
+        <a href="order_admin.html" class="active"><i class="fas fa-shopping-cart"></i> ORDERS</a>
+        <a href="reservation_admin.html"><i class="fas fa-calendar-alt"></i> RESERVATIONS</a>
+        <a href="menusetting.html"><i class="fas fa-utensils"></i> MENU SETTINGS</a>
+        <a href="salesreport.html"><i class="fas fa-chart-line"></i> SALES REPORT</a>
+        <a href="customeractivity.html" class="nav-link"><i class="fa-solid fa-user"></i> CUSTOMER ACTIVITY</a>
+        <a href="admin_management.html" class="nav-link" id="superAdminLink"><i class="fas fa-user-shield"></i> SYSTEM ADMINS</a>
+        <a href="#" class="logout-link" onclick="logout(); return false;"><i class="fas fa-sign-out-alt"></i> SIGN OUT</a>
+    </aside>
+
+    <main class="main">
+        <div class="header-section">
+            <div>
+                <h2 style="font-weight: 800;">ORDERS INTELLIGENCE</h2>
+                <p style="font-size: 0.85rem; color: var(--text-muted);">Confirm orders and notify customers via
+                    automation</p>
+            </div>
+
+            <div class="filter-tabs">
+                <button class="tab-btn active" id="tab-all" onclick="filterOrders('all')">All Orders</button>
+                <button class="tab-btn" id="tab-confirmed" onclick="filterOrders('confirmed')">Confirmed</button>
+                <button class="tab-btn" id="tab-pending" onclick="filterOrders('pending')">Pending <span
+                        id="pending-badge">0</span></button>
+            </div>
+        </div>
+
+        <div class="stats-row">
+            <div class="stat-card stat-total">
+                <h3 id="stat-total">0</h3>
+                <p>Total Orders</p>
+            </div>
+            <div class="stat-card stat-confirmed">
+                <h3 id="stat-confirmed">0</h3>
+                <p>Confirmed / Ready</p>
+            </div>
+            <div class="stat-card stat-pending">
+                <h3 id="stat-pending">0</h3>
+                <p>Waiting Action</p>
+            </div>
+        </div>
+
+        <div id="order-list" class="order-container">
+            <div class="loading-state">Fetching orders...</div>
+        </div>
+    </main>
+
+    <!-- CUSTOM MODAL -->
+<div class="modal-overlay" id="customModal" style="display:none;">
+    <div class="modal-box">
+        <div class="modal-icon" id="modalIcon"></div>
+        <div class="modal-title" id="modalTitle"></div>
+        <div class="modal-subtitle" id="modalSubtitle"></div>
+        <input class="modal-input" id="modalInput" type="text" placeholder="Enter reason..." style="display:none;">
+        <div class="modal-actions">
+            <button class="modal-btn modal-btn-cancel" id="modalCancelBtn" onclick="closeModal()">Cancel</button>
+            <button class="modal-btn modal-btn-confirm" id="modalOkBtn">OK</button>
+        </div>
+    </div>
+</div>
+
+    <script src="auth-session.js"></script>
+    <script>
+        const API_SP = "https://localhost:7201/api/Sp/orders";
+        const API_ORDER = "https://localhost:7201/api/Order";
+        const adminSession = requireAdminAccess();
+        const currentAdminId = adminSession ? Number(adminSession.adminId) || 0 : 0;
+
+        let allOrders = [];
+        let currentFilter = 'all';
+
+        async function loadOrders() {
+            try {
+                const resp = await fetch(API_SP);
+                if (!resp.ok) throw new Error("Failed to connect to API");
+
+                const result = await resp.json();
+                allOrders = Array.isArray(result) ? result : (result.data || result.orders || []);
+
+                updateUI();
+            } catch (e) {
+                console.error("API Error fetching orders:", e);
+                document.getElementById('order-list').innerHTML = `
+                <div class="error-state">
+                    Failed to fetch data. Paki-check ang console o API server mo.
+                </div>`;
+            }
+        }
+
+        function updateUI() {
+            // Group 'Pending' and 'Waiting for Verification' together
+            const pending = allOrders.filter(o =>
+                o.order_status === 'Pending' || o.order_status === 'Waiting for Verification'
+            ).length;
+
+            // Group active statuses together
+            const confirmed = allOrders.filter(o =>
+                o.order_status === 'Ready' || o.order_status === 'Delivered' || o.order_status === 'Confirmed' || o.order_status === 'Preparing'
+            ).length;
+
+            document.getElementById('stat-total').innerText = allOrders.length;
+            document.getElementById('stat-confirmed').innerText = confirmed;
+            document.getElementById('stat-pending').innerText = pending;
+            document.getElementById('pending-badge').innerText = pending;
+
+            filterOrders(currentFilter);
+        }
+
+        function filterOrders(status) {
+            currentFilter = status;
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('tab-' + status).classList.add('active');
+
+            let filtered = allOrders;
+            if (status === 'confirmed') {
+                filtered = allOrders.filter(o =>
+                    o.order_status === 'Ready' || o.order_status === 'Delivered' || o.order_status === 'Confirmed' || o.order_status === 'Preparing'
+                );
+            } else if (status === 'pending') {
+                filtered = allOrders.filter(o =>
+                    o.order_status === 'Pending' || o.order_status === 'Waiting for Verification'
+                );
+            }
+
+            renderCards(filtered);
+        }
+
+        function renderCards(data) {
+            const list = document.getElementById('order-list');
+
+            if (!data || data.length === 0) {
+                list.innerHTML = `<div class="empty-state">No orders found for this filter.</div>`;
+                return;
+            }
+
+            list.innerHTML = data.map(o => {
+                // Mapping Exact JSON format from your API
+                const orderId = o.order_id;
+                const orderStatus = o.order_status || 'Pending';
+                const orderDate = o.order_date;
+                const customerName = o.customerName || 'GUEST CUSTOMER';
+                const refNum = o.reference_number || 'N/A';
+                const orderType = o.order_type || 'N/A';
+                const deliveryLoc = o.delivery_location || 'Store';
+                const paymentMethod = o.payment_method || 'N/A';
+                const qrName = o.qr_name || 'N/A';
+                const qrAccName = o.qr_accname || 'N/A';
+
+                // Handle Null Amounts to avoid NaN errors
+                const totalAmt = o.total_amount ? parseFloat(o.total_amount).toLocaleString() : '0';
+
+                // Determine badge colors
+                let color = "#95a5a6";
+                if (orderStatus === 'Pending' || orderStatus === 'Waiting for Verification') color = "#f39c12"; // Orange
+                if (orderStatus === 'Confirmed') color = "#16a085"; // Green
+                if (orderStatus === 'Preparing') color = "#3498db"; // Blue
+                if (orderStatus === 'Ready') color = "#9b59b6"; // Purple
+                if (orderStatus === 'Delivered') color = "#2ecc71"; // Light Green
+                if (orderStatus === 'Cancelled') color = "#e74c3c"; // Red
+
+                // Format Date
+                const date = new Date(orderDate);
+                const formattedDate = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                const formattedTime = date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+
+                const hasPayment = o.payment_method && o.payment_method !== null && o.payment_method.trim() !== '';
+
+                const cancelOption = !hasPayment
+                    ? `<option value="Cancelled">❌ Cancel Order</option>`
+                    : `<option value="" disabled>❌ Cancel (Disabled - Paid)</option>`;
+
+                const deleteBtn = !hasPayment
+                    ? `<button class="btn-delete" onclick="deleteOrder(${orderId})" title="Delete Order"><i class="fas fa-trash-alt"></i></button>`
+                    : `<button class="btn-delete" disabled title="Cannot delete paid orders"><i class="fas fa-ban"></i></button>`;
+
+                return `
+                <div class="order-card">
+                    <div class="avatar-box"><i class="fas fa-receipt"></i></div>
+                    <div class="info-content">
+                        <h4>${customerName}</h4>
+                        <div class="meta-line">
+                            <span><i class="far fa-calendar-alt"></i> ${formattedDate}</span>
+                            <span><i class="far fa-clock"></i> ${formattedTime}</span>
+                        </div>
+                        <div class="details-grid">
+                            <div class="detail-item">
+                                <small>Ref Number</small>
+                                <span class="ref-code">${refNum}</span>
+                            </div>
+
+                            <div class="detail-item">
+                                <small>Phone Number</small>
+                                <span>N/A</span> </div>
+
+                            <div class="detail-item">
+                                <small>Total Bill</small>
+                                <span class="amount-text" style="color:#27ae60;">₱${totalAmt}</span>
+                            </div>
+
+                            <div class="detail-item">
+                                <small>Type / Location</small>
+                                <span>${orderType} (${deliveryLoc})</span>
+                            </div>
+
+                            <div class="detail-item">
+                                <small>QR Used</small>
+                                <span>${qrName}</span>
+                            </div>
+
+                            <div class="detail-item">
+                                <small>QR Account Name</small>
+                                <span>${qrAccName}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="status-container">
+                        <div class="status-badge" style="background: ${color}">${orderStatus}</div>
+                        <div style="font-size:0.75rem; font-weight:700; color:var(--text-muted); text-transform:uppercase; margin-top:5px; text-align:center;">
+                            ${hasPayment ? paymentMethod : 'No Payment Yet'}
+                        </div>
+                    </div>
+                    <div class="action-btns">
+                        <div class="manage-box">
+                            <select onchange="updateStatus(${orderId}, this.value)">
+                                <option value="">-- Manage Status --</option>
+                                <option value="Confirmed">✅ Confirm Order</option>
+                                <option value="Preparing">🍳 Start Preparing</option>
+                                <option value="Ready">🔔 Ready to Pick-up/Serve</option>
+                                <option value="Delivered">🛵 Delivered</option>
+                                ${cancelOption}
+                            </select>
+                        </div>
+                        ${deleteBtn}
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        async function updateStatus(id, status) {
+    if (!status) return;
+
+    const cfg = STATUS_CONFIG[status] || { icon: '❓', label: status };
+
+    const proceed = (reason) => {
+        const payload = { Status: status, AdminId: currentAdminId };
+        if (reason) payload.CancelReason = reason;
+
+        fetch(`${API_ORDER}/${id}/status`, {
+            method: 'PUT',
+            headers: { 'accept': '*/*', 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        })
+        .then(resp => {
+            if (resp.ok) {
+                showConfirmModal({
+                    icon: '🎉',
+                    title: 'Success!',
+                    subtitle: `Order #${id} updated to "${status}". Email notification sent.`,
+                    okLabel: 'Done',
+                    onOk: loadOrders
+                });
+            } else {
+                alert('Failed to update status. Check your API/Email settings.');
+            }
+        })
+        .catch(err => console.error('Fetch error:', err));
+    };
+
+    if (status === 'Cancelled') {
+        showPromptModal({
+            icon: '❌',
+            title: 'Cancel Order #' + id,
+            subtitle: 'Please provide a reason for cancelling this order.',
+            placeholder: 'e.g. Out of stock, Customer request...',
+            onOk: (reason) => proceed(reason)
+        });
+        return;
+    }
+
+    showConfirmModal({
+        icon: cfg.icon,
+        title: cfg.label + ' — Order #' + id,
+        subtitle: 'This will update the status to "' + status + '" and send an email notification to the customer.',
+        okLabel: cfg.label,
+        okClass: cfg.okClass,
+        onOk: () => proceed()
+    });
+}
+
+async function deleteOrder(id) {
+    showConfirmModal({
+        icon: '🗑️',
+        title: 'Delete Order #' + id,
+        subtitle: 'This will permanently remove this order record. This action cannot be undone.',
+        okLabel: 'Delete',
+        okClass: 'modal-btn-delete',
+        onOk: async () => {
+            try {
+                const res = await fetch(API_ORDER + '/' + id, { method: 'DELETE' });
+                if (res.ok) {
+                    showConfirmModal({
+                        icon: '✅',
+                        title: 'Deleted!',
+                        subtitle: 'Order #' + id + ' has been removed.',
+                        okLabel: 'OK',
+                        onOk: loadOrders
+                    });
+                } else {
+                    alert('Failed to delete order.');
+                }
+            } catch (e) {
+                console.error('Delete Error', e);
+            }
+        }
+    });
+}
+        function logout() {
+            logoutToLogin({
+                message: "Sign out from orders management?"
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!adminSession) {
+                return;
+            }
+
+            updateSuperAdminLink(adminSession.role);
+            loadOrders();
+            setInterval(loadOrders, 15000);
+        });
+
+const STATUS_CONFIG = {
+    'Confirmed': { icon: '✅', label: 'Confirm Order',     okClass: 'modal-btn-confirm' },
+    'Preparing': { icon: '🍳', label: 'Start Preparing',   okClass: 'modal-btn-confirm' },
+    'Ready':     { icon: '🔔', label: 'Mark as Ready',     okClass: 'modal-btn-confirm' },
+    'Delivered': { icon: '🛵', label: 'Mark as Delivered', okClass: 'modal-btn-confirm' },
+    'Cancelled': { icon: '❌', label: 'Cancel Order',      okClass: 'modal-btn-delete'  }
+};
+
+function closeModal() {
+    document.getElementById('customModal').style.display = 'none';
+    loadOrders();
+}
+
+function showConfirmModal({ icon, title, subtitle, okLabel, okClass, onOk }) {
+    document.getElementById('modalIcon').textContent = icon || '❓';
+    document.getElementById('modalTitle').textContent = title;
+    document.getElementById('modalSubtitle').textContent = subtitle || '';
+    document.getElementById('modalInput').style.display = 'none';
+
+    const okBtn = document.getElementById('modalOkBtn');
+    okBtn.textContent = okLabel || 'OK';
+    okBtn.className = 'modal-btn ' + (okClass || 'modal-btn-confirm');
+    okBtn.onclick = () => { closeModal(); onOk(); };
+
+    document.getElementById('customModal').style.display = 'flex';
+}
+
+function showPromptModal({ icon, title, subtitle, placeholder, onOk }) {
+    document.getElementById('modalIcon').textContent = icon || '✏️';
+    document.getElementById('modalTitle').textContent = title;
+    document.getElementById('modalSubtitle').textContent = subtitle || '';
+
+    const input = document.getElementById('modalInput');
+    input.style.display = 'block';
+    input.value = '';
+    input.placeholder = placeholder || 'Enter reason...';
+
+    const okBtn = document.getElementById('modalOkBtn');
+    okBtn.textContent = 'Submit';
+    okBtn.className = 'modal-btn modal-btn-confirm';
+    okBtn.onclick = () => {
+        const val = input.value.trim();
+        closeModal();
+        onOk(val);
+    };
+
+    document.getElementById('customModal').style.display = 'flex';
+}
+
+    </script>
+</body>
+
+</html>

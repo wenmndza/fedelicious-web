@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fedelicious | Customer Intelligence</title>
+    <link rel="icon" type="image/png" href="images/icon1.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-green: #b2eec7;
+            --sidebar-green: #98d8aa;
+            --surface-bg: #e8f5e9;
+            --accent-orange: #27ae60;
+            --card-bg: #ffffff;
+            --glass-white: rgba(255, 255, 255, 0.68);
+            --text-muted: #7f8c8d;
+            --text-dark: #2c3e50;
+            --white: #ffffff;
+            --panel-border: rgba(44, 62, 80, 0.08);
+            --shadow-soft: 0 12px 28px rgba(44, 62, 80, 0.08);
+            --danger: #ff8a80;
+            --success: #27ae60;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background-color: var(--primary-green);
+            color: var(--text-dark);
+            display: flex;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .sidebar {
+            width: 280px;
+            background-color: var(--sidebar-green);
+            padding: 30px 20px;
+            position: fixed;
+            height: 100%;
+            border-right: 1px solid var(--panel-border);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 20px;
+            color: var(--text-dark);
+            text-decoration: none;
+            border-radius: 12px;
+            transition: 0.3s;
+            margin-bottom: 8px;
+            font-size: 14px;
+            white-space: nowrap;
+            font-weight: 600;
+        }
+
+        .nav-link.active {
+            background-color: var(--accent-orange);
+            color: var(--white);
+            box-shadow: 0 6px 20px rgba(255, 112, 67, 0.3);
+        }
+
+        .nav-link:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.35);
+            color: var(--text-dark);
+        }
+
+        .logout-link {
+            margin-top: auto;
+            color: #ff8a65;
+        }
+
+        .main-content {
+            flex-grow: 1;
+            margin-left: 280px;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            min-height: 100vh;
+            background: var(--surface-bg);
+            border-top-left-radius: 40px;
+            border-bottom-left-radius: 40px;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            padding: 20px 40px;
+            background: var(--glass-white);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--panel-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .topbar-heading h2 {
+            font-size: clamp(18px, 3vw, 24px);
+        }
+
+        .topbar-heading p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 4px;
+        }
+
+        .admin-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+        }
+
+        .admin-profile i {
+            font-size: 34px;
+            color: var(--accent-orange);
+        }
+
+        .dashboard-container {
+            padding: 32px 40px 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .filter-shell,
+        .card,
+        .table-container {
+            background: var(--card-bg);
+            border: 1px solid var(--panel-border);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .filter-shell {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 18px;
+            padding: 18px;
+            border-radius: 24px;
+            flex-wrap: wrap;
+        }
+
+        .search-box {
+            flex: 1 1 320px;
+            position: relative;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+
+        .search-box input,
+        .date-box input {
+            width: 100%;
+            padding: 13px 16px 13px 44px;
+            border-radius: 14px;
+            border: 1px solid var(--panel-border);
+            background: #ffffff;
+            color: var(--text-dark);
+            outline: none;
+            font-size: 0.95rem;
+        }
+
+        .search-box input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .date-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .date-box input {
+            width: auto;
+            min-width: 155px;
+            padding-left: 16px;
+        }
+
+        .date-separator {
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .btn-action {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 14px;
+            background: var(--accent-orange);
+            color: var(--white);
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.25s ease;
+            box-shadow: 0 10px 20px rgba(255, 112, 67, 0.24);
+        }
+
+        .btn-action:hover {
+            transform: translateY(-1px);
+            filter: brightness(1.05);
+        }
+
+        .btn-secondary-action {
+            padding: 10px 16px;
+            border: 1px solid rgba(39, 174, 96, 0.18);
+            border-radius: 12px;
+            background: rgba(39, 174, 96, 0.08);
+            color: var(--accent-orange);
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.25s ease;
+        }
+
+        .btn-secondary-action:hover {
+            background: rgba(39, 174, 96, 0.14);
+            transform: translateY(-1px);
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            padding: 26px;
+            border-radius: 24px;
+            min-width: 0;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
+        }
+
+        .card-header span:first-child {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .card-header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-left: auto;
+        }
+
+        .badge-soft {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 7px 14px;
+            border-radius: 999px;
+            background: rgba(39, 174, 96, 0.12);
+            color: #1f7a46;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .profile-hero {
+            text-align: center;
+            padding: 12px 0 22px;
+        }
+
+        .profile-avatar {
+            width: 84px;
+            height: 84px;
+            margin: 0 auto 14px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(145deg, rgba(39, 174, 96, 0.18), rgba(255, 255, 255, 0.7));
+            color: var(--accent-orange);
+            font-size: 2rem;
+            border: 1px solid var(--panel-border);
+        }
+
+        .profile-hero h2 {
+            font-size: clamp(1.4rem, 3vw, 1.8rem);
+        }
+
+        .profile-hero p {
+            margin-top: 6px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            word-break: break-word;
+        }
+
+        .highlight-box {
+            background: rgba(39, 174, 96, 0.06);
+            border: 1px solid var(--panel-border);
+            border-radius: 18px;
+            padding: 18px;
+            margin-bottom: 16px;
+        }
+
+        .highlight-box .stat-row {
+            border-bottom: none;
+            padding: 0 0 6px;
+        }
+
+        .highlight-note {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 18px;
+            padding: 14px 0;
+            border-bottom: 1px dashed var(--panel-border);
+            font-size: 0.92rem;
+        }
+
+        .stat-row:last-child {
+            border-bottom: none;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .stat-label.success {
+            color: var(--success);
+        }
+
+        .stat-value {
+            color: var(--text-dark);
+            font-weight: 700;
+            text-align: right;
+        }
+
+        .stat-value.alert {
+            color: var(--danger);
+        }
+
+        .stat-value.success {
+            color: var(--success);
+        }
+
+        .table-container {
+            padding: 26px;
+            border-radius: 24px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 620px;
+        }
+
+        th {
+            padding: 14px 16px;
+            text-align: left;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--panel-border);
+        }
+
+        td {
+            padding: 16px;
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            border-bottom: 1px solid rgba(44, 62, 80, 0.06);
+            vertical-align: top;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tbody tr:hover td {
+            background: rgba(39, 174, 96, 0.04);
+        }
+
+        .currency-paid {
+            color: var(--success);
+        }
+
+        .res-time {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 7px 12px;
+            border-radius: 999px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .bg-pending {
+            background: rgba(255, 193, 7, 0.16);
+            color: #9a6a00;
+        }
+
+        .bg-success {
+            background: rgba(39, 174, 96, 0.16);
+            color: #1f7a46;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 42px 20px;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .insight-modal {
+            position: fixed;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            z-index: 1200;
+        }
+
+        .insight-modal.open {
+            display: flex;
+        }
+
+        .insight-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(18, 34, 26, 0.55);
+            backdrop-filter: blur(6px);
+        }
+
+        .insight-dialog {
+            position: relative;
+            width: min(1100px, 100%);
+            max-height: min(88vh, 880px);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(180deg, #f9fffb 0%, #eef9f1 100%);
+            border: 1px solid rgba(44, 62, 80, 0.08);
+            border-radius: 28px;
+            box-shadow: 0 28px 70px rgba(24, 47, 35, 0.24);
+        }
+
+        .insight-dialog-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 18px;
+            padding: 26px 28px 16px;
+            border-bottom: 1px solid rgba(44, 62, 80, 0.08);
+            background: rgba(255, 255, 255, 0.72);
+        }
+
+        .insight-kicker {
+            color: var(--accent-orange);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .insight-dialog-header h3 {
+            margin-top: 8px;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+        }
+
+        .insight-dialog-header p {
+            margin-top: 8px;
+            color: var(--text-muted);
+            max-width: 620px;
+        }
+
+        .insight-close {
+            border: none;
+            background: rgba(39, 174, 96, 0.1);
+            color: var(--accent-orange);
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .insight-dialog-body {
+            padding: 22px 28px 28px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .insight-summary-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .insight-summary-card {
+            background: #ffffff;
+            border: 1px solid rgba(44, 62, 80, 0.08);
+            border-radius: 20px;
+            padding: 18px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .insight-summary-card p {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .insight-summary-card h4 {
+            margin-top: 8px;
+            font-size: clamp(1.15rem, 2.5vw, 1.6rem);
+        }
+
+        .insight-table-shell {
+            background: #ffffff;
+            border: 1px solid rgba(44, 62, 80, 0.08);
+            border-radius: 24px;
+            box-shadow: var(--shadow-soft);
+            overflow: auto;
+        }
+
+        .insight-table-shell table {
+            min-width: 780px;
+        }
+
+        .insight-loading {
+            padding: 48px 24px;
+            text-align: center;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        @media (max-width: 1024px) {
+            .sidebar {
+                width: 220px;
+            }
+
+            .main-content {
+                margin-left: 220px;
+            }
+
+            .dashboard-container {
+                padding: 24px;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .insight-summary-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+                flex-direction: row;
+                align-items: center;
+                overflow-x: auto;
+                padding: 15px;
+            }
+
+            .brand {
+                display: none;
+                position: flex;
+                margin-right: 20px;
+                margin-bottom: 30px;
+                margin-top: 30px;
+            }
+
+            .brand {
+                display: none;
+            }
+
+            .nav-menu {
+                flex-direction: row;
+                gap: 10px;
+            }
+
+            .nav-link {
+                justify-content: center;
+                padding: 10px 12px;
+                font-size: 12px;
+                margin-bottom: 0;
+            }
+
+            .logout-link {
+                margin-top: 0;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .topbar {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 18px 20px;
+            }
+
+            .dashboard-container {
+                padding: 20px;
+            }
+
+            .filter-shell,
+            .date-box {
+                align-items: stretch;
+            }
+
+            .date-box {
+                width: 100%;
+                flex-direction: column;
+            }
+
+            .date-box input,
+            .btn-action {
+                width: 100%;
+            }
+
+            table {
+                min-width: 560px;
+            }
+
+            .insight-modal {
+                padding: 12px;
+            }
+
+            .insight-dialog {
+                max-height: 94vh;
+            }
+
+            .insight-dialog-header,
+            .insight-dialog-body {
+                padding-left: 18px;
+                padding-right: 18px;
+            }
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding-left: 10px;
+        }
+
+
+        .logo-icon img {
+            width: 47px;
+            height: 47px;
+            background: var(--accent-orange);
+            padding: 2px;
+            border-radius: 50%;
+        }
+
+
+        .brand-name {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white;
+            margin-left: 5px;
+            letter-spacing: 1px;
+        }
+
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="logo-icon">
+                <img src="images/fede.jpg" alt="Fedelicious Logo">
+            </div>
+            <span class="brand-name">FEDELICIOUS</span>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="admin.html" class="nav-link"><i class="fa-solid fa-gauge-high"></i> Dashboard</a></li>
+            <li><a href="order_admin.html" class="nav-link"><i class="fas fa-shopping-cart"></i> Food Orders</a></li>
+            <li><a href="reservation_admin.html" class="nav-link"><i class="fas fa-calendar-alt"></i> Reservations</a></li>
+            <li><a href="menusetting.html" class="nav-link"><i class="fa-solid fa-utensils"></i> Menu Settings</a></li>
+            <li><a href="salesreport.html" class="nav-link"><i class="fa-solid fa-chart-line"></i> Sales Report</a></li>
+            <li><a href="customeractivity.html" class="nav-link active"><i class="fa-solid fa-users"></i> Customer Activity</a></li>
+            <li><a href="admin_management.html" class="nav-link" id="superAdminLink"><i class="fas fa-user-shield"></i> System Admins</a></li>
+        </ul>
+        <a href="#" class="nav-link logout-link" onclick="logout()"><i class="fa-solid fa-power-off"></i> Logout</a>
+    </aside>
+
+    <main class="main-content">
+        <div class="topbar">
+            <div class="topbar-heading">
+                <h2>Customer Intelligence</h2>
+                <p>Search a customer and review order behavior, payment settlement, and reservation history.</p>
+            </div>
+            <div class="admin-profile">
+                <span id="admin-name">Admin</span>
+                <i class="fa-solid fa-circle-user"></i>
+            </div>
+        </div>
+
+        <div class="dashboard-container">
+            <section class="filter-shell">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" list="customerList" placeholder="Search or select a customer..." autocomplete="off">
+                    <datalist id="customerList"></datalist>
+                </div>
+
+                <div class="date-box">
+                    <input type="date" id="startDate" title="Start Date">
+                    <span class="date-separator">to</span>
+                    <input type="date" id="endDate" title="End Date">
+                    <button class="btn-action" onclick="loadAllData()">Analyze</button>
+                </div>
+            </section>
+
+            <section class="content-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <span><i class="fas fa-id-card"></i> Customer Overview</span>
+                        <span class="badge-soft">Profile</span>
+                    </div>
+
+                    <div class="profile-hero">
+                        <div class="profile-avatar"><i class="fas fa-user"></i></div>
+                        <h2 id="prof-name">---</h2>
+                        <p id="prof-email">---</p>
+                    </div>
+
+                    <div class="stat-row">
+                        <span class="stat-label">Confirmed Reservations</span>
+                        <span class="stat-value" id="prof-confirmed">0</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Cancelled Reservations</span>
+                        <span class="stat-value alert" id="prof-cancelled">0</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Total Lifetime Guests</span>
+                        <span class="stat-value" id="prof-guests">0</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span><i class="fas fa-chart-pie"></i> Ordering Behavior</span>
+                        <div class="card-header-actions">
+                            <span class="badge-soft">Insights</span>
+                            <button type="button" class="btn-secondary-action" onclick="openOverallOrders()">
+                                Overall Order
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <div class="stat-row">
+                            <span class="stat-label success">Date Range Orders</span>
+                            <span class="stat-value success" id="range-orders">0</span>
+                        </div>
+                        <p class="highlight-note">Orders placed by the selected customer within the chosen date range.</p>
+                    </div>
+
+                    <div class="stat-row">
+                        <span class="stat-label">First Order ID (Pioneer)</span>
+                        <span class="stat-value" id="stat-min-order">---</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Latest Order ID</span>
+                        <span class="stat-value" id="stat-max-order">---</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Largest Group Booking</span>
+                        <span class="stat-value" id="stat-max-guest">0 guests</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Smallest Group Booking</span>
+                        <span class="stat-value" id="stat-min-guest">0 guests</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="table-container">
+                <div class="card-header">
+                    <span><i class="fas fa-receipt"></i> Payment Settlement Report</span>
+                    <div class="card-header-actions">
+                        <span class="badge-soft">Finance</span>
+                        <button type="button" class="btn-secondary-action" onclick="openOverallPayments()">
+                            Overall Payment
+                        </button>
+                    </div>
+                </div>
+                <table id="paymentTable">
+                    <thead>
+                        <tr>
+                            <th>Order Total</th>
+                            <th>Amount Paid</th>
+                            <th>Settlement Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="paymentBody">
+                        <tr>
+                            <td colspan="3" class="empty-state">Load a customer to view payment history.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="table-container">
+                <div class="card-header">
+                    <span><i class="fas fa-calendar-check"></i> Reservation History List</span>
+                    <span class="badge-soft">Timeline</span>
+                </div>
+                <table id="resTable">
+                    <thead>
+                        <tr>
+                            <th>Date & Time</th>
+                            <th>Expected Guests</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resBody">
+                        <tr>
+                            <td colspan="3" class="empty-state">Load a customer to view reservation history.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </main>
+
+    <div class="insight-modal" id="insightModal" aria-hidden="true">
+        <div class="insight-backdrop" onclick="closeInsightModal()"></div>
+        <div class="insight-dialog" role="dialog" aria-modal="true" aria-labelledby="insightTitle">
+            <div class="insight-dialog-header">
+                <div>
+                    <p class="insight-kicker" id="insightKicker">View Intelligence</p>
+                    <h3 id="insightTitle">Overall Snapshot</h3>
+                    <p id="insightSubtitle">Live records will appear here.</p>
+                </div>
+                <button type="button" class="insight-close" onclick="closeInsightModal()" aria-label="Close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="insight-dialog-body">
+                <div class="insight-summary-grid">
+                    <div class="insight-summary-card">
+                        <p id="insightMetricOneLabel">Minimum</p>
+                        <h4 id="insightMetricOneValue">PHP 0.00</h4>
+                    </div>
+                    <div class="insight-summary-card">
+                        <p id="insightMetricTwoLabel">Maximum</p>
+                        <h4 id="insightMetricTwoValue">PHP 0.00</h4>
+                    </div>
+                    <div class="insight-summary-card">
+                        <p id="insightMetricThreeLabel">Rows</p>
+                        <h4 id="insightMetricThreeValue">0</h4>
+                    </div>
+                </div>
+
+                <div class="insight-table-shell">
+                    <table>
+                        <thead id="insightTableHead"></thead>
+                        <tbody id="insightTableBody">
+                            <tr>
+                                <td colspan="5" class="insight-loading">Loading records...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="auth-session.js"></script>
+    <script>
+        const API_SP_BASE = "https://localhost:7201/api/Sp";
+        const API_VIEW_BASE = "https://localhost:7201/api/View";
+        const adminSession = requireAdminAccess();
+        const currencyFormatter = new Intl.NumberFormat("en-PH", {
+            style: "currency",
+            currency: "PHP",
+            minimumFractionDigits: 2
+        });
+
+        const formatDate = (date) => date.toISOString().split("T")[0];
+        const formatCurrency = (value) => currencyFormatter.format(Number(value || 0));
+
+        async function safeFetch(endpoint) {
+            try {
+                const response = await fetch(endpoint);
+                if (!response.ok) {
+                    return null;
+                }
+                return await response.json();
+            } catch (err) {
+                console.warn(`API Error on ${endpoint}`);
+                return null;
+            }
+        }
+
+        function extractArrayPayload(data) {
+            if (Array.isArray(data)) {
+                return data;
+            }
+
+            if (data && typeof data === "object") {
+                const firstArray = Object.values(data).find(Array.isArray);
+                if (firstArray) {
+                    return firstArray;
+                }
+            }
+
+            return [];
+        }
+
+        function getTextValue(record, keys, fallback = "N/A") {
+            for (const key of keys) {
+                const value = record?.[key];
+                if (value !== undefined && value !== null && String(value).trim() !== "") {
+                    return String(value);
+                }
+            }
+
+            return fallback;
+        }
+
+        function getNumberValue(record, keys, fallback = 0) {
+            for (const key of keys) {
+                const raw = record?.[key];
+                const value = Number(raw);
+                if (Number.isFinite(value)) {
+                    return value;
+                }
+            }
+
+            return fallback;
+        }
+
+        function escapeHtml(value) {
+            return String(value ?? "").replace(/[&<>"']/g, (char) => ({
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                "\"": "&quot;",
+                "'": "&#39;"
+            })[char]);
+        }
+
+        function getOrderAmount(record) {
+            return getNumberValue(record, [
+                "order_total",
+                "total_amount",
+                "total_sales",
+                "grand_total_sales",
+                "amount",
+                "total"
+            ]);
+        }
+
+        function getOrderId(record) {
+            const numericId = getNumberValue(record, ["order_id", "OrderID", "id"], NaN);
+            return Number.isFinite(numericId) ? `#${numericId}` : getTextValue(record, ["order_id", "OrderID", "id"], "N/A");
+        }
+
+        function getReadableDate(record) {
+            const rawDate = getTextValue(record, [
+                "order_date",
+                "created_at",
+                "createdAt",
+                "payment_date",
+                "date"
+            ], "");
+
+            if (!rawDate) {
+                return "N/A";
+            }
+
+            const parsed = new Date(rawDate);
+            if (Number.isNaN(parsed.getTime())) {
+                return rawDate;
+            }
+
+            return parsed.toLocaleString("en-PH", {
+                year: "numeric",
+                month: "short",
+                day: "numeric",
+                hour: "numeric",
+                minute: "2-digit"
+            });
+        }
+
+        function openInsightModalShell(config) {
+            document.getElementById("insightKicker").innerText = config.kicker;
+            document.getElementById("insightTitle").innerText = config.title;
+            document.getElementById("insightSubtitle").innerText = config.subtitle;
+            document.getElementById("insightMetricOneLabel").innerText = config.metricOneLabel;
+            document.getElementById("insightMetricTwoLabel").innerText = config.metricTwoLabel;
+            document.getElementById("insightMetricThreeLabel").innerText = config.metricThreeLabel;
+            document.getElementById("insightMetricOneValue").innerText = config.metricOneValue || "PHP 0.00";
+            document.getElementById("insightMetricTwoValue").innerText = config.metricTwoValue || "PHP 0.00";
+            document.getElementById("insightMetricThreeValue").innerText = config.metricThreeValue || "0";
+            document.getElementById("insightTableHead").innerHTML = config.tableHeadHtml;
+            document.getElementById("insightTableBody").innerHTML = config.tableBodyHtml;
+
+            const modal = document.getElementById("insightModal");
+            modal.classList.add("open");
+            modal.setAttribute("aria-hidden", "false");
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeInsightModal() {
+            const modal = document.getElementById("insightModal");
+            modal.classList.remove("open");
+            modal.setAttribute("aria-hidden", "true");
+            document.body.style.overflow = "";
+        }
+
+        function setInsightLoading(config) {
+            openInsightModalShell({
+                ...config,
+                metricOneValue: "Loading...",
+                metricTwoValue: "Loading...",
+                metricThreeValue: "Loading...",
+                tableBodyHtml: `<tr><td colspan="${config.columns}" class="insight-loading">Loading live records...</td></tr>`
+            });
+        }
+
+        async function openOverallOrders() {
+            const columns = 3;
+            setInsightLoading({
+                kicker: "Order List",
+                title: "Overall Order Snapshot",
+                subtitle: "All customers with their earliest and latest order IDs.",
+                metricOneLabel: "Lowest MinOrder",
+                metricTwoLabel: "Highest MaxOrder",
+                metricThreeLabel: "Customers",
+                columns,
+                tableHeadHtml: `
+                    <tr>
+                        <th>Full Name</th>
+                        <th>MinOrder</th>
+                        <th>MaxOrder</th>
+                    </tr>
+                `
+            });
+
+            const payload = await safeFetch(`${API_SP_BASE}/activity/pioneer-stats`);
+            const rows = extractArrayPayload(payload);
+            const minOrders = rows
+                .map((row) => getNumberValue(row, ["MinOrder", "min_order"], NaN))
+                .filter((value) => Number.isFinite(value));
+            const maxOrders = rows
+                .map((row) => getNumberValue(row, ["MaxOrder", "max_order"], NaN))
+                .filter((value) => Number.isFinite(value));
+
+            if (!rows.length) {
+                openInsightModalShell({
+                    kicker: "Order List",
+                    title: "Overall Order Snapshot",
+                    subtitle: "No customer order summaries were returned.",
+                    metricOneLabel: "Lowest MinOrder",
+                    metricTwoLabel: "Highest MaxOrder",
+                    metricThreeLabel: "Customers",
+                    metricOneValue: "N/A",
+                    metricTwoValue: "N/A",
+                    metricThreeValue: "0",
+                    tableHeadHtml: `
+                        <tr>
+                            <th>Full Name</th>
+                            <th>MinOrder</th>
+                            <th>MaxOrder</th>
+                        </tr>
+                    `,
+                    tableBodyHtml: `<tr><td colspan="${columns}" class="empty-state">No customer order summaries found.</td></tr>`
+                });
+                return;
+            }
+
+            const minOrder = minOrders.length ? Math.min(...minOrders) : null;
+            const maxOrder = maxOrders.length ? Math.max(...maxOrders) : null;
+            const tableBodyHtml = rows.map((row) => `
+                <tr>
+                    <td>${escapeHtml(getTextValue(row, ["full_name", "customerName", "customer_name", "name"], "Guest Customer"))}</td>
+                    <td>${escapeHtml(getNumberValue(row, ["MinOrder", "min_order"], 0) ? `#${getNumberValue(row, ["MinOrder", "min_order"], 0)}` : "N/A")}</td>
+                    <td>${escapeHtml(getNumberValue(row, ["MaxOrder", "max_order"], 0) ? `#${getNumberValue(row, ["MaxOrder", "max_order"], 0)}` : "N/A")}</td>
+                </tr>
+            `).join("");
+
+            openInsightModalShell({
+                kicker: "Order List",
+                title: "Overall Order Snapshot",
+                subtitle: "All customers with their earliest and latest order IDs.",
+                metricOneLabel: "Lowest MinOrder",
+                metricTwoLabel: "Highest MaxOrder",
+                metricThreeLabel: "Customers",
+                metricOneValue: minOrder ? `#${minOrder}` : "N/A",
+                metricTwoValue: maxOrder ? `#${maxOrder}` : "N/A",
+                metricThreeValue: String(rows.length),
+                tableHeadHtml: `
+                    <tr>
+                        <th>Full Name</th>
+                        <th>MinOrder</th>
+                        <th>MaxOrder</th>
+                    </tr>
+                `,
+                tableBodyHtml
+            });
+        }
+
+        async function openOverallPayments() {
+            const columns = 4;
+            setInsightLoading({
+                kicker: "Customer Payment",
+                title: "Overall Payment Snapshot",
+                subtitle: "All customer payment records from the View feed with min and max order totals.",
+                metricOneLabel: "Minimum Order",
+                metricTwoLabel: "Maximum Order",
+                metricThreeLabel: "Payment Rows",
+                columns,
+                tableHeadHtml: `
+                    <tr>
+                        <th>Customer</th>
+                        <th>Order Total</th>
+                        <th>Amount Paid</th>
+                        <th>Status</th>
+                    </tr>
+                `
+            });
+
+            const payload = await safeFetch(`${API_VIEW_BASE}/customer-payment`);
+            const rows = extractArrayPayload(payload);
+            const totals = rows.map((row) => getNumberValue(row, ["order_total", "total_amount", "amount", "total"])).filter((value) => Number.isFinite(value) && value > 0);
+
+            if (!rows.length) {
+                openInsightModalShell({
+                    kicker: "Customer Payment",
+                    title: "Overall Payment Snapshot",
+                    subtitle: "No payment rows were returned by the View API.",
+                    metricOneLabel: "Minimum Order",
+                    metricTwoLabel: "Maximum Order",
+                    metricThreeLabel: "Payment Rows",
+                    metricOneValue: formatCurrency(0),
+                    metricTwoValue: formatCurrency(0),
+                    metricThreeValue: "0",
+                    tableHeadHtml: `
+                        <tr>
+                            <th>Customer</th>
+                            <th>Order Total</th>
+                            <th>Amount Paid</th>
+                            <th>Status</th>
+                        </tr>
+                    `,
+                    tableBodyHtml: `<tr><td colspan="${columns}" class="empty-state">No payment rows found.</td></tr>`
+                });
+                return;
+            }
+
+            const minOrder = totals.length ? Math.min(...totals) : 0;
+            const maxOrder = totals.length ? Math.max(...totals) : 0;
+            const tableBodyHtml = rows.map((row) => {
+                const status = getTextValue(row, ["payment_status", "status"], "Pending");
+                const statusClass = status.toLowerCase().includes("paid") ? "bg-success" : "bg-pending";
+
+                return `
+                    <tr>
+                        <td>${escapeHtml(getTextValue(row, ["full_name", "customerName", "customer_name", "name"], "Guest Customer"))}</td>
+                        <td>${escapeHtml(formatCurrency(getNumberValue(row, ["order_total", "total_amount", "amount", "total"])))}</td>
+                        <td class="currency-paid">${escapeHtml(formatCurrency(getNumberValue(row, ["total_paid", "amount_paid", "paid", "payment_total"])))}</td>
+                        <td><span class="badge ${statusClass}">${escapeHtml(status)}</span></td>
+                    </tr>
+                `;
+            }).join("");
+
+            openInsightModalShell({
+                kicker: "Customer Payment",
+                title: "Overall Payment Snapshot",
+                subtitle: "All customer payment records from the View feed with min and max order totals.",
+                metricOneLabel: "Minimum Order",
+                metricTwoLabel: "Maximum Order",
+                metricThreeLabel: "Payment Rows",
+                metricOneValue: formatCurrency(minOrder),
+                metricTwoValue: formatCurrency(maxOrder),
+                metricThreeValue: String(rows.length),
+                tableHeadHtml: `
+                    <tr>
+                        <th>Customer</th>
+                        <th>Order Total</th>
+                        <th>Amount Paid</th>
+                        <th>Status</th>
+                    </tr>
+                `,
+                tableBodyHtml
+            });
+        }
+
+        async function populateCustomerList() {
+            const data = await safeFetch(`${API_SP_BASE}/activity/pioneer-stats`);
+            if (data && data.length > 0) {
+                const datalist = document.getElementById("customerList");
+                const uniqueNames = [...new Set(data.map((item) => item.full_name))];
+                datalist.innerHTML = uniqueNames.map((name) => `<option value="${name}">`).join("");
+            }
+        }
+
+        async function loadAllData() {
+            const name = document.getElementById("searchInput").value.trim();
+            const start = document.getElementById("startDate").value;
+            const end = document.getElementById("endDate").value;
+
+            if (!name) {
+                alert("Please enter or select a customer name.");
+                return;
+            }
+
+            const [fullProfile, pioneerStats, custSummary, rangeOrders, payReport, resList] = await Promise.all([
+                safeFetch(`${API_SP_BASE}/activity/full-profile?name=${encodeURIComponent(name)}`),
+                safeFetch(`${API_SP_BASE}/activity/pioneer-stats`),
+                safeFetch(`${API_SP_BASE}/activity/summary?name=${encodeURIComponent(name)}`),
+                safeFetch(`${API_SP_BASE}/sales/filter-date?start=${start}&end=${end}`),
+                safeFetch(`${API_SP_BASE}/activity/payment-report?name=${encodeURIComponent(name)}`),
+                safeFetch(`${API_SP_BASE}/activity/list-reservations?name=${encodeURIComponent(name)}`)
+            ]);
+
+            populateOverview(fullProfile, name);
+            populateBehavior(pioneerStats, custSummary, rangeOrders, name);
+            populatePaymentTable(payReport);
+            populateReservationTable(resList);
+        }
+
+        function populateOverview(data, searchName) {
+            if (data && data.length > 0) {
+                const profile = data[0];
+                document.getElementById("prof-name").innerText = profile.full_name;
+                document.getElementById("prof-email").innerText = profile.email || "No email registered";
+                document.getElementById("prof-confirmed").innerText = profile.confirmed_reservations || 0;
+                document.getElementById("prof-cancelled").innerText = profile.cancelled_reservations || 0;
+                document.getElementById("prof-guests").innerText = profile.total_guests || 0;
+            } else {
+                document.getElementById("prof-name").innerText = searchName;
+                document.getElementById("prof-email").innerText = "Not Found / No Data";
+                document.getElementById("prof-confirmed").innerText = "0";
+                document.getElementById("prof-cancelled").innerText = "0";
+                document.getElementById("prof-guests").innerText = "0";
+            }
+        }
+
+        function populateBehavior(pioneer, summary, range, searchName) {
+            if (pioneer && pioneer.length > 0) {
+                const pData = pioneer.find((item) => item.full_name.toLowerCase() === searchName.toLowerCase());
+                document.getElementById("stat-min-order").innerText = pData ? `#${pData.MinOrder}` : "N/A";
+                document.getElementById("stat-max-order").innerText = pData ? `#${pData.MaxOrder}` : "N/A";
+            } else {
+                document.getElementById("stat-min-order").innerText = "N/A";
+                document.getElementById("stat-max-order").innerText = "N/A";
+            }
+
+            if (summary && summary.length > 0) {
+                document.getElementById("stat-max-guest").innerText = `${summary[0].largest_reservation} guests`;
+                document.getElementById("stat-min-guest").innerText = `${summary[0].smallest_reservation} guests`;
+            } else {
+                document.getElementById("stat-max-guest").innerText = "N/A";
+                document.getElementById("stat-min-guest").innerText = "N/A";
+            }
+
+            if (range && range.length > 0) {
+                const rData = range.find((item) => item.full_name.toLowerCase() === searchName.toLowerCase());
+                document.getElementById("range-orders").innerText = rData ? rData.total_orders : "0";
+            } else {
+                document.getElementById("range-orders").innerText = "0";
+            }
+        }
+
+        function populatePaymentTable(data) {
+            const tbody = document.getElementById("paymentBody");
+            tbody.innerHTML = "";
+
+            if (!data || data.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="3" class="empty-state">No payment records found for this user.</td></tr>`;
+                return;
+            }
+
+            data.forEach((payment) => {
+                const statusClass = payment.payment_status === "Fully Paid" ? "bg-success" : "bg-pending";
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${formatCurrency(payment.order_total)}</td>
+                        <td class="currency-paid">${formatCurrency(payment.total_paid)}</td>
+                        <td><span class="badge ${statusClass}">${payment.payment_status}</span></td>
+                    </tr>
+                `;
+            });
+        }
+
+        function populateReservationTable(data) {
+            const tbody = document.getElementById("resBody");
+            tbody.innerHTML = "";
+
+            if (!data || data.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="3" class="empty-state">No reservation history found.</td></tr>`;
+                return;
+            }
+
+            data.forEach((reservation) => {
+                const dateStr = new Date(reservation.reservation_date).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric"
+                });
+                const statusClass = reservation.reservation_status === "Confirmed" ? "bg-success" : "bg-pending";
+
+                tbody.innerHTML += `
+                    <tr>
+                        <td>
+                            <div><i class="far fa-calendar-alt"></i> ${dateStr}</div>
+                            <div class="res-time"><i class="far fa-clock"></i> ${reservation.reservation_time}</div>
+                        </td>
+                        <td><i class="fas fa-user-friends" style="color:#ffb499;"></i> ${reservation.max_guests} pax</td>
+                        <td><span class="badge ${statusClass}">${reservation.reservation_status}</span></td>
+                    </tr>
+                `;
+            });
+        }
+
+        function logout() {
+            logoutToLogin({
+                message: "Sign out from customer activity?"
+            });
+        }
+
+        document.getElementById("searchInput").addEventListener("change", () => {
+            if (document.getElementById("searchInput").value.trim() !== "") {
+                loadAllData();
+            }
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                closeInsightModal();
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", async () => {
+            if (!adminSession) {
+                return;
+            }
+
+            const today = new Date();
+            const startYear = new Date(today.getFullYear(), 0, 1);
+
+            document.getElementById("admin-name").innerText = adminSession.fullName || "Admin Intelligence";
+            document.getElementById("startDate").value = formatDate(startYear);
+            document.getElementById("endDate").value = formatDate(today);
+
+            updateSuperAdminLink(adminSession.role);
+            await populateCustomerList();
+        });
+    </script>
+</body>
+</html>

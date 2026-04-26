@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Fedelicious | Menu</title>
+    <link rel="icon" type="image/png" href="images/icon1.png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-green: #103527;
+            --surface-green: #143528;
+            --surface-green-soft: #0a2118;
+            --card-bg: #143528;
+            --input-bg: #0a2118;
+            --accent-orange: #ff7043;
+            --accent-orange-dark: #f45a26;
+            --text-muted: #8ca398;
+            --border-soft: rgba(255, 255, 255, 0.06);
+            --shadow-deep: 0 22px 44px rgba(0, 0, 0, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at top center, rgba(255, 112, 67, 0.06), transparent 22%),
+                linear-gradient(180deg, #103527 0%, #103527 100%);
+            color: #fff;
+            line-height: 1.6;
+            padding-top: 112px;
+        }
+
+        .navbar {
+            position: fixed;
+            inset: 0 0 auto 0;
+            z-index: 1000;
+            padding: 24px 8%;
+            background: linear-gradient(to bottom, rgba(7, 20, 15, 0.95), transparent);
+        }
+
+        .nav-container {
+            max-width: 1360px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-icon img {
+            width: 47px;
+            height: 47px;
+            border-radius: 50%;
+            background: var(--accent-orange);
+            padding: 2px;
+            object-fit: cover;
+        }
+
+        .brand-name {
+            font-family: "Playfair Display", serif;
+            font-size: 1.45rem;
+            font-weight: 800;
+            letter-spacing: 0.4px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 35px;
+        }
+
+        .nav-links a,
+        .mobile-menu a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .nav-links a.active,
+        .nav-links a:hover,
+        .mobile-menu a.active,
+        .mobile-menu a:hover {
+            color: var(--accent-orange);
+            border-bottom: 2px solid var(--accent-orange);
+            padding-bottom: 5px;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .nav-icon {
+            color: #fff;
+            display: flex;
+            transition: 0.3s;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+
+        }
+
+        .nav-icon:hover {
+            color: var(--accent-orange);
+            transform: translateY(-1px);
+        }
+
+        .user-profile-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 6px 8px 6px 14px;
+            border-radius: 999px;
+            background: rgba(20, 53, 40, 0.92);
+            border: 1px solid var(--border-soft);
+        }
+
+        .nav-user-name {
+            max-width: 120px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            color: #d9e7df;
+            font-size: 0.92rem;
+            font-weight: 600;
+        }
+
+        .user-profile-link:hover .nav-user-name {
+            color: var(--accent-orange);
+        }
+
+        .user-circle {
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #165438;
+            border: 1px solid var(--border-soft);
+            flex-shrink: 0;
+        }
+
+        .user-circle svg {
+            width: 18px;
+            height: 18px;
+            display: block;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 6px;
+            touch-action: manipulation;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: #fff;
+            border-radius: 999px;
+            transition: transform 0.25s ease, opacity 0.25s ease;
+        }
+
+        .hamburger.open span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.open span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        .mobile-menu {
+            display: none;
+            max-width: 1360px;
+            margin: 14px auto 0;
+            padding: 0 8%;
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .mobile-menu.open {
+            max-height: 280px;
+            padding-top: 18px;
+            padding-bottom: 10px;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            background: rgba(7, 20, 15, 0.98);
+            border: 1px solid var(--border-soft);
+            border-radius: 24px;
+            padding: 20px;
+        }
+
+        .menu-page {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 18px 8% 88px;
+        }
+
+        .menu-shell {
+            padding: 18px 0 0;
+        }
+
+        .menu-intro {
+            margin-bottom: 26px;
+            padding: 0;
+        }
+
+        .menu-head {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .menu-title {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(2.7rem, 5vw, 3.9rem);
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .menu-subtitle {
+            color: var(--accent-orange);
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 2.6px;
+            text-transform: uppercase;
+            margin-bottom: 0;
+        }
+
+        .menu-lead {
+            display: none;
+        }
+
+        .menu-controls {
+            display: grid;
+            gap: 12px;
+            justify-items: center;
+        }
+
+        .menu-categories {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .menu-categories button {
+            border: 1px solid var(--border-soft);
+            background: rgba(10, 33, 24, 0.9);
+            color: #d7e5de;
+            border-radius: 999px;
+            padding: 9px 16px;
+            font-size: 0.62rem;
+            font-weight: 800;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+        }
+
+        .menu-categories button.active,
+        .menu-categories button:hover {
+            background: var(--accent-orange);
+            border-color: var(--accent-orange);
+            color: #fff;
+            transform: translateY(-1px);
+        }
+
+        .menu-status {
+            min-height: 20px;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            padding: 0;
+            background: transparent;
+            border: none;
+            text-align: center;
+        }
+
+        .menu-status.error {
+            color: #ffc0ac;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-card {
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border-radius: 18px;
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+            transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 112, 67, 0.24);
+            box-shadow: 0 16px 28px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-media {
+            position: relative;
+            height: 138px;
+            overflow: hidden;
+            background: #133a2a;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .card-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.35s ease;
+        }
+
+        .menu-card:hover .card-media img {
+            transform: scale(1.06);
+        }
+
+        .card-media::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 54%, rgba(7, 20, 15, 0.18) 100%);
+        }
+
+        .item-rank {
+            position: absolute;
+            top: 9px;
+            right: 9px;
+            padding: 3px 8px;
+            border-radius: 999px;
+            background: var(--accent-orange);
+            color: #fff;
+            font-size: 0.58rem;
+            font-weight: 800;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            z-index: 1;
+        }
+
+        .card-info {
+            flex: 1;
+            padding: 14px 14px 15px;
+            display: grid;
+            gap: 8px;
+        }
+
+        .card-info h3 {
+            font-size: 0.98rem;
+            font-weight: 700;
+            line-height: 1.25;
+        }
+
+        .item-desc {
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            min-height: 34px;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-muted);
+            font-size: 0.62rem;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        .card-footer {
+            margin-top: auto;
+            display: grid;
+            gap: 12px;
+        }
+
+        .price {
+            color: #fff;
+            font-family: "Playfair Display", serif;
+            font-size: 1.08rem;
+            line-height: 1;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            background: var(--input-bg);
+            color: #f3f7f5;
+            padding: 10px 14px;
+            font-size: 0.62rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+        }
+
+        .add-to-cart:hover {
+            background: var(--accent-orange);
+            color: #fff;
+            transform: translateY(-1px);
+        }
+
+        .menu-empty {
+            padding: 30px;
+            border-radius: 24px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-soft);
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        @media (max-width: 980px) {
+            body {
+                padding-top: 82px;
+            }
+
+            .navbar {
+                padding: 16px 6%;
+                background: rgba(7, 20, 15, 0.97);
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger,
+            .mobile-menu {
+                display: flex;
+            }
+
+            .menu-page {
+                padding: 20px 6% 64px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .nav-user-name {
+                display: none;
+            }
+
+            .menu-page {
+                padding: 18px 5% 56px;
+            }
+
+            .menu-shell {
+                padding: 8px 0 0;
+            }
+
+            .menu-categories {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                width: 100%;
+                justify-content: flex-start;
+                padding-bottom: 6px;
+                scrollbar-width: none;
+            }
+
+            .menu-categories::-webkit-scrollbar {
+                display: none;
+            }
+
+            .menu-categories button {
+                flex: 0 0 auto;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card-media {
+                height: 170px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="brand">
+                <div class="brand-icon">
+                    <img src="images/fede.jpg" alt="Fedelicious logo">
+                </div>
+                <span class="brand-name">Fedelicious</span>
+            </div>
+
+            <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav-links">
+                <li><a href="landing.html">Home</a></li>
+                <li><a href="menu.html" class="active">Menu</a></li>
+                <li><a href="reservation.html">Reservation</a></li>
+                <li><a href="orders.html">Orders</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <a href="cart.html" class="nav-icon" aria-label="Cart">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                </a>
+                <a href="user.html" class="nav-icon user-profile-link">
+                    <span class="nav-user-name" id="nav-user-name">Hi, Guest</span>
+                    <span class="user-circle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                            <circle cx="12" cy="7" r="4" />
+                        </svg>
+                    </span>
+                </a>
+            </div>
+        </div>
+
+        <div class="mobile-menu" id="mobileMenu">
+            <ul>
+                <li><a href="landing.html">Home</a></li>
+                <li><a href="menu.html" class="active">Menu</a></li>
+                <li><a href="reservation.html">Reservation</a></li>
+                <li><a href="orders.html">Orders</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="menu-page">
+        <section class="menu-shell">
+            <section class="menu-intro">
+                <header class="menu-head">
+                    <h1 class="menu-title">Our Gallery</h1>
+                    <p class="menu-subtitle">Select from our categories</p>
+                </header>
+
+                <section class="menu-controls">
+                    <div id="categoryContainer" class="menu-categories"></div>
+                    <p id="menuStatus" class="menu-status">Loading menu...</p>
+                </section>
+            </section>
+
+            <section id="menuContainer" class="menu-grid" aria-live="polite"></section>
+        </section>
+    </main>
+
+    <script src="cart-ui.js"></script>
+    <script>
+        const API_URL = "https://localhost:7201/api/Menu";
+        const API_AVAILABLE_URL = API_URL + "/available";
+        const API_CATEGORIES_URL = API_URL + "/categories";
+        const FALLBACK_IMAGE = "images/fede.jpg";
+        const MENU_AVAILABILITY_KEY = "fede_menu_availability_overrides";
+        let menuItems = [];
+        let categories = [];
+        let activeCategory = "all";
+
+        const hamburger = document.getElementById("hamburger");
+        const mobileMenu = document.getElementById("mobileMenu");
+
+        function renderNavUserName() {
+            const navUserName = document.getElementById("nav-user-name");
+            const accountLink = document.querySelector(".user-profile-link");
+            const fullName = (localStorage.getItem("fullName") || "").trim();
+
+            if (!navUserName || !accountLink) {
+                return;
+            }
+
+            if (!fullName || fullName.toLowerCase() === "null") {
+                navUserName.textContent = "Hi, Guest";
+                navUserName.title = "Account";
+                accountLink.href = "login.html";
+                return;
+            }
+
+            const firstName = fullName.split(/\s+/)[0];
+            navUserName.textContent = "Hi, " + firstName;
+            navUserName.title = fullName;
+            accountLink.href = "user.html";
+        }
+
+        hamburger.addEventListener("click", function () {
+            const isOpen = hamburger.classList.toggle("open");
+            mobileMenu.classList.toggle("open", isOpen);
+            hamburger.setAttribute("aria-expanded", String(isOpen));
+        });
+
+        mobileMenu.querySelectorAll("a").forEach(function (link) {
+            link.addEventListener("click", function () {
+                hamburger.classList.remove("open");
+                mobileMenu.classList.remove("open");
+                hamburger.setAttribute("aria-expanded", "false");
+            });
+        });
+
+        function setMenuStatus(message, isError) {
+            const status = document.getElementById("menuStatus");
+            status.textContent = message;
+            status.classList.toggle("error", Boolean(isError));
+        }
+
+        function getDisplayName(item) {
+            return item.food_name || item.foodName || item.name || "Menu Item";
+        }
+
+        function getDisplayCategory(item) {
+            return item.category_name || item.categoryName || item.category || "";
+        }
+
+        function getAvailabilityOverrides() {
+            try {
+                return JSON.parse(localStorage.getItem(MENU_AVAILABILITY_KEY) || "{}");
+            } catch (error) {
+                return {};
+            }
+        }
+
+        function isMenuItemAvailable(item) {
+            const itemId = item.menu_id ?? item.id ?? item.menuId;
+            const overrides = getAvailabilityOverrides();
+            const override = itemId != null ? overrides[String(itemId)] : undefined;
+
+            if (typeof override === "boolean") {
+                return override;
+            }
+
+            const rawValue = item.is_available ?? item.isAvailable ?? item.available ?? item.status ?? item.availability;
+
+            if (typeof rawValue === "boolean") {
+                return rawValue;
+            }
+
+            if (typeof rawValue === "number") {
+                return rawValue === 1;
+            }
+
+            if (typeof rawValue === "string") {
+                const normalized = rawValue.trim().toLowerCase();
+                if (["false", "0", "inactive", "hidden", "not available", "unavailable"].includes(normalized)) {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        function getVisibleMenuItems(items) {
+            return (Array.isArray(items) ? items : []).filter(isMenuItemAvailable);
+        }
+
+        function formatPrice(price) {
+            return "PHP " + Number(price || 0).toLocaleString("en-PH", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+        }
+
+        function renderCategories() {
+            const container = document.getElementById("categoryContainer");
+            const allCategories = [{ id: "all", name: "All Menu" }].concat(categories);
+
+            container.innerHTML = allCategories.map(function (category) {
+                const isActive = String(category.id) === String(activeCategory);
+                return `
+                    <button type="button" class="${isActive ? "active" : ""}" data-category="${category.id}">
+                        ${category.name}
+                    </button>
+                `;
+            }).join("");
+
+            container.querySelectorAll("button").forEach(function (button) {
+                button.addEventListener("click", function () {
+                    activeCategory = button.dataset.category;
+                    renderCategories();
+                    renderMenu();
+                });
+            });
+        }
+
+        function buildCard(item, index) {
+            return `
+                <article class="menu-card">
+                    <div class="card-media">
+                        <img src="${item.image || FALLBACK_IMAGE}" alt="${getDisplayName(item)}">
+                    </div>
+                    <div class="card-info">
+                        <h3>${getDisplayName(item)}</h3>
+                        <p class="item-desc">${item.description || "Freshly prepared and ready to serve."}</p>
+                        <div class="card-footer">
+                            <div class="card-meta">
+                                <span>${getDisplayCategory(item)}</span>
+                                <span class="price">${formatPrice(item.price)}</span>
+                            </div>
+                            <button type="button" class="add-to-cart" data-menu-id="${item.menu_id || item.id || getDisplayName(item)}">
+                                + Add to cart
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            `;
+        }
+
+        function getFilteredMenu() {
+            if (activeCategory === "all") {
+                return menuItems;
+            }
+
+            return menuItems.filter(function (item) {
+                return String(item.category_id) === String(activeCategory);
+            });
+        }
+
+        function renderMenu() {
+            const container = document.getElementById("menuContainer");
+            const filteredItems = getFilteredMenu();
+
+            if (!filteredItems.length) {
+                container.innerHTML = '<div class="menu-empty">No items available in this category yet.</div>';
+                return;
+            }
+
+            container.innerHTML = filteredItems.map(function (item, index) {
+                return buildCard(item, index);
+            }).join("");
+
+            container.querySelectorAll(".add-to-cart").forEach(function (button) {
+                button.addEventListener("click", function () {
+                    const selected = filteredItems.find(function (item) {
+                        return String(item.menu_id || item.id || getDisplayName(item)) === button.dataset.menuId;
+                    });
+
+                    if (!selected || !window.FedeCart) {
+                        return;
+                    }
+
+                    window.FedeCart.addItem({
+                        id: selected.menu_id || selected.id,
+                        name: getDisplayName(selected),
+                        price: Number(selected.price || 0),
+                        qty: 1,
+                        image: selected.image || FALLBACK_IMAGE,
+                        description: selected.description || "",
+                        category: getDisplayCategory(selected)
+                    }, {
+                        message: getDisplayName(selected) + " added to cart"
+                    });
+                });
+            });
+        }
+
+        function deriveCategoriesFromMenu(items) {
+            const categoryMap = new Map();
+
+            items.forEach(function (item) {
+                const id = item.category_id ?? getDisplayCategory(item);
+                if (!categoryMap.has(String(id))) {
+                    categoryMap.set(String(id), {
+                        id: id,
+                        name: getDisplayCategory(item)
+                    });
+                }
+            });
+
+            return Array.from(categoryMap.values());
+        }
+
+        async function loadMenuData() {
+            setMenuStatus("Loading menu...", false);
+
+            try {
+                const [menuResponse, categoriesResponse] = await Promise.all([
+                    fetch(API_AVAILABLE_URL),
+                    fetch(API_CATEGORIES_URL).catch(function () {
+                        return null;
+                    })
+                ]);
+
+                if (!menuResponse.ok) {
+                    throw new Error("Menu request failed");
+                }
+
+                menuItems = getVisibleMenuItems(await menuResponse.json());
+                const rawCategories = categoriesResponse && categoriesResponse.ok
+                    ? await categoriesResponse.json()
+                    : deriveCategoriesFromMenu(menuItems);
+
+                const visibleCategoryIds = new Set(menuItems.map(function (item) {
+                    return String(item.category_id ?? item.categoryId ?? getDisplayCategory(item));
+                }));
+
+                categories = rawCategories.map(function (category) {
+                    return {
+                        id: category.category_id ?? category.id,
+                        name: category.category_name ?? category.name
+                    };
+                }).filter(function (category) {
+                    return visibleCategoryIds.has(String(category.id));
+                });
+
+                renderCategories();
+                renderMenu();
+                setMenuStatus("Choose a category and add your favorites to cart.", false);
+            } catch (error) {
+                console.error("Failed to load menu:", error);
+                menuItems = [];
+                categories = [];
+                renderCategories();
+                renderMenu();
+                setMenuStatus("Unable to load menu right now. Please check if the API server is running.", true);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            renderNavUserName();
+            loadMenuData();
+        });
+    </script>
+</body>
+
+</html>

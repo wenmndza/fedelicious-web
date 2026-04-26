@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Fedelicious | Crafting Flavor</title>
+    <link rel="icon" type="image/png" href="images/icon1.png">
+
+</head>
+
+
+<body>
+
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="brand">
+                <div class="brand-icon">
+                    <img src="images/fede.jpg" alt="Logo">
+                </div>
+                <span class="brand-name">Fedelicious</span>
+            </div>
+
+
+            <!--  Hamburger button (mobile only) -->
+            <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+
+            <ul class="nav-links">
+                <li><a href="landing.html" class="active">HOME</a></li>
+                <li><a href="menu.html">MENU</a></li>
+                <li><a href="reservation.html">RESERVATION</a></li>
+                <li><a href="orders.html">ORDERS</a></li>
+            </ul>
+
+
+            <div class="nav-actions" id="auth-section">
+                <a href="cart.html" class="nav-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+                        <line x1="3" y1="6" x2="21" y2="6" />
+                        <path d="M16 10a4 4 0 0 1-8 0" />
+                    </svg>
+                    <span id="cart-count" class="cart-badge">0</span>
+                </a>
+                <a href="user.html" class="nav-icon account-pill" aria-label="Account">
+                    <span class="nav-greeting">Hi, Guest</span>
+                    <span class="user-circle">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                            <circle cx="12" cy="7" r="4" />
+                        </svg>
+                    </span>
+                </a>
+            </div>
+        </div>
+
+
+        <!-- ÃƒÂ¢Ã…â€œÃ¢â‚¬Â¦ Mobile drawer menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <ul>
+                <li><a href="landing.html" class="active">HOME</a></li>
+                <li><a href="menu.html">MENU</a></li>
+                <li><a href="reservation.html">RESERVATION</a></li>
+                <li><a href="orders.html">ORDERS</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <header class="hero">
+        <div class="hero-overlay"></div>
+
+
+        <div class="hero-content">
+            <div class="hero-brand-logo">
+                <img src="images/fede.jpg" alt="Fedelicious Logo">
+            </div>
+
+
+            <h1>Crafting <span>Flavor.</span></h1>
+            <p>Talisay's premium wing boutique. Excellence served on every platter, curated for the bold.</p>
+
+
+            <div class="hero-btns">
+                <a href="menu.html" class="btn-primary">Order Online</a>
+                <a href="menu.html" class="btn-secondary">View Menu</a>
+            </div>
+        </div>
+
+
+        <div class="scroll-indicator">↓</div>
+    </header>
+
+    <section class="menu-section" id="menu">
+        <div class="section-header">
+            <h2>Our Best <span>Sellers.</span></h2>
+            <p>Live Top 5 best sellers powered by the same business feed used in Sales Report.</p>
+            <a href="menu.html" class="view-all">VIEW FULL MENU</a>
+        </div>
+
+
+        <div class="menu-grid featured-grid" id="featured-menu">
+            <article class="house-icon-card loading">
+                <div class="card-media house-icon-media"></div>
+                <div class="card-info">
+                    <span class="item-rank">Loading</span>
+                    <h3>Loading Best Sellers...</h3>
+                    <div class="card-footer">
+                        <div class="card-meta">
+                            <span>Best Seller</span>
+                            <span class="price">Please wait</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+
+    <section class="integrity-section">
+        <div class="integrity-container">
+            <div class="integrity-badge">
+                <div class="badge-content">
+                    <strong>100%</strong>
+                    <span>FEDE QUALITY</span>
+                </div>
+            </div>
+
+
+            <div class="integrity-text">
+                <h2>Integrity in every <span>bite.</span></h2>
+                <p>We source our chicken daily from local Talisay farms. Our 24-hour maturation process ensures the
+                    flavor goes deep beyond the skin.</p>
+
+
+                <div class="features">
+                    <div class="feature-item">
+                        <h4>Daily Sourcing</h4>
+                        <p>Fresh items are delivered every morning from local farms.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Secret Rubs</h4>
+                        <p>Hand-blended spices that create a unique complexity in every wing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>Fedelicious</h3>
+                <p>Talisay's Premium Wing Boutique.<br>Excellence served on every platter.</p>
+            </div>
+
+
+            <div class="footer-links">
+                <h4>Contact</h4>
+                <p>contact@fedelicious.com</p>
+                <p>Talisay, Batangas, Philippines</p>
+            </div>
+        </div>
+
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Fedelicious Wings. Curated for the Bold.</p>
+        </div>
+    </footer>
+
+
+</body>
+
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+        scroll-behavior: smooth;
+    }
+
+
+    :root {
+        --primary-green: #0d2b1f;
+        --accent-orange: #ff7043;
+        --card-bg: #143528;
+        --text-muted: #8ca398;
+        --glass-white: rgba(255, 255, 255, 0.04);
+    }
+
+
+    body {
+        background-color: var(--primary-green);
+        color: white;
+        overflow-x: hidden;
+        line-height: 1.6;
+    }
+
+
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        padding: 25px 8%;
+        background: linear-gradient(to bottom, rgba(7, 20, 15, 0.95), transparent);
+    }
+
+
+    .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+
+    .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+
+   .brand-icon img {
+        width: 47px;
+        height: 47px;
+        background: var(--accent-orange);
+        padding: 2px;
+        border-radius: 50%;
+    }
+
+
+    .brand-name {
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+        font-size: 1.4rem;
+        color: white;
+    }
+
+
+    .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 35px;
+    }
+
+
+    .nav-links a {
+        text-decoration: none;
+        color: var(--text-muted);
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        transition: 0.3s;
+    }
+
+
+    .nav-links a.active,
+    .nav-links a:hover {
+        color: var(--accent-orange);
+        border-bottom: 2px solid var(--accent-orange);
+        padding-bottom: 5px;
+    }
+
+
+    .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .session-actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .account-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 6px 8px 6px 14px;
+        border-radius: 999px;
+        background: rgba(20, 53, 40, 0.92);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .nav-greeting {
+        max-width: 120px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        color: #dce8e2;
+        font-size: 0.92rem;
+        font-weight: 600;
+    }
+
+    .account-pill:hover .nav-greeting {
+        color: var(--accent-orange);
+    }
+
+
+    .nav-icon {
+        color: white;
+        transition: 0.3s;
+        display: flex;
+        text-decoration: none;
+        position: relative;
+    }
+
+
+    .nav-icon:hover {
+        color: var(--accent-orange);
+    }
+
+
+    .user-circle {
+        width: 40px;
+        height: 40px;
+        background: #165438;
+        padding: 8px;
+        border-radius: 50%;
+        flex-shrink: 0;
+    }
+
+    .cart-badge {
+        position: absolute;
+        top: -8px;
+        right: -10px;
+        min-width: 20px;
+        height: 20px;
+        padding: 0 6px;
+        border-radius: 999px;
+        background: var(--accent-orange);
+        color: white;
+        font-size: 0.7rem;
+        font-weight: 800;
+        display: none;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    /* ÃƒÂ¢Ã…â€œÃ¢â‚¬Â¦ Hamburger */
+    .hamburger {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 6px;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+        z-index: 1100;
+    }
+
+
+    .hamburger span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: white;
+        border-radius: 2px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+
+    .hamburger.open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+
+    .hamburger.open span:nth-child(2) {
+        opacity: 0;
+    }
+
+
+    .hamburger.open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
+
+    /* ÃƒÂ¢Ã…â€œÃ¢â‚¬Â¦ Mobile drawer */
+    .mobile-menu {
+        display: none;
+        flex-direction: column;
+        background: rgba(7, 20, 15, 0.98);
+        padding: 0 8%;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s ease, padding 0.35s ease;
+    }
+
+
+    .mobile-menu.open {
+        max-height: 300px;
+        padding: 20px 8%;
+    }
+
+
+    .mobile-menu ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+
+    .mobile-menu a {
+        text-decoration: none;
+        color: var(--text-muted);
+        font-size: 0.85rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        transition: color 0.2s;
+        text-transform: uppercase;
+    }
+
+
+    .mobile-menu a.active,
+    .mobile-menu a:hover {
+        color: var(--accent-orange);
+    }
+
+
+    .hero {
+        height: 100vh;
+        background-image: url('images/bg.jpg');
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        position: relative;
+    }
+
+
+    .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, rgba(7, 20, 15, 0.9), rgba(7, 20, 15, 0.6));
+        z-index: 1;
+    }
+
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 900px;
+        padding: 0 20px;
+    }
+    
+    .hero-brand-logo img {
+        width: 110px;
+        height: 110px;
+        background-color: var(--accent-orange);
+        padding: 5px;
+        margin-bottom: 30px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        border-radius: 100px;
+    }
+
+
+    .hero-content h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: 5.5rem;
+        margin-bottom: 20px;
+        letter-spacing: -3px;
+        line-height: 1.1;
+    }
+
+
+    .hero-content h1 span {
+        color: var(--accent-orange);
+        font-style: italic;
+    }
+
+
+    .hero-content p {
+        font-size: 1.25rem;
+        color: var(--text-muted);
+        margin-bottom: 45px;
+        font-weight: 300;
+        font-style: italic;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    .hero-btns {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+
+    .btn-primary {
+        background-color: var(--accent-orange);
+        color: white;
+        padding: 18px 45px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+
+    .btn-primary:hover {
+        background-color: #ff8a65;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(255, 112, 67, 0.3);
+    }
+
+
+    .btn-secondary {
+        background: var(--glass-white);
+        color: white;
+        padding: 18px 45px;
+        border-radius: 50px;
+        text-decoration: none;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+    }
+
+
+    .btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: var(--accent-orange);
+    }
+
+    .menu-section {
+        padding: 120px 8%;
+        background-color: var(--primary-green);
+    }
+
+
+    .section-header {
+        text-align: left;
+        margin-bottom: 60px;
+    }
+
+
+    .section-header h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 3.8rem;
+        margin-bottom: 10px;
+    }
+
+
+    .section-header h2 span {
+        color: var(--accent-orange);
+    }
+
+
+    .view-all {
+        color: var(--accent-orange);
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 0.85rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        transition: 0.3s;
+    }
+
+
+    .view-all:hover {
+        letter-spacing: 3px;
+    }
+
+
+    .menu-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 20px;
+    }
+
+    .featured-grid {
+        grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+        gap: 30px;
+    }
+
+    .house-icon-card {
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        border-radius: 18px;
+        background: var(--card-bg);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+        transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .house-icon-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(255, 112, 67, 0.24);
+        box-shadow: 0 16px 28px rgba(0, 0, 0, 0.2);
+    }
+
+    .house-icon-link {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .house-icon-card.loading .house-icon-media {
+        background:
+            linear-gradient(120deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.04)),
+            linear-gradient(145deg, #17382a, #0e2219);
+        background-size: 200% 100%;
+        animation: shimmer 1.6s linear infinite;
+    }
+
+    .card-media {
+        position: relative;
+        height: 168px;
+        overflow: hidden;
+        background: #133a2a;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .card-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.35s ease;
+    }
+
+    .house-icon-card:hover .card-media img {
+        transform: scale(1.06);
+    }
+
+    .card-media::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, transparent 54%, rgba(7, 20, 15, 0.18) 100%);
+    }
+
+    .house-icon-media {
+        background-size: cover;
+        background-position: center;
+    }
+
+    .item-rank {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: fit-content;
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: var(--accent-orange);
+        color: #fff;
+        font-size: 0.62rem;
+        font-weight: 800;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+    }
+
+    .card-info {
+        flex: 1;
+        padding: 14px 14px 15px;
+        display: grid;
+        gap: 8px;
+    }
+
+    .card-info h3 {
+        font-size: 0.98rem;
+        font-weight: 700;
+        line-height: 1.25;
+    }
+
+    .card-footer {
+        margin-top: auto;
+        display: grid;
+        gap: 12px;
+    }
+
+    .card-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        color: var(--text-muted);
+        font-size: 0.62rem;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+    }
+
+    .price {
+        color: #fff;
+        font-family: 'Playfair Display', serif;
+        font-size: 1.08rem;
+        line-height: 1;
+        text-transform: none;
+        letter-spacing: normal;
+    }
+
+    @keyframes shimmer {
+        0% {
+            background-position: 200% 0;
+        }
+
+        100% {
+            background-position: -200% 0;
+        }
+    }
+    .integrity-section {
+        padding: 140px 8%;
+        background: rgba(0, 0, 0, 0.15);
+    }
+
+
+    .integrity-container {
+        display: flex;
+        align-items: center;
+        gap: 100px;
+    }
+
+
+    .integrity-badge {
+        background-color: var(--accent-orange);
+        width: 220px;
+        height: 220px;
+        border-radius: 35px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        text-align: center;
+    }
+
+
+    .badge-content strong {
+        font-size: 4rem;
+        display: block;
+        line-height: 1;
+    }
+
+
+    .badge-content span {
+        font-size: 0.75rem;
+        letter-spacing: 3px;
+        font-weight: 600;
+    }
+
+
+    .integrity-text h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 4rem;
+        margin-bottom: 30px;
+        line-height: 1.1;
+    }
+
+
+    .features {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        margin-top: 50px;
+    }
+
+
+    .feature-item h4 {
+        color: var(--accent-orange);
+        margin-bottom: 12px;
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+
+    .feature-item p {
+        color: var(--text-muted);
+        font-size: 0.95rem;
+    }
+
+
+    footer {
+        padding: 100px 8% 40px;
+        background: #07140f;
+    }
+
+
+    .footer-content {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 80px;
+    }
+
+
+    .footer-brand h3 {
+        font-family: 'Playfair Display', serif;
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+
+    .footer-links h4 {
+        color: var(--accent-orange);
+        margin-bottom: 25px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+
+    .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        padding-top: 40px;
+        text-align: center;
+        color: var(--text-muted);
+        font-size: 0.85rem;
+        letter-spacing: 1px;
+    }
+
+
+    .scroll-indicator {
+        position: absolute;
+        bottom: 40px;
+        z-index: 2;
+        animation: bounce 2s infinite;
+        font-size: 2.5rem;
+        color: var(--accent-orange);
+        cursor: default;
+    }
+
+
+    @keyframes bounce {
+
+
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+            transform: translateY(0);
+        }
+
+
+        40% {
+            transform: translateY(-15px);
+        }
+
+
+        60% {
+            transform: translateY(-7px);
+        }
+    }
+
+
+    /* ÃƒÂ¢Ã…â€œÃ¢â‚¬Â¦ Responsive same as menu page */
+    @media (max-width: 900px) {
+        .hamburger {
+            display: flex;
+        }
+
+
+        .nav-links {
+            display: none;
+        }
+
+        .nav-greeting {
+            display: none;
+        }
+
+
+        .mobile-menu {
+            display: flex;
+        }
+
+
+        .navbar {
+            padding: 18px 6%;
+            background: rgba(7, 20, 15, 0.97);
+        }
+
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+        }
+
+
+        .integrity-container {
+            flex-direction: column;
+            gap: 50px;
+            text-align: center;
+        }
+
+        .features {
+            grid-template-columns: 1fr;
+        }
+
+
+        .footer-content {
+            flex-direction: column;
+            gap: 40px;
+        }
+
+    }
+
+
+    @media (max-width: 480px) {
+        .navbar {
+            padding: 16px 5%;
+        }
+
+
+        .brand-name {
+            font-size: 1.2rem;
+        }
+
+
+        .hero-content h1 {
+            font-size: 2.8rem;
+        }
+
+
+        .hero-content p {
+            font-size: 1rem;
+        }
+
+
+        .btn-primary,
+        .btn-secondary {
+            width: 100%;
+            text-align: center;
+            padding: 16px;
+        }
+    }
+</style>
+
+
+<script src="auth-session.js"></script>
+<script src="cart-ui.js"></script>
+<script>
+    const API_URL = 'https://localhost:7201/api/Menu';
+    const API_SALES = 'https://localhost:7201/api/Sp/sales';
+    const API_AVAILABLE_URL = API_URL + '/available';
+    const MENU_AVAILABILITY_KEY = "fede_menu_availability_overrides";
+    const FALLBACK_IMAGE = "images/fede.jpg";
+
+    function getAvailabilityOverrides() {
+        try {
+            return JSON.parse(localStorage.getItem(MENU_AVAILABILITY_KEY) || "{}");
+        } catch (error) {
+            return {};
+        }
+    }
+
+    function isMenuItemAvailable(item) {
+        const itemId = item.menu_id ?? item.id ?? item.menuId;
+        const overrides = getAvailabilityOverrides();
+        const override = itemId != null ? overrides[String(itemId)] : undefined;
+
+        if (typeof override === "boolean") {
+            return override;
+        }
+
+        const rawValue = item.is_available ?? item.isAvailable ?? item.available ?? item.status ?? item.availability;
+
+        if (typeof rawValue === "boolean") {
+            return rawValue;
+        }
+
+        if (typeof rawValue === "number") {
+            return rawValue === 1;
+        }
+
+        if (typeof rawValue === "string") {
+            const normalized = rawValue.trim().toLowerCase();
+            if (["false", "0", "inactive", "hidden", "not available", "unavailable"].includes(normalized)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    function getFoodName(item) {
+        return item.food_name || item.foodName || item.name || "Menu Item";
+    }
+
+    function getFoodCategory(item) {
+        return item.category_name || item.categoryName || item.category || "Best Seller";
+    }
+
+    function extractArrayPayload(data) {
+        if (Array.isArray(data)) {
+            return data;
+        }
+
+        if (data && typeof data === "object") {
+            const firstArray = Object.values(data).find(Array.isArray);
+            if (firstArray) {
+                return firstArray;
+            }
+        }
+
+        return [];
+    }
+
+    function normalizeBestSellers(items) {
+        return extractArrayPayload(items)
+            .map((item) => ({
+                menu_id: item.menu_id ?? item.id ?? item.menuId ?? null,
+                food_name: item.food_name || item.foodName || item.name || "Menu Item",
+                totalsold: Number(item.totalsold ?? item.total_sold ?? item.totalSold ?? item.quantity ?? item.qty ?? 0),
+                price: Number(item.price ?? item.menu_price ?? item.menuPrice ?? item.selling_price ?? item.sellingPrice ?? 0),
+                revenue: Number(item.revenue ?? item.total_revenue ?? item.totalRevenue ?? 0),
+                order_type: item.order_type || item.type || "Mixed"
+            }))
+            .sort((a, b) => b.totalsold - a.totalsold)
+            .slice(0, 5);
+    }
+
+    function escapeHtml(value) {
+        return String(value ?? "").replace(/[&<>"']/g, (char) => ({
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#39;"
+        })[char]);
+    }
+
+    function getCardImage(item) {
+        const image = item?.image || item?.image_url || item?.imageUrl || "";
+        return image && String(image).trim() ? image : FALLBACK_IMAGE;
+    }
+
+    function formatPrice(price) {
+        return "PHP " + Number(price || 0).toLocaleString("en-PH", {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        });
+    }
+
+    function normalizeMenuKey(value) {
+        return String(value ?? "")
+            .toLowerCase()
+            .replace(/[^a-z0-9]/g, "");
+    }
+
+    function findMenuMatch(bestSeller, menuItems) {
+        const bestSellerId = bestSeller?.menu_id;
+        if (bestSellerId != null) {
+            const idMatch = menuItems.find((item) => String(item.menu_id ?? item.id ?? item.menuId) === String(bestSellerId));
+            if (idMatch) {
+                return idMatch;
+            }
+        }
+
+        const sellerName = String(bestSeller?.food_name || "").trim();
+        const normalizedSellerName = normalizeMenuKey(sellerName);
+
+        const exactNameMatch = menuItems.find((item) => getFoodName(item).trim().toLowerCase() === sellerName.toLowerCase());
+        if (exactNameMatch) {
+            return exactNameMatch;
+        }
+
+        const normalizedNameMatch = menuItems.find((item) => normalizeMenuKey(getFoodName(item)) === normalizedSellerName);
+        if (normalizedNameMatch) {
+            return normalizedNameMatch;
+        }
+
+        return menuItems.find((item) => {
+            const normalizedMenuName = normalizeMenuKey(getFoodName(item));
+            return normalizedMenuName.includes(normalizedSellerName) || normalizedSellerName.includes(normalizedMenuName);
+        }) || null;
+    }
+
+    function mergeMenuCollections(...collections) {
+        const merged = [];
+        const seenKeys = new Set();
+
+        collections.flat().forEach((item) => {
+            if (!item) {
+                return;
+            }
+
+            const itemId = item.menu_id ?? item.id ?? item.menuId;
+            const itemName = normalizeMenuKey(getFoodName(item));
+            const key = itemId != null ? `id:${itemId}` : `name:${itemName}`;
+
+            if (!seenKeys.has(key)) {
+                seenKeys.add(key);
+                merged.push(item);
+            }
+        });
+
+        return merged;
+    }
+
+    function buildHouseIconCard(bestSeller, menuMatch, index) {
+        const image = getCardImage(menuMatch);
+        const category = "Best Seller";
+        const resolvedPrice = Number(menuMatch?.price ?? bestSeller?.price ?? 0);
+        const price = resolvedPrice > 0 ? formatPrice(resolvedPrice) : "View Menu";
+
+        return `
+            <a href="menu.html" class="house-icon-card house-icon-link" aria-label="View ${escapeHtml(bestSeller.food_name)} on menu">
+                <div class="card-media">
+                    <img src="${escapeHtml(image)}" alt="${escapeHtml(bestSeller.food_name)}">
+                </div>
+                <div class="card-info">
+                    <span class="item-rank">Top ${index + 1}</span>
+                    <h3>${escapeHtml(bestSeller.food_name)}</h3>
+                    <div class="card-footer">
+                        <div class="card-meta">
+                            <span>${escapeHtml(category)}</span>
+                            <span class="price">${escapeHtml(price)}</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        `;
+    }
+
+    function getCartIconMarkup() {
+        return `
+            <a href="cart.html" class="nav-icon" aria-label="Cart">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+                    <line x1="3" y1="6" x2="21" y2="6" />
+                    <path d="M16 10a4 4 0 0 1-8 0" />
+                </svg>
+                <span id="cart-count" class="cart-badge">0</span>
+            </a>
+        `;
+    }
+
+    function getUserIconMarkup(target = "login.html") {
+        return `
+            <span class="user-circle">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
+                </svg>
+            </span>
+        `;
+    }
+
+    function getUserAccountMarkup(name, target = "login.html") {
+        const firstName = (name && name.trim()) ? name.trim().split(/\s+/)[0] : "Guest";
+
+        return `
+            <a href="${target}" class="nav-icon account-pill" aria-label="Account">
+                <span class="nav-greeting">Hi, ${firstName}</span>
+                ${getUserIconMarkup(target)}
+            </a>
+        `;
+    }
+
+    function getGuestNavMarkup() {
+        return `${getCartIconMarkup()}${getUserAccountMarkup("", "login.html")}`;
+    }
+
+    function getLoggedInNavMarkup(name) {
+        return `
+            ${getCartIconMarkup()}
+            <div class="session-actions">
+                ${getUserAccountMarkup(name, "user.html")}
+            </div>
+        `;
+    }
+
+     const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+
+    hamburger.addEventListener('click', () => {
+        const isOpen = hamburger.classList.toggle('open');
+        mobileMenu.classList.toggle('open', isOpen);
+        hamburger.setAttribute('aria-expanded', isOpen);
+    });
+
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('open');
+            mobileMenu.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', false);
+        });
+    });
+
+
+    function loadSession() {
+        const auth = document.getElementById('auth-section');
+        const name = localStorage.getItem("fullName");
+
+        if (!auth) {
+            return;
+        }
+
+        auth.innerHTML = (name && name.trim())
+            ? getLoggedInNavMarkup(name)
+            : getGuestNavMarkup();
+    }
+
+    function logout() {
+        logoutToLogin({
+            message: "Sign out from Fedelicious?",
+            target: "login.html"
+        });
+    }
+
+    function updateCart() {
+        if (window.FedeCart) {
+            window.FedeCart.updateBadge();
+            return;
+        }
+
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const count = cart.reduce((sum, item) => sum + Number(item.qty ?? item.quantity ?? 1), 0);
+        const badge = document.getElementById('cart-count');
+        if (!badge) {
+            return;
+        }
+        badge.innerText = count;
+        badge.style.display = count > 0 ? 'flex' : 'none';
+    }
+
+    async function fetchFeatured() {
+        const container = document.getElementById('featured-menu');
+        if (!container) {
+            return;
+        }
+
+        try {
+            const [bestSellerResponse, availableMenuResponse, fullMenuResponse] = await Promise.all([
+                fetch(API_SALES + '/best-sellers'),
+                fetch(API_AVAILABLE_URL).catch(() => null),
+                fetch(API_URL).catch(() => null)
+            ]);
+
+            if (!bestSellerResponse.ok) {
+                throw new Error('Failed to fetch homepage best sellers');
+            }
+
+            const bestSellers = normalizeBestSellers(await bestSellerResponse.json());
+            const availableMenuItems = availableMenuResponse && availableMenuResponse.ok
+                ? (await availableMenuResponse.json()).filter(isMenuItemAvailable)
+                : [];
+            const fullMenuItems = fullMenuResponse && fullMenuResponse.ok
+                ? await fullMenuResponse.json()
+                : [];
+            const menuItems = mergeMenuCollections(availableMenuItems, fullMenuItems);
+
+            container.innerHTML = '';
+
+            if (!bestSellers.length) {
+                container.innerHTML = `
+                    <article class="house-icon-card">
+                        <div class="card-media">
+                            <img src="${FALLBACK_IMAGE}" alt="Best seller fallback">
+                        </div>
+                        <div class="card-info">
+                            <span class="item-rank">No Feed</span>
+                            <h3>Best sellers are warming up.</h3>
+                            <div class="card-footer">
+                                <div class="card-meta">
+                                    <span>Best Seller</span>
+                                    <span class="price">View Menu</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                `;
+                return;
+            }
+
+            container.innerHTML = bestSellers.map((item, index) => {
+                const menuMatch = findMenuMatch(item, menuItems);
+                return buildHouseIconCard(item, menuMatch, index);
+            }).join('');
+        } catch (err) {
+            container.innerHTML = `
+                <article class="house-icon-card">
+                    <div class="card-media">
+                        <img src="${FALLBACK_IMAGE}" alt="Best seller feed offline">
+                    </div>
+                    <div class="card-info">
+                        <span class="item-rank">Feed Offline</span>
+                        <h3>Unable to load Best Sellers.</h3>
+                        <div class="card-footer">
+                            <div class="card-meta">
+                                <span>Best Seller</span>
+                                <span class="price">View Menu</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            `;
+        }
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+        loadSession();
+        updateCart();
+        fetchFeatured().catch((error) => console.error('Featured menu load failed:', error));
+    });
+</script>
+</body>
+
+</html>
