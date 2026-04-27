@@ -50,7 +50,7 @@
 
                     <button class="btn-primary" onclick="login()">Sign In</button>
                     <p class="forgot-password-text">
-                        Nakalimutan ang password?
+                        Forgot your password?
                         <a href="reset-password.html" class="forgot-password-link">Reset Now</a>
                     </p>
 
@@ -102,7 +102,7 @@
         </div>
     </div>
 
- <style>
+    <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Poppins:wght@300;400;600&display=swap');
 
         * {
@@ -398,7 +398,7 @@
         const BASE_URL = "https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net";
 
         // Auto-redirect if already logged in
-        (function() {
+        (function () {
             const role = localStorage.getItem("role");
             const fullName = localStorage.getItem("fullName");
             if (role && fullName) {

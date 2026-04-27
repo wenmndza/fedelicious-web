@@ -4,19 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fedelicious | Super Admin Control</title>
+    <title>Fedelicious Admin | System Management</title>
+    <link rel="icon" type="image/png" href="images/icon1.png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary-green: #b2eec7;
             --sidebar-green: #98d8aa;
+            --surface-bg: #e8f5e9;
+            --accent-orange: #27ae60;
             --card-bg: #ffffff;
-            --accent-red: #e74c3c;
-            --text-dark: #2c3e50;
+            --glass-white: rgba(255, 255, 255, 0.68);
             --text-muted: #7f8c8d;
+            --text-dark: #2c3e50;
+            --white: #ffffff;
+            --panel-border: rgba(44, 62, 80, 0.08);
+            --card-shadow: 0 12px 28px rgba(44, 62, 80, 0.08);
+            --accent-red: #e74c3c;
         }
-
 
         * {
             margin: 0;
@@ -27,92 +33,126 @@
 
         body {
             background-color: var(--primary-green);
-            display: flex;
-            height: 100vh;
-            overflow: hidden;
             color: var(--text-dark);
+            display: flex;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
 
-
+        /* SIDEBAR */
         .sidebar {
-            width: 260px;
+            width: 280px;
             background-color: var(--sidebar-green);
             padding: 30px 20px;
+            position: fixed;
+            height: 100%;
+            border-right: 1px solid rgba(44, 62, 80, 0.08);
             display: flex;
             flex-direction: column;
         }
 
-
-        .sidebar h2 {
-            font-weight: 800;
-            font-size: 1.2rem;
+        .brand {
+            font-size: 22px;
+            font-weight: 700;
             margin-bottom: 40px;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-left: 10px;
         }
 
+        .logo-icon img {
+            width: 47px;
+            height: 47px;
+            background: var(--accent-orange);
+            padding: 2px;
+            border-radius: 50%;
+        }
+
+        .brand-name {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white;
+            margin-left: 5px;
+            letter-spacing: 1px;
+        }
+
+        /* NAV */
+        .nav-menu {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            list-style: none;
+        }
 
         .nav-link {
             display: flex;
             align-items: center;
             gap: 15px;
-            padding: 12px 15px;
+            padding: 15px 20px;
+            color: var(--text-dark);
             text-decoration: none;
-            color: inherit;
-            font-size: 0.9rem;
-            font-weight: 600;
-            border-radius: 10px;
-            margin-bottom: 5px;
+            border-radius: 12px;
             transition: 0.3s;
+            margin-bottom: 8px;
+            font-size: 14px;
+            white-space: nowrap;
+            font-weight: 600;
         }
-
 
         .nav-link.active {
-            background-color: #27ae60;
+            background-color: var(--accent-orange);
             color: white;
+            box-shadow: 0 6px 20px rgba(39, 174, 96, 0.3);
         }
-
 
         .nav-link:hover:not(.active) {
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.35);
+            color: var(--text-dark);
         }
 
-
-        .logout-link {
-            margin-top: auto;
-            color: #e74c3c;
-        }
-
-
+        /* MAIN */
         .main-content {
             flex-grow: 1;
-            padding: 30px;
+            margin-left: 280px;
+            display: flex;
+            flex-direction: column;
             overflow-y: auto;
-            background: #e8f5e9;
+            background: var(--surface-bg);
             border-top-left-radius: 40px;
             border-bottom-left-radius: 40px;
         }
 
-
-        .header {
+        /* TOPBAR */
+        .topbar {
             display: flex;
             justify-content: space-between;
-            align-items: flex-end;
-            margin-bottom: 25px;
+            align-items: center;
+            padding: 20px 40px;
+            background: var(--glass-white);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--panel-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-
-        .header h1 {
-            font-size: 1.6rem;
-            font-weight: 800;
-            text-transform: uppercase;
+        .topbar h2 {
+            font-size: clamp(18px, 3vw, 22px);
         }
 
+        /* CONTENT */
+        .dashboard-container {
+            padding: 40px;
+        }
 
         .dashboard-grid {
             display: grid;
             grid-template-columns: 1fr 350px;
             gap: 20px;
         }
-
 
         .left-column,
         .right-column {
@@ -121,15 +161,15 @@
             gap: 20px;
         }
 
-
+        /* CARDS */
         .card {
-            background: white;
+            background: var(--card-bg);
             padding: 25px;
             border-radius: 20px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--panel-border);
             height: fit-content;
         }
-
 
         .card-header {
             font-size: 1.1rem;
@@ -140,13 +180,11 @@
             padding-bottom: 10px;
         }
 
-
         table {
             width: 100%;
             border-collapse: collapse;
             text-align: left;
         }
-
 
         th {
             padding: 12px;
@@ -156,7 +194,6 @@
             border-bottom: 2px solid #eee;
         }
 
-
         td {
             padding: 15px 12px;
             font-size: 0.9rem;
@@ -165,7 +202,6 @@
             vertical-align: middle;
         }
 
-
         .badge {
             padding: 5px 12px;
             border-radius: 8px;
@@ -173,7 +209,6 @@
             font-weight: 700;
             text-transform: uppercase;
         }
-
 
         .bg-super {
             background: #d1c4e9;
@@ -185,7 +220,6 @@
             color: #2e7d32;
         }
 
-
         .btn-delete {
             background: #ffebee;
             color: var(--accent-red);
@@ -196,12 +230,10 @@
             transition: 0.2s;
         }
 
-
         .btn-delete:hover {
             background: var(--accent-red);
             color: white;
         }
-
 
         .btn-delete:disabled {
             background: #f0f0f0;
@@ -209,11 +241,9 @@
             cursor: not-allowed;
         }
 
-
         .form-group {
             margin-bottom: 15px;
         }
-
 
         .form-group label {
             display: block;
@@ -222,7 +252,6 @@
             color: var(--text-muted);
             margin-bottom: 5px;
         }
-
 
         .form-group input,
         .form-group select {
@@ -234,36 +263,10 @@
             outline: none;
         }
 
-
-        input[type="file"] {
-            padding: 7px;
-            background: #f9f9f9;
-            font-size: 0.8rem;
-        }
-
-
-        input[type="file"]::file-selector-button {
-            background: var(--text-dark);
-            color: white;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-family: 'Poppins';
-            margin-right: 10px;
-            transition: 0.2s;
-        }
-
-
-        input[type="file"]::file-selector-button:hover {
-            background: #1a252f;
-        }
-
-
         .btn-submit {
             width: 100%;
             padding: 12px;
-            background: #27ae60;
+            background: var(--accent-orange);
             color: white;
             border: none;
             border-radius: 10px;
@@ -273,21 +276,17 @@
             margin-top: 10px;
         }
 
-
         .btn-submit:hover {
             background: #219653;
         }
-
 
         .btn-blue {
             background: #3498db;
         }
 
-
         .btn-blue:hover {
             background: #2980b9;
         }
-
 
         .qr-thumbnail {
             width: 60px;
@@ -299,13 +298,11 @@
             padding: 2px;
         }
 
-
         .preview-box {
             margin-top: 10px;
             text-align: center;
             display: none;
         }
-
 
         .preview-box img {
             width: 120px;
@@ -317,18 +314,16 @@
             padding: 5px;
         }
 
-
         .helper-text {
             font-size: 0.8rem;
             color: var(--text-muted);
             margin-top: 5px;
         }
 
-
         .qr-method {
             font-weight: 700;
+            color: var(--accent-orange);
         }
-
 
         .qr-accname {
             font-size: 0.8rem;
@@ -337,146 +332,168 @@
             margin-top: 3px;
             display: block;
         }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .sidebar { width: 220px; }
+            .main-content { margin-left: 220px; }
+            .dashboard-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            .sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+                flex-direction: row;
+                align-items: center;
+                overflow-x: auto;
+                padding: 15px;
+            }
+            .brand { display: none; }
+            .nav-menu { flex-direction: row; gap: 10px; }
+            .nav-link { justify-content: center; padding: 10px; font-size: 12px; }
+            .main-content { margin-left: 0; }
+            .topbar { flex-direction: column; align-items: flex-start; gap: 10px; padding: 15px 20px; }
+            .dashboard-container { padding: 20px; }
+        }
     </style>
-    <link rel="stylesheet" href="admin.css">
 </head>
 
 <body>
 
 
     <aside class="sidebar">
-        <h2>FEDELICIOUS</h2>
-        <nav id="nav-menu">
-            <a href="admin.html" class="nav-link"><i class="fas fa-th-large"></i> DASHBOARD</a>
-            <a href="order_admin.html" class="nav-link"><i class="fas fa-shopping-cart"></i> ORDERS</a>
-            <a href="reservation_admin.html" class="nav-link"><i class="fas fa-calendar-alt"></i> RESERVATIONS</a>
-            <a href="menusetting.html" class="nav-link"><i class="fas fa-utensils"></i> MENU SETTINGS</a>
-            <a href="salesreport.html" class="nav-link"><i class="fas fa-chart-line"></i> SALES REPORTS</a>
-            <a href="customeractivity.html" class="nav-link"><i class="fas fa-users"></i> CUSTOMERS</a>
-            <a href="admin_management.html" class="nav-link active" id="superAdminLink"><i
-                    class="fas fa-user-shield"></i> SYSTEM ADMINS</a>
-        </nav>
-        <a href="#" class="nav-link logout-link" onclick="logout(); return false;"><i class="fas fa-sign-out-alt"></i>
-            SIGN OUT</a>
+        <div class="brand">
+            <div class="logo-icon">
+                <img src="images/fede.jpg" alt="Fedelicious Logo">
+            </div>
+            <span class="brand-name">FEDELICIOUS</span>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="admin.html" class="nav-link"><i class="fa-solid fa-gauge-high"></i> Dashboard</a></li>
+            <li><a href="order_admin.html" class="nav-link"><i class="fas fa-shopping-cart"></i> Orders</a></li>
+            <li><a href="reservation_admin.html" class="nav-link"><i class="fas fa-calendar-alt"></i> Reservations</a></li>
+            <li><a href="menusetting.html" class="nav-link"><i class="fa-solid fa-utensils"></i> Menu Settings</a></li>
+            <li><a href="salesreport.html" class="nav-link"><i class="fa-solid fa-chart-line"></i> Sales Report</a></li>
+            <li><a href="customeractivity.html" class="nav-link"><i class="fa fa-user"></i> CUSTOMER ACTIVITY</a></li>
+            <li><a href="admin_management.html" class="nav-link active" id="superAdminLink"><i class="fas fa-user-shield"></i> SYSTEM ADMINS</a></li>
+        </ul>
+        <a class="nav-link" onclick="logout()" style="margin-top:auto; color:#e74c3c; cursor:pointer;"><i class="fa-solid fa-power-off"></i> Logout</a>
     </aside>
 
-
     <main class="main-content">
-        <div class="header">
-            <div>
-                <h1>System Administrators</h1>
-                <p style="color: var(--text-muted); font-size: 0.9rem;">Manage dashboard access and payment settings</p>
+        <div class="topbar">
+            <h2>System Administrators</h2>
+            <div class="admin-profile" style="display: flex; align-items: center; gap: 10px;">
+                <span id="admin-name" style="font-weight: 600;">Admin</span>
+                <i class="fa-solid fa-circle-user" style="font-size: 32px; color: var(--accent-orange);"></i>
             </div>
         </div>
 
+        <div class="dashboard-container">
+            <div class="dashboard-grid">
+                <div class="left-column">
+                    <div class="card">
+                        <div class="card-header">Current Administrators</div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Username</th>
+                                    <th>Role</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminTableBody">
+                                <tr>
+                                    <td colspan="4" style="text-align: center; color: #999;">Loading admins...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
-        <div class="dashboard-grid">
-            <div class="left-column">
-                <div class="card">
-                    <div class="card-header">Current Administrators</div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Username</th>
-                                <th>Role</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="adminTableBody">
-                            <tr>
-                                <td colspan="4" style="text-align: center; color: #999;">Loading admins...</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="card">
+                        <div class="card-header">Manage Payment QR Codes</div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Method / Account</th>
+                                    <th>Image</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="qrTableBody">
+                                <tr>
+                                    <td colspan="4" style="text-align: center; color: #999;">Loading QR Codes...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
-
-                <div class="card">
-                    <div class="card-header">Manage Payment QR Codes</div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Method / Account</th>
-                                <th>Image</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="qrTableBody">
-                            <tr>
-                                <td colspan="4" style="text-align: center; color: #999;">Loading QR Codes...</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-
-            <div class="right-column">
-                <div class="card">
-                    <div class="card-header">Register New Admin</div>
-                    <form id="addAdminForm" onsubmit="registerAdmin(event)">
-                        <div class="form-group">
-                            <label>Full Name</label>
-                            <input type="text" id="newName" required placeholder="e.g. John Doe">
-                        </div>
-                        <div class="form-group">
-                            <label>Username</label>
-                            <input type="text" id="newUsername" required placeholder="e.g. jdoe_admin">
-                        </div>
-                        <div class="form-group">
-                            <label>Password</label>
-                            <input type="password" id="newPassword" required placeholder="********" pattern="^[^0-9]*$"
-                                title="Numbers are not allowed in the password">
-                        </div>
-                        <div class="form-group">
-                            <label>Role</label>
-                            <select id="newRole">
-                                <option value="Admin">Standard Admin</option>
-                                <option value="Super Admin">Super Admin</option>
-                            </select>
-                        </div>
-                        <button type="submit" class="btn-submit"><i class="fas fa-user-plus"></i> Create
-                            Account</button>
-                    </form>
-                </div>
-
-
-                <div class="card">
-                    <div class="card-header">Upload New QR Code</div>
-                    <form id="updateQrForm" onsubmit="uploadQR(event)">
-                        <div class="form-group">
-                            <label>Payment Method</label>
-                            <select id="paymentMethod">
-                                <option value="GCash">GCash</option>
-                                <option value="Maya">Maya</option>
-                            </select>
-                            <div class="helper-text">Ito ang payment method na makikita sa system.</div>
-                        </div>
-
-
-                        <div class="form-group">
-                            <label>Account Name</label>
-                            <input type="text" id="qrAccName" required placeholder="e.g. Mark Luis Fulinara">
-                            <div class="helper-text">Ito ang pangalan ng account owner ng QR.</div>
-                        </div>
-
-
-                        <div class="form-group">
-                            <label>Upload QR Image</label>
-                            <input type="file" id="qrUpload" accept="image/png, image/jpeg, image/jpg" required
-                                onchange="previewQR(this)">
-                            <div class="preview-box" id="previewBox">
-                                <img id="previewImage" src="" alt="QR Preview">
+                <div class="right-column">
+                    <div class="card">
+                        <div class="card-header">Register New Admin</div>
+                        <form id="addAdminForm" onsubmit="registerAdmin(event)">
+                            <div class="form-group">
+                                <label>Full Name</label>
+                                <input type="text" id="newName" required placeholder="e.g. John Doe">
                             </div>
-                        </div>
+                            <div class="form-group">
+                                <label>Username</label>
+                                <input type="text" id="newUsername" required placeholder="e.g. jdoe_admin">
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input type="password" id="newPassword" required placeholder="********" pattern="^[^0-9]*$"
+                                    title="Numbers are not allowed in the password">
+                            </div>
+                            <div class="form-group">
+                                <label>Role</label>
+                                <select id="newRole">
+                                    <option value="Admin">Standard Admin</option>
+                                    <option value="Super Admin">Super Admin</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn-submit"><i class="fas fa-user-plus"></i> Create Account</button>
+                        </form>
+                    </div>
 
+                    <div class="card">
+                        <div class="card-header">Upload New QR Code</div>
+                        <form id="updateQrForm" onsubmit="uploadQR(event)">
+                            <div class="form-group">
+                                <label>Payment Method</label>
+                                <select id="paymentMethod">
+                                    <option value="GCash">GCash</option>
+                                    <option value="Maya">Maya</option>
+                                </select>
+                                <div class="helper-text">Ito ang payment method na makikita sa system.</div>
+                            </div>
 
-                        <button type="submit" class="btn-submit btn-blue" id="qrSubmitBtn">
-                            <i class="fas fa-qrcode"></i> Save QR Code
-                        </button>
-                    </form>
+                            <div class="form-group">
+                                <label>Account Name</label>
+                                <input type="text" id="qrAccName" required placeholder="e.g. Mark Luis Fulinara">
+                                <div class="helper-text">Ito ang pangalan ng account owner ng QR.</div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Upload QR Image</label>
+                                <input type="file" id="qrUpload" accept="image/png, image/jpeg, image/jpg" required
+                                    onchange="previewQR(this)">
+                                <div class="preview-box" id="previewBox">
+                                    <img id="previewImage" src="" alt="QR Preview">
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn-submit btn-blue" id="qrSubmitBtn">
+                                <i class="fas fa-qrcode"></i> Save QR Code
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -485,8 +502,9 @@
 
     <script src="auth-session.js"></script>
     <script>
-        const API_URL = "https://localhost:7201/api/AdminManagement";
-        const QR_API_URL = "https://localhost:7201/api/PaymentQr";
+        const API_BASE = "https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net/api";
+        const API_URL = `${API_BASE}/AdminManagement`;
+        const QR_API_URL = `${API_BASE}/PaymentQr`;
         const adminSession = requireAdminAccess({ superAdminOnly: true });
         const currentUserId = adminSession ? adminSession.adminId : "";
 
@@ -496,6 +514,9 @@
                 return;
             }
 
+            if (adminSession.fullName) {
+                document.getElementById('admin-name').innerText = adminSession.fullName;
+            }
 
             updateSuperAdminLink(adminSession.role);
             loadAdmins();
