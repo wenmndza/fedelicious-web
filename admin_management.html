@@ -12,10 +12,16 @@
         :root {
             --primary-green: #b2eec7;
             --sidebar-green: #98d8aa;
+            --surface-bg: #e8f5e9;
+            --accent-orange: #27ae60;
             --card-bg: #ffffff;
-            --accent-red: #e74c3c;
-            --text-dark: #2c3e50;
+            --glass-white: rgba(255, 255, 255, 0.68);
             --text-muted: #7f8c8d;
+            --text-dark: #2c3e50;
+            --white: #ffffff;
+            --panel-border: rgba(44, 62, 80, 0.08);
+            --card-shadow: 0 12px 28px rgba(44, 62, 80, 0.08);
+            --accent-red: #e74c3c;
         }
 
 
@@ -28,68 +34,106 @@
 
         body {
             background-color: var(--primary-green);
-            display: flex;
-            height: 100vh;
-            overflow: hidden;
             color: var(--text-dark);
+            display: flex;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
 
 
         .sidebar {
-            width: 260px;
+            width: 280px;
             background-color: var(--sidebar-green);
             padding: 30px 20px;
+            position: fixed;
+            height: 100%;
+            border-right: 1px solid rgba(44, 62, 80, 0.08);
             display: flex;
             flex-direction: column;
         }
 
 
-        .sidebar h2 {
-            font-weight: 800;
-            font-size: 1.2rem;
+        .brand {
+            font-size: 22px;
+            font-weight: 700;
             margin-bottom: 40px;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-left: 10px;
         }
 
+        .logo-icon img {
+            width: 47px;
+            height: 47px;
+            background: var(--accent-orange);
+            padding: 2px;
+            border-radius: 50%;
+        }
+
+        .brand-name {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white;
+            margin-left: 5px;
+            letter-spacing: 1px;
+        }
+
+
+        .nav-menu {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            list-style: none;
+        }
 
         .nav-link {
             display: flex;
             align-items: center;
             gap: 15px;
-            padding: 12px 15px;
+            padding: 15px 20px;
+            color: var(--text-dark);
             text-decoration: none;
-            color: inherit;
-            font-size: 0.9rem;
-            font-weight: 600;
-            border-radius: 10px;
-            margin-bottom: 5px;
+            border-radius: 12px;
             transition: 0.3s;
+            margin-bottom: 8px;
+            font-size: 14px;
+            white-space: nowrap;
+            font-weight: 600;
         }
 
 
         .nav-link.active {
-            background-color: #27ae60;
+            background-color: var(--accent-orange);
             color: white;
+            box-shadow: 0 6px 20px rgba(255, 112, 67, 0.3);
         }
 
 
         .nav-link:hover:not(.active) {
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.35);
+            color: var(--text-dark);
         }
 
 
         .logout-link {
-            margin-top: auto;
-            color: #e74c3c;
+            margin-top: auto !important;
+            color: #e74c3c !important;
         }
 
 
         .main-content {
             flex-grow: 1;
-            padding: 30px;
+            margin-left: 280px;
+            display: flex;
+            flex-direction: column;
             overflow-y: auto;
-            background: #e8f5e9;
+            background: var(--surface-bg);
             border-top-left-radius: 40px;
             border-bottom-left-radius: 40px;
+            padding: 32px;
         }
 
 
@@ -102,9 +146,8 @@
 
 
         .header h1 {
-            font-size: 1.6rem;
+            font-size: clamp(1.5rem, 3vw, 2rem);
             font-weight: 800;
-            text-transform: uppercase;
         }
 
 
@@ -124,11 +167,12 @@
 
 
         .card {
-            background: white;
+            background: var(--card-bg);
             padding: 25px;
             border-radius: 20px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+            box-shadow: var(--card-shadow);
             height: fit-content;
+            border: 1px solid var(--panel-border);
         }
 
 
@@ -137,7 +181,7 @@
             font-weight: 700;
             color: var(--text-dark);
             margin-bottom: 20px;
-            border-bottom: 2px solid #eee;
+            border-bottom: 2px solid var(--panel-border);
             padding-bottom: 10px;
         }
 
@@ -154,14 +198,14 @@
             font-size: 0.8rem;
             text-transform: uppercase;
             color: var(--text-muted);
-            border-bottom: 2px solid #eee;
+            border-bottom: 2px solid var(--panel-border);
         }
 
 
         td {
             padding: 15px 12px;
             font-size: 0.9rem;
-            border-bottom: 1px solid #f9f9f9;
+            border-bottom: 1px solid var(--panel-border);
             font-weight: 600;
             vertical-align: middle;
         }
@@ -264,7 +308,7 @@
         .btn-submit {
             width: 100%;
             padding: 12px;
-            background: #27ae60;
+            background: var(--accent-orange);
             color: white;
             border: none;
             border-radius: 10px;
@@ -276,7 +320,7 @@
 
 
         .btn-submit:hover {
-            background: #219653;
+            filter: brightness(1.1);
         }
 
 
@@ -340,36 +384,6 @@
         }
 
 
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding-left: 10px;
-        }
-
-
-
-
-        .logo-icon img {
-            width: 47px;
-            height: 47px;
-            background: var(--accent-orange);
-            padding: 2.5px;
-            border-radius: 50%;
-        }
-
-
-
-
-        .brand-name {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: white;
-            margin-left: -7px;
-        }
-
-
         .custom-alert-overlay {
             position: fixed;
             top: 0;
@@ -391,7 +405,7 @@
             padding: 25px 25px;
             text-align: center;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            border: 2px solid #98d8aa;
+            border: 2px solid var(--sidebar-green);
             animation: popUp 0.25s ease;
         }
 
@@ -418,7 +432,7 @@
             padding: 12px;
             border: none;
             border-radius: 12px;
-            background: #27ae60;
+            background: var(--accent-orange);
             color: white;
             font-size: 0.95rem;
             font-weight: 700;
@@ -428,7 +442,7 @@
 
 
         .custom-alert-box button:hover {
-            background: #219653;
+            filter: brightness(1.1);
         }
 
 
@@ -444,9 +458,6 @@
             }
         }
     </style>
-
-
-    <link rel="stylesheet" href="admin.css">
 </head>
 
 <body>
@@ -459,16 +470,16 @@
             </div>
             <span class="brand-name">FEDELICIOUS</span>
         </div>
-        <nav id="nav-menu">
-            <a href="admin.html" class="nav-link"><i class="fas fa-th-large"></i> DASHBOARD</a>
-            <a href="order_admin.html" class="nav-link"><i class="fas fa-shopping-cart"></i> ORDERS</a>
-            <a href="reservation_admin.html" class="nav-link"><i class="fas fa-calendar-alt"></i> RESERVATIONS</a>
-            <a href="menusetting.html" class="nav-link"><i class="fas fa-utensils"></i> MENU SETTINGS</a>
-            <a href="salesreport.html" class="nav-link"><i class="fas fa-chart-line"></i> SALES REPORTS</a>
-            <a href="customeractivity.html" class="nav-link"><i class="fas fa-users"></i> CUSTOMERS</a>
-            <a href="admin_management.html" class="nav-link active" id="superAdminLink"><i
-                    class="fas fa-user-shield"></i> SYSTEM ADMINS</a>
-        </nav>
+        <ul class="nav-menu">
+            <li><a href="admin.html" class="nav-link"><i class="fas fa-th-large"></i> DASHBOARD</a></li>
+            <li><a href="order_admin.html" class="nav-link"><i class="fas fa-shopping-cart"></i> ORDERS</a></li>
+            <li><a href="reservation_admin.html" class="nav-link"><i class="fas fa-calendar-alt"></i> RESERVATIONS</a></li>
+            <li><a href="menusetting.html" class="nav-link"><i class="fas fa-utensils"></i> MENU SETTINGS</a></li>
+            <li><a href="salesreport.html" class="nav-link"><i class="fas fa-chart-line"></i> SALES REPORTS</a></li>
+            <li><a href="customeractivity.html" class="nav-link"><i class="fas fa-users"></i> CUSTOMERS</a></li>
+            <li><a href="admin_management.html" class="nav-link active" id="superAdminLink"><i
+                    class="fas fa-user-shield"></i> SYSTEM ADMINS</a></li>
+        </ul>
         <a href="#" class="nav-link logout-link" onclick="logout(); return false;"><i class="fas fa-sign-out-alt"></i>
             SIGN OUT</a>
     </aside>
@@ -607,6 +618,7 @@
 
     <script src="auth-session.js"></script>
     <script>
+        const adminSession = requireAdminAccess();
         const API_URL = "https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net/api/AdminManagement";
         const QR_API_URL = "https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net/api/PaymentQr";
         const currentUserId = adminSession ? adminSession.adminId : "";

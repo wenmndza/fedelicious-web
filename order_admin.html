@@ -609,15 +609,18 @@
             </div>
             <span class="brand-name">FEDELICIOUS</span>
         </div>
-        <a href="admin.html"><i class="fa-solid fa-gauge-high"></i> DASHBOARD</a>
-        <a href="order_admin.html" class="active"><i class="fas fa-shopping-cart"></i> ORDERS</a>
-        <a href="reservation_admin.html"><i class="fas fa-calendar-alt"></i> RESERVATIONS</a>
-        <a href="menusetting.html"><i class="fas fa-utensils"></i> MENU SETTINGS</a>
-        <a href="salesreport.html"><i class="fas fa-chart-line"></i> SALES REPORT</a>
-        <a href="customeractivity.html" class="nav-link"><i class="fa-solid fa-user"></i> CUSTOMER ACTIVITY</a>
-        <a href="admin_management.html" class="nav-link" id="superAdminLink"><i class="fas fa-user-shield"></i> SYSTEM
-            ADMINS</a>
-        <a href="#" class="logout-link" onclick="logout(); return false;"><i class="fas fa-sign-out-alt"></i> SIGN
+        <ul class="nav-menu" style="list-style: none;">
+            <li><a href="admin.html" class="nav-link"><i class="fa-solid fa-gauge-high"></i> DASHBOARD</a></li>
+            <li><a href="order_admin.html" class="nav-link active"><i class="fas fa-shopping-cart"></i> ORDERS</a></li>
+            <li><a href="reservation_admin.html" class="nav-link"><i class="fas fa-calendar-alt"></i> RESERVATIONS</a>
+            </li>
+            <li><a href="menusetting.html" class="nav-link"><i class="fas fa-utensils"></i> MENU SETTINGS</a></li>
+            <li><a href="salesreport.html" class="nav-link"><i class="fas fa-chart-line"></i> SALES REPORT</a></li>
+            <li><a href="customeractivity.html" class="nav-link"><i class="fa-solid fa-user"></i> CUSTOMER ACTIVITY</a></li>
+            <li><a href="admin_management.html" class="nav-link" id="superAdminLink"><i class="fas fa-user-shield"></i> SYSTEM
+                ADMINS</a></li>
+        </ul>
+        <a href="#" class="nav-link logout-link" onclick="logout(); return false;" style="margin-top: auto; color: #e74c3c;"><i class="fas fa-sign-out-alt"></i> SIGN
             OUT</a>
     </aside>
 
@@ -679,6 +682,7 @@
 
     <script src="auth-session.js"></script>
     <script>
+        const adminSession = requireAdminAccess();
         const API_SP = "https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net/api/Sp/orders";
         const API_ORDER = "https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net/api/Order";
 
