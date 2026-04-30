@@ -690,11 +690,8 @@
             margin-left: 5px;
             letter-spacing: 1px;
         }
-    <link rel="stylesheet" href="admin-notifications.css">
-    <link rel="stylesheet" href="admin-notifications.css">
+    </style>
 </head>
-
-
 
 <body>
     <aside class="sidebar">
@@ -726,32 +723,11 @@
                 <h2>Sales Intelligence</h2>
                 <p>Track revenue, order volume, and menu performance in a single live report.</p>
             </div>
-            
-            <div style="display: flex; align-items: center; gap: 20px;">
-                <!-- NOTIFICATION BELL -->
-                <div class="notification-wrapper" id="notificationToggle">
-                    <i class="fa-solid fa-bell notification-bell"></i>
-                    <span class="notification-badge" id="notifBadge">0</span>
-                    <div class="notification-dropdown" id="notifDropdown">
-                        <div class="notification-header">
-                            <span>Notifications</span>
-                            <small style="color: var(--accent-orange); cursor: pointer;" onclick="clearNotifications()">Clear All</small>
-                        </div>
-                        <div id="notifList">
-                            <div style="padding: 20px; text-align: center; color: #95a5a6; font-size: 13px;">No new notifications</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="admin-profile">
-                    <span id="admin-name">Admin</span>
-                    <i class="fa-solid fa-circle-user"></i>
-                </div>
+            <div class="admin-profile">
+                <span id="admin-name">Admin</span>
+                <i class="fa-solid fa-circle-user"></i>
             </div>
         </div>
-
-        <div id="toast-container"></div>
-
 
         <div class="dashboard-container">
             <section class="control-shell">
@@ -912,9 +888,6 @@
     </div>
 
     <script src="auth-session.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.min.js"></script>
-    <script src="admin-notifications.js"></script>
-
     <script>
         const API_SALES = "https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net/api/Sp/sales";
         const API_VIEW = "https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net/api/View";

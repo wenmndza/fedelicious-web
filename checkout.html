@@ -1484,10 +1484,12 @@
     </div>
 
     <script src="cart-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.min.js"></script>
     <script>
         const API_ORDER = "https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net/api/Order";
         const API_PAYMENT = "https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net/api/Payment";
         const API_AUTH = "https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net/api/Auth/getCustomerId/";
+        const HUB_URL = "https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net/notificationHub";
         const API_ACTIVE_QR = "https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net/api/PaymentQr/active";
 
         const hamburger = document.getElementById("hamburger");
@@ -1957,6 +1959,21 @@
                         document.getElementById("queue-no").innerText = "Order ID: #" + currentOrderId;
                         document.getElementById("modal-amount").innerText = formatCurrency(totalToPay);
                         openPaymentModal();
+
+                        // Send real-time notification to admin
+                        try {
+                            const notifConnection = new signalR.HubConnectionBuilder()
+                                .withUrl(HUB_URL)
+                                .build();
+                            await notifConnection.start();
+                            await notifConnection.invoke("SendNotification", {
+                                type: "order",
+                                message: `New order #${currentOrderId} placed by customer.`
+                            });
+                            notifConnection.stop();
+                        } catch (error) {
+                            console.warn("Failed to send notification:", error);
+                        }
                     } else if (window.FedeCart) {
                         window.FedeCart.showToast("Order saved but no order ID returned");
                     }
