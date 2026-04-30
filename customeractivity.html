@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,12 +25,14 @@
             --success: #27ae60;
         }
 
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: "Poppins", sans-serif;
         }
+
 
         body {
             background-color: var(--primary-green);
@@ -38,6 +41,7 @@
             min-height: 100vh;
             overflow-x: hidden;
         }
+
 
         .sidebar {
             width: 280px;
@@ -50,6 +54,7 @@
             flex-direction: column;
         }
 
+
         .brand {
             font-size: 22px;
             font-weight: 700;
@@ -60,12 +65,14 @@
             gap: 12px;
         }
 
+
         .nav-menu {
             list-style: none;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
         }
+
 
         .nav-link {
             display: flex;
@@ -82,21 +89,25 @@
             font-weight: 600;
         }
 
+
         .nav-link.active {
             background-color: var(--accent-orange);
             color: var(--white);
             box-shadow: 0 6px 20px rgba(255, 112, 67, 0.3);
         }
 
+
         .nav-link:hover:not(.active) {
             background: rgba(255, 255, 255, 0.35);
             color: var(--text-dark);
         }
 
+
         .logout-link {
             margin-top: auto;
             color: #ff8a65;
         }
+
 
         .main-content {
             flex-grow: 1;
@@ -109,6 +120,7 @@
             border-top-left-radius: 40px;
             border-bottom-left-radius: 40px;
         }
+
 
         .topbar {
             display: flex;
@@ -124,15 +136,18 @@
             z-index: 100;
         }
 
+
         .topbar-heading h2 {
             font-size: clamp(18px, 3vw, 24px);
         }
+
 
         .topbar-heading p {
             color: var(--text-muted);
             font-size: 0.9rem;
             margin-top: 4px;
         }
+
 
         .admin-profile {
             display: flex;
@@ -141,10 +156,12 @@
             font-weight: 600;
         }
 
+
         .admin-profile i {
             font-size: 34px;
             color: var(--accent-orange);
         }
+
 
         .dashboard-container {
             padding: 32px 40px 40px;
@@ -153,6 +170,7 @@
             gap: 24px;
         }
 
+
         .filter-shell,
         .card,
         .table-container {
@@ -160,6 +178,7 @@
             border: 1px solid var(--panel-border);
             box-shadow: var(--shadow-soft);
         }
+
 
         .filter-shell {
             display: flex;
@@ -171,10 +190,12 @@
             flex-wrap: wrap;
         }
 
+
         .search-box {
             flex: 1 1 320px;
             position: relative;
         }
+
 
         .search-box i {
             position: absolute;
@@ -183,6 +204,7 @@
             transform: translateY(-50%);
             color: var(--text-muted);
         }
+
 
         .search-box input,
         .date-box input {
@@ -196,9 +218,11 @@
             font-size: 0.95rem;
         }
 
+
         .search-box input::placeholder {
             color: var(--text-muted);
         }
+
 
         .date-box {
             display: flex;
@@ -207,16 +231,19 @@
             flex-wrap: wrap;
         }
 
+
         .date-box input {
             width: auto;
             min-width: 155px;
             padding-left: 16px;
         }
 
+
         .date-separator {
             color: var(--text-muted);
             font-weight: 600;
         }
+
 
         .btn-action {
             padding: 12px 24px;
@@ -230,10 +257,12 @@
             box-shadow: 0 10px 20px rgba(255, 112, 67, 0.24);
         }
 
+
         .btn-action:hover {
             transform: translateY(-1px);
             filter: brightness(1.05);
         }
+
 
         .btn-secondary-action {
             padding: 10px 16px;
@@ -246,10 +275,12 @@
             transition: 0.25s ease;
         }
 
+
         .btn-secondary-action:hover {
             background: rgba(39, 174, 96, 0.14);
             transform: translateY(-1px);
         }
+
 
         .content-grid {
             display: grid;
@@ -257,11 +288,13 @@
             gap: 24px;
         }
 
+
         .card {
             padding: 26px;
             border-radius: 24px;
             min-width: 0;
         }
+
 
         .card-header {
             display: flex;
@@ -272,6 +305,7 @@
             flex-wrap: wrap;
         }
 
+
         .card-header span:first-child {
             font-size: 0.82rem;
             font-weight: 700;
@@ -280,6 +314,7 @@
             text-transform: uppercase;
         }
 
+
         .card-header-actions {
             display: flex;
             align-items: center;
@@ -287,6 +322,7 @@
             flex-wrap: wrap;
             margin-left: auto;
         }
+
 
         .badge-soft {
             display: inline-flex;
@@ -302,10 +338,12 @@
             text-transform: uppercase;
         }
 
+
         .profile-hero {
             text-align: center;
             padding: 12px 0 22px;
         }
+
 
         .profile-avatar {
             width: 84px;
@@ -321,9 +359,11 @@
             border: 1px solid var(--panel-border);
         }
 
+
         .profile-hero h2 {
             font-size: clamp(1.4rem, 3vw, 1.8rem);
         }
+
 
         .profile-hero p {
             margin-top: 6px;
@@ -331,6 +371,7 @@
             font-size: 0.9rem;
             word-break: break-word;
         }
+
 
         .highlight-box {
             background: rgba(39, 174, 96, 0.06);
@@ -340,15 +381,18 @@
             margin-bottom: 16px;
         }
 
+
         .highlight-box .stat-row {
             border-bottom: none;
             padding: 0 0 6px;
         }
 
+
         .highlight-note {
             font-size: 0.78rem;
             color: var(--text-muted);
         }
+
 
         .stat-row {
             display: flex;
@@ -360,18 +404,22 @@
             font-size: 0.92rem;
         }
 
+
         .stat-row:last-child {
             border-bottom: none;
         }
+
 
         .stat-label {
             color: var(--text-muted);
             font-weight: 600;
         }
 
+
         .stat-label.success {
             color: var(--success);
         }
+
 
         .stat-value {
             color: var(--text-dark);
@@ -379,13 +427,16 @@
             text-align: right;
         }
 
+
         .stat-value.alert {
             color: var(--danger);
         }
 
+
         .stat-value.success {
             color: var(--success);
         }
+
 
         .table-container {
             padding: 26px;
@@ -393,11 +444,13 @@
             overflow-x: auto;
         }
 
+
         table {
             width: 100%;
             border-collapse: collapse;
             min-width: 620px;
         }
+
 
         th {
             padding: 14px 16px;
@@ -409,6 +462,7 @@
             border-bottom: 1px solid var(--panel-border);
         }
 
+
         td {
             padding: 16px;
             font-size: 0.92rem;
@@ -418,23 +472,28 @@
             vertical-align: top;
         }
 
+
         tr:last-child td {
             border-bottom: none;
         }
+
 
         tbody tr:hover td {
             background: rgba(39, 174, 96, 0.04);
         }
 
+
         .currency-paid {
             color: var(--success);
         }
+
 
         .res-time {
             font-size: 0.78rem;
             color: var(--text-muted);
             margin-top: 4px;
         }
+
 
         .badge {
             display: inline-flex;
@@ -448,15 +507,18 @@
             letter-spacing: 0.06em;
         }
 
+
         .bg-pending {
             background: rgba(255, 193, 7, 0.16);
             color: #9a6a00;
         }
 
+
         .bg-success {
             background: rgba(39, 174, 96, 0.16);
             color: #1f7a46;
         }
+
 
         .empty-state {
             text-align: center;
@@ -464,6 +526,7 @@
             color: var(--text-muted);
             font-style: italic;
         }
+
 
         .insight-modal {
             position: fixed;
@@ -475,9 +538,11 @@
             z-index: 1200;
         }
 
+
         .insight-modal.open {
             display: flex;
         }
+
 
         .insight-backdrop {
             position: absolute;
@@ -485,6 +550,7 @@
             background: rgba(18, 34, 26, 0.55);
             backdrop-filter: blur(6px);
         }
+
 
         .insight-dialog {
             position: relative;
@@ -499,6 +565,7 @@
             box-shadow: 0 28px 70px rgba(24, 47, 35, 0.24);
         }
 
+
         .insight-dialog-header {
             display: flex;
             justify-content: space-between;
@@ -509,6 +576,7 @@
             background: rgba(255, 255, 255, 0.72);
         }
 
+
         .insight-kicker {
             color: var(--accent-orange);
             font-size: 0.75rem;
@@ -517,16 +585,19 @@
             text-transform: uppercase;
         }
 
+
         .insight-dialog-header h3 {
             margin-top: 8px;
             font-size: clamp(1.5rem, 3vw, 2rem);
         }
+
 
         .insight-dialog-header p {
             margin-top: 8px;
             color: var(--text-muted);
             max-width: 620px;
         }
+
 
         .insight-close {
             border: none;
@@ -539,6 +610,7 @@
             cursor: pointer;
         }
 
+
         .insight-dialog-body {
             padding: 22px 28px 28px;
             overflow-y: auto;
@@ -547,11 +619,13 @@
             gap: 20px;
         }
 
+
         .insight-summary-grid {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 16px;
         }
+
 
         .insight-summary-card {
             background: #ffffff;
@@ -561,6 +635,7 @@
             box-shadow: var(--shadow-soft);
         }
 
+
         .insight-summary-card p {
             color: var(--text-muted);
             font-size: 0.75rem;
@@ -569,10 +644,12 @@
             text-transform: uppercase;
         }
 
+
         .insight-summary-card h4 {
             margin-top: 8px;
             font-size: clamp(1.15rem, 2.5vw, 1.6rem);
         }
+
 
         .insight-table-shell {
             background: #ffffff;
@@ -582,9 +659,11 @@
             overflow: auto;
         }
 
+
         .insight-table-shell table {
             min-width: 780px;
         }
+
 
         .insight-loading {
             padding: 48px 24px;
@@ -593,32 +672,39 @@
             font-weight: 600;
         }
 
+
         @media (max-width: 1024px) {
             .sidebar {
                 width: 220px;
             }
 
+
             .main-content {
                 margin-left: 220px;
             }
+
 
             .dashboard-container {
                 padding: 24px;
             }
 
+
             .content-grid {
                 grid-template-columns: 1fr;
             }
+
 
             .insight-summary-grid {
                 grid-template-columns: 1fr;
             }
         }
 
+
         @media (max-width: 768px) {
             body {
                 flex-direction: column;
             }
+
 
             .sidebar {
                 position: relative;
@@ -630,6 +716,7 @@
                 padding: 15px;
             }
 
+
             .brand {
                 display: none;
                 position: flex;
@@ -638,14 +725,17 @@
                 margin-top: 30px;
             }
 
+
             .brand {
                 display: none;
             }
+
 
             .nav-menu {
                 flex-direction: row;
                 gap: 10px;
             }
+
 
             .nav-link {
                 justify-content: center;
@@ -654,13 +744,16 @@
                 margin-bottom: 0;
             }
 
+
             .logout-link {
                 margin-top: 0;
             }
 
+
             .main-content {
                 margin-left: 0;
             }
+
 
             .topbar {
                 flex-direction: column;
@@ -668,36 +761,44 @@
                 padding: 18px 20px;
             }
 
+
             .dashboard-container {
                 padding: 20px;
             }
+
 
             .filter-shell,
             .date-box {
                 align-items: stretch;
             }
 
+
             .date-box {
                 width: 100%;
                 flex-direction: column;
             }
+
 
             .date-box input,
             .btn-action {
                 width: 100%;
             }
 
+
             table {
                 min-width: 560px;
             }
+
 
             .insight-modal {
                 padding: 12px;
             }
 
+
             .insight-dialog {
                 max-height: 94vh;
             }
+
 
             .insight-dialog-header,
             .insight-dialog-body {
@@ -706,12 +807,15 @@
             }
         }
 
+
         .brand {
             display: flex;
             align-items: center;
             gap: 15px;
             padding-left: 10px;
         }
+
+
 
 
         .logo-icon img {
@@ -723,6 +827,8 @@
         }
 
 
+
+
         .brand-name {
             font-family: 'Playfair Display', serif;
             font-weight: 700;
@@ -731,9 +837,9 @@
             margin-left: 5px;
             letter-spacing: 1px;
         }
-
     </style>
 </head>
+
 <body>
     <aside class="sidebar">
         <div class="brand">
@@ -745,14 +851,18 @@
         <ul class="nav-menu">
             <li><a href="admin.html" class="nav-link"><i class="fa-solid fa-gauge-high"></i> Dashboard</a></li>
             <li><a href="order_admin.html" class="nav-link"><i class="fas fa-shopping-cart"></i> Food Orders</a></li>
-            <li><a href="reservation_admin.html" class="nav-link"><i class="fas fa-calendar-alt"></i> Reservations</a></li>
+            <li><a href="reservation_admin.html" class="nav-link"><i class="fas fa-calendar-alt"></i> Reservations</a>
+            </li>
             <li><a href="menusetting.html" class="nav-link"><i class="fa-solid fa-utensils"></i> Menu Settings</a></li>
             <li><a href="salesreport.html" class="nav-link"><i class="fa-solid fa-chart-line"></i> Sales Report</a></li>
-            <li><a href="customeractivity.html" class="nav-link active"><i class="fa-solid fa-users"></i> Customer Activity</a></li>
-            <li><a href="admin_management.html" class="nav-link" id="superAdminLink"><i class="fas fa-user-shield"></i> System Admins</a></li>
+            <li><a href="customeractivity.html" class="nav-link active"><i class="fa-solid fa-users"></i> Customer
+                    Activity</a></li>
+            <li><a href="admin_management.html" class="nav-link" id="superAdminLink"><i class="fas fa-user-shield"></i>
+                    System Admins</a></li>
         </ul>
         <a href="#" class="nav-link logout-link" onclick="logout()"><i class="fa-solid fa-power-off"></i> Logout</a>
     </aside>
+
 
     <main class="main-content">
         <div class="topbar">
@@ -766,13 +876,16 @@
             </div>
         </div>
 
+
         <div class="dashboard-container">
             <section class="filter-shell">
                 <div class="search-box">
                     <i class="fas fa-search"></i>
-                    <input type="text" id="searchInput" list="customerList" placeholder="Search or select a customer..." autocomplete="off">
+                    <input type="text" id="searchInput" list="customerList" placeholder="Search or select a customer..."
+                        autocomplete="off">
                     <datalist id="customerList"></datalist>
                 </div>
+
 
                 <div class="date-box">
                     <input type="date" id="startDate" title="Start Date">
@@ -782,6 +895,7 @@
                 </div>
             </section>
 
+
             <section class="content-grid">
                 <div class="card">
                     <div class="card-header">
@@ -789,11 +903,13 @@
                         <span class="badge-soft">Profile</span>
                     </div>
 
+
                     <div class="profile-hero">
                         <div class="profile-avatar"><i class="fas fa-user"></i></div>
                         <h2 id="prof-name">---</h2>
                         <p id="prof-email">---</p>
                     </div>
+
 
                     <div class="stat-row">
                         <span class="stat-label">Confirmed Reservations</span>
@@ -809,6 +925,7 @@
                     </div>
                 </div>
 
+
                 <div class="card">
                     <div class="card-header">
                         <span><i class="fas fa-chart-pie"></i> Ordering Behavior</span>
@@ -820,13 +937,16 @@
                         </div>
                     </div>
 
+
                     <div class="highlight-box">
                         <div class="stat-row">
                             <span class="stat-label success">Date Range Orders</span>
                             <span class="stat-value success" id="range-orders">0</span>
                         </div>
-                        <p class="highlight-note">Orders placed by the selected customer within the chosen date range.</p>
+                        <p class="highlight-note">Orders placed by the selected customer within the chosen date range.
+                        </p>
                     </div>
+
 
                     <div class="stat-row">
                         <span class="stat-label">First Order ID (Pioneer)</span>
@@ -846,6 +966,7 @@
                     </div>
                 </div>
             </section>
+
 
             <section class="table-container">
                 <div class="card-header">
@@ -873,6 +994,7 @@
                 </table>
             </section>
 
+
             <section class="table-container">
                 <div class="card-header">
                     <span><i class="fas fa-calendar-check"></i> Reservation History List</span>
@@ -895,6 +1017,7 @@
             </section>
         </div>
     </main>
+
 
     <div class="insight-modal" id="insightModal" aria-hidden="true">
         <div class="insight-backdrop" onclick="closeInsightModal()"></div>
@@ -925,6 +1048,7 @@
                     </div>
                 </div>
 
+
                 <div class="insight-table-shell">
                     <table>
                         <thead id="insightTableHead"></thead>
@@ -939,19 +1063,60 @@
         </div>
     </div>
 
+
+    <!-- Custom Alert Modal -->
+    <div class="insight-modal" id="customAlertModal" aria-hidden="true">
+        <div class="insight-backdrop" onclick="customModalClose()"></div>
+        <div class="insight-dialog" role="alertdialog" aria-modal="true" aria-labelledby="customAlertTitle"
+            style="max-width: 440px; min-height: unset;">
+            <div class="insight-dialog-header">
+                <div style="display: flex; align-items: center; gap: 14px;">
+                    <div id="customAlertIconWrap"
+                        style="width: 42px; height: 42px; border-radius: 50%; background: rgba(231,76,60,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e74c3c" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="12" y1="8" x2="12" y2="12" />
+                            <line x1="12" y1="16" x2="12.01" y2="16" />
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="insight-kicker" id="customAlertType" style="color: #e74c3c;">Notice</p>
+                        <h3 id="customAlertTitle" style="font-size: 1.1rem; margin-top: 4px;">Action Required</h3>
+                    </div>
+                </div>
+                <button type="button" class="insight-close" onclick="customModalClose()" aria-label="Close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="insight-dialog-body" style="gap: 16px;">
+                <p id="customAlertMessage" style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.65;"></p>
+                <div style="display: flex; justify-content: flex-end;">
+                    <button type="button" onclick="customModalClose()"
+                        style="padding: 11px 28px; border: none; border-radius: 14px; background: #e74c3c; color: #fff; font-weight: 700; cursor: pointer; font-size: 0.88rem;">
+                        OK
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <script src="auth-session.js"></script>
     <script>
-        const API_SP_BASE = "https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net/api/Sp";
-        const API_VIEW_BASE = "https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net/api/View";
-        const adminSession = requireAdminAccess();
+        const API_SP_BASE = "https://localhost:7201/api/Sp";
+        const API_VIEW_BASE = "https://localhost:7201/api/View";
+
         const currencyFormatter = new Intl.NumberFormat("en-PH", {
             style: "currency",
             currency: "PHP",
             minimumFractionDigits: 2
         });
 
+
         const formatDate = (date) => date.toISOString().split("T")[0];
         const formatCurrency = (value) => currencyFormatter.format(Number(value || 0));
+
 
         async function safeFetch(endpoint) {
             try {
@@ -966,10 +1131,12 @@
             }
         }
 
+
         function extractArrayPayload(data) {
             if (Array.isArray(data)) {
                 return data;
             }
+
 
             if (data && typeof data === "object") {
                 const firstArray = Object.values(data).find(Array.isArray);
@@ -978,8 +1145,10 @@
                 }
             }
 
+
             return [];
         }
+
 
         function getTextValue(record, keys, fallback = "N/A") {
             for (const key of keys) {
@@ -989,8 +1158,10 @@
                 }
             }
 
+
             return fallback;
         }
+
 
         function getNumberValue(record, keys, fallback = 0) {
             for (const key of keys) {
@@ -1001,8 +1172,10 @@
                 }
             }
 
+
             return fallback;
         }
+
 
         function escapeHtml(value) {
             return String(value ?? "").replace(/[&<>"']/g, (char) => ({
@@ -1013,6 +1186,7 @@
                 "'": "&#39;"
             })[char]);
         }
+
 
         function getOrderAmount(record) {
             return getNumberValue(record, [
@@ -1025,10 +1199,12 @@
             ]);
         }
 
+
         function getOrderId(record) {
             const numericId = getNumberValue(record, ["order_id", "OrderID", "id"], NaN);
             return Number.isFinite(numericId) ? `#${numericId}` : getTextValue(record, ["order_id", "OrderID", "id"], "N/A");
         }
+
 
         function getReadableDate(record) {
             const rawDate = getTextValue(record, [
@@ -1039,14 +1215,17 @@
                 "date"
             ], "");
 
+
             if (!rawDate) {
                 return "N/A";
             }
+
 
             const parsed = new Date(rawDate);
             if (Number.isNaN(parsed.getTime())) {
                 return rawDate;
             }
+
 
             return parsed.toLocaleString("en-PH", {
                 year: "numeric",
@@ -1056,6 +1235,7 @@
                 minute: "2-digit"
             });
         }
+
 
         function openInsightModalShell(config) {
             document.getElementById("insightKicker").innerText = config.kicker;
@@ -1070,11 +1250,13 @@
             document.getElementById("insightTableHead").innerHTML = config.tableHeadHtml;
             document.getElementById("insightTableBody").innerHTML = config.tableBodyHtml;
 
+
             const modal = document.getElementById("insightModal");
             modal.classList.add("open");
             modal.setAttribute("aria-hidden", "false");
             document.body.style.overflow = "hidden";
         }
+
 
         function closeInsightModal() {
             const modal = document.getElementById("insightModal");
@@ -1082,6 +1264,7 @@
             modal.setAttribute("aria-hidden", "true");
             document.body.style.overflow = "";
         }
+
 
         function setInsightLoading(config) {
             openInsightModalShell({
@@ -1092,6 +1275,7 @@
                 tableBodyHtml: `<tr><td colspan="${config.columns}" class="insight-loading">Loading live records...</td></tr>`
             });
         }
+
 
         async function openOverallOrders() {
             const columns = 3;
@@ -1112,6 +1296,7 @@
                 `
             });
 
+
             const payload = await safeFetch(`${API_SP_BASE}/activity/pioneer-stats`);
             const rows = extractArrayPayload(payload);
             const minOrders = rows
@@ -1120,6 +1305,7 @@
             const maxOrders = rows
                 .map((row) => getNumberValue(row, ["MaxOrder", "max_order"], NaN))
                 .filter((value) => Number.isFinite(value));
+
 
             if (!rows.length) {
                 openInsightModalShell({
@@ -1144,6 +1330,7 @@
                 return;
             }
 
+
             const minOrder = minOrders.length ? Math.min(...minOrders) : null;
             const maxOrder = maxOrders.length ? Math.max(...maxOrders) : null;
             const tableBodyHtml = rows.map((row) => `
@@ -1153,6 +1340,7 @@
                     <td>${escapeHtml(getNumberValue(row, ["MaxOrder", "max_order"], 0) ? `#${getNumberValue(row, ["MaxOrder", "max_order"], 0)}` : "N/A")}</td>
                 </tr>
             `).join("");
+
 
             openInsightModalShell({
                 kicker: "Order List",
@@ -1175,6 +1363,7 @@
             });
         }
 
+
         async function openOverallPayments() {
             const columns = 4;
             setInsightLoading({
@@ -1195,9 +1384,11 @@
                 `
             });
 
+
             const payload = await safeFetch(`${API_VIEW_BASE}/customer-payment`);
             const rows = extractArrayPayload(payload);
             const totals = rows.map((row) => getNumberValue(row, ["order_total", "total_amount", "amount", "total"])).filter((value) => Number.isFinite(value) && value > 0);
+
 
             if (!rows.length) {
                 openInsightModalShell({
@@ -1223,11 +1414,13 @@
                 return;
             }
 
+
             const minOrder = totals.length ? Math.min(...totals) : 0;
             const maxOrder = totals.length ? Math.max(...totals) : 0;
             const tableBodyHtml = rows.map((row) => {
                 const status = getTextValue(row, ["payment_status", "status"], "Pending");
                 const statusClass = status.toLowerCase().includes("paid") ? "bg-success" : "bg-pending";
+
 
                 return `
                     <tr>
@@ -1238,6 +1431,7 @@
                     </tr>
                 `;
             }).join("");
+
 
             openInsightModalShell({
                 kicker: "Customer Payment",
@@ -1261,6 +1455,7 @@
             });
         }
 
+
         async function populateCustomerList() {
             const data = await safeFetch(`${API_SP_BASE}/activity/pioneer-stats`);
             if (data && data.length > 0) {
@@ -1270,15 +1465,35 @@
             }
         }
 
+
+        function showAlert(message) {
+            document.getElementById("customAlertMessage").innerText = message;
+            const modal = document.getElementById("customAlertModal");
+            modal.classList.add("open");
+            modal.setAttribute("aria-hidden", "false");
+            document.body.style.overflow = "hidden";
+        }
+
+
+        function customModalClose() {
+            const modal = document.getElementById("customAlertModal");
+            modal.classList.remove("open");
+            modal.setAttribute("aria-hidden", "true");
+            document.body.style.overflow = "";
+        }
+
+
         async function loadAllData() {
             const name = document.getElementById("searchInput").value.trim();
             const start = document.getElementById("startDate").value;
             const end = document.getElementById("endDate").value;
 
+
             if (!name) {
-                alert("Please enter or select a customer name.");
+                showAlert("Please enter or select a customer name.");
                 return;
             }
+
 
             const [fullProfile, pioneerStats, custSummary, rangeOrders, payReport, resList] = await Promise.all([
                 safeFetch(`${API_SP_BASE}/activity/full-profile?name=${encodeURIComponent(name)}`),
@@ -1289,11 +1504,13 @@
                 safeFetch(`${API_SP_BASE}/activity/list-reservations?name=${encodeURIComponent(name)}`)
             ]);
 
+
             populateOverview(fullProfile, name);
             populateBehavior(pioneerStats, custSummary, rangeOrders, name);
             populatePaymentTable(payReport);
             populateReservationTable(resList);
         }
+
 
         function populateOverview(data, searchName) {
             if (data && data.length > 0) {
@@ -1312,6 +1529,7 @@
             }
         }
 
+
         function populateBehavior(pioneer, summary, range, searchName) {
             if (pioneer && pioneer.length > 0) {
                 const pData = pioneer.find((item) => item.full_name.toLowerCase() === searchName.toLowerCase());
@@ -1322,6 +1540,7 @@
                 document.getElementById("stat-max-order").innerText = "N/A";
             }
 
+
             if (summary && summary.length > 0) {
                 document.getElementById("stat-max-guest").innerText = `${summary[0].largest_reservation} guests`;
                 document.getElementById("stat-min-guest").innerText = `${summary[0].smallest_reservation} guests`;
@@ -1329,6 +1548,7 @@
                 document.getElementById("stat-max-guest").innerText = "N/A";
                 document.getElementById("stat-min-guest").innerText = "N/A";
             }
+
 
             if (range && range.length > 0) {
                 const rData = range.find((item) => item.full_name.toLowerCase() === searchName.toLowerCase());
@@ -1338,14 +1558,17 @@
             }
         }
 
+
         function populatePaymentTable(data) {
             const tbody = document.getElementById("paymentBody");
             tbody.innerHTML = "";
+
 
             if (!data || data.length === 0) {
                 tbody.innerHTML = `<tr><td colspan="3" class="empty-state">No payment records found for this user.</td></tr>`;
                 return;
             }
+
 
             data.forEach((payment) => {
                 const statusClass = payment.payment_status === "Fully Paid" ? "bg-success" : "bg-pending";
@@ -1359,14 +1582,17 @@
             });
         }
 
+
         function populateReservationTable(data) {
             const tbody = document.getElementById("resBody");
             tbody.innerHTML = "";
+
 
             if (!data || data.length === 0) {
                 tbody.innerHTML = `<tr><td colspan="3" class="empty-state">No reservation history found.</td></tr>`;
                 return;
             }
+
 
             data.forEach((reservation) => {
                 const dateStr = new Date(reservation.reservation_date).toLocaleDateString("en-US", {
@@ -1375,6 +1601,7 @@
                     day: "numeric"
                 });
                 const statusClass = reservation.reservation_status === "Confirmed" ? "bg-success" : "bg-pending";
+
 
                 tbody.innerHTML += `
                     <tr>
@@ -1389,11 +1616,13 @@
             });
         }
 
+
         function logout() {
             logoutToLogin({
                 message: "Sign out from customer activity?"
             });
         }
+
 
         document.getElementById("searchInput").addEventListener("change", () => {
             if (document.getElementById("searchInput").value.trim() !== "") {
@@ -1401,27 +1630,34 @@
             }
         });
 
+
         document.addEventListener("keydown", (event) => {
             if (event.key === "Escape") {
                 closeInsightModal();
+                customModalClose();
             }
         });
+
 
         document.addEventListener("DOMContentLoaded", async () => {
             if (!adminSession) {
                 return;
             }
 
+
             const today = new Date();
             const startYear = new Date(today.getFullYear(), 0, 1);
+
 
             document.getElementById("admin-name").innerText = adminSession.fullName || "Admin Intelligence";
             document.getElementById("startDate").value = formatDate(startYear);
             document.getElementById("endDate").value = formatDate(today);
+
 
             updateSuperAdminLink(adminSession.role);
             await populateCustomerList();
         });
     </script>
 </body>
+
 </html>

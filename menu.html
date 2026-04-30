@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -9,6 +10,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
+
 
     <style>
         :root {
@@ -24,6 +26,7 @@
             --shadow-deep: 0 22px 44px rgba(0, 0, 0, 0.2);
         }
 
+
         * {
             margin: 0;
             padding: 0;
@@ -31,6 +34,7 @@
             font-family: "Poppins", sans-serif;
             scroll-behavior: smooth;
         }
+
 
         body {
             min-height: 100vh;
@@ -42,6 +46,7 @@
             padding-top: 112px;
         }
 
+
         .navbar {
             position: fixed;
             inset: 0 0 auto 0;
@@ -49,6 +54,7 @@
             padding: 24px 8%;
             background: linear-gradient(to bottom, rgba(7, 20, 15, 0.95), transparent);
         }
+
 
         .nav-container {
             max-width: 1360px;
@@ -59,11 +65,13 @@
             gap: 24px;
         }
 
+
         .brand {
             display: flex;
             align-items: center;
             gap: 12px;
         }
+
 
         .brand-icon img {
             width: 47px;
@@ -74,6 +82,7 @@
             object-fit: cover;
         }
 
+
         .brand-name {
             font-family: "Playfair Display", serif;
             font-size: 1.45rem;
@@ -81,12 +90,14 @@
             letter-spacing: 0.4px;
         }
 
+
         .nav-links {
             list-style: none;
             display: flex;
             align-items: center;
             gap: 35px;
         }
+
 
         .nav-links a,
         .mobile-menu a {
@@ -99,6 +110,7 @@
             transition: 0.3s;
         }
 
+
         .nav-links a.active,
         .nav-links a:hover,
         .mobile-menu a.active,
@@ -108,11 +120,13 @@
             padding-bottom: 5px;
         }
 
+
         .nav-actions {
             display: flex;
             align-items: center;
             gap: 28px;
         }
+
 
         .nav-icon {
             color: #fff;
@@ -122,12 +136,15 @@
             justify-content: center;
             text-decoration: none;
 
+
         }
+
 
         .nav-icon:hover {
             color: var(--accent-orange);
             transform: translateY(-1px);
         }
+
 
         .user-profile-link {
             display: inline-flex;
@@ -139,6 +156,7 @@
             border: 1px solid var(--border-soft);
         }
 
+
         .nav-user-name {
             max-width: 120px;
             overflow: hidden;
@@ -149,9 +167,11 @@
             font-weight: 600;
         }
 
+
         .user-profile-link:hover .nav-user-name {
             color: var(--accent-orange);
         }
+
 
         .user-circle {
             width: 40px;
@@ -165,11 +185,13 @@
             flex-shrink: 0;
         }
 
+
         .user-circle svg {
             width: 18px;
             height: 18px;
             display: block;
         }
+
 
         .hamburger {
             display: none;
@@ -183,6 +205,7 @@
             touch-action: manipulation;
         }
 
+
         .hamburger span {
             width: 24px;
             height: 2px;
@@ -191,17 +214,21 @@
             transition: transform 0.25s ease, opacity 0.25s ease;
         }
 
+
         .hamburger.open span:nth-child(1) {
             transform: translateY(7px) rotate(45deg);
         }
+
 
         .hamburger.open span:nth-child(2) {
             opacity: 0;
         }
 
+
         .hamburger.open span:nth-child(3) {
             transform: translateY(-7px) rotate(-45deg);
         }
+
 
         .mobile-menu {
             display: none;
@@ -213,11 +240,13 @@
             transition: max-height 0.3s ease, padding 0.3s ease;
         }
 
+
         .mobile-menu.open {
             max-height: 280px;
             padding-top: 18px;
             padding-bottom: 10px;
         }
+
 
         .mobile-menu ul {
             list-style: none;
@@ -230,25 +259,30 @@
             padding: 20px;
         }
 
+
         .menu-page {
             max-width: 1180px;
             margin: 0 auto;
             padding: 18px 8% 88px;
         }
 
+
         .menu-shell {
             padding: 18px 0 0;
         }
+
 
         .menu-intro {
             margin-bottom: 26px;
             padding: 0;
         }
 
+
         .menu-head {
             text-align: center;
             margin-bottom: 24px;
         }
+
 
         .menu-title {
             font-family: "Playfair Display", serif;
@@ -256,6 +290,7 @@
             line-height: 1;
             margin-bottom: 10px;
         }
+
 
         .menu-subtitle {
             color: var(--accent-orange);
@@ -266,9 +301,11 @@
             margin-bottom: 0;
         }
 
+
         .menu-lead {
             display: none;
         }
+
 
         .menu-controls {
             display: grid;
@@ -276,12 +313,14 @@
             justify-items: center;
         }
 
+
         .menu-categories {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 10px;
         }
+
 
         .menu-categories button {
             border: 1px solid var(--border-soft);
@@ -297,6 +336,7 @@
             transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
         }
 
+
         .menu-categories button.active,
         .menu-categories button:hover {
             background: var(--accent-orange);
@@ -304,6 +344,7 @@
             color: #fff;
             transform: translateY(-1px);
         }
+
 
         .menu-status {
             min-height: 20px;
@@ -315,15 +356,18 @@
             text-align: center;
         }
 
+
         .menu-status.error {
             color: #ffc0ac;
         }
+
 
         .menu-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
             gap: 30px;
         }
+
 
         .menu-card {
             overflow: hidden;
@@ -336,11 +380,13 @@
             transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
         }
 
+
         .menu-card:hover {
             transform: translateY(-4px);
             border-color: rgba(255, 112, 67, 0.24);
             box-shadow: 0 16px 28px rgba(0, 0, 0, 0.2);
         }
+
 
         .card-media {
             position: relative;
@@ -350,6 +396,7 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
+
         .card-media img {
             width: 100%;
             height: 100%;
@@ -357,9 +404,11 @@
             transition: transform 0.35s ease;
         }
 
+
         .menu-card:hover .card-media img {
             transform: scale(1.06);
         }
+
 
         .card-media::after {
             content: "";
@@ -367,6 +416,7 @@
             inset: 0;
             background: linear-gradient(180deg, transparent 54%, rgba(7, 20, 15, 0.18) 100%);
         }
+
 
         .item-rank {
             position: absolute;
@@ -383,6 +433,7 @@
             z-index: 1;
         }
 
+
         .card-info {
             flex: 1;
             padding: 14px 14px 15px;
@@ -390,17 +441,20 @@
             gap: 8px;
         }
 
+
         .card-info h3 {
             font-size: 0.98rem;
             font-weight: 700;
             line-height: 1.25;
         }
 
+
         .item-desc {
             color: var(--text-muted);
             font-size: 0.7rem;
             min-height: 34px;
         }
+
 
         .card-meta {
             display: flex;
@@ -413,11 +467,13 @@
             letter-spacing: 0.8px;
         }
 
+
         .card-footer {
             margin-top: auto;
             display: grid;
             gap: 12px;
         }
+
 
         .price {
             color: #fff;
@@ -425,6 +481,7 @@
             font-size: 1.08rem;
             line-height: 1;
         }
+
 
         .add-to-cart {
             width: 100%;
@@ -441,11 +498,13 @@
             transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
         }
 
+
         .add-to-cart:hover {
             background: var(--accent-orange);
             color: #fff;
             transform: translateY(-1px);
         }
+
 
         .menu-empty {
             padding: 30px;
@@ -456,42 +515,51 @@
             text-align: center;
         }
 
+
         @media (max-width: 980px) {
             body {
                 padding-top: 82px;
             }
+
 
             .navbar {
                 padding: 16px 6%;
                 background: rgba(7, 20, 15, 0.97);
             }
 
+
             .nav-links {
                 display: none;
             }
+
 
             .hamburger,
             .mobile-menu {
                 display: flex;
             }
 
+
             .menu-page {
                 padding: 20px 6% 64px;
             }
         }
+
 
         @media (max-width: 640px) {
             .nav-user-name {
                 display: none;
             }
 
+
             .menu-page {
                 padding: 18px 5% 56px;
             }
 
+
             .menu-shell {
                 padding: 8px 0 0;
             }
+
 
             .menu-categories {
                 flex-wrap: nowrap;
@@ -502,17 +570,21 @@
                 scrollbar-width: none;
             }
 
+
             .menu-categories::-webkit-scrollbar {
                 display: none;
             }
+
 
             .menu-categories button {
                 flex: 0 0 auto;
             }
 
+
             .menu-grid {
                 grid-template-columns: 1fr;
             }
+
 
             .card-media {
                 height: 170px;
@@ -520,6 +592,7 @@
         }
     </style>
 </head>
+
 
 <body>
     <nav class="navbar">
@@ -531,18 +604,21 @@
                 <span class="brand-name">Fedelicious</span>
             </div>
 
+
             <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
 
+
             <ul class="nav-links">
-                <li><a href="landing.html">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="menu.html" class="active">Menu</a></li>
                 <li><a href="reservation.html">Reservation</a></li>
                 <li><a href="orders.html">Orders</a></li>
             </ul>
+
 
             <div class="nav-actions">
                 <a href="cart.html" class="nav-icon" aria-label="Cart">
@@ -566,15 +642,17 @@
             </div>
         </div>
 
+
         <div class="mobile-menu" id="mobileMenu">
             <ul>
-                <li><a href="landing.html">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="menu.html" class="active">Menu</a></li>
                 <li><a href="reservation.html">Reservation</a></li>
                 <li><a href="orders.html">Orders</a></li>
             </ul>
         </div>
     </nav>
+
 
     <main class="menu-page">
         <section class="menu-shell">
@@ -584,19 +662,22 @@
                     <p class="menu-subtitle">Select from our categories</p>
                 </header>
 
+
                 <section class="menu-controls">
                     <div id="categoryContainer" class="menu-categories"></div>
                     <p id="menuStatus" class="menu-status">Loading menu...</p>
                 </section>
             </section>
 
+
             <section id="menuContainer" class="menu-grid" aria-live="polite"></section>
         </section>
     </main>
 
+
     <script src="cart-ui.js"></script>
     <script>
-        const API_URL = "https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net/api/Menu";
+        const API_URL = "https://localhost:7201/api/Menu";
         const API_AVAILABLE_URL = API_URL + "/available";
         const API_CATEGORIES_URL = API_URL + "/categories";
         const FALLBACK_IMAGE = "images/fede.jpg";
@@ -605,24 +686,29 @@
         let categories = [];
         let activeCategory = "all";
 
+
         const hamburger = document.getElementById("hamburger");
         const mobileMenu = document.getElementById("mobileMenu");
+
 
         function renderNavUserName() {
             const navUserName = document.getElementById("nav-user-name");
             const accountLink = document.querySelector(".user-profile-link");
             const fullName = (localStorage.getItem("fullName") || "").trim();
 
+
             if (!navUserName || !accountLink) {
                 return;
             }
 
+
             if (!fullName || fullName.toLowerCase() === "null") {
                 navUserName.textContent = "Hi, Guest";
                 navUserName.title = "Account";
-                accountLink.href = "index.html";
+                accountLink.href = "login.html";
                 return;
             }
+
 
             const firstName = fullName.split(/\s+/)[0];
             navUserName.textContent = "Hi, " + firstName;
@@ -630,11 +716,13 @@
             accountLink.href = "user.html";
         }
 
+
         hamburger.addEventListener("click", function () {
             const isOpen = hamburger.classList.toggle("open");
             mobileMenu.classList.toggle("open", isOpen);
             hamburger.setAttribute("aria-expanded", String(isOpen));
         });
+
 
         mobileMenu.querySelectorAll("a").forEach(function (link) {
             link.addEventListener("click", function () {
@@ -644,19 +732,23 @@
             });
         });
 
+
         function setMenuStatus(message, isError) {
             const status = document.getElementById("menuStatus");
             status.textContent = message;
             status.classList.toggle("error", Boolean(isError));
         }
 
+
         function getDisplayName(item) {
             return item.food_name || item.foodName || item.name || "Menu Item";
         }
 
+
         function getDisplayCategory(item) {
             return item.category_name || item.categoryName || item.category || "";
         }
+
 
         function getAvailabilityOverrides() {
             try {
@@ -666,24 +758,30 @@
             }
         }
 
+
         function isMenuItemAvailable(item) {
             const itemId = item.menu_id ?? item.id ?? item.menuId;
             const overrides = getAvailabilityOverrides();
             const override = itemId != null ? overrides[String(itemId)] : undefined;
 
+
             if (typeof override === "boolean") {
                 return override;
             }
 
+
             const rawValue = item.is_available ?? item.isAvailable ?? item.available ?? item.status ?? item.availability;
+
 
             if (typeof rawValue === "boolean") {
                 return rawValue;
             }
 
+
             if (typeof rawValue === "number") {
                 return rawValue === 1;
             }
+
 
             if (typeof rawValue === "string") {
                 const normalized = rawValue.trim().toLowerCase();
@@ -692,12 +790,15 @@
                 }
             }
 
+
             return true;
         }
+
 
         function getVisibleMenuItems(items) {
             return (Array.isArray(items) ? items : []).filter(isMenuItemAvailable);
         }
+
 
         function formatPrice(price) {
             return "PHP " + Number(price || 0).toLocaleString("en-PH", {
@@ -706,9 +807,11 @@
             });
         }
 
+
         function renderCategories() {
             const container = document.getElementById("categoryContainer");
             const allCategories = [{ id: "all", name: "All Menu" }].concat(categories);
+
 
             container.innerHTML = allCategories.map(function (category) {
                 const isActive = String(category.id) === String(activeCategory);
@@ -719,6 +822,7 @@
                 `;
             }).join("");
 
+
             container.querySelectorAll("button").forEach(function (button) {
                 button.addEventListener("click", function () {
                     activeCategory = button.dataset.category;
@@ -727,6 +831,7 @@
                 });
             });
         }
+
 
         function buildCard(item, index) {
             return `
@@ -751,28 +856,34 @@
             `;
         }
 
+
         function getFilteredMenu() {
             if (activeCategory === "all") {
                 return menuItems;
             }
+
 
             return menuItems.filter(function (item) {
                 return String(item.category_id) === String(activeCategory);
             });
         }
 
+
         function renderMenu() {
             const container = document.getElementById("menuContainer");
             const filteredItems = getFilteredMenu();
+
 
             if (!filteredItems.length) {
                 container.innerHTML = '<div class="menu-empty">No items available in this category yet.</div>';
                 return;
             }
 
+
             container.innerHTML = filteredItems.map(function (item, index) {
                 return buildCard(item, index);
             }).join("");
+
 
             container.querySelectorAll(".add-to-cart").forEach(function (button) {
                 button.addEventListener("click", function () {
@@ -780,9 +891,11 @@
                         return String(item.menu_id || item.id || getDisplayName(item)) === button.dataset.menuId;
                     });
 
+
                     if (!selected || !window.FedeCart) {
                         return;
                     }
+
 
                     window.FedeCart.addItem({
                         id: selected.menu_id || selected.id,
@@ -799,8 +912,10 @@
             });
         }
 
+
         function deriveCategoriesFromMenu(items) {
             const categoryMap = new Map();
+
 
             items.forEach(function (item) {
                 const id = item.category_id ?? getDisplayCategory(item);
@@ -812,11 +927,14 @@
                 }
             });
 
+
             return Array.from(categoryMap.values());
         }
 
+
         async function loadMenuData() {
             setMenuStatus("Loading menu...", false);
+
 
             try {
                 const [menuResponse, categoriesResponse] = await Promise.all([
@@ -826,18 +944,22 @@
                     })
                 ]);
 
+
                 if (!menuResponse.ok) {
                     throw new Error("Menu request failed");
                 }
+
 
                 menuItems = getVisibleMenuItems(await menuResponse.json());
                 const rawCategories = categoriesResponse && categoriesResponse.ok
                     ? await categoriesResponse.json()
                     : deriveCategoriesFromMenu(menuItems);
 
+
                 const visibleCategoryIds = new Set(menuItems.map(function (item) {
                     return String(item.category_id ?? item.categoryId ?? getDisplayCategory(item));
                 }));
+
 
                 categories = rawCategories.map(function (category) {
                     return {
@@ -847,6 +969,7 @@
                 }).filter(function (category) {
                     return visibleCategoryIds.has(String(category.id));
                 });
+
 
                 renderCategories();
                 renderMenu();
@@ -861,11 +984,13 @@
             }
         }
 
+
         document.addEventListener("DOMContentLoaded", function () {
             renderNavUserName();
             loadMenuData();
         });
     </script>
 </body>
+
 
 </html>

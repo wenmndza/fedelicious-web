@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -12,7 +13,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
+
 <body>
+
 
     <!-- NAVBAR -->
     <nav class="navbar">
@@ -24,6 +27,7 @@
                 <span class="brand-name">Fedelicious</span>
             </div>
 
+
             <!-- Hamburger button (mobile only) -->
             <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
                 <span></span>
@@ -31,12 +35,14 @@
                 <span></span>
             </button>
 
+
             <ul class="nav-links">
-                <li><a href="landing.html">HOME</a></li>
+                <li><a href="index.html">HOME</a></li>
                 <li><a href="menu.html">MENU</a></li>
                 <li><a href="reservation.html" class="active">RESERVATION</a></li>
                 <li><a href="orders.html">ORDERS</a></li>
             </ul>
+
 
             <div class="nav-actions">
                 <a href="cart.html" class="nav-icon">
@@ -48,6 +54,7 @@
                     </svg>
                     <span id="cart-count" class="cart-badge">0</span>
                 </a>
+
 
                 <a href="user.html" class="nav-icon user-profile-link">
                     <span class="nav-user-name" id="nav-user-name">Hi, Guest</span>
@@ -62,10 +69,11 @@
             </div>
         </div>
 
+
         <!-- Mobile drawer menu -->
         <div class="mobile-menu" id="mobileMenu">
             <ul>
-                <li><a href="landing.html">HOME</a></li>
+                <li><a href="index.html">HOME</a></li>
                 <li><a href="menu.html">MENU</a></li>
                 <li><a href="reservation.html" class="active">RESERVATION</a></li>
                 <li><a href="orders.html">ORDERS</a></li>
@@ -73,18 +81,22 @@
         </div>
     </nav>
 
+
     <!-- MAIN -->
     <main class="res-container">
         <div class="res-grid">
+
 
             <div class="res-info">
                 <h1 class="res-title">TABLE <br><span>BOOKING</span></h1>
                 <div class="orange-bar"></div>
 
+
                 <p class="res-text">
                     Experience the finest wings in Talisay. Secure your slot now.
                     A <strong>₱50 downpayment</strong> is required to finalize your table.
                 </p>
+
 
                 <ul class="res-features">
                     <li><span class="dot">✓</span> GUARANTEED SEATING</li>
@@ -92,6 +104,7 @@
                     <li><span class="dot">✓</span> EXCLUSIVE PROMOS</li>
                 </ul>
             </div>
+
 
             <div class="res-card">
                 <div class="input-box">
@@ -102,6 +115,7 @@
                         <option value="6">5-6 Persons</option>
                     </select>
                 </div>
+
 
                 <div class="input-row">
                     <div class="input-box">
@@ -115,6 +129,7 @@
                         </div>
                     </div>
 
+
                     <div class="input-box">
                         <label>PREFERRED TIME</label>
                         <div class="picker-field picker-trigger" onclick="openPicker('res_time')">
@@ -127,10 +142,12 @@
                     </div>
                 </div>
 
+
                 <div class="input-box">
                     <label>NOTES (OPTIONAL)</label>
                     <input type="text" class="custom-field" id="res_notes" placeholder="Birthday, window seat, etc.">
                 </div>
+
 
                 <div class="fee-wrapper">
                     <div class="fee-details">
@@ -140,12 +157,14 @@
                     <span class="req-tag">REQUIRED</span>
                 </div>
 
+
                 <button class="confirm-btn" id="saveBtn" onclick="processReservation()">
                     PROCEED TO PAYMENT <span class="arrow">→</span>
                 </button>
             </div>
         </div>
     </main>
+
 
     <!-- MODAL -->
     <div class="modal-overlay" id="payment-overlay">
@@ -205,6 +224,7 @@
         </div>
     </footer>
 
+
     <div class="fa-overlay" id="fa-overlay">
         <div class="fa-box">
             <div class="fa-title" id="fa-title">Notice</div>
@@ -214,6 +234,7 @@
         </div>
     </div>
 
+
     <style>
         * {
             margin: 0;
@@ -221,6 +242,7 @@
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
         }
+
 
         :root {
             --primary-green: #103527;
@@ -230,12 +252,14 @@
             --input-bg: #0a2118;
         }
 
+
         body {
             background-color: var(--primary-green);
             color: white;
             line-height: 1.6;
             overflow-x: hidden;
         }
+
 
         .fa-overlay {
             position: fixed;
@@ -250,10 +274,12 @@
             transition: opacity 0.2s;
         }
 
+
         .fa-overlay.show {
             opacity: 1;
             pointer-events: all;
         }
+
 
         .fa-box {
             background: var(--card-bg);
@@ -264,6 +290,7 @@
             max-width: 90%;
         }
 
+
         .fa-title {
             font-size: 0.72rem;
             font-weight: 800;
@@ -273,12 +300,14 @@
             margin-bottom: 10px;
         }
 
+
         .fa-message {
             color: #d0e8de;
             font-size: 0.97rem;
             line-height: 1.55;
             margin-bottom: 24px;
         }
+
 
         .fa-ok {
             width: 100%;
@@ -294,6 +323,7 @@
             text-transform: uppercase;
         }
 
+
         .fa-cancel {
             display: block;
             width: 100%;
@@ -308,6 +338,7 @@
             text-transform: uppercase;
         }
 
+
         /* ── NAVBAR ─────────────────────────────────────────────────── */
         .navbar {
             position: fixed;
@@ -318,6 +349,7 @@
             background: linear-gradient(to bottom, rgba(7, 20, 15, 0.95), transparent);
         }
 
+
         .nav-container {
             display: flex;
             justify-content: space-between;
@@ -326,11 +358,13 @@
             margin: 0 auto;
         }
 
+
         .brand {
             display: flex;
             align-items: center;
             gap: 12px;
         }
+
 
         .brand-icon img {
             width: 47px;
@@ -340,17 +374,20 @@
             border-radius: 50%;
         }
 
+
         .brand-name {
             font-family: 'Playfair Display', serif;
             font-weight: 700;
             font-size: 1.4rem;
         }
 
+
         .nav-links {
             display: flex;
             list-style: none;
             gap: 35px;
         }
+
 
         .nav-links a {
             text-decoration: none;
@@ -362,6 +399,7 @@
             text-transform: uppercase;
         }
 
+
         .nav-links a.active,
         .nav-links a:hover {
             color: var(--accent-orange);
@@ -369,11 +407,13 @@
             padding-bottom: 5px;
         }
 
+
         .nav-actions {
             display: flex;
             align-items: center;
             gap: 20px;
         }
+
 
         .nav-icon {
             color: white;
@@ -384,9 +424,11 @@
             overflow: visible;
         }
 
+
         .nav-icon:hover {
             color: var(--accent-orange);
         }
+
 
         .cart-badge {
             position: absolute;
@@ -405,6 +447,7 @@
             justify-content: center;
         }
 
+
         .user-circle {
             background: #165438;
             padding: 8px;
@@ -416,6 +459,7 @@
             flex-shrink: 0;
         }
 
+
         .user-profile-link {
             align-items: center;
             gap: 10px;
@@ -424,6 +468,7 @@
             background: rgba(20, 53, 40, 0.92);
             border: 1px solid rgba(255, 255, 255, 0.06);
         }
+
 
         .nav-user-name {
             max-width: 140px;
@@ -436,6 +481,7 @@
             letter-spacing: 0.03em;
         }
 
+
         .brand-icon img {
             width: 46px;
             height: 46px;
@@ -444,9 +490,11 @@
             border-radius: 50%;
         }
 
+
         .user-profile-link:hover .nav-user-name {
             color: var(--accent-orange);
         }
+
 
         /* ── Hamburger ──────────────────────────────────────────────── */
         .hamburger {
@@ -463,6 +511,7 @@
             z-index: 1100;
         }
 
+
         .hamburger span {
             display: block;
             width: 24px;
@@ -472,17 +521,21 @@
             transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
+
         .hamburger.open span:nth-child(1) {
             transform: translateY(7px) rotate(45deg);
         }
+
 
         .hamburger.open span:nth-child(2) {
             opacity: 0;
         }
 
+
         .hamburger.open span:nth-child(3) {
             transform: translateY(-7px) rotate(-45deg);
         }
+
 
         /* ── Mobile drawer ──────────────────────────────────────────── */
         .mobile-menu {
@@ -496,10 +549,12 @@
             transition: max-height 0.35s ease, padding 0.35s ease;
         }
 
+
         .mobile-menu.open {
             max-height: 300px;
             padding: 20px 8%;
         }
+
 
         .mobile-menu ul {
             list-style: none;
@@ -507,6 +562,7 @@
             flex-direction: column;
             gap: 18px;
         }
+
 
         .mobile-menu a {
             text-decoration: none;
@@ -518,10 +574,12 @@
             text-transform: uppercase;
         }
 
+
         .mobile-menu a.active,
         .mobile-menu a:hover {
             color: var(--accent-orange);
         }
+
 
         /* ── RESERVATION LAYOUT ─────────────────────────────────────── */
         .res-container {
@@ -532,6 +590,7 @@
             align-items: center;
         }
 
+
         .res-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -541,6 +600,7 @@
             align-items: start;
         }
 
+
         .res-title {
             font-family: 'Playfair Display', serif;
             font-size: clamp(3rem, 6vw, 5rem);
@@ -548,9 +608,11 @@
             margin-bottom: 20px;
         }
 
+
         .res-title span {
             color: var(--accent-orange);
         }
+
 
         .orange-bar {
             width: 60px;
@@ -559,6 +621,7 @@
             margin-bottom: 30px;
         }
 
+
         .res-text {
             color: var(--text-muted);
             font-size: 1.1rem;
@@ -566,9 +629,11 @@
             margin-bottom: 40px;
         }
 
+
         .res-features {
             list-style: none;
         }
+
 
         .res-features li {
             display: flex;
@@ -578,6 +643,7 @@
             font-weight: 600;
             font-size: 0.85rem;
         }
+
 
         .dot {
             width: 24px;
@@ -592,6 +658,7 @@
             flex-shrink: 0;
         }
 
+
         .res-card {
             background: var(--card-bg);
             padding: 50px;
@@ -600,15 +667,19 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
+
         .input-box {
             margin-bottom: 25px;
         }
+
 
         .input-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
         }
+
+
 
 
         label {
@@ -620,6 +691,7 @@
             letter-spacing: 1px;
             text-transform: uppercase;
         }
+
 
         .custom-field {
             width: 100%;
@@ -634,6 +706,7 @@
             transition: 0.3s ease;
         }
 
+
         .picker-field {
             position: relative;
             min-height: 70px;
@@ -647,9 +720,11 @@
             overflow: hidden;
         }
 
+
         .picker-trigger {
             cursor: pointer;
         }
+
 
         .picker-input {
             position: absolute;
@@ -664,6 +739,7 @@
             background: transparent;
         }
 
+
         .picker-display {
             display: block;
             width: 100%;
@@ -675,9 +751,11 @@
             pointer-events: none;
         }
 
+
         .picker-display.is-placeholder {
             color: rgba(255, 255, 255, 0.96);
         }
+
 
         .picker-inline-icon {
             position: absolute;
@@ -689,10 +767,12 @@
             pointer-events: none;
         }
 
+
         .picker-field:focus-within {
             border-color: rgba(255, 112, 67, 0.45);
             box-shadow: 0 0 0 4px rgba(255, 112, 67, 0.08);
         }
+
 
         .picker-input::-webkit-calendar-picker-indicator {
             opacity: 0;
@@ -700,6 +780,7 @@
             height: 100%;
             cursor: pointer;
         }
+
 
         .picker-input::-webkit-datetime-edit,
         .picker-input::-webkit-datetime-edit-fields-wrapper,
@@ -713,16 +794,20 @@
             color: transparent;
         }
 
+
         .custom-field:focus {
             border-color: var(--accent-orange);
             box-shadow: 0 0 15px rgba(255, 112, 67, 0.1);
         }
 
 
+
+
         select.custom-field option {
             background: var(--input-bg);
             color: white;
         }
+
 
         .fee-wrapper {
             background: rgba(0, 0, 0, 0.2);
@@ -734,6 +819,7 @@
             margin: 30px 0;
         }
 
+
         .fee-sub {
             display: block;
             font-size: 0.6rem;
@@ -741,11 +827,13 @@
             font-weight: 800;
         }
 
+
         .fee-main {
             font-size: 2.2rem;
             font-weight: 700;
             font-family: 'Playfair Display', serif;
         }
+
 
         .req-tag {
             background: rgba(255, 112, 67, 0.1);
@@ -756,6 +844,7 @@
             font-size: 0.65rem;
             font-weight: 800;
         }
+
 
         .confirm-btn {
             width: 100%;
@@ -774,11 +863,13 @@
             touch-action: manipulation;
         }
 
+
         .confirm-btn:hover {
             background: #ff8a65;
             transform: translateY(-3px);
             box-shadow: 0 10px 25px rgba(255, 112, 67, 0.4);
         }
+
 
         /* ── MODAL ──────────────────────────────────────────────────── */
         .modal-overlay {
@@ -797,6 +888,7 @@
             overscroll-behavior: contain;
         }
 
+
         .payment-modal {
             background: var(--card-bg);
             padding: 50px;
@@ -811,6 +903,7 @@
             -webkit-overflow-scrolling: touch;
         }
 
+
         .modal-title {
             margin: 0 0 14px;
             color: white;
@@ -819,6 +912,7 @@
             letter-spacing: 0.02em;
             font-family: 'Playfair Display', serif;
         }
+
 
         .qr-container {
             background: white;
@@ -832,11 +926,13 @@
             justify-content: center;
         }
 
+
         .qr-container img {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
         }
+
 
         .qr-details {
             display: grid;
@@ -845,6 +941,7 @@
             margin-bottom: 18px;
         }
 
+
         .qr-detail-card {
             padding: 16px 14px;
             border-radius: 18px;
@@ -852,6 +949,7 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
             text-align: center;
         }
+
 
         .qr-detail-label {
             display: block;
@@ -862,6 +960,7 @@
             text-transform: uppercase;
         }
 
+
         .qr-detail-value {
             display: block;
             margin-top: 8px;
@@ -871,11 +970,13 @@
             line-height: 1.35;
         }
 
+
         .modal-copy {
             color: var(--text-muted);
             font-size: 0.84rem;
             margin-bottom: 18px;
         }
+
 
         .modal-copy strong {
             display: block;
@@ -885,20 +986,24 @@
             line-height: 1.1;
         }
 
+
         .payment-fields {
             display: grid;
             gap: 14px;
             margin-top: 2px;
         }
 
+
         .payment-field {
             text-align: left;
         }
+
 
         .payment-field .custom-field {
             border-radius: 18px;
             padding: 18px 20px;
         }
+
 
         .queue-badge {
             background: rgba(0, 0, 0, 0.2);
@@ -912,6 +1017,7 @@
             border: 1px solid rgba(255, 112, 67, 0.2);
         }
 
+
         .cancel-btn {
             font-size: 0.75rem;
             color: var(--text-muted);
@@ -923,11 +1029,13 @@
             -webkit-tap-highlight-color: transparent;
         }
 
+
         footer {
             padding: 80px 8% 40px;
             background: #07140f;
             margin-top: 50px;
         }
+
 
         .footer-content {
             display: flex;
@@ -935,17 +1043,20 @@
             margin-bottom: 50px;
         }
 
+
         .footer-brand h3 {
             font-family: 'Playfair Display', serif;
             font-size: 2rem;
             margin-bottom: 15px;
         }
 
+
         .footer-links h4 {
             color: var(--accent-orange);
             margin-bottom: 15px;
             text-transform: uppercase;
         }
+
 
         .footer-bottom {
             border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -955,16 +1066,19 @@
             font-size: 0.8rem;
         }
 
+
         /* ── Tablet landscape (≤1024px) ─────────────────────────────── */
         @media (max-width: 1024px) {
             .res-grid {
                 gap: 50px;
             }
 
+
             .res-card {
                 padding: 40px;
             }
         }
+
 
         /* ── Tablet portrait / large phone landscape (≤1000px) ──────── */
         @media (max-width: 1000px) {
@@ -973,23 +1087,28 @@
                 gap: 50px;
             }
 
+
             .res-container {
                 padding: 120px 8% 60px;
             }
+
 
             .res-title {
                 text-align: center;
                 font-size: 3.5rem;
             }
 
+
             .orange-bar {
                 margin: 0 auto 30px;
             }
+
 
             .res-text {
                 margin: 0 auto 40px;
                 text-align: center;
             }
+
 
             .res-features {
                 display: flex;
@@ -997,9 +1116,11 @@
                 align-items: center;
             }
 
+
             .res-card {
                 padding: 40px 30px;
             }
+
 
             .footer-content {
                 flex-direction: column;
@@ -1007,33 +1128,40 @@
             }
         }
 
+
         /* ── Show hamburger at ≤900px ────────────────────────────────── */
         @media (max-width: 900px) {
             .hamburger {
                 display: flex;
             }
 
+
             .nav-links {
                 display: none;
             }
+
 
             .nav-user-name {
                 display: none;
             }
 
+
             .mobile-menu {
                 display: flex;
             }
+
 
             .navbar {
                 padding: 18px 6%;
                 background: rgba(7, 20, 15, 0.97);
             }
 
+
             .res-container {
                 padding: 100px 6% 60px;
             }
         }
+
 
         /* ── Phone portrait (≤600px) ────────────────────────────────── */
         @media (max-width: 600px) {
@@ -1041,35 +1169,43 @@
                 padding: 14px;
             }
 
+
             .navbar {
                 padding: 16px 5%;
             }
+
 
             .brand-name {
                 font-size: 1.2rem;
             }
 
+
             .res-container {
                 padding: 90px 5% 50px;
             }
+
 
             .res-title {
                 font-size: 2.8rem;
             }
 
+
             .res-text {
                 font-size: 0.95rem;
             }
+
 
             .input-row {
                 grid-template-columns: 1fr;
                 gap: 0;
             }
 
+
             .res-card {
                 padding: 30px 20px;
                 border-radius: 28px;
             }
+
 
             .fee-wrapper {
                 flex-direction: column;
@@ -1077,36 +1213,44 @@
                 text-align: center;
             }
 
+
             .fee-main {
                 font-size: 1.8rem;
             }
+
 
             .payment-modal {
                 padding: 30px 20px;
                 border-radius: 28px;
             }
 
+
             .modal-title {
                 font-size: 1.6rem;
             }
+
 
             .qr-container {
                 width: 160px;
                 height: 160px;
             }
 
+
             .qr-details {
                 grid-template-columns: 1fr;
             }
+
 
             .modal-copy strong {
                 font-size: 1.18rem;
             }
 
+
             footer {
                 padding: 50px 5% 30px;
             }
         }
+
 
         /* ── Very small phones (≤360px) ─────────────────────────────── */
         @media (max-width: 360px) {
@@ -1114,15 +1258,18 @@
                 font-size: 2.2rem;
             }
 
+
             .res-card {
                 padding: 24px 16px;
             }
+
 
             .confirm-btn {
                 padding: 16px;
                 font-size: 0.82rem;
             }
         }
+
 
         /* ── Touch-device tap states ────────────────────────────────── */
         @media (hover: none) and (pointer: coarse) {
@@ -1131,6 +1278,7 @@
                 transform: scale(0.98);
             }
 
+
             .cancel-btn:active {
                 color: var(--accent-orange);
             }
@@ -1138,14 +1286,18 @@
     </style>
 
 
+
+
     <script src="cart-ui.js"></script>
     <script>
 
-        const API_RES = 'https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net/api/Reservation';
-        const API_PAYMENT = 'https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net/api/Payment';
-        const API_GET_ID_BY_NAME = 'https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net/api/Auth/getCustomerId/';
-        const API_ACTIVE_QR = 'https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net/api/PaymentQr/active';
+
+        const API_RES = 'https://localhost:7201/api/Reservation';
+        const API_PAYMENT = 'https://localhost:7201/api/Payment';
+        const API_GET_ID_BY_NAME = 'https://localhost:7201/api/Auth/getCustomerId/';
+        const API_ACTIVE_QR = 'https://localhost:7201/api/PaymentQr/active';
         const AUTH_KEYS = ['role', 'fullName', 'email', 'address', 'adminId', 'customer_id'];
+
 
         let currentResId = null;
         let activePaymentMethodName = "GCash";
@@ -1159,10 +1311,14 @@
         const reservationTimeDisplay = document.getElementById('res_time_display');
 
 
+
+
         function renderNavUserName() {
             const navUserName = document.getElementById('nav-user-name');
             const accountLink = document.querySelector('.user-profile-link');
             const fullName = (localStorage.getItem('fullName') || '').trim();
+
+
 
 
             if (!navUserName || !accountLink) {
@@ -1170,18 +1326,23 @@
             }
 
 
+
+
             if (!fullName || fullName.toLowerCase() === 'null') {
                 navUserName.textContent = 'Hi, Guest';
                 navUserName.title = 'Account';
-                accountLink.href = 'index.html';
+                accountLink.href = 'login.html';
                 return;
             }
+
+
 
 
             navUserName.textContent = 'Hi, ' + fullName.split(/\s+/)[0];
             navUserName.title = fullName;
             accountLink.href = 'user.html';
         }
+
 
         // Override native alert globally
         window.alert = function (message) {
@@ -1197,10 +1358,13 @@
             document.getElementById('fa-overlay').classList.remove('show');
         }
 
+
         function clearAuthState() {
             AUTH_KEYS.forEach((key) => localStorage.removeItem(key));
             sessionStorage.clear();
         }
+
+
 
 
         function getLocalTodayISO() {
@@ -1212,9 +1376,13 @@
         }
 
 
+
+
         function getRoundedCurrentTime(stepMinutes = 15) {
             const now = new Date();
             now.setSeconds(0, 0);
+
+
 
 
             const minutes = now.getMinutes();
@@ -1224,8 +1392,12 @@
             }
 
 
+
+
             return `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
         }
+
+
 
 
         function formatReservationDateDisplay(value) {
@@ -1233,13 +1405,17 @@
                 return 'mm/dd/yyyy';
             }
 
+
             const [year, month, day] = String(value).split('-');
             if (!year || !month || !day) {
                 return 'mm/dd/yyyy';
             }
 
+
             return `${month}/${day}/${year}`;
         }
+
+
 
 
         function formatReservationTimeDisplay(value) {
@@ -1247,16 +1423,20 @@
                 return '--:-- --';
             }
 
+
             const [hourText, minuteText = '00'] = String(value).split(':');
             const hourNumber = Number(hourText);
             if (!Number.isFinite(hourNumber)) {
                 return '--:-- --';
             }
 
+
             const period = hourNumber >= 12 ? 'PM' : 'AM';
             const hour12 = hourNumber % 12 || 12;
             return `${String(hour12).padStart(2, '0')}:${minuteText} ${period}`;
         }
+
+
 
 
         function syncReservationPickerDisplays() {
@@ -1265,6 +1445,7 @@
                 reservationDateDisplay.classList.toggle('is-placeholder', !reservationDateInput?.value);
             }
 
+
             if (reservationTimeDisplay) {
                 reservationTimeDisplay.textContent = formatReservationTimeDisplay(reservationTimeInput?.value);
                 reservationTimeDisplay.classList.toggle('is-placeholder', !reservationTimeInput?.value);
@@ -1272,10 +1453,14 @@
         }
 
 
+
+
         function updateReservationDateTimeConstraints() {
             const today = getLocalTodayISO();
             reservationDateInput.min = today;
             reservationTimeInput.step = 900;
+
+
 
 
             if (reservationDateInput.value === today) {
@@ -1285,12 +1470,17 @@
             }
 
 
+
+
             if (reservationTimeInput.min && reservationTimeInput.value && reservationTimeInput.value < reservationTimeInput.min) {
                 reservationTimeInput.value = '';
             }
 
+
             syncReservationPickerDisplays();
         }
+
+
 
 
         function isPastDateTime(dateValue, timeValue) {
@@ -1299,9 +1489,13 @@
             }
 
 
+
+
             const selected = new Date(`${dateValue}T${timeValue}:00`);
             return !Number.isNaN(selected.getTime()) && selected.getTime() < Date.now();
         }
+
+
 
 
         function openPicker(fieldId) {
@@ -1311,15 +1505,21 @@
             }
 
 
+
+
             if (typeof field.showPicker === 'function') {
                 field.showPicker();
                 return;
             }
 
 
+
+
             field.focus();
             field.click();
         }
+
+
 
 
         function updateCartCount() {
@@ -1328,13 +1528,18 @@
                 return;
             }
 
+
             const badge = document.getElementById('cart-count');
             if (!badge) {
                 return;
             }
 
 
+
+
             let cart = [];
+
+
 
 
             try {
@@ -1344,9 +1549,13 @@
             }
 
 
+
+
             const totalItems = cart.reduce((sum, item) => {
                 return sum + Math.max(1, Number(item.qty ?? item.quantity ?? 1) || 1);
             }, 0);
+
+
 
 
             badge.textContent = String(totalItems);
@@ -1354,8 +1563,14 @@
         }
 
 
+
+
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobileMenu');
+
+
+
+
 
 
 
@@ -1369,6 +1584,10 @@
 
 
 
+
+
+
+
         mobileMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 hamburger.classList.remove('open');
@@ -1376,6 +1595,12 @@
                 hamburger.setAttribute('aria-expanded', false);
             });
         });
+
+
+
+
+
+
 
 
 
@@ -1394,8 +1619,12 @@
             syncReservationPickerDisplays();
 
 
+
+
             loadActiveQR();
         });
+
+
 
 
         async function loadActiveQR() {
@@ -1408,12 +1637,15 @@
                         activePaymentMethodName = activeQr.qr_name || "GCash";
                         activePaymentQrAccName = activeQr.qr_accname || "Not Available";
 
+
                         // NAKA-TUGMA NA ITO SA BINABATO NG C# (paymentqr_id)
                         activeQrId = activeQr.paymentqr_id;
+
 
                         document.getElementById('modal-payment-title').innerText = `${activePaymentMethodName} Payment`;
                         document.getElementById('modal-qr-method').innerText = activePaymentMethodName;
                         document.getElementById('modal-qr-accname').innerText = activePaymentQrAccName;
+
 
                         if (activeQr.qr_image) {
                             document.getElementById('modal-qr-img').src = `data:image/jpeg;base64,${activeQr.qr_image}`;
@@ -1433,18 +1665,23 @@
             }
         }
 
+
         function openPaymentModal() {
             if (!paymentOverlay) {
                 return;
             }
 
+
             paymentOverlay.style.display = 'flex';
             paymentOverlay.scrollTop = 0;
+
 
             if (paymentModal) {
                 paymentModal.scrollTop = 0;
             }
         }
+
+
 
 
         async function processReservation() {
@@ -1453,20 +1690,28 @@
             const fullName = localStorage.getItem("fullName");
 
 
+
+
             if (!date || !time) return alert("Please select date and time.");
             updateReservationDateTimeConstraints();
             if (isPastDateTime(date, time)) return alert("Please choose a current or future reservation time.");
             if (!fullName) return alert("Please login first.");
 
 
+
+
             const btn = document.getElementById("saveBtn");
             btn.disabled = true; btn.innerText = "SAVING...";
+
+
 
 
             try {
                 const idRes = await fetch(`${API_GET_ID_BY_NAME}${encodeURIComponent(fullName)}`);
                 const userData = await idRes.json();
                 const cID = userData.customer_id;
+
+
 
 
                 const payload = {
@@ -1481,6 +1726,8 @@
                 };
 
 
+
+
                 const res = await fetch(API_RES, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -1488,10 +1735,14 @@
                 });
 
 
+
+
                 const result = await res.json();
+
 
                 if (res.ok) {
                     currentResId = result.data ? result.data.reservation_id : result.reservation_id;
+
 
                     if (currentResId) {
                         localStorage.setItem("latest_res_id", currentResId);
@@ -1513,19 +1764,28 @@
         }
 
 
+
+
         async function submitFinalPayment() {
             const gNum = document.getElementById("gcash_num").value.trim();
             const rNum = document.getElementById("ref_num").value.trim();
 
+
             const resId = currentResId || localStorage.getItem("latest_res_id");
+
+
 
 
             if (!resId) return alert("Reservation ID not found. Please try again.");
             if (gNum.length !== 11 || rNum.length < 10) return alert("Please enter valid payment details.\nGCash: 11 digits\nReference: at least 10 digits");
 
 
+
+
             const btn = document.getElementById("payment-btn");
             btn.disabled = true; btn.innerText = "PROCESSING...";
+
+
 
 
             // IPAPASA NA NATIN YUNG paymentqr_id DITO SA PAYLOAD
@@ -1535,8 +1795,10 @@
                 order_id: null,
                 payment_method: activePaymentMethodName,
 
+
                 // KUNG ANO ANG PANGALAN SA PAYMENT MODEL MO, DAPAT TUGMA ITO:
                 paymentqr_id: activeQrId,
+
 
                 amount: 50.00,
                 reference_number: rNum,
@@ -1546,7 +1808,11 @@
             };
 
 
+
+
             console.log("SENDING TO API:", payPayload);
+
+
 
 
             try {
@@ -1556,12 +1822,14 @@
                     body: JSON.stringify(payPayload)
                 });
 
+
                 if (res.ok) {
                     alert(`Success! ${activePaymentMethodName} Payment submitted for Reservation #${resId}`);
                     localStorage.removeItem("latest_res_id");
                     window.location.href = "orders.html";
                 } else {
                     const err = await res.json();
+
 
                     if (err.errors) {
                         console.error("Validation Errors:", err.errors);
@@ -1578,12 +1846,15 @@
         }
 
 
+
+
         function closePaymentModal() { document.getElementById("payment-overlay").style.display = 'none'; }
         function logout() {
             clearAuthState();
-            window.location.href = "index.html";
+            window.location.href = "login.html";
         }
     </script>
 </body>
+
 
 </html>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fedelicious Admin | System Management</title>
+    <title>Fedelicious | Super Admin Control</title>
     <link rel="icon" type="image/png" href="images/icon1.png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -12,17 +12,12 @@
         :root {
             --primary-green: #b2eec7;
             --sidebar-green: #98d8aa;
-            --surface-bg: #e8f5e9;
-            --accent-orange: #27ae60;
             --card-bg: #ffffff;
-            --glass-white: rgba(255, 255, 255, 0.68);
-            --text-muted: #7f8c8d;
-            --text-dark: #2c3e50;
-            --white: #ffffff;
-            --panel-border: rgba(44, 62, 80, 0.08);
-            --card-shadow: 0 12px 28px rgba(44, 62, 80, 0.08);
             --accent-red: #e74c3c;
+            --text-dark: #2c3e50;
+            --text-muted: #7f8c8d;
         }
+
 
         * {
             margin: 0;
@@ -33,126 +28,92 @@
 
         body {
             background-color: var(--primary-green);
-            color: var(--text-dark);
             display: flex;
-            min-height: 100vh;
-            overflow-x: hidden;
+            height: 100vh;
+            overflow: hidden;
+            color: var(--text-dark);
         }
 
-        /* SIDEBAR */
+
         .sidebar {
-            width: 280px;
+            width: 260px;
             background-color: var(--sidebar-green);
             padding: 30px 20px;
-            position: fixed;
-            height: 100%;
-            border-right: 1px solid rgba(44, 62, 80, 0.08);
             display: flex;
             flex-direction: column;
         }
 
-        .brand {
-            font-size: 22px;
-            font-weight: 700;
+
+        .sidebar h2 {
+            font-weight: 800;
+            font-size: 1.2rem;
             margin-bottom: 40px;
-            color: var(--text-dark);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding-left: 10px;
         }
 
-        .logo-icon img {
-            width: 47px;
-            height: 47px;
-            background: var(--accent-orange);
-            padding: 2px;
-            border-radius: 50%;
-        }
-
-        .brand-name {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: white;
-            margin-left: 5px;
-            letter-spacing: 1px;
-        }
-
-        /* NAV */
-        .nav-menu {
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-            list-style: none;
-        }
 
         .nav-link {
             display: flex;
             align-items: center;
             gap: 15px;
-            padding: 15px 20px;
-            color: var(--text-dark);
+            padding: 12px 15px;
             text-decoration: none;
-            border-radius: 12px;
-            transition: 0.3s;
-            margin-bottom: 8px;
-            font-size: 14px;
-            white-space: nowrap;
+            color: inherit;
+            font-size: 0.9rem;
             font-weight: 600;
+            border-radius: 10px;
+            margin-bottom: 5px;
+            transition: 0.3s;
         }
+
 
         .nav-link.active {
-            background-color: var(--accent-orange);
+            background-color: #27ae60;
             color: white;
-            box-shadow: 0 6px 20px rgba(39, 174, 96, 0.3);
         }
+
 
         .nav-link:hover:not(.active) {
-            background: rgba(255, 255, 255, 0.35);
-            color: var(--text-dark);
+            background: rgba(255, 255, 255, 0.3);
         }
 
-        /* MAIN */
+
+        .logout-link {
+            margin-top: auto;
+            color: #e74c3c;
+        }
+
+
         .main-content {
             flex-grow: 1;
-            margin-left: 280px;
-            display: flex;
-            flex-direction: column;
+            padding: 30px;
             overflow-y: auto;
-            background: var(--surface-bg);
+            background: #e8f5e9;
             border-top-left-radius: 40px;
             border-bottom-left-radius: 40px;
         }
 
-        /* TOPBAR */
-        .topbar {
+
+        .header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            padding: 20px 40px;
-            background: var(--glass-white);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--panel-border);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            align-items: flex-end;
+            margin-bottom: 25px;
         }
 
-        .topbar h2 {
-            font-size: clamp(18px, 3vw, 22px);
+
+        .header h1 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            text-transform: uppercase;
         }
 
-        /* CONTENT */
-        .dashboard-container {
-            padding: 40px;
-        }
 
         .dashboard-grid {
             display: grid;
             grid-template-columns: 1fr 350px;
             gap: 20px;
         }
+
 
         .left-column,
         .right-column {
@@ -161,15 +122,15 @@
             gap: 20px;
         }
 
-        /* CARDS */
+
         .card {
-            background: var(--card-bg);
+            background: white;
             padding: 25px;
             border-radius: 20px;
-            box-shadow: var(--card-shadow);
-            border: 1px solid var(--panel-border);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
             height: fit-content;
         }
+
 
         .card-header {
             font-size: 1.1rem;
@@ -180,11 +141,13 @@
             padding-bottom: 10px;
         }
 
+
         table {
             width: 100%;
             border-collapse: collapse;
             text-align: left;
         }
+
 
         th {
             padding: 12px;
@@ -194,6 +157,7 @@
             border-bottom: 2px solid #eee;
         }
 
+
         td {
             padding: 15px 12px;
             font-size: 0.9rem;
@@ -202,6 +166,7 @@
             vertical-align: middle;
         }
 
+
         .badge {
             padding: 5px 12px;
             border-radius: 8px;
@@ -209,6 +174,7 @@
             font-weight: 700;
             text-transform: uppercase;
         }
+
 
         .bg-super {
             background: #d1c4e9;
@@ -220,6 +186,7 @@
             color: #2e7d32;
         }
 
+
         .btn-delete {
             background: #ffebee;
             color: var(--accent-red);
@@ -230,10 +197,12 @@
             transition: 0.2s;
         }
 
+
         .btn-delete:hover {
             background: var(--accent-red);
             color: white;
         }
+
 
         .btn-delete:disabled {
             background: #f0f0f0;
@@ -241,9 +210,11 @@
             cursor: not-allowed;
         }
 
+
         .form-group {
             margin-bottom: 15px;
         }
+
 
         .form-group label {
             display: block;
@@ -252,6 +223,7 @@
             color: var(--text-muted);
             margin-bottom: 5px;
         }
+
 
         .form-group input,
         .form-group select {
@@ -263,10 +235,36 @@
             outline: none;
         }
 
+
+        input[type="file"] {
+            padding: 7px;
+            background: #f9f9f9;
+            font-size: 0.8rem;
+        }
+
+
+        input[type="file"]::file-selector-button {
+            background: var(--text-dark);
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Poppins';
+            margin-right: 10px;
+            transition: 0.2s;
+        }
+
+
+        input[type="file"]::file-selector-button:hover {
+            background: #1a252f;
+        }
+
+
         .btn-submit {
             width: 100%;
             padding: 12px;
-            background: var(--accent-orange);
+            background: #27ae60;
             color: white;
             border: none;
             border-radius: 10px;
@@ -276,17 +274,21 @@
             margin-top: 10px;
         }
 
+
         .btn-submit:hover {
             background: #219653;
         }
+
 
         .btn-blue {
             background: #3498db;
         }
 
+
         .btn-blue:hover {
             background: #2980b9;
         }
+
 
         .qr-thumbnail {
             width: 60px;
@@ -298,11 +300,13 @@
             padding: 2px;
         }
 
+
         .preview-box {
             margin-top: 10px;
             text-align: center;
             display: none;
         }
+
 
         .preview-box img {
             width: 120px;
@@ -314,16 +318,18 @@
             padding: 5px;
         }
 
+
         .helper-text {
             font-size: 0.8rem;
             color: var(--text-muted);
             margin-top: 5px;
         }
 
+
         .qr-method {
             font-weight: 700;
-            color: var(--accent-orange);
         }
+
 
         .qr-accname {
             font-size: 0.8rem;
@@ -333,32 +339,114 @@
             display: block;
         }
 
-        /* RESPONSIVE */
-        @media (max-width: 1024px) {
-            .sidebar { width: 220px; }
-            .main-content { margin-left: 220px; }
-            .dashboard-grid { grid-template-columns: 1fr; }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding-left: 10px;
         }
 
-        @media (max-width: 768px) {
-            body { flex-direction: column; }
-            .sidebar {
-                position: relative;
-                width: 100%;
-                height: auto;
-                flex-direction: row;
-                align-items: center;
-                overflow-x: auto;
-                padding: 15px;
+
+
+
+        .logo-icon img {
+            width: 47px;
+            height: 47px;
+            background: var(--accent-orange);
+            padding: 2.5px;
+            border-radius: 50%;
+        }
+
+
+
+
+        .brand-name {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white;
+            margin-left: -7px;
+        }
+
+
+        .custom-alert-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.45);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+        }
+
+
+        .custom-alert-box {
+            width: 420px;
+            background: white;
+            border-radius: 18px;
+            padding: 25px 25px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            border: 2px solid #98d8aa;
+            animation: popUp 0.25s ease;
+        }
+
+
+        .custom-alert-box h3 {
+            font-size: 1rem;
+            font-weight: 800;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+
+        .custom-alert-box p {
+            font-size: 0.95rem;
+            color: #7f8c8d;
+            font-weight: 500;
+            margin-bottom: 18px;
+        }
+
+
+        .custom-alert-box button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 12px;
+            background: #27ae60;
+            color: white;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+
+        .custom-alert-box button:hover {
+            background: #219653;
+        }
+
+
+        @keyframes popUp {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
             }
-            .brand { display: none; }
-            .nav-menu { flex-direction: row; gap: 10px; }
-            .nav-link { justify-content: center; padding: 10px; font-size: 12px; }
-            .main-content { margin-left: 0; }
-            .topbar { flex-direction: column; align-items: flex-start; gap: 10px; padding: 15px 20px; }
-            .dashboard-container { padding: 20px; }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
     </style>
+
+
+    <link rel="stylesheet" href="admin.css">
 </head>
 
 <body>
@@ -371,157 +459,187 @@
             </div>
             <span class="brand-name">FEDELICIOUS</span>
         </div>
-        <ul class="nav-menu">
-            <li><a href="admin.html" class="nav-link"><i class="fa-solid fa-gauge-high"></i> Dashboard</a></li>
-            <li><a href="order_admin.html" class="nav-link"><i class="fas fa-shopping-cart"></i> Orders</a></li>
-            <li><a href="reservation_admin.html" class="nav-link"><i class="fas fa-calendar-alt"></i> Reservations</a></li>
-            <li><a href="menusetting.html" class="nav-link"><i class="fa-solid fa-utensils"></i> Menu Settings</a></li>
-            <li><a href="salesreport.html" class="nav-link"><i class="fa-solid fa-chart-line"></i> Sales Report</a></li>
-            <li><a href="customeractivity.html" class="nav-link"><i class="fa fa-user"></i> CUSTOMER ACTIVITY</a></li>
-            <li><a href="admin_management.html" class="nav-link active" id="superAdminLink"><i class="fas fa-user-shield"></i> SYSTEM ADMINS</a></li>
-        </ul>
-        <a class="nav-link" onclick="logout()" style="margin-top:auto; color:#e74c3c; cursor:pointer;"><i class="fa-solid fa-power-off"></i> Logout</a>
+        <nav id="nav-menu">
+            <a href="admin.html" class="nav-link"><i class="fas fa-th-large"></i> DASHBOARD</a>
+            <a href="order_admin.html" class="nav-link"><i class="fas fa-shopping-cart"></i> ORDERS</a>
+            <a href="reservation_admin.html" class="nav-link"><i class="fas fa-calendar-alt"></i> RESERVATIONS</a>
+            <a href="menusetting.html" class="nav-link"><i class="fas fa-utensils"></i> MENU SETTINGS</a>
+            <a href="salesreport.html" class="nav-link"><i class="fas fa-chart-line"></i> SALES REPORTS</a>
+            <a href="customeractivity.html" class="nav-link"><i class="fas fa-users"></i> CUSTOMERS</a>
+            <a href="admin_management.html" class="nav-link active" id="superAdminLink"><i
+                    class="fas fa-user-shield"></i> SYSTEM ADMINS</a>
+        </nav>
+        <a href="#" class="nav-link logout-link" onclick="logout(); return false;"><i class="fas fa-sign-out-alt"></i>
+            SIGN OUT</a>
     </aside>
 
+
     <main class="main-content">
-        <div class="topbar">
-            <h2>System Administrators</h2>
-            <div class="admin-profile" style="display: flex; align-items: center; gap: 10px;">
-                <span id="admin-name" style="font-weight: 600;">Admin</span>
-                <i class="fa-solid fa-circle-user" style="font-size: 32px; color: var(--accent-orange);"></i>
+        <div class="header">
+            <div>
+                <h1>System Administrators</h1>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Manage dashboard access and payment settings</p>
             </div>
         </div>
 
-        <div class="dashboard-container">
-            <div class="dashboard-grid">
-                <div class="left-column">
-                    <div class="card">
-                        <div class="card-header">Current Administrators</div>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Username</th>
-                                    <th>Role</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody id="adminTableBody">
-                                <tr>
-                                    <td colspan="4" style="text-align: center; color: #999;">Loading admins...</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
 
-                    <div class="card">
-                        <div class="card-header">Manage Payment QR Codes</div>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Method / Account</th>
-                                    <th>Image</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody id="qrTableBody">
-                                <tr>
-                                    <td colspan="4" style="text-align: center; color: #999;">Loading QR Codes...</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+        <div class="dashboard-grid">
+            <div class="left-column">
+                <div class="card">
+                    <div class="card-header">Current Administrators</div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Username</th>
+                                <th>Role</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adminTableBody">
+                            <tr>
+                                <td colspan="4" style="text-align: center; color: #999;">Loading admins...</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
 
-                <div class="right-column">
-                    <div class="card">
-                        <div class="card-header">Register New Admin</div>
-                        <form id="addAdminForm" onsubmit="registerAdmin(event)">
-                            <div class="form-group">
-                                <label>Full Name</label>
-                                <input type="text" id="newName" required placeholder="e.g. John Doe">
-                            </div>
-                            <div class="form-group">
-                                <label>Username</label>
-                                <input type="text" id="newUsername" required placeholder="e.g. jdoe_admin">
-                            </div>
-                            <div class="form-group">
-                                <label>Password</label>
-                                <input type="password" id="newPassword" required placeholder="********" pattern="^[^0-9]*$"
-                                    title="Numbers are not allowed in the password">
-                            </div>
-                            <div class="form-group">
-                                <label>Role</label>
-                                <select id="newRole">
-                                    <option value="Admin">Standard Admin</option>
-                                    <option value="Super Admin">Super Admin</option>
-                                </select>
-                            </div>
-                            <button type="submit" class="btn-submit"><i class="fas fa-user-plus"></i> Create Account</button>
-                        </form>
-                    </div>
 
-                    <div class="card">
-                        <div class="card-header">Upload New QR Code</div>
-                        <form id="updateQrForm" onsubmit="uploadQR(event)">
-                            <div class="form-group">
-                                <label>Payment Method</label>
-                                <select id="paymentMethod">
-                                    <option value="GCash">GCash</option>
-                                    <option value="Maya">Maya</option>
-                                </select>
-                                <div class="helper-text">Ito ang payment method na makikita sa system.</div>
-                            </div>
+                <div class="card">
+                    <div class="card-header">Manage Payment QR Codes</div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method / Account</th>
+                                <th>Image</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="qrTableBody">
+                            <tr>
+                                <td colspan="4" style="text-align: center; color: #999;">Loading QR Codes...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
-                            <div class="form-group">
-                                <label>Account Name</label>
-                                <input type="text" id="qrAccName" required placeholder="e.g. Mark Luis Fulinara">
-                                <div class="helper-text">Ito ang pangalan ng account owner ng QR.</div>
-                            </div>
 
-                            <div class="form-group">
-                                <label>Upload QR Image</label>
-                                <input type="file" id="qrUpload" accept="image/png, image/jpeg, image/jpg" required
-                                    onchange="previewQR(this)">
-                                <div class="preview-box" id="previewBox">
-                                    <img id="previewImage" src="" alt="QR Preview">
-                                </div>
-                            </div>
+            <div class="right-column">
+                <div class="card">
+                    <div class="card-header">Register New Admin</div>
+                    <form id="addAdminForm" onsubmit="registerAdmin(event)">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" id="newName" required placeholder="e.g. John Doe">
+                        </div>
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input type="text" id="newUsername" required placeholder="e.g. jdoe_admin">
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" id="newPassword" required placeholder="********" pattern="^[^0-9]*$"
+                                title="Numbers are not allowed in the password">
+                        </div>
+                        <div class="form-group">
+                            <label>Role</label>
+                            <select id="newRole">
+                                <option value="Admin">Standard Admin</option>
+                                <option value="Super Admin">Super Admin</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn-submit"><i class="fas fa-user-plus"></i> Create
+                            Account</button>
+                    </form>
+                </div>
 
-                            <button type="submit" class="btn-submit btn-blue" id="qrSubmitBtn">
-                                <i class="fas fa-qrcode"></i> Save QR Code
-                            </button>
-                        </form>
-                    </div>
+
+                <div class="card">
+                    <div class="card-header">Upload New QR Code</div>
+                    <form id="updateQrForm" onsubmit="uploadQR(event)">
+                        <div class="form-group">
+                            <label>Payment Method</label>
+                            <select id="paymentMethod">
+                                <option value="GCash">GCash</option>
+                                <option value="Maya">Maya</option>
+                            </select>
+                            <div class="helper-text">Ito ang payment method na makikita sa system.</div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>Account Name</label>
+                            <input type="text" id="qrAccName" required placeholder="e.g. Mark Luis Fulinara">
+                            <div class="helper-text">Ito ang pangalan ng account owner ng QR.</div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>Upload QR Image</label>
+                            <input type="file" id="qrUpload" accept="image/png, image/jpeg, image/jpg" required
+                                onchange="previewQR(this)">
+                            <div class="preview-box" id="previewBox">
+                                <img id="previewImage" src="" alt="QR Preview">
+                            </div>
+                        </div>
+
+
+                        <button type="submit" class="btn-submit btn-blue" id="qrSubmitBtn">
+                            <i class="fas fa-qrcode"></i> Save QR Code
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
     </main>
 
 
+    <div class="custom-alert-overlay" id="customAlertOverlay">
+        <div class="custom-alert-box">
+            <h3 id="customAlertTitle">Fedelicious</h3>
+            <p id="customAlertMessage">Message here...</p>
+            <button id="customAlertBtn">OK</button>
+        </div>
+    </div>
+
+
     <script src="auth-session.js"></script>
     <script>
-        const API_BASE = "https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net/api";
-        const API_URL = `${API_BASE}/AdminManagement`;
-        const QR_API_URL = `${API_BASE}/PaymentQr`;
-        const adminSession = requireAdminAccess({ superAdminOnly: true });
+        const API_URL = "https://localhost:7201/api/AdminManagement";
+        const QR_API_URL = "https://localhost:7201/api/PaymentQr";
         const currentUserId = adminSession ? adminSession.adminId : "";
-
-
         document.addEventListener("DOMContentLoaded", () => {
             if (!adminSession) {
                 return;
             }
 
-            if (adminSession.fullName) {
-                document.getElementById('admin-name').innerText = adminSession.fullName;
-            }
 
             updateSuperAdminLink(adminSession.role);
             loadAdmins();
             loadQRs();
         });
+
+
+        function customAlert(message, title = "NOTICE") {
+            const overlay = document.getElementById("customAlertOverlay");
+            const msg = document.getElementById("customAlertMessage");
+            const ttl = document.getElementById("customAlertTitle");
+            const btn = document.getElementById("customAlertBtn");
+
+
+            ttl.innerText = title;
+            msg.innerText = message;
+
+
+            overlay.style.display = "flex";
+
+
+            btn.onclick = function () {
+                overlay.style.display = "none";
+            };
+        }
 
 
         async function loadAdmins() {
@@ -600,14 +718,14 @@
 
 
                 if (response.ok) {
-                    alert("Admin successfully created!");
+                    customAlert("Admin successfully created!");
                     document.getElementById("addAdminForm").reset();
                     loadAdmins();
                 } else {
-                    alert(data.message || "Failed to create admin.");
+                    customAlert(data.message || "Failed to create admin.");
                 }
             } catch (error) {
-                alert("Network error. Please check if the API is running.");
+                customAlert("Network error. Please check if the API is running.");
             }
         }
 
@@ -624,13 +742,13 @@
 
 
                 if (response.ok) {
-                    alert("Admin deleted.");
+                    customAlert("Admin deleted.");
                     loadAdmins();
                 } else {
-                    alert(data.message || "Failed to delete admin.");
+                    customAlert(data.message || "Failed to delete admin.");
                 }
             } catch (error) {
-                alert("Network error while deleting admin.");
+                customAlert("Network error while deleting admin.");
             }
         }
 
@@ -706,13 +824,13 @@
 
 
                 if (response.ok) {
-                    alert(`${name} is now the active QR code for customers!`);
+                    customAlert(`${name} is now the active QR code for customers!`);
                     loadQRs();
                 } else {
-                    alert(data.message || "Failed to activate QR code.");
+                    customAlert(data.message || "Failed to activate QR code.");
                 }
             } catch (error) {
-                alert("Network error occurred.");
+                customAlert("Network error occurred.");
             }
         }
 
@@ -752,13 +870,13 @@
 
 
             if (!qrAccName) {
-                alert("Please enter the account name.");
+                customAlert("Please enter the account name.");
                 return;
             }
 
 
             if (fileInput.files.length === 0) {
-                alert("Please select an image file first.");
+                customAlert("Please select an image file first.");
                 return;
             }
 
@@ -788,17 +906,17 @@
 
 
                 if (response.ok) {
-                    alert(`${paymentMethod} QR Code uploaded successfully!`);
+                    customAlert(`${paymentMethod} QR Code uploaded successfully!`);
                     document.getElementById("updateQrForm").reset();
                     document.getElementById("previewImage").src = "";
                     document.getElementById("previewBox").style.display = "none";
                     loadQRs();
                 } else {
-                    alert(data.message || "Failed to upload QR code.");
+                    customAlert(data.message || "Failed to upload QR code.");
                 }
             } catch (error) {
                 console.error("Upload error:", error);
-                alert("Network error. Could not upload the file.");
+                customAlert("Network error. Could not upload the file.");
             } finally {
                 submitBtn.innerHTML = '<i class="fas fa-qrcode"></i> Save QR Code';
                 submitBtn.disabled = false;
@@ -822,13 +940,13 @@
 
 
                 if (response.ok) {
-                    alert(`${name} QR Code deleted.`);
+                    customAlert(`${name} QR Code deleted.`);
                     loadQRs();
                 } else {
-                    alert(data.message || "Failed to delete QR.");
+                    customAlert(data.message || "Failed to delete QR.");
                 }
             } catch (error) {
-                alert("Network error while deleting QR.");
+                customAlert("Network error while deleting QR.");
             }
         }
 

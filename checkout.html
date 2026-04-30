@@ -1215,7 +1215,7 @@
             </button>
 
             <ul class="nav-links">
-                <li><a href="landing.html">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="menu.html">Menu</a></li>
                 <li><a href="reservation.html">Reservation</a></li>
                 <li><a href="orders.html">Orders</a></li>
@@ -1240,7 +1240,7 @@
 
         <div class="mobile-menu" id="mobileMenu">
             <ul>
-                <li><a href="landing.html">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="menu.html">Menu</a></li>
                 <li><a href="reservation.html">Reservation</a></li>
                 <li><a href="orders.html">Orders</a></li>
@@ -1254,7 +1254,8 @@
                 <div>
                     <h1 class="checkout-title">Checkout</h1>
                     <p class="checkout-subtitle">Finalize your order details and payment</p>
-                    <p class="checkout-lead">Choose your service, set your schedule, and confirm your details before payment.</p>
+                    <p class="checkout-lead">Choose your service, set your schedule, and confirm your details before
+                        payment.</p>
                 </div>
                 <a href="cart.html" class="back-link">Back to bag</a>
             </header>
@@ -1263,7 +1264,8 @@
                 <section class="checkout-card">
                     <p class="card-kicker">Order setup</p>
                     <h2 class="card-title">Complete your order.</h2>
-                    <p class="card-copy">Choose your service type, preferred schedule, and delivery details if needed.</p>
+                    <p class="card-copy">Choose your service type, preferred schedule, and delivery details if needed.
+                    </p>
 
                     <div class="setup-grid">
                         <section class="setup-panel">
@@ -1272,9 +1274,11 @@
                                 <span class="section-chip">Step 1</span>
                             </div>
                             <div class="service-tabs">
-                                <button type="button" class="tab active" onclick="setService('Dine-in', this)">Dine-in</button>
+                                <button type="button" class="tab active"
+                                    onclick="setService('Dine-in', this)">Dine-in</button>
                                 <button type="button" class="tab" onclick="setService('Pick-up', this)">Pick-up</button>
-                                <button type="button" class="tab" onclick="setService('Delivery', this)">Delivery</button>
+                                <button type="button" class="tab"
+                                    onclick="setService('Delivery', this)">Delivery</button>
                             </div>
                         </section>
 
@@ -1288,9 +1292,12 @@
                                     <label for="order_date">Pick date</label>
                                     <div class="picker-field picker-trigger" onclick="openPicker('order_date')">
                                         <input type="date" id="order_date" class="picker-input">
-                                        <span class="picker-display is-placeholder" id="order_date_display">mm/dd/yyyy</span>
+                                        <span class="picker-display is-placeholder"
+                                            id="order_date_display">mm/dd/yyyy</span>
                                         <span class="picker-inline-icon" aria-hidden="true">
-                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round">
                                                 <path d="M8 2v4"></path>
                                                 <path d="M16 2v4"></path>
                                                 <rect x="3" y="4" width="18" height="18" rx="2"></rect>
@@ -1304,9 +1311,12 @@
                                     <label for="order_time">Pick time</label>
                                     <div class="picker-field picker-trigger" onclick="openPicker('order_time')">
                                         <input type="time" id="order_time" class="picker-input">
-                                        <span class="picker-display is-placeholder" id="order_time_display">--:-- --</span>
+                                        <span class="picker-display is-placeholder" id="order_time_display">--:--
+                                            --</span>
                                         <span class="picker-inline-icon" aria-hidden="true">
-                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round">
                                                 <circle cx="12" cy="12" r="9"></circle>
                                                 <path d="M12 7v5l3 2"></path>
                                             </svg>
@@ -1324,8 +1334,10 @@
                             </div>
 
                             <div class="location-toggle">
-                                <button type="button" class="choice-btn active" id="saved-location-btn" onclick="setLocationMode('saved', this)">Customer location</button>
-                                <button type="button" class="choice-btn" id="manual-location-btn" onclick="setLocationMode('manual', this)">Different location</button>
+                                <button type="button" class="choice-btn active" id="saved-location-btn"
+                                    onclick="setLocationMode('saved', this)">Customer location</button>
+                                <button type="button" class="choice-btn" id="manual-location-btn"
+                                    onclick="setLocationMode('manual', this)">Different location</button>
                             </div>
 
                             <div class="saved-address" id="saved-address-card">
@@ -1337,23 +1349,29 @@
                                 <div class="form-block">
                                     <label for="location_fee">Delivery area</label>
                                     <input type="hidden" id="location_fee" value="50">
-                                    <button type="button" class="picker-field picker-trigger area-picker-trigger" id="delivery-area-trigger" onclick="openDeliveryAreaModal()">
+                                    <button type="button" class="picker-field picker-trigger area-picker-trigger"
+                                        id="delivery-area-trigger" onclick="openDeliveryAreaModal()">
                                         <span class="input-icon">03</span>
-                                        <span class="picker-display" id="delivery_area_display">Along Talisay - Sta. Maria Mahaba Bato (PHP 50)</span>
+                                        <span class="picker-display" id="delivery_area_display">Along Talisay - Sta.
+                                            Maria Mahaba Bato (PHP 50)</span>
                                         <span class="picker-inline-icon" aria-hidden="true">
-                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round">
                                                 <path d="m9 18 6-6-6-6"></path>
                                             </svg>
                                         </span>
                                     </button>
-                                    <p class="helper-copy">Minimum delivery charge is PHP 50. Please choose the nearest delivery area.</p>
+                                    <p class="helper-copy">Minimum delivery charge is PHP 50. Please choose the nearest
+                                        delivery area.</p>
                                 </div>
 
                                 <div class="form-block">
                                     <label for="delivery_address">Exact location</label>
                                     <div class="input-box delivery-address-box">
                                         <span class="input-icon">04</span>
-                                        <textarea id="delivery_address" placeholder="House No / Street / Barangay / Landmark"></textarea>
+                                        <textarea id="delivery_address"
+                                            placeholder="House No / Street / Barangay / Landmark"></textarea>
                                     </div>
                                 </div>
 
@@ -1366,7 +1384,8 @@
                                 <span class="section-chip">Step 4</span>
                             </div>
                             <div class="payment-note">
-                                Your order will be saved first, then your payment reference will be submitted for verification.
+                                Your order will be saved first, then your payment reference will be submitted for
+                                verification.
                             </div>
 
                             <div class="total-row">
@@ -1377,7 +1396,8 @@
                                 <span class="total-price" id="total-display">PHP 0.00</span>
                             </div>
 
-                            <button class="btn-confirm" id="orderBtn" type="button" onclick="processOrder()">Confirm and pay</button>
+                            <button class="btn-confirm" id="orderBtn" type="button" onclick="processOrder()">Confirm and
+                                pay</button>
                         </section>
                     </div>
                 </section>
@@ -1407,7 +1427,8 @@
                     <p>Delivery area</p>
                     <h3 id="delivery-area-title">Choose your area.</h3>
                 </div>
-                <button type="button" class="area-close" id="delivery-area-close" aria-label="Close delivery area picker">X</button>
+                <button type="button" class="area-close" id="delivery-area-close"
+                    aria-label="Close delivery area picker">X</button>
             </div>
             <div class="area-list" id="delivery-area-list"></div>
         </div>
@@ -1456,17 +1477,18 @@
                 </div>
             </div>
 
-            <button class="btn-confirm" id="payment-btn" type="button" onclick="submitFinalPayment()">Complete payment</button>
+            <button class="btn-confirm" id="payment-btn" type="button" onclick="submitFinalPayment()">Complete
+                payment</button>
             <p class="close-later" onclick="closePaymentModal()">Close and pay later</p>
         </div>
     </div>
 
     <script src="cart-ui.js"></script>
     <script>
-        const API_ORDER = "https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net/api/Order";
-        const API_PAYMENT = "https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net/api/Payment";
-        const API_AUTH = "https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net/api/Auth/getCustomerId/";
-        const API_ACTIVE_QR = "https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net/api/PaymentQr/active";
+        const API_ORDER = "https://localhost:7201/api/Order";
+        const API_PAYMENT = "https://localhost:7201/api/Payment";
+        const API_AUTH = "https://localhost:7201/api/Auth/getCustomerId/";
+        const API_ACTIVE_QR = "https://localhost:7201/api/PaymentQr/active";
 
         const hamburger = document.getElementById("hamburger");
         const mobileMenu = document.getElementById("mobileMenu");
@@ -1519,7 +1541,7 @@
                 return;
             }
 
-            accountLink.href = fullName && fullName.toLowerCase() !== "null" ? "user.html" : "index.html";
+            accountLink.href = fullName && fullName.toLowerCase() !== "null" ? "user.html" : "login.html";
         }
 
         function openPicker(inputId) {

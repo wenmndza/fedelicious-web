@@ -9,14 +9,18 @@
         "latest_res_id"
     ];
 
+
     function normalizeRole(role) {
         return String(role || "").trim().toLowerCase();
     }
 
+
     function clearAuthState(options = {}) {
         const preserveCart = options.preserveCart === true;
 
+
         AUTH_STORAGE_KEYS.forEach((key) => localStorage.removeItem(key));
+
 
         Object.keys(localStorage).forEach((key) => {
             if (/^(latest_|temp_)/i.test(key)) {
@@ -24,12 +28,15 @@
             }
         });
 
+
         if (!preserveCart) {
             localStorage.removeItem("cart");
         }
 
+
         sessionStorage.clear();
     }
+
 
     function getAuthSnapshot() {
         return {
@@ -40,20 +47,24 @@
         };
     }
 
+
     function requireAdminAccess(options = {}) {
         const session = getAuthSnapshot();
         const isAdmin = session.role.includes("admin") && !!session.adminId && !!session.fullName;
 
+
         if (!isAdmin) {
             clearAuthState();
-            window.location.replace("index.html");
+            window.location.replace("login.html");
             return null;
         }
+
 
         if (options.superAdminOnly && session.role !== "super admin") {
             window.location.replace(options.redirectOnForbidden || "admin.html");
             return null;
         }
+
 
         return {
             ...session,
@@ -61,20 +72,25 @@
         };
     }
 
+
     function updateSuperAdminLink(roleValue) {
         const superAdminLink = document.getElementById("superAdminLink");
+
 
         if (!superAdminLink) {
             return;
         }
 
+
         superAdminLink.style.display = normalizeRole(roleValue) === "super admin" ? "" : "none";
     }
+
 
     function ensureLogoutModal() {
         if (document.getElementById("globalLogoutModal")) {
             return document.getElementById("globalLogoutModal");
         }
+
 
         const style = document.createElement("style");
         style.id = "globalLogoutModalStyle";
@@ -91,9 +107,11 @@
                 z-index: 3000;
             }
 
+
             .logout-modal-overlay.open {
                 display: flex;
             }
+
 
             .logout-modal-card {
                 width: min(420px, 100%);
@@ -106,6 +124,7 @@
                 font-family: "Poppins", sans-serif;
             }
 
+
             .logout-modal-kicker {
                 color: #27ae60;
                 font-size: 0.74rem;
@@ -114,11 +133,13 @@
                 text-transform: uppercase;
             }
 
+
             .logout-modal-title {
                 margin-top: 10px;
                 font-size: 1.45rem;
                 font-weight: 700;
             }
+
 
             .logout-modal-message {
                 margin-top: 10px;
@@ -127,12 +148,14 @@
                 font-size: 0.95rem;
             }
 
+
             .logout-modal-actions {
                 display: flex;
                 justify-content: flex-end;
                 gap: 12px;
                 margin-top: 22px;
             }
+
 
             .logout-modal-btn {
                 border: none;
@@ -144,14 +167,17 @@
                 transition: 0.2s ease;
             }
 
+
             .logout-modal-btn:hover {
                 transform: translateY(-1px);
             }
+
 
             .logout-modal-btn.no {
                 background: rgba(44, 62, 80, 0.08);
                 color: #2c3e50;
             }
+
 
             .logout-modal-btn.yes {
                 background: #27ae60;
@@ -160,6 +186,7 @@
             }
         `;
         document.head.appendChild(style);
+
 
         const modal = document.createElement("div");
         modal.id = "globalLogoutModal";
@@ -176,9 +203,11 @@
             </div>
         `;
 
+
         document.body.appendChild(modal);
         return modal;
     }
+
 
     function closeLogoutModal() {
         const modal = document.getElementById("globalLogoutModal");
@@ -186,25 +215,30 @@
             return;
         }
 
+
         modal.classList.remove("open");
         modal.removeAttribute("data-target");
         modal.removeAttribute("data-preserve-cart");
         document.body.style.overflow = "";
     }
 
+
     function openLogoutModal(message, onConfirm) {
         if (!document.body || !document.head) {
             return window.confirm(message) ? onConfirm() : false;
         }
+
 
         const modal = ensureLogoutModal();
         const messageNode = document.getElementById("logoutModalMessage");
         const confirmButton = document.getElementById("logoutModalYes");
         const cancelButton = document.getElementById("logoutModalNo");
 
+
         messageNode.textContent = message;
         modal.classList.add("open");
         document.body.style.overflow = "hidden";
+
 
         const handleClose = () => {
             closeLogoutModal();
@@ -214,16 +248,19 @@
             document.onkeydown = previousKeydown;
         };
 
+
         const previousKeydown = document.onkeydown;
         document.onkeydown = function (event) {
             if (typeof previousKeydown === "function") {
                 previousKeydown.call(this, event);
             }
 
+
             if (event.key === "Escape") {
                 handleClose();
             }
         };
+
 
         modal.onclick = function (event) {
             if (event.target === modal) {
@@ -231,20 +268,24 @@
             }
         };
 
+
         cancelButton.onclick = handleClose;
         confirmButton.onclick = function () {
             handleClose();
             onConfirm();
         };
 
+
         return false;
     }
+
 
     function logoutToLogin(options = {}) {
         const askConfirm = options.askConfirm !== false;
         const message = options.message || "Are you sure you want to sign out?";
-        const target = options.target || "index.html";
+        const target = options.target || "login.html";
         const preserveCart = options.preserveCart === true;
+
 
         if (askConfirm) {
             return openLogoutModal(message, function () {
@@ -254,10 +295,12 @@
             });
         }
 
+
         clearAuthState({ preserveCart });
         window.location.replace(target);
         return true;
     }
+
 
     window.AUTH_STORAGE_KEYS = AUTH_STORAGE_KEYS;
     window.normalizeRole = normalizeRole;
@@ -267,3 +310,6 @@
     window.updateSuperAdminLink = updateSuperAdminLink;
     window.logoutToLogin = logoutToLogin;
 })();
+
+
+

@@ -1,678 +1,319 @@
 <!DOCTYPE html>
 <html lang="en">
+
+
+
+
+
+
+
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fedelicious | Sales Intelligence</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Fedelicious | Account Settings</title>
     <link rel="icon" type="image/png" href="images/icon1.png">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+
+
+
+
+
+
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="brand">
+                <div class="brand-icon"><img src="images/fede.jpg" alt="Fedelicious Logo"></div>
+                <span class="brand-name">Fedelicious</span>
+            </div>
+
+
+            <!-- ✅ Hamburger button -->
+            <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+
+            <ul class="nav-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="menu.html">MENU</a></li>
+                <li><a href="reservation.html">RESERVATION</a></li>
+                <li><a href="orders.html">ORDERS</a></li>
+            </ul>
+
+
+
+
+
+
+
+
+            <div class="nav-actions">
+                <a href="cart.html" class="nav-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+                        <line x1="3" y1="6" x2="21" y2="6" />
+                        <path d="M16 10a4 4 0 0 1-8 0" />
+                    </svg>
+                </a>
+
+
+
+
+
+
+
+
+                <a href="user.html" class="nav-icon user-profile-link" aria-current="page">
+                    <span class="user-circle active">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                            <circle cx="12" cy="7" r="4" />
+                        </svg>
+                    </span>
+                    <span class="nav-user-name" id="nav-user-name">Account</span>
+                </a>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+        <!-- ✅ Mobile drawer menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="menu.html">MENU</a></li>
+                <li><a href="reservation.html">RESERVATION</a></li>
+                <li><a href="orders.html">ORDERS</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+
+
+
+
+
+    <main class="settings-wrapper">
+        <div class="settings-card">
+
+
+
+
+
+
+
+
+            <header class="settings-header">
+                <h1 class="settings-title">ACCOUNT SETTINGS</h1>
+                <button class="icon-btn settings-gear">⚙️</button>
+            </header>
+
+
+
+
+
+
+
+
+            <div class="profile-hero">
+                <div class="avatar-box">
+                    <img src="avatar.png" alt="User Avatar" id="display-avatar">
+                </div>
+                <h2 id="display-name" class="user-display-name">John Doe</h2>
+                <p class="membership-status">SUKI MEMBER SINCE <span id="display-member-year">2026</span></p>
+            </div>
+
+
+
+
+
+
+
+
+            <form id="profile-form" class="settings-form">
+
+
+
+
+
+
+
+
+                <div class="input-group">
+                    <label>FULL NAME</label>
+                    <div class="custom-field">
+                        <span class="field-icon">👤</span>
+                        <input type="text" id="edit-full-name" readonly>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+                <div class="input-group">
+                    <label>GMAIL / EMAIL</label>
+                    <div class="custom-field">
+                        <span class="field-icon">✉️</span>
+                        <input type="email" id="edit-email" readonly>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+                <div class="input-group">
+                    <label>DELIVERY ADDRESS</label>
+                    <div class="custom-field textarea-field">
+                        <span class="field-icon">📍</span>
+                        <textarea id="edit-address" readonly></textarea>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+                <div class="form-actions">
+                    <button type="button" class="logout-btn" id="logout-btn" onclick="logout()"
+                        aria-label="Log out account">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        <span>LOG OUT</span>
+                    </button>
+                </div>
+            </form>
+
+
+
+
+
+
+
+
+        </div>
+    </main>
     <style>
         :root {
-            --primary-green: #b2eec7;
-            --sidebar-green: #98d8aa;
-            --surface-bg: #e8f5e9;
-            --accent-orange: #27ae60;
-            --card-bg: #ffffff;
-            --glass-white: rgba(255, 255, 255, 0.68);
-            --text-muted: #7f8c8d;
-            --text-dark: #2c3e50;
-            --white: #ffffff;
-            --panel-border: rgba(44, 62, 80, 0.08);
-            --shadow-soft: 0 12px 28px rgba(44, 62, 80, 0.08);
+            --primary-green: #0d2b1f;
+            --accent-orange: #ff7043;
+            --card-bg: #143528;
+            --text-muted: #8ca398;
+            --input-bg: #0a2118;
+            --nav-gradient: linear-gradient(to bottom, rgba(7, 20, 15, 0.95), transparent);
         }
+
+
+
+
+
+
+
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "Poppins", sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
+
+
+
+
+
+
+
 
         body {
             background-color: var(--primary-green);
-            color: var(--text-dark);
-            display: flex;
-            min-height: 100vh;
-            overflow-x: hidden;
+            color: white;
+            padding-top: 120px;
+            line-height: 1.6;
         }
 
-        .sidebar {
-            width: 280px;
-            background-color: var(--sidebar-green);
-            padding: 30px 20px;
+
+
+
+
+
+
+
+        /* --- NAVBAR --- */
+        .navbar {
             position: fixed;
-            height: 100%;
-            border-right: 1px solid var(--panel-border);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .brand {
-            font-size: 22px;
-            font-weight: 700;
-            margin-bottom: 40px;
-            color: var(--text-dark);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .nav-menu {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .nav-link {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 15px 20px;
-            color: var(--text-dark);
-            text-decoration: none;
-            border-radius: 12px;
-            transition: 0.3s;
-            margin-bottom: 8px;
-            font-size: 14px;
-            white-space: nowrap;
-            font-weight: 600;
-        }
-
-        .nav-link.active {
-            background-color: var(--accent-orange);
-            color: var(--white);
-            box-shadow: 0 6px 20px rgba(255, 112, 67, 0.3);
-        }
-
-        .nav-link:hover:not(.active) {
-            background: rgba(255, 255, 255, 0.35);
-            color: var(--text-dark);
-        }
-
-        .logout-link {
-            margin-top: auto;
-            color: #ff8a65;
-        }
-
-        .main-content {
-            flex-grow: 1;
-            margin-left: 280px;
-            display: flex;
-            flex-direction: column;
-            overflow-y: auto;
-            min-height: 100vh;
-            background: var(--surface-bg);
-            border-top-left-radius: 40px;
-            border-bottom-left-radius: 40px;
-        }
-
-        .topbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-            padding: 20px 40px;
-            background: var(--glass-white);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--panel-border);
-            position: sticky;
             top: 0;
-            z-index: 100;
-        }
-
-        .topbar-heading h2 {
-            font-size: clamp(18px, 3vw, 24px);
-        }
-
-        .topbar-heading p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-top: 4px;
-        }
-
-        .admin-profile {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-weight: 600;
-        }
-
-        .admin-profile i {
-            font-size: 34px;
-            color: var(--accent-orange);
-        }
-
-        .dashboard-container {
-            padding: 32px 40px 40px;
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-        }
-
-        .control-shell {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 18px;
-            background: var(--card-bg);
-            border: 1px solid var(--panel-border);
-            border-radius: 24px;
-            padding: 18px;
-            box-shadow: var(--shadow-soft);
-            flex-wrap: wrap;
-        }
-
-        .time-filters {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            padding: 6px;
-            border-radius: 18px;
-            background: rgba(39, 174, 96, 0.05);
-        }
-
-        .filter-btn {
-            padding: 10px 18px;
-            border: 1px solid transparent;
-            background: transparent;
-            color: var(--text-muted);
-            cursor: pointer;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            transition: 0.25s ease;
-        }
-
-        .filter-btn.active {
-            background: var(--accent-orange);
-            color: var(--white);
-            box-shadow: 0 10px 20px rgba(255, 112, 67, 0.25);
-        }
-
-        .filter-btn:hover:not(.active) {
-            border-color: var(--panel-border);
-            background: rgba(39, 174, 96, 0.08);
-            color: var(--text-dark);
-        }
-
-        .parameter-controls {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .param-select {
-            min-width: 150px;
-            padding: 11px 14px;
-            border-radius: 14px;
-            border: 1px solid var(--panel-border);
-            background: #ffffff;
-            color: var(--text-dark);
-            font-weight: 600;
-            outline: none;
-        }
-
-        .param-select option {
-            color: #111111;
-        }
-
-        .receipt-trigger {
-            padding: 11px 18px;
-            border: 1px solid rgba(39, 174, 96, 0.18);
-            background: rgba(39, 174, 96, 0.08);
-            color: var(--accent-orange);
-            border-radius: 14px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 0.25s ease;
-        }
-
-        .receipt-trigger:hover {
-            background: rgba(39, 174, 96, 0.14);
-            transform: translateY(-1px);
-        }
-
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: 320px minmax(0, 1fr);
-            gap: 24px;
-            align-items: start;
-        }
-
-        .side-stats {
-            display: grid;
-            gap: 20px;
-        }
-
-        .report-panel {
-            min-width: 0;
-        }
-
-        .stat-box,
-        .chart-container-wrapper,
-        .mini-card,
-        .chart-mini {
-            background: var(--card-bg);
-            border: 1px solid var(--panel-border);
-            box-shadow: var(--shadow-soft);
-        }
-
-        .stat-box {
-            padding: 24px;
-            border-radius: 24px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stat-box::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), transparent 40%);
-            pointer-events: none;
-        }
-
-        .stat-box.green {
-            border-left: 4px solid #27ae60;
-        }
-
-        .stat-box.blue {
-            border-left: 4px solid #3498db;
-        }
-
-        .stat-box p {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-        }
-
-        .stat-box h2,
-        .stat-box h3 {
-            margin-top: 10px;
-            font-size: clamp(1.4rem, 3vw, 2rem);
-            line-height: 1.2;
-        }
-
-        .card-note {
-            display: inline-block;
-            margin-top: 10px;
-            color: var(--text-muted);
-            font-size: 0.82rem;
-        }
-
-        .card-head-inline,
-        .chart-header,
-        .chart-mini-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .badge-soft {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 7px 14px;
-            border-radius: 999px;
-            background: rgba(255, 112, 67, 0.16);
-            color: #ffb499;
-            font-size: 0.72rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-
-        .mini-chart-shell {
-            margin-top: 16px;
-            min-height: 170px;
-        }
-
-        .chart-container-wrapper {
-            border-radius: 28px;
-            padding: 28px;
-        }
-
-        .chart-header {
-            margin-bottom: 18px;
-            align-items: flex-start;
-        }
-
-        .chart-header h3 {
-            font-size: 1.15rem;
-        }
-
-        .hint-text {
-            font-size: 0.82rem;
-            color: var(--text-muted);
-            margin-top: 4px;
-        }
-
-        .main-canvas-holder {
-            position: relative;
-            min-height: 320px;
-        }
-
-        .summary-mini {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .mini-card {
-            border-radius: 22px;
-            padding: 22px;
-        }
-
-        .mini-card p {
-            color: var(--text-muted);
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-
-        .mini-card h4 {
-            margin-top: 10px;
-            color: var(--text-dark);
-            font-size: clamp(1.5rem, 3vw, 2rem);
-        }
-
-        .bottom-charts {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .chart-mini {
-            border-radius: 24px;
-            padding: 24px;
-        }
-
-        .chart-mini-header {
-            margin-bottom: 16px;
-        }
-
-        .chart-mini-header p {
-            font-size: 0.82rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-
-        .chart-mini canvas,
-        #typeChart {
             width: 100%;
-            max-height: 240px;
+            z-index: 1000;
+            padding: 25px 8%;
+            background: var(--nav-gradient);
         }
 
-        .receipt-modal {
-            position: fixed;
-            inset: 0;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 24px;
-            z-index: 1200;
-        }
 
-        .receipt-modal.open {
-            display: flex;
-        }
 
-        .receipt-backdrop {
-            position: absolute;
-            inset: 0;
-            background: rgba(18, 34, 26, 0.58);
-            backdrop-filter: blur(6px);
-        }
 
-        .receipt-dialog {
-            position: relative;
-            width: min(720px, 100%);
-            background: linear-gradient(180deg, #fbfffc 0%, #eef9f1 100%);
-            border-radius: 28px;
-            border: 1px solid rgba(44, 62, 80, 0.08);
-            box-shadow: 0 28px 70px rgba(24, 47, 35, 0.24);
-            overflow: hidden;
-        }
 
-        .receipt-dialog-header {
-            display: flex;
-            justify-content: space-between;
-            gap: 16px;
-            align-items: flex-start;
-            padding: 24px 28px 18px;
-            border-bottom: 1px solid rgba(44, 62, 80, 0.08);
-        }
 
-        .receipt-dialog-header p {
-            color: var(--accent-orange);
-            text-transform: uppercase;
-            font-size: 0.75rem;
-            letter-spacing: 0.12em;
-            font-weight: 700;
-        }
 
-        .receipt-dialog-header h3 {
-            margin-top: 8px;
-            font-size: clamp(1.45rem, 3vw, 2rem);
-        }
 
-        .receipt-dialog-header span {
-            display: block;
-            margin-top: 8px;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        .receipt-close {
-            width: 42px;
-            height: 42px;
-            border: none;
-            border-radius: 50%;
-            background: rgba(39, 174, 96, 0.1);
-            color: var(--accent-orange);
-            cursor: pointer;
-        }
-
-        .receipt-body {
-            padding: 24px 28px 30px;
-        }
-
-        .receipt-total {
-            padding: 18px 20px;
-            border-radius: 22px;
-            background: #ffffff;
-            border: 1px solid rgba(44, 62, 80, 0.08);
-            box-shadow: var(--shadow-soft);
-            margin-bottom: 18px;
-        }
-
-        .receipt-total p {
-            color: var(--text-muted);
-            font-size: 0.78rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-
-        .receipt-total h2 {
-            margin-top: 8px;
-            font-size: clamp(1.6rem, 4vw, 2.4rem);
-        }
-
-        .receipt-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 14px;
-        }
-
-        .receipt-line {
-            background: #ffffff;
-            border: 1px solid rgba(44, 62, 80, 0.08);
-            border-radius: 18px;
-            padding: 16px 18px;
-            box-shadow: var(--shadow-soft);
-        }
-
-        .receipt-line p {
-            color: var(--text-muted);
-            font-size: 0.76rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-
-        .receipt-line h4 {
-            margin-top: 8px;
-            font-size: 1.15rem;
-        }
-
-        .receipt-footer {
-            margin-top: 18px;
+        .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 12px;
-            color: var(--text-muted);
-            font-size: 0.88rem;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
-        @media (max-width: 1200px) {
-            .dashboard-grid {
-                grid-template-columns: 1fr;
-            }
 
-            .side-stats {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
-            }
-        }
 
-        @media (max-width: 1024px) {
-            .sidebar {
-                width: 220px;
-            }
 
-            .main-content {
-                margin-left: 220px;
-            }
 
-            .dashboard-container {
-                padding: 24px;
-            }
 
-            .side-stats {
-                grid-template-columns: 1fr;
-            }
 
-            .bottom-charts {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            body {
-                flex-direction: column;
-            }
-
-            .brand {
-                display: none;
-                position: flex;
-                margin-right: 20px;
-                margin-bottom: 30px;
-                margin-top: 30px;
-            }
-
-            .sidebar {
-                position: relative;
-                width: 100%;
-                height: auto;
-                flex-direction: row;
-                align-items: center;
-                overflow-x: auto;
-                padding: 15px;
-            }
-
-            .brand {
-                display: none;
-            }
-
-            .nav-menu {
-                flex-direction: row;
-                gap: 10px;
-            }
-
-            .nav-link {
-                justify-content: center;
-                padding: 10px 12px;
-                font-size: 12px;
-                margin-bottom: 0;
-            }
-
-            .logout-link {
-                margin-top: 0;
-            }
-
-            .main-content {
-                margin-left: 0;
-            }
-
-            .topbar {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 12px;
-                padding: 18px 20px;
-            }
-
-            .dashboard-container {
-                padding: 20px;
-            }
-
-            .control-shell {
-                align-items: stretch;
-            }
-
-            .time-filters,
-            .parameter-controls {
-                width: 100%;
-            }
-
-            .parameter-controls {
-                flex-direction: column;
-            }
-
-            .param-select {
-                width: 100%;
-            }
-
-            .summary-mini {
-                grid-template-columns: 1fr;
-            }
-
-            .receipt-grid {
-                grid-template-columns: 1fr;
-            }
-        }
 
         .brand {
             display: flex;
             align-items: center;
-            gap: 15px;
-            padding-left: 10px;
+            gap: 12px;
         }
 
 
-        .logo-icon img {
+
+
+
+
+
+
+        .brand-icon img {
             width: 47px;
             height: 47px;
             background: var(--accent-orange);
@@ -681,892 +322,1106 @@
         }
 
 
+
+
+
+
+
+
         .brand-name {
             font-family: 'Playfair Display', serif;
             font-weight: 700;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             color: white;
-            margin-left: 5px;
-            letter-spacing: 1px;
         }
-        
+
+
+
+
+
+
+
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+
+
+
+
+
+
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+
+
+
+
+
+
+
+        .nav-links a.active,
+        .nav-links a:hover {
+            color: var(--accent-orange);
+            border-bottom: 2px solid var(--accent-orange);
+            padding-bottom: 5px;
+        }
+
+
+
+
+
+
+
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+
+
+
+
+
+
+
+        .nav-icon {
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+
+
+
+
+
+
+
+        .nav-icon:hover {
+            color: var(--accent-orange);
+        }
+
+
+
+
+
+
+
+
+        .user-circle {
+            background: var(--card-bg);
+            padding: 8px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+
+
+
+
+
+
+
+        .user-circle.active {
+            border-color: var(--accent-orange);
+        }
+
+
+
+
+        .user-profile-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+
+
+
+        .nav-user-name {
+            max-width: 140px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+        }
+
+
+
+
+        .user-profile-link:hover .nav-user-name {
+            color: var(--accent-orange);
+        }
+
+
+
+
+
+
+
+
+        /* ✅ Hamburger (same as menu page) */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 6px;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            z-index: 1100;
+        }
+
+
+
+
+
+
+
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: white;
+            border-radius: 2px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+
+
+
+
+
+
+
+        .hamburger.open span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+
+
+
+
+
+
+
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+
+
+
+
+
+
+
+        .hamburger.open span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+
+
+
+
+
+
+
+        /* ✅ Mobile drawer (same as menu page) */
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            background: rgba(7, 20, 15, 0.98);
+            padding: 0 8%;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, padding 0.35s ease;
+        }
+
+
+
+
+
+
+
+
+        .mobile-menu.open {
+            max-height: 300px;
+            padding: 20px 8%;
+        }
+
+
+
+
+
+
+
+
+        .mobile-menu ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+
+
+
+
+
+
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            transition: color 0.2s;
+            text-transform: uppercase;
+        }
+
+
+
+
+
+
+
+
+        .mobile-menu a.active,
+        .mobile-menu a:hover {
+            color: var(--accent-orange);
+        }
+
+
+
+
+
+
+
+
+        /* --- SETTINGS CARD --- */
+        .settings-wrapper {
+            min-height: calc(100vh - 120px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 8%;
+        }
+
+
+
+
+
+
+
+
+        .settings-card {
+            background: var(--card-bg);
+            width: 100%;
+            max-width: 600px;
+            padding: 50px 60px;
+            border-radius: 40px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+
+
+
+
+
+
+
+        .settings-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+
+
+
+
+
+
+
+        .settings-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: white;
+        }
+
+
+
+
+
+
+
+
+        .icon-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            transition: 0.3s;
+        }
+
+
+
+
+
+
+
+
+        .icon-btn:hover {
+            color: var(--accent-orange);
+        }
+
+
+
+
+
+
+
+
+        /* --- PROFILE HERO --- */
+        .profile-hero {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+
+
+
+
+
+
+
+        .avatar-box {
+            width: 120px;
+            height: 120px;
+            background: var(--input-bg);
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 15px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+
+
+
+
+
+
+
+        .avatar-box img {
+            width: 60%;
+            height: 60%;
+            object-fit: contain;
+        }
+
+
+
+
+
+
+
+
+        .user-display-name {
+            font-weight: 800;
+            font-size: 1.6rem;
+        }
+
+
+
+
+
+
+
+
+        .membership-status {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+
+
+
+
+
+
+
+
+        /* --- FORM FIELDS --- */
+        .settings-form {
+            margin-top: 30px;
+        }
+
+
+
+
+
+
+
+
+        .input-group {
+            margin-bottom: 25px;
+        }
+
+
+
+
+
+
+
+
+        label {
+            display: block;
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            font-weight: 800;
+            margin-bottom: 10px;
+            letter-spacing: 1.5px;
+        }
+
+
+
+
+
+
+
+
+        .custom-field {
+            width: 100%;
+            background: var(--input-bg);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 18px 25px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: 0.3s;
+        }
+
+
+
+
+
+
+
+
+        .custom-field:focus-within {
+            border-color: rgba(255, 112, 67, 0.6);
+            box-shadow: 0 0 18px rgba(255, 112, 67, 0.15);
+        }
+
+
+
+
+
+
+
+
+        .field-icon {
+            color: var(--text-muted);
+            opacity: 0.6;
+            font-size: 1rem;
+            width: 18px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+
+
+
+
+
+
+        .custom-field input,
+        .custom-field textarea {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 0.95rem;
+            width: 100%;
+            outline: none;
+            flex: 1;
+            font-weight: 600;
+        }
+
+
+
+
+
+
+
+
+        .custom-field input[readonly],
+        .custom-field textarea[readonly] {
+            opacity: 1;
+            cursor: default;
+        }
+
+
+
+
+
+
+
+
+        .textarea-field {
+            align-items: flex-start;
+        }
+
+
+
+
+
+
+
+
+        .textarea-field textarea {
+            height: 70px;
+            resize: none;
+        }
+
+
+
+
+
+
+
+
+        /* --- FORM ACTIONS --- */
+        .form-actions {
+            display: block;
+            margin-top: 40px;
+        }
+
+
+
+
+
+
+
+
+        .logout-btn {
+            background: rgba(255, 112, 67, 0.1);
+            color: var(--accent-orange);
+            width: 100%;
+            height: 60px;
+            padding: 0 24px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 112, 67, 0.2);
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+
+
+
+
+
+
+
+        .logout-btn:hover {
+            background: rgba(255, 112, 67, 0.2);
+            border-color: var(--accent-orange);
+        }
+
+
+
+
+
+
+
+
+        /* ✅ Responsive navbar + mobile menu behavior */
+        @media(max-width: 900px) {
+            .hamburger {
+                display: flex;
+            }
+
+
+
+
+
+
+
+
+            .nav-links {
+                display: none;
+            }
+
+
+
+
+            .nav-user-name {
+                display: none;
+            }
+
+
+
+
+
+
+
+
+            .mobile-menu {
+                display: flex;
+            }
+
+
+
+
+
+
+
+
+            .navbar {
+                padding: 18px 6%;
+                background: rgba(7, 20, 15, 0.97);
+            }
+
+
+
+
+
+
+
+
+            body {
+                padding-top: 80px;
+            }
+
+
+
+
+
+
+
+
+            .settings-card {
+                padding: 45px 30px;
+            }
+        }
+
+
+
+
+
+
+
+
+        @media(max-width: 480px) {
+            .navbar {
+                padding: 16px 5%;
+            }
+
+
+
+
+
+
+
+
+            body {
+                padding-top: 72px;
+            }
+
+
+
+
+
+
+
+
+            .brand-name {
+                font-size: 1.2rem;
+            }
+
+
+
+
+
+
+
+
+            .settings-title {
+                font-size: 1.5rem;
+            }
+
+
+
+
+
+
+
+
+            .form-actions {
+                flex-direction: column;
+            }
+
+
+
+
+
+
+
+
+            .logout-btn {
+                width: 100%;
+                height: 60px;
+                border-radius: 50px;
+            }
+        }
     </style>
-</head>
-<body>
-    <aside class="sidebar">
-        <div class="brand">
-            <div class="logo-icon">
-                <img src="images/fede.jpg" alt="Fedelicious Logo">
-            </div>
-            <span class="brand-name">FEDELICIOUS</span>
-        </div>
-        <ul class="nav-menu">
-            <li><a href="admin.html" class="nav-link"><i class="fa-solid fa-gauge-high"></i> Dashboard</a></li>
-            <li><a href="order_admin.html" class="nav-link"><i class="fas fa-shopping-cart"></i> Food Orders</a></li>
-            <li><a href="reservation_admin.html" class="nav-link"><i class="fas fa-calendar-alt"></i> Reservations</a></li>
-            <li><a href="menusetting.html" class="nav-link"><i class="fa-solid fa-utensils"></i> Menu Settings</a></li>
-            <li><a href="salesreport.html" class="nav-link active"><i class="fa-solid fa-chart-line"></i> Sales Report</a></li>
-            <li><a href="customeractivity.html" class="nav-link"><i class="fa-solid fa-users"></i> Customer Activity</a></li>
-            <li><a href="admin_management.html" class="nav-link" id="superAdminLink"><i class="fas fa-user-shield"></i> System Admins</a></li>
-        </ul>
-        <a href="#" class="nav-link logout-link" onclick="logout()"><i class="fa-solid fa-power-off"></i> Logout</a>
-    </aside>
 
-    <main class="main-content">
-        <div class="topbar">
-            <div class="topbar-heading">
-                <h2>Sales Intelligence</h2>
-                <p>Track revenue, order volume, and menu performance in a single live report.</p>
-            </div>
-            <div class="admin-profile">
-                <span id="admin-name">Admin</span>
-                <i class="fa-solid fa-circle-user"></i>
-            </div>
-        </div>
 
-        <div class="dashboard-container">
-            <section class="control-shell">
-                <div class="time-filters">
-                    <button class="filter-btn" id="btn-overall" onclick="changeMode('overall')">Overall</button>
-                    <button class="filter-btn" id="btn-weekly" onclick="changeMode('weekly')">Weekly</button>
-                    <button class="filter-btn active" id="btn-monthly" onclick="changeMode('monthly')">Monthly</button>
-                    <button class="filter-btn" id="btn-yearly" onclick="changeMode('yearly')">Yearly</button>
-                </div>
 
-                <div class="parameter-controls">
-                    <select id="monthSelect" class="param-select" style="display: none;" onchange="loadMainData()">
-                        <option value="1">January</option>
-                        <option value="2">February</option>
-                        <option value="3">March</option>
-                        <option value="4">April</option>
-                        <option value="5">May</option>
-                        <option value="6">June</option>
-                        <option value="7">July</option>
-                        <option value="8">August</option>
-                        <option value="9">September</option>
-                        <option value="10">October</option>
-                        <option value="11">November</option>
-                        <option value="12">December</option>
-                    </select>
-                    <select id="yearSelect" class="param-select" style="display: none;" onchange="loadMainData()">
-                        <option value="2024">2024</option>
-                        <option value="2025">2025</option>
-                        <option value="2026">2026</option>
-                    </select>
-                    <button type="button" class="receipt-trigger" id="overallReceiptButton" onclick="openDashboardReceipt()" style="display: none;">
-                        View Overall Stat Receipt
-                    </button>
-                </div>
-            </section>
 
-            <section class="dashboard-grid">
-                <div class="side-stats">
-                    <div class="stat-box" id="bestSellerCard">
-                        <p>Best Seller</p>
-                        <h3 id="best-seller-name">---</h3>
-                        <span class="card-note">Top menu item based on total quantity sold.</span>
-                    </div>
 
-                    <div class="stat-box green">
-                        <p id="rev-label">Period Revenue</p>
-                        <h2 id="revenue-display">PHP 0.00</h2>
-                        <span class="card-note">Switch modes or tap a chart point to drill into a period.</span>
-                    </div>
 
-                    <div class="stat-box blue" id="revenueTypeCard">
-                        <div class="card-head-inline">
-                            <p>Revenue by Type</p>
-                            <span class="badge-soft">Overall</span>
-                        </div>
-                        <div class="mini-chart-shell">
-                            <canvas id="typeChart"></canvas>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="report-panel">
-                    <div class="chart-container-wrapper" id="mainGraphWrapper">
-                        <div class="chart-header">
-                            <div>
-                                <h3 id="main-chart-title">Revenue Trends</h3>
-                                <p class="hint-text" id="chart-hint">Click a point to view specific stats.</p>
-                            </div>
-                            <span class="badge-soft" id="modeBadge">Monthly</span>
-                        </div>
-                        <div class="main-canvas-holder">
-                            <canvas id="mainChart"></canvas>
-                        </div>
-                    </div>
 
-                    <div class="summary-mini" id="summaryCardsWrapper">
-                        <div class="mini-card">
-                            <p>Total Orders</p>
-                            <h4 id="count-orders">0</h4>
-                        </div>
-                        <div class="mini-card">
-                            <p>Total Users</p>
-                            <h4 id="count-users">0</h4>
-                        </div>
-                        <div class="mini-card">
-                            <p>Sold Items</p>
-                            <h4 id="count-sold-items">0</h4>
-                        </div>
-                    </div>
-
-                    <div class="bottom-charts" id="bottomChartsWrapper">
-                        <div class="chart-mini">
-                            <div class="chart-mini-header">
-                                <p>Top 5 Best Sellers</p>
-                                <span class="badge-soft">Overall</span>
-                            </div>
-                            <canvas id="bestSellerChart"></canvas>
-                        </div>
-
-                        <div class="chart-mini">
-                            <div class="chart-mini-header">
-                                <p>Above Avg Performers</p>
-                                <span class="badge-soft">Overall</span>
-                            </div>
-                            <canvas id="aboveAvgChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </main>
-
-    <div class="receipt-modal" id="dashboardReceiptModal" aria-hidden="true">
-        <div class="receipt-backdrop" onclick="closeDashboardReceipt()"></div>
-        <div class="receipt-dialog" role="dialog" aria-modal="true" aria-labelledby="dashboardReceiptTitle">
-            <div class="receipt-dialog-header">
-                <div>
-                    <p>Dashboard Stats</p>
-                    <h3 id="dashboardReceiptTitle">Overall Stat Receipt</h3>
-                    <span id="dashboardReceiptSubtitle">Live View snapshot from the business dashboard.</span>
-                </div>
-                <button type="button" class="receipt-close" onclick="closeDashboardReceipt()" aria-label="Close">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="receipt-body">
-                <div class="receipt-total">
-                    <p>Total Revenue</p>
-                    <h2 id="receiptRevenue">PHP 0.00</h2>
-                </div>
-
-                <div class="receipt-grid">
-                    <div class="receipt-line">
-                        <p>Total Orders</p>
-                        <h4 id="receiptOrders">0</h4>
-                    </div>
-                    <div class="receipt-line">
-                        <p>Total Users</p>
-                        <h4 id="receiptUsers">0</h4>
-                    </div>
-                    <div class="receipt-line">
-                        <p>Sold Items</p>
-                        <h4 id="receiptSoldItems">0</h4>
-                    </div>
-                    <div class="receipt-line">
-                        <p>Top Sold Item</p>
-                        <h4 id="receiptBestSeller">N/A</h4>
-                    </div>
-                </div>
-
-                <div class="receipt-footer">
-                    <span id="receiptSource">Source: api/View</span>
-                    <strong id="receiptGeneratedAt">Generated just now</strong>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="auth-session.js"></script>
+    <script src="cart-ui.js"></script>
     <script>
-        const API_SALES = "https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net/api/Sp/sales";
-        const API_VIEW = "https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net/api/View";
-        const adminSession = requireAdminAccess();
-
-        const currencyFormatter = new Intl.NumberFormat("en-PH", {
-            style: "currency",
-            currency: "PHP",
-            minimumFractionDigits: 2
-        });
-
-        let charts = {};
-        let currentMode = "monthly";
-        let currentChartData = [];
-        let overallViewStats = {
-            totalRevenue: 0,
-            totalOrders: 0,
-            totalUsers: 0,
-            soldItemsCount: 0,
-            soldItemsRows: [],
-            bestSellerName: "N/A"
+        const API_BASE = "https://localhost:7201";
+        const USER_PROFILE_API = `${API_BASE}/api/Auth/getFullName`;
+        const AUTH_KEYS = ["role", "fullName", "email", "address", "adminId", "customer_id"];
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const profileFields = {
+            fullName: document.getElementById('edit-full-name'),
+            email: document.getElementById('edit-email'),
+            address: document.getElementById('edit-address')
         };
 
-        async function safeFetch(endpoint) {
-            try {
-                const response = await fetch(endpoint);
-                if (!response.ok) {
-                    return null;
-                }
-                return await response.json();
-            } catch (err) {
-                console.error(`[NETWORK ERROR] Failed to fetch ${endpoint}:`, err);
-                return null;
-            }
-        }
 
-        function formatCurrency(value) {
-            return currencyFormatter.format(Number(value || 0));
-        }
 
-        function extractNumericValue(data, preferredKeys = []) {
-            if (typeof data === "number") {
-                return data;
-            }
 
-            if (Array.isArray(data)) {
-                if (!data.length) {
-                    return 0;
-                }
 
-                return extractNumericValue(data[0], preferredKeys);
-            }
 
-            if (data && typeof data === "object") {
-                for (const key of preferredKeys) {
-                    const value = Number(data[key]);
-                    if (Number.isFinite(value)) {
-                        return value;
-                    }
-                }
 
-                for (const value of Object.values(data)) {
-                    const numericValue = Number(value);
-                    if (Number.isFinite(numericValue)) {
-                        return numericValue;
-                    }
-                }
-            }
 
-            return 0;
-        }
-
-        function extractCollectionCount(data) {
-            if (Array.isArray(data)) {
-                return data.length;
-            }
-
-            if (typeof data === "number") {
-                return data;
-            }
-
-            if (data && typeof data === "object") {
-                const firstArray = Object.values(data).find(Array.isArray);
-                if (firstArray) {
-                    return firstArray.length;
-                }
-
-                for (const value of Object.values(data)) {
-                    const numericValue = Number(value);
-                    if (Number.isFinite(numericValue)) {
-                        return numericValue;
-                    }
-                }
-            }
-
-            return 0;
-        }
-
-        function extractArrayPayload(data) {
-            if (Array.isArray(data)) {
-                return data;
-            }
-
-            if (data && typeof data === "object") {
-                const firstArray = Object.values(data).find(Array.isArray);
-                if (firstArray) {
-                    return firstArray;
-                }
-            }
-
-            return [];
-        }
-
-        function normalizeSoldItems(data) {
-            return extractArrayPayload(data)
-                .map((item) => ({
-                    food_name: item.food_name || item.foodName || item.name || "Menu Item",
-                    totalsold: Number(item.totalsold ?? item.total_sold ?? item.totalSold ?? item.quantity ?? item.qty ?? 0),
-                    order_type: item.order_type || item.type || "Mixed"
-                }))
-                .sort((a, b) => b.totalsold - a.totalsold);
-        }
-
-        async function loadOverallViewStats(forceRefresh = false) {
-            if (!forceRefresh && overallViewStats.lastLoadedAt) {
-                return overallViewStats;
-            }
-
-            const [dashboardData, totalOrdersData, totalUsersData, soldItemsData] = await Promise.all([
-                safeFetch(`${API_VIEW}/dashboard`),
-                safeFetch(`${API_VIEW}/total-orders`),
-                safeFetch(`${API_VIEW}/total-users`),
-                safeFetch(`${API_VIEW}/sold-items`)
-            ]);
-
-            const soldItemsRows = normalizeSoldItems(soldItemsData);
-            const soldItemsCount = soldItemsRows.reduce((sum, item) => sum + (item.totalsold || 0), 0);
-
-            overallViewStats = {
-                totalRevenue: extractNumericValue(dashboardData, ["grand_total_sales", "total_sales", "daily_revenue"]),
-                totalOrders: extractCollectionCount(totalOrdersData),
-                totalUsers: extractCollectionCount(totalUsersData),
-                soldItemsCount,
-                soldItemsRows,
-                bestSellerName: soldItemsRows[0]?.food_name || "N/A",
-                lastLoadedAt: new Date().toLocaleString("en-PH", {
-                    year: "numeric",
-                    month: "short",
-                    day: "numeric",
-                    hour: "numeric",
-                    minute: "2-digit"
-                })
-            };
-
-            return overallViewStats;
-        }
-
-        function getTrendPalette(values) {
-            const firstValue = values[0] || 0;
-            const lastValue = values[values.length - 1] || 0;
-            const isUptrend = lastValue >= firstValue;
-
-            return isUptrend
-                ? {
-                    line: "rgba(39, 174, 96, 0.95)",
-                    point: "rgba(126, 214, 164, 1)",
-                    fillTop: "rgba(39, 174, 96, 0.28)",
-                    fillBottom: "rgba(39, 174, 96, 0.02)"
-                }
-                : {
-                    line: "rgba(255, 112, 67, 0.95)",
-                    point: "rgba(255, 180, 153, 1)",
-                    fillTop: "rgba(255, 112, 67, 0.28)",
-                    fillBottom: "rgba(255, 112, 67, 0.02)"
-                };
-        }
-
-        function createStockGradient(context, palette) {
-            const { chart } = context;
-            const { ctx, chartArea } = chart;
-
-            if (!chartArea) {
-                return palette.fillTop;
-            }
-
-            const gradient = ctx.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
-            gradient.addColorStop(0, palette.fillTop);
-            gradient.addColorStop(1, palette.fillBottom);
-            return gradient;
-        }
-
-        function getModeDetails(mode) {
-            const labels = {
-                overall: {
-                    title: "Overall Revenue Trend",
-                    hint: "Click a point to inspect monthly totals across all available years.",
-                    badge: "Overall"
-                },
-                monthly: {
-                    title: "Monthly Revenue Trend",
-                    hint: "Click a month point to view the totals for that month.",
-                    badge: "Monthly"
-                },
-                weekly: {
-                    title: "Weekly Revenue Trend",
-                    hint: "Click a week point to inspect that week's revenue and counts.",
-                    badge: "Weekly"
-                },
-                yearly: {
-                    title: "Yearly Revenue Trend",
-                    hint: "Click a year point to inspect that year's revenue and counts.",
-                    badge: "Yearly"
-                }
-            };
-
-            return labels[mode];
-        }
-
-        function updateModeMeta(mode) {
-            const modeDetails = getModeDetails(mode);
-            document.getElementById("main-chart-title").innerText = modeDetails.title;
-            document.getElementById("chart-hint").innerText = modeDetails.hint;
-            document.getElementById("modeBadge").innerText = modeDetails.badge;
-        }
-
-        function clearChart(name) {
-            if (charts[name]) {
-                charts[name].destroy();
-                charts[name] = null;
-            }
-        }
-
-        function getAvailableYears() {
-            return Array.from(document.getElementById("yearSelect").options).map((option) => Number(option.value));
-        }
-
-        function changeMode(mode) {
-            currentMode = mode;
-            updateModeMeta(mode);
-
-            document.querySelectorAll(".filter-btn").forEach((button) => button.classList.remove("active"));
-            document.getElementById(`btn-${mode}`).classList.add("active");
-
-            document.getElementById("rev-label").innerText = `${mode.charAt(0).toUpperCase() + mode.slice(1)} Revenue`;
-
-            const monthSel = document.getElementById("monthSelect");
-            const yearSel = document.getElementById("yearSelect");
-            const receiptButton = document.getElementById("overallReceiptButton");
-            const graphWrapper = document.getElementById("mainGraphWrapper");
-            const revTypeCard = document.getElementById("revenueTypeCard");
-            const bottomCharts = document.getElementById("bottomChartsWrapper");
-            const bestSellerCard = document.getElementById("bestSellerCard");
-
-            if (mode === "overall") {
-                monthSel.style.display = "none";
-                yearSel.style.display = "none";
-                receiptButton.style.display = "inline-flex";
-                graphWrapper.style.display = "block";
-                revTypeCard.style.display = "block";
-                bottomCharts.style.display = "grid";
-                bestSellerCard.style.display = "block";
-            } else if (mode === "yearly") {
-                monthSel.style.display = "none";
-                yearSel.style.display = "block";
-                receiptButton.style.display = "none";
-                graphWrapper.style.display = "block";
-                revTypeCard.style.display = "none";
-                bottomCharts.style.display = "none";
-                bestSellerCard.style.display = "none";
-            } else if (mode === "monthly") {
-                monthSel.style.display = "none";
-                yearSel.style.display = "block";
-                receiptButton.style.display = "none";
-                graphWrapper.style.display = "block";
-                revTypeCard.style.display = "none";
-                bottomCharts.style.display = "none";
-                bestSellerCard.style.display = "none";
-            } else if (mode === "weekly") {
-                monthSel.style.display = "block";
-                yearSel.style.display = "block";
-                receiptButton.style.display = "none";
-                graphWrapper.style.display = "block";
-                revTypeCard.style.display = "none";
-                bottomCharts.style.display = "none";
-                bestSellerCard.style.display = "none";
-            }
-
-            loadMainData();
-        }
-
-        async function loadMainData() {
-            const year = document.getElementById("yearSelect").value;
-            const month = document.getElementById("monthSelect").value;
-            const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-
-            if (currentMode === "overall") {
-                const years = getAvailableYears();
-                const [viewStats, monthlySeries] = await Promise.all([
-                    loadOverallViewStats(true),
-                    Promise.all(years.map((targetYear) => safeFetch(`${API_SALES}/monthly-history?year=${targetYear}`)))
-                ]);
-
-                const overallData = monthlySeries.flatMap((entries, index) => {
-                    if (!Array.isArray(entries)) {
-                        return [];
-                    }
-
-                    const targetYear = years[index];
-                    return entries.map((entry) => ({
-                        label: `${monthNames[(entry.month || 1) - 1]} ${targetYear}`,
-                        total_sales: entry.total_sales || 0,
-                        total_orders: entry.total_orders || 0,
-                        total_customers: entry.total_customers || 0,
-                        year: targetYear,
-                        month: entry.month || 0
-                    }));
-                }).sort((a, b) => (a.year * 100 + a.month) - (b.year * 100 + b.month));
-
-                processChartData(overallData, currentMode);
-                updateSummaryCards(
-                    viewStats.totalRevenue,
-                    viewStats.totalOrders,
-                    viewStats.totalUsers,
-                    viewStats.soldItemsCount
-                );
-                document.getElementById("rev-label").innerText = "Overall Revenue";
-
-                loadOrderTypes();
-                loadBestSellers();
-                loadAboveAverage();
-                return;
-            }
-
-            let endpoint = "";
-            if (currentMode === "yearly") {
-                const years = getAvailableYears();
-                const summaries = await Promise.all(
-                    years.map((targetYear) => safeFetch(`${API_SALES}/yearly-summary?year=${targetYear}`))
-                );
-
-                const yearlyData = years.map((targetYear, index) => {
-                    const summary = summaries[index] || {};
-                    return {
-                        label: `${targetYear}`,
-                        year: targetYear,
-                        total_sales: summary.total_sales || 0,
-                        total_orders: summary.total_orders || 0,
-                        total_customers: summary.total_customers || 0
-                    };
-                });
-
-                processChartData(yearlyData, currentMode);
-                return;
-            } else if (currentMode === "monthly") {
-                endpoint = `${API_SALES}/monthly-history?year=${year}`;
-            } else if (currentMode === "weekly") {
-                endpoint = `${API_SALES}/weekly-report?month=${month}&year=${year}`;
-            }
-
-            const data = await safeFetch(endpoint);
-            processChartData(data, currentMode);
-        }
-
-        function processChartData(data, mode) {
-            if (!Array.isArray(data) || data.length === 0) {
-                currentChartData = [];
-                clearChart("main");
-                updateSummaryCards(0, 0, 0, 0);
-                document.getElementById("rev-label").innerText = `${mode.charAt(0).toUpperCase() + mode.slice(1)} Revenue`;
-                return;
-            }
-
-            const ctx = document.getElementById("mainChart").getContext("2d");
-            let labels = [];
-            let values = [];
-
-            currentChartData = mode === "monthly" || mode === "weekly" ? [...data].reverse() : [...data];
-
-            if (mode === "monthly") {
-                const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-                labels = currentChartData.map((item) => monthNames[item.month - 1]);
-                values = currentChartData.map((item) => item.total_sales || 0);
-            } else if (mode === "weekly") {
-                labels = currentChartData.map((item) => `Week ${item.week_of_month}`);
-                values = currentChartData.map((item) => item.total_sales || 0);
-            } else if (mode === "overall") {
-                labels = currentChartData.map((item) => item.label);
-                values = currentChartData.map((item) => item.total_sales || 0);
-            } else if (mode === "yearly") {
-                labels = currentChartData.map((item) => item.label);
-                values = currentChartData.map((item) => item.total_sales || 0);
-            }
-
-            const totalRev = values.reduce((sum, value) => sum + value, 0);
-            const totalOrders = currentChartData.reduce((sum, item) => sum + (item.total_orders || 0), 0);
-            const totalCust = currentChartData.reduce((sum, item) => sum + (item.total_customers || 0), 0);
-            const palette = getTrendPalette(values);
-
-            if (mode === "yearly") {
-                const selectedYear = Number(document.getElementById("yearSelect").value);
-                const selectedYearData = currentChartData.find((item) => Number(item.year) === selectedYear);
-                if (selectedYearData) {
-                    updateSummaryCards(
-                        selectedYearData.total_sales || 0,
-                        selectedYearData.total_orders || 0,
-                        selectedYearData.total_customers || 0,
-                        0
-                    );
-                    document.getElementById("rev-label").innerText = `${selectedYear} Revenue`;
-                } else {
-                    updateSummaryCards(totalRev, totalOrders, totalCust, 0);
-                    document.getElementById("rev-label").innerText = `${mode.charAt(0).toUpperCase() + mode.slice(1)} (Total) Revenue`;
-                }
-            } else {
-                updateSummaryCards(totalRev, totalOrders, totalCust, mode === "overall" ? null : 0);
-                document.getElementById("rev-label").innerText = `${mode.charAt(0).toUpperCase() + mode.slice(1)} (Total) Revenue`;
-            }
-
-            clearChart("main");
-            charts.main = new Chart(ctx, {
-                type: "line",
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        data: values,
-                        borderColor: palette.line,
-                        backgroundColor: (context) => createStockGradient(context, palette),
-                        fill: true,
-                        tension: 0.22,
-                        borderWidth: 2.5,
-                        pointRadius: 0,
-                        pointHoverRadius: 6,
-                        pointHitRadius: 18,
-                        pointBorderWidth: 2,
-                        pointBackgroundColor: palette.point,
-                        pointBorderColor: "#0b2118",
-                        pointHoverBackgroundColor: "#ffffff",
-                        pointHoverBorderColor: palette.line
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    interaction: {
-                        mode: "index",
-                        intersect: false
-                    },
-                    plugins: {
-                        legend: { display: false },
-                        tooltip: {
-                            displayColors: false,
-                            backgroundColor: "rgba(7, 20, 15, 0.92)",
-                            borderColor: "rgba(255, 255, 255, 0.08)",
-                            borderWidth: 1,
-                            padding: 12,
-                            titleColor: "#ffffff",
-                            bodyColor: "#dfeee6",
-                            callbacks: {
-                                title: (tooltipItems) => tooltipItems[0]?.label || "",
-                                label: (context) => formatCurrency(context.raw)
-                            }
-                        }
-                    },
-                    scales: {
-                        y: {
-                            display: true,
-                            position: "right",
-                            border: { display: false },
-                            grid: {
-                                color: "rgba(255, 255, 255, 0.08)",
-                                drawTicks: false
-                            },
-                            ticks: {
-                                color: "rgba(223, 238, 230, 0.72)",
-                                padding: 10,
-                                callback: (value) => formatCurrency(value)
-                            }
-                        },
-                        x: {
-                            border: { display: false },
-                            grid: {
-                                color: "rgba(255, 255, 255, 0.03)",
-                                drawTicks: false
-                            },
-                            ticks: {
-                                color: "rgba(223, 238, 230, 0.72)",
-                                font: { weight: "600" },
-                                maxRotation: 0
-                            }
-                        }
-                    },
-                    onHover: (event, chartElement) => {
-                        event.native.target.style.cursor = chartElement[0] ? "pointer" : "default";
-                    },
-                    onClick: (event, activeElements) => {
-                        if (activeElements.length > 0) {
-                            const dataIndex = activeElements[0].index;
-                            const clickedData = currentChartData[dataIndex];
-                            updateSummaryCards(clickedData.total_sales, clickedData.total_orders, clickedData.total_customers);
-                            document.getElementById("rev-label").innerText = `${labels[dataIndex]} Revenue`;
-                        }
-                    }
-                }
-            });
-        }
-
-        function updateSummaryCards(revenue, orders, users, soldItems = null) {
-            document.getElementById("revenue-display").innerText = formatCurrency(revenue || 0);
-            document.getElementById("count-orders").innerText = orders || 0;
-            document.getElementById("count-users").innerText = users || 0;
-            if (soldItems !== null) {
-                document.getElementById("count-sold-items").innerText = Number(soldItems || 0).toLocaleString("en-PH");
-            }
-        }
-
-        async function loadBestSellers() {
-            const data = normalizeSoldItems(await safeFetch(`${API_VIEW}/sold-items`));
-            if (!data || data.length === 0) {
-                document.getElementById("best-seller-name").innerText = "N/A";
-                clearChart("best");
-                return;
-            }
-
-            document.getElementById("best-seller-name").innerText = data[0].food_name || "N/A";
-
-            const ctx = document.getElementById("bestSellerChart").getContext("2d");
-            clearChart("best");
-
-            charts.best = new Chart(ctx, {
-                type: "doughnut",
-                data: {
-                    labels: data.slice(0, 5).map((item) => item.food_name),
-                    datasets: [{
-                        data: data.slice(0, 5).map((item) => item.totalsold),
-                        backgroundColor: ["#ff7043", "#27ae60", "#3498db", "#f1c40f", "#9b59b6"],
-                        borderWidth: 0
-                    }]
-                },
-                options: {
-                    cutout: "62%",
-                    plugins: {
-                        legend: {
-                            position: "right",
-                            labels: {
-                                color: "#ffffff",
-                                boxWidth: 12,
-                                font: { size: 10 }
-                            }
-                        }
-                    }
-                }
-            });
-        }
-
-        async function loadOrderTypes() {
-            const data = await safeFetch(`${API_SALES}/revenue-type`);
-            if (!data || data.length === 0) {
-                clearChart("type");
-                return;
-            }
-
-            const ctx = document.getElementById("typeChart").getContext("2d");
-            clearChart("type");
-
-            charts.type = new Chart(ctx, {
-                type: "pie",
-                data: {
-                    labels: data.map((item) => item.order_type),
-                    datasets: [{
-                        data: data.map((item) => item.revenue),
-                        backgroundColor: ["#ff7043", "#27ae60", "#3498db", "#f1c40f"],
-                        borderWidth: 1,
-                        borderColor: "#143528"
-                    }]
-                },
-                options: {
-                    plugins: {
-                        legend: {
-                            position: "bottom",
-                            labels: {
-                                color: "#ffffff",
-                                boxWidth: 10,
-                                font: { size: 10 }
-                            }
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: (context) => `${context.label}: ${formatCurrency(context.raw)}`
-                            }
-                        }
-                    }
-                }
-            });
-        }
-
-        async function openDashboardReceipt() {
-            const viewStats = await loadOverallViewStats(true);
-            document.getElementById("receiptRevenue").innerText = formatCurrency(viewStats.totalRevenue);
-            document.getElementById("receiptOrders").innerText = Number(viewStats.totalOrders || 0).toLocaleString("en-PH");
-            document.getElementById("receiptUsers").innerText = Number(viewStats.totalUsers || 0).toLocaleString("en-PH");
-            document.getElementById("receiptSoldItems").innerText = Number(viewStats.soldItemsCount || 0).toLocaleString("en-PH");
-            document.getElementById("receiptBestSeller").innerText = viewStats.bestSellerName;
-            document.getElementById("receiptGeneratedAt").innerText = `Generated ${viewStats.lastLoadedAt}`;
-
-            const modal = document.getElementById("dashboardReceiptModal");
-            modal.classList.add("open");
-            modal.setAttribute("aria-hidden", "false");
-            document.body.style.overflow = "hidden";
-        }
-
-        function closeDashboardReceipt() {
-            const modal = document.getElementById("dashboardReceiptModal");
-            modal.classList.remove("open");
-            modal.setAttribute("aria-hidden", "true");
-            document.body.style.overflow = "";
-        }
-
-        async function loadAboveAverage() {
-            const data = await safeFetch(`${API_SALES}/above-average`);
-            if (!data || data.length === 0) {
-                clearChart("above");
-                return;
-            }
-
-            const ctx = document.getElementById("aboveAvgChart").getContext("2d");
-            clearChart("above");
-
-            charts.above = new Chart(ctx, {
-                type: "bar",
-                data: {
-                    labels: data.slice(0, 5).map((item) => item.food_name),
-                    datasets: [{
-                        label: "Above Average Items",
-                        data: data.slice(0, 5).map(() => 10),
-                        backgroundColor: "rgba(52, 152, 219, 0.85)",
-                        borderRadius: 8
-                    }]
-                },
-                options: {
-                    plugins: {
-                        legend: { display: false },
-                        tooltip: { enabled: false }
-                    },
-                    scales: {
-                        x: {
-                            grid: { display: false },
-                            ticks: {
-                                color: "#ffffff",
-                                font: { size: 10 }
-                            }
-                        },
-                        y: {
-                            display: false,
-                            grid: { display: false }
-                        }
-                    }
-                }
-            });
-        }
-
-        function logout() {
-            logoutToLogin({
-                message: "Sign out from sales reports?"
-            });
-        }
-
-        document.addEventListener("DOMContentLoaded", () => {
-            if (!adminSession) {
-                return;
-            }
-
-            const now = new Date();
-            document.getElementById("admin-name").innerText = adminSession.fullName || "Admin Intelligence";
-            document.getElementById("yearSelect").value = now.getFullYear();
-            document.getElementById("monthSelect").value = now.getMonth() + 1;
-
-            updateSuperAdminLink(adminSession.role);
-            changeMode("overall");
+        hamburger.addEventListener('click', () => {
+            const isOpen = hamburger.classList.toggle('open');
+            mobileMenu.classList.toggle('open', isOpen);
+            hamburger.setAttribute('aria-expanded', isOpen);
         });
 
-        document.addEventListener("keydown", (event) => {
-            if (event.key === "Escape") {
-                closeDashboardReceipt();
+
+
+
+
+
+
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('open');
+                mobileMenu.classList.remove('open');
+                hamburger.setAttribute('aria-expanded', false);
+            });
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+        function updateNavUserName(fullName = "") {
+            const navUserName = document.getElementById('nav-user-name');
+            const resolvedName = String(fullName || localStorage.getItem("fullName") || "").trim();
+
+
+
+
+            if (!navUserName) {
+                return;
             }
+
+
+
+
+            if (!resolvedName || resolvedName.toLowerCase() === "null") {
+                navUserName.textContent = "Account";
+                navUserName.title = "Account";
+                return;
+            }
+
+
+
+
+            navUserName.textContent = resolvedName.split(/\s+/)[0];
+            navUserName.title = resolvedName;
+        }
+
+
+
+
+        function hasLocalCustomerData() {
+            const fullName = String(localStorage.getItem("fullName") || "").trim();
+            const email = String(localStorage.getItem("email") || "").trim();
+            return (fullName && fullName.toLowerCase() !== "null") || (email && email.toLowerCase() !== "null");
+        }
+
+
+
+
+        function ensureCustomerSession() {
+            const role = (localStorage.getItem("role") || "").trim().toLowerCase();
+            const customerId = localStorage.getItem("customer_id");
+
+
+
+
+            if (role && role !== "customer") {
+                clearAuthState();
+                window.location.replace("login.html");
+                return false;
+            }
+
+
+
+
+            if (!customerId && !hasLocalCustomerData()) {
+                clearAuthState();
+                window.location.replace("login.html");
+                return false;
+            }
+
+
+
+
+            return true;
+        }
+
+
+
+
+        function clearAuthState() {
+            AUTH_KEYS.forEach(key => localStorage.removeItem(key));
+            sessionStorage.clear();
+        }
+
+
+
+
+        function syncFieldIcons() {
+            const icons = document.querySelectorAll('.field-icon');
+            const iconMarkup = [
+                '<i class="fa-solid fa-user"></i>',
+                '<i class="fa-solid fa-envelope"></i>',
+                '<i class="fa-solid fa-location-dot"></i>'
+            ];
+
+
+            icons.forEach((icon, index) => {
+                if (iconMarkup[index]) {
+                    icon.innerHTML = iconMarkup[index];
+                }
+            });
+        }
+
+
+
+
+        function normalizeProfile(profile = {}) {
+            return {
+                customerId: String(
+                    profile.customer_id ||
+                    profile.customerId ||
+                    localStorage.getItem("customer_id") ||
+                    ""
+                ).trim(),
+                fullName: String(
+                    profile.full_name ||
+                    profile.fullName ||
+                    localStorage.getItem("fullName") ||
+                    "Guest User"
+                ).trim(),
+                email: String(
+                    profile.email ||
+                    localStorage.getItem("email") ||
+                    ""
+                ).trim(),
+                address: String(
+                    profile.address ||
+                    localStorage.getItem("address") ||
+                    ""
+                ).trim()
+            };
+        }
+
+
+
+
+        function renderProfile(profile = {}) {
+            const normalizedProfile = normalizeProfile(profile);
+            const { customerId, fullName, email, address } = normalizedProfile;
+
+
+
+
+            if (customerId) {
+                localStorage.setItem("customer_id", customerId);
+            }
+            localStorage.setItem("fullName", fullName);
+            localStorage.setItem("email", email);
+            localStorage.setItem("address", address);
+
+
+
+
+            updateNavUserName(fullName);
+            document.getElementById('display-name').innerText = fullName;
+            document.getElementById('display-member-year').innerText = new Date().getFullYear();
+
+
+
+
+            profileFields.fullName.value = fullName;
+            profileFields.email.value = email || "No email saved yet";
+            profileFields.address.value = address || "No saved delivery address yet";
+        }
+
+
+
+
+        async function loadProfile() {
+            const customerId = localStorage.getItem("customer_id");
+
+
+
+
+            if (!customerId) {
+                renderProfile();
+                return;
+            }
+
+
+
+
+            try {
+                const response = await fetch(`${USER_PROFILE_API}/${customerId}`, {
+                    headers: {
+                        "Accept": "application/json"
+                    }
+                });
+                const data = await response.json().catch(() => ({}));
+
+
+
+
+                if (!response.ok || !data || typeof data !== "object") {
+                    renderProfile();
+                    return;
+                }
+
+
+
+
+                renderProfile(data);
+            } catch (error) {
+                renderProfile();
+            }
+        }
+
+
+
+
+        function logout() {
+            if (confirm("Are you sure you want to sign out?")) {
+                clearAuthState();
+                window.location.replace("login.html");
+            }
+        }
+
+
+
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            document.querySelector('.settings-gear')?.remove();
+            syncFieldIcons();
+            updateNavUserName();
+
+
+
+
+            if (!ensureCustomerSession()) {
+                return;
+            }
+
+
+
+
+            await loadProfile();
+        });
+
+
+
+
+        window.addEventListener('pageshow', () => {
+            ensureCustomerSession();
         });
     </script>
 </body>
+
+
+
+
 </html>
