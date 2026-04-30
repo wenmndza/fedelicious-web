@@ -1866,134 +1866,241 @@
             }
         }
 
-        async function processOrder() {
-            const date = document.getElementById("order_date").value;
-            const time = document.getElementById("order_time").value;
-            const fullName = localStorage.getItem("fullName");
+      async function processOrder() {
+    const date = document.getElementById("order_date").value;
+    const time = document.getElementById("order_time").value;
+    const fullName = localStorage.getItem("fullName");
 
-            cart = window.FedeCart ? window.FedeCart.getCart() : cart;
+    cart = window.FedeCart ? window.FedeCart.getCart() : cart;
 
-            if (!cart.length) {
-                if (window.FedeCart) {
-                    window.FedeCart.showToast("Your bag is empty");
-                }
-                return;
+    if (!cart.length) {
+        if (window.FedeCart) {
+            window.FedeCart.showToast("Your bag is empty");
+        }
+        return;
+    }
+
+    if (!date || !time) {
+        if (window.FedeCart) {
+            window.FedeCart.showToast("Please pick a date and time");
+        }
+        return;
+    }
+
+    if (!fullName) {
+        if (window.FedeCart) {
+            window.FedeCart.showToast("Please log in first");
+        }
+        return;
+    }
+
+    const resolvedDeliveryAddress =
+        serviceType === "Delivery"
+            ? (
+                locationMode === "saved"
+                    ? savedAddress
+                    : document.getElementById("delivery_address").value.trim()
+            )
+            : "N/A";
+
+    if (serviceType === "Delivery" && !resolvedDeliveryAddress) {
+        if (window.FedeCart) {
+            window.FedeCart.showToast("Enter your delivery address");
+        }
+        return;
+    }
+
+    const btn = document.getElementById("orderBtn");
+
+    btn.disabled = true;
+    btn.innerText = "Verifying...";
+
+    try {
+
+        const idRes =
+            await fetch(
+                API_AUTH +
+                encodeURIComponent(fullName)
+            );
+
+        const userData =
+            await idRes.json();
+
+        if (!idRes.ok || !userData.customer_id) {
+
+            if (window.FedeCart) {
+                window.FedeCart.showToast(
+                    userData.message ||
+                    "Failed to get customer ID"
+                );
             }
 
-            if (!date || !time) {
-                if (window.FedeCart) {
-                    window.FedeCart.showToast("Please pick a date and time");
-                }
-                return;
-            }
+            btn.disabled = false;
+            btn.innerText = "Confirm and pay";
 
-            if (!fullName) {
-                if (window.FedeCart) {
-                    window.FedeCart.showToast("Please log in first");
-                }
-                return;
-            }
-
-            const resolvedDeliveryAddress = serviceType === "Delivery"
-                ? (locationMode === "saved" ? savedAddress : document.getElementById("delivery_address").value.trim())
-                : "N/A";
-
-            if (serviceType === "Delivery" && !resolvedDeliveryAddress) {
-                if (window.FedeCart) {
-                    window.FedeCart.showToast("Enter your delivery address");
-                }
-                return;
-            }
-
-            const btn = document.getElementById("orderBtn");
-            btn.disabled = true;
-            btn.innerText = "Verifying...";
-
-            try {
-                const idRes = await fetch(API_AUTH + encodeURIComponent(fullName));
-                const userData = await idRes.json();
-
-                if (!idRes.ok || !userData.customer_id) {
-                    if (window.FedeCart) {
-                        window.FedeCart.showToast(userData.message || "Failed to get customer ID");
-                    }
-                    btn.disabled = false;
-                    btn.innerText = "Confirm and pay";
-                    return;
-                }
-
-                const cID = userData.customer_id;
-                const subtotal = cart.reduce(function (sum, item) {
-                    return sum + (Number(item.price) * Number(item.qty));
-                }, 0);
-                const deliveryFee = serviceType === "Delivery"
-                    ? parseInt(document.getElementById("location_fee").value || "0", 10)
-                    : 0;
-
-                const orderPayload = {
-                    order_id: 0,
-                    customer_id: cID,
-                    order_type: serviceType,
-                    order_status: "Waiting for Verification",
-                    subtotal: subtotal,
-                    delivery_fee: deliveryFee,
-                    total_amount: totalToPay,
-                    payment_status: "Unpaid",
-                    order_date: date,
-                    preferred_time: time + ":00",
-                    delivery_address: resolvedDeliveryAddress
-                };
-
-                const res = await fetch(API_ORDER, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(orderPayload)
-                });
-
-                if (res.ok) {
-                    const result = await res.json();
-                    currentOrderId = result.order_id || (result.data ? result.data.order_id : null);
-
-                    if (currentOrderId) {
-                        localStorage.setItem("latest_order_id", currentOrderId);
-                        document.getElementById("queue-no").innerText = "Order ID: #" + currentOrderId;
-                        document.getElementById("modal-amount").innerText = formatCurrency(totalToPay);
-                        openPaymentModal();
-
-                        // Send real-time notification to admin
-                        try {
-                            const notifConnection = new signalR.HubConnectionBuilder()
-                                .withUrl(HUB_URL)
-                                .build();
-                            await notifConnection.start();
-                            await notifConnection.invoke("SendNotification", {
-                                type: "order",
-                                message: `New order #${currentOrderId} placed by customer.`
-                            });
-                            notifConnection.stop();
-                        } catch (error) {
-                            console.warn("Failed to send notification:", error);
-                        }
-                    } else if (window.FedeCart) {
-                        window.FedeCart.showToast("Order saved but no order ID returned");
-                    }
-                } else {
-                    const errResult = await res.json();
-                    if (window.FedeCart) {
-                        window.FedeCart.showToast("Error: " + (errResult.message || "Failed to save order"));
-                    }
-                }
-            } catch (error) {
-                console.error(error);
-                if (window.FedeCart) {
-                    window.FedeCart.showToast("Connection error to server");
-                }
-            } finally {
-                btn.disabled = false;
-                btn.innerText = "Confirm and pay";
-            }
+            return;
         }
 
+        const cID =
+            userData.customer_id;
+
+        const subtotal =
+            cart.reduce(
+                function (sum, item) {
+
+                    return sum +
+                        (
+                            Number(item.price) *
+                            Number(item.qty)
+                        );
+
+                }, 0
+            );
+
+        const deliveryFee =
+            serviceType === "Delivery"
+                ? parseInt(
+                    document
+                        .getElementById("location_fee")
+                        .value || "0",
+                    10
+                )
+                : 0;
+
+        const orderPayload = {
+
+            order_id: 0,
+
+            customer_id: cID,
+
+            order_type: serviceType,
+
+            order_status:
+                "Waiting for Verification",
+
+            subtotal: subtotal,
+
+            delivery_fee:
+                deliveryFee,
+
+            total_amount:
+                totalToPay,
+
+            payment_status:
+                "Unpaid",
+
+            order_date: date,
+
+            preferred_time:
+                time + ":00",
+
+            delivery_address:
+                resolvedDeliveryAddress
+        };
+
+        const res =
+            await fetch(
+                API_ORDER,
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body:
+                        JSON.stringify(
+                            orderPayload
+                        )
+                }
+            );
+
+        if (res.ok) {
+
+            const result =
+                await res.json();
+
+            currentOrderId =
+                result.order_id ||
+                (
+                    result.data
+                        ? result.data.order_id
+                        : null
+                );
+
+            if (currentOrderId) {
+
+                localStorage.setItem(
+                    "latest_order_id",
+                    currentOrderId
+                );
+
+                document.getElementById(
+                    "queue-no"
+                ).innerText =
+                    "Order ID: #" +
+                    currentOrderId;
+
+                document.getElementById(
+                    "modal-amount"
+                ).innerText =
+                    formatCurrency(
+                        totalToPay
+                    );
+
+                openPaymentModal();
+
+            }
+            else {
+
+                if (window.FedeCart) {
+                    window.FedeCart.showToast(
+                        "Order saved but no order ID returned"
+                    );
+                }
+
+            }
+
+        }
+        else {
+
+            const errResult =
+                await res.json();
+
+            if (window.FedeCart) {
+                window.FedeCart.showToast(
+                    "Error: " +
+                    (
+                        errResult.message ||
+                        "Failed to save order"
+                    )
+                );
+            }
+
+        }
+
+    }
+    catch (error) {
+
+        console.error(error);
+
+        if (window.FedeCart) {
+            window.FedeCart.showToast(
+                "Connection error to server"
+            );
+        }
+
+    }
+    finally {
+
+        btn.disabled = false;
+
+        btn.innerText =
+            "Confirm and pay";
+
+    }
+}
         async function submitFinalPayment() {
             const gNum = document.getElementById("gcash_num").value.trim();
             const rNum = document.getElementById("ref_num").value.trim();
