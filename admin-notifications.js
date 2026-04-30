@@ -1,5 +1,8 @@
+const BASE_API =
+    "https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net";
+
 const HUB_URL =
-    "https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net/notificationHub";
+    `${BASE_API}/notificationHub`;
 
 let notificationCount = 0;
 
