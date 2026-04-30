@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +8,6 @@
     <link rel="icon" type="image/png" href="images/icon1.png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
 
     <style>
         :root {
@@ -28,14 +26,12 @@
             --card-shadow: 0 12px 28px rgba(44, 62, 80, 0.08);
         }
 
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
         }
-
 
         /* BODY */
         body {
@@ -45,7 +41,6 @@
             min-height: 100vh;
             overflow-x: hidden;
         }
-
 
         /* SIDEBAR */
         .sidebar {
@@ -59,13 +54,11 @@
             flex-direction: column;
         }
 
-
         .sidebar h2 {
             color: var(--text-dark);
             font-weight: 800;
             margin-bottom: 40px;
         }
-
 
         .sidebar a {
             display: flex;
@@ -81,18 +74,15 @@
             font-weight: 600;
         }
 
-
         .sidebar a.active {
             background-color: var(--accent-orange);
             color: white;
         }
 
-
         .sidebar a:hover {
             background: rgba(255, 255, 255, 0.35);
             color: var(--text-dark);
         }
-
 
         /* MAIN */
         .main {
@@ -105,7 +95,6 @@
             border-bottom-left-radius: 40px;
         }
 
-
         /* HEADER */
         .header-section {
             display: flex;
@@ -115,16 +104,13 @@
             flex-wrap: wrap;
         }
 
-
         .header-section h2 {
             font-size: clamp(20px, 3vw, 26px);
         }
 
-
         .header-section p {
             color: var(--text-muted);
         }
-
 
         .action-btns {
             display: flex;
@@ -133,7 +119,6 @@
             flex-wrap: wrap;
             justify-content: flex-end;
         }
-
 
         /* BUTTONS */
         .btn-add {
@@ -150,12 +135,10 @@
             box-shadow: var(--card-shadow);
         }
 
-
         .btn-cat {
             background: var(--accent-orange);
             color: var(--white);
         }
-
 
         /* CATEGORY BAR */
         .category-bar {
@@ -164,7 +147,6 @@
             margin: 25px 0;
             overflow-x: auto;
         }
-
 
         .cat-chip {
             background: var(--card-bg);
@@ -177,12 +159,10 @@
             border: 1px solid var(--panel-border);
         }
 
-
         .cat-chip.active {
             background: var(--accent-orange);
             color: white;
         }
-
 
         /* GRID */
         .menu-grid {
@@ -190,7 +170,6 @@
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
             gap: 20px;
         }
-
 
         /* CARD */
         .menu-card {
@@ -204,19 +183,16 @@
             flex-direction: column;
         }
 
-
         .menu-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 16px 30px rgba(44, 62, 80, 0.14);
         }
-
 
         .food-img {
             width: 100%;
             height: 180px;
             object-fit: cover;
         }
-
 
         /* DETAILS */
         .food-details {
@@ -227,12 +203,10 @@
             flex: 1;
         }
 
-
         .food-details h4 {
             font-size: 1rem;
             margin-bottom: 5px;
         }
-
 
         .food-desc {
             font-size: 0.8rem;
@@ -242,13 +216,11 @@
             overflow: hidden;
         }
 
-
         .food-price {
             color: var(--accent-orange);
             font-weight: 700;
             font-size: 1.2rem;
         }
-
 
         .food-topline {
             display: flex;
@@ -256,7 +228,6 @@
             align-items: flex-start;
             gap: 12px;
         }
-
 
         .availability-badge {
             display: inline-flex;
@@ -269,18 +240,15 @@
             white-space: nowrap;
         }
 
-
         .availability-badge.available {
             background: rgba(39, 174, 96, 0.14);
             color: #1f7a46;
         }
 
-
         .availability-badge.unavailable {
             background: rgba(231, 76, 60, 0.14);
             color: #b53c2e;
         }
-
 
         .food-meta {
             display: flex;
@@ -290,7 +258,6 @@
             color: var(--text-muted);
             font-size: 0.78rem;
         }
-
 
         /* FOOTER */
         .card-footer {
@@ -303,13 +270,11 @@
             border-top: 1px solid rgba(44, 62, 80, 0.08);
         }
 
-
         .card-actions {
             display: flex;
             align-items: center;
             gap: 8px;
         }
-
 
         .status-toggle-btn {
             border: none;
@@ -321,23 +286,19 @@
             transition: 0.2s ease;
         }
 
-
         .status-toggle-btn.available {
             background: rgba(231, 76, 60, 0.12);
             color: #b53c2e;
         }
-
 
         .status-toggle-btn.unavailable {
             background: rgba(39, 174, 96, 0.14);
             color: #1f7a46;
         }
 
-
         .status-toggle-btn:hover {
             transform: translateY(-1px);
         }
-
 
         .btn-icon {
             background: none;
@@ -346,16 +307,13 @@
             font-size: 1rem;
         }
 
-
         .btn-edit {
             color: var(--status-green);
         }
 
-
         .btn-delete {
             color: var(--status-red);
         }
-
 
         /* MODAL */
         .modal {
@@ -368,7 +326,6 @@
             z-index: 1000;
         }
 
-
         .modal-content {
             background: var(--card-bg);
             padding: 25px;
@@ -377,12 +334,10 @@
             box-shadow: var(--card-shadow);
         }
 
-
         .modal-content.food-modal {
             width: min(92vw, 760px);
             padding: 30px;
         }
-
 
         .modal-header {
             display: flex;
@@ -392,11 +347,9 @@
             margin-bottom: 22px;
         }
 
-
         .modal-header h3 {
             font-size: 1.3rem;
         }
-
 
         .modal-header p {
             margin-top: 6px;
@@ -404,13 +357,11 @@
             font-size: 0.88rem;
         }
 
-
         .modal-subtitle {
             color: var(--text-muted);
             font-size: 0.88rem;
             margin: 6px 0 18px;
         }
-
 
         .modal-close {
             width: 40px;
@@ -422,13 +373,11 @@
             cursor: pointer;
         }
 
-
         .food-form-grid {
             display: grid;
             grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr);
             gap: 22px;
         }
-
 
         .form-panel,
         .preview-panel,
@@ -439,11 +388,9 @@
             box-shadow: var(--card-shadow);
         }
 
-
         .form-panel {
             padding: 20px;
         }
-
 
         .form-row {
             display: grid;
@@ -451,13 +398,11 @@
             gap: 14px;
         }
 
-
         #foodForm {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 16px;
         }
-
 
         #foodForm .form-group:nth-of-type(2),
         #foodForm .form-group:nth-of-type(5),
@@ -465,7 +410,6 @@
         #foodForm>div:last-child {
             grid-column: 1 / -1;
         }
-
 
         /* FORM */
         .form-group label {
@@ -475,7 +419,6 @@
             color: var(--text-dark);
             font-weight: 700;
         }
-
 
         .form-group input,
         .form-group select,
@@ -489,12 +432,10 @@
             outline: none;
         }
 
-
         .form-group textarea {
             resize: vertical;
             min-height: 120px;
         }
-
 
         .form-group input:focus,
         .form-group select:focus,
@@ -504,7 +445,6 @@
             box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.12);
         }
 
-
         .preview-panel {
             padding: 20px;
             display: flex;
@@ -512,18 +452,15 @@
             gap: 18px;
         }
 
-
         .preview-panel h4 {
             font-size: 1rem;
         }
-
 
         .preview-panel p {
             color: var(--text-muted);
             font-size: 0.86rem;
             margin-top: 4px;
         }
-
 
         .availability-panel {
             display: flex;
@@ -536,12 +473,10 @@
             border: 1px solid rgba(39, 174, 96, 0.14);
         }
 
-
         .availability-copy strong {
             display: block;
             font-size: 0.92rem;
         }
-
 
         .availability-copy span {
             display: block;
@@ -550,7 +485,6 @@
             margin-top: 4px;
         }
 
-
         .switch {
             position: relative;
             width: 64px;
@@ -558,13 +492,11 @@
             flex-shrink: 0;
         }
 
-
         .switch input {
             opacity: 0;
             width: 0;
             height: 0;
         }
-
 
         .switch-slider {
             position: absolute;
@@ -573,7 +505,6 @@
             background: rgba(127, 140, 141, 0.4);
             transition: 0.2s ease;
         }
-
 
         .switch-slider::before {
             content: "";
@@ -588,16 +519,13 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
         }
 
-
         .switch input:checked+.switch-slider {
             background: var(--accent-orange);
         }
 
-
         .switch input:checked+.switch-slider::before {
             transform: translateX(30px);
         }
-
 
         /* IMAGE PREVIEW */
         .preview-box {
@@ -615,7 +543,6 @@
             padding: 16px;
         }
 
-
         .preview-box img {
             width: 100%;
             height: 220px;
@@ -623,12 +550,10 @@
             border-radius: 12px;
         }
 
-
         .image-upload-copy {
             color: var(--text-muted);
             font-size: 0.8rem;
         }
-
 
         .modal-actions {
             display: flex;
@@ -636,7 +561,6 @@
             gap: 12px;
             margin-top: 24px;
         }
-
 
         .btn-secondary,
         .btn-primary {
@@ -647,30 +571,25 @@
             cursor: pointer;
         }
 
-
         .btn-secondary {
             background: transparent;
             border-color: var(--panel-border);
             color: var(--text-dark);
         }
 
-
         .btn-primary {
             background: var(--accent-orange);
             color: var(--white);
         }
-
 
         .category-create-panel {
             padding: 16px;
             margin-bottom: 18px;
         }
 
-
         .category-create-panel h4 {
             font-size: 0.98rem;
         }
-
 
         .category-create-panel p {
             margin-top: 4px;
@@ -678,13 +597,11 @@
             font-size: 0.82rem;
         }
 
-
         .category-input-row {
             display: flex;
             gap: 10px;
             margin-top: 14px;
         }
-
 
         .category-input {
             flex: 1;
@@ -696,7 +613,6 @@
             outline: none;
         }
 
-
         .btn-create-category {
             padding: 12px 16px;
             border-radius: 12px;
@@ -707,7 +623,6 @@
             cursor: pointer;
         }
 
-
         .category-list-shell {
             max-height: 320px;
             overflow-y: auto;
@@ -716,7 +631,6 @@
             gap: 10px;
             padding-right: 4px;
         }
-
 
         .cat-list-item {
             display: flex;
@@ -729,12 +643,10 @@
             border: 1px solid rgba(39, 174, 96, 0.12);
         }
 
-
         .cat-list-copy strong {
             display: block;
             font-size: 0.92rem;
         }
-
 
         .cat-list-copy span {
             display: block;
@@ -742,7 +654,6 @@
             font-size: 0.76rem;
             color: var(--text-muted);
         }
-
 
         .btn-del-small {
             width: 38px;
@@ -754,7 +665,6 @@
             cursor: pointer;
         }
 
-
         .category-empty {
             padding: 24px;
             text-align: center;
@@ -763,43 +673,35 @@
             border: 1px dashed var(--panel-border);
         }
 
-
         .modal-footer {
             margin-top: 18px;
         }
 
-
         /* ========================= */
         /* RESPONSIVE */
         /* ========================= */
-
 
         @media (max-width: 1024px) {
             .sidebar {
                 width: 220px;
             }
 
-
             .main {
                 margin-left: 220px;
             }
         }
 
-
         @media (max-width: 768px) {
-
 
             body {
                 flex-direction: column;
             }
-
 
             .logo-icon img,
             .brand-name,
             .brand {
                 display: none;
             }
-
 
             .sidebar {
                 position: fixed;
@@ -811,11 +713,9 @@
                 padding: 0;
             }
 
-
             .sidebar h2 {
                 display: none;
             }
-
 
             .sidebar a {
                 flex-direction: row;
@@ -823,13 +723,11 @@
                 padding: 5px;
             }
 
-
             .main {
                 margin-left: 0;
                 padding: 20px;
                 padding-bottom: 90px;
             }
-
 
             .food-form-grid,
             .form-row,
@@ -837,38 +735,31 @@
                 grid-template-columns: 1fr;
             }
 
-
             .category-input-row {
                 flex-direction: column;
             }
 
-
             .header-section {
                 align-items: stretch;
             }
-
 
             .action-btns {
                 width: 100%;
                 justify-content: stretch;
             }
 
-
             .btn-add {
                 flex: 1 1 220px;
                 justify-content: center;
             }
 
-
             .modal-content.food-modal {
                 padding: 22px;
             }
 
-
             .modal-actions {
                 flex-direction: column-reverse;
             }
-
 
             .btn-secondary,
             .btn-primary,
@@ -876,12 +767,10 @@
                 width: 100%;
             }
 
-
             .menu-grid {
                 grid-template-columns: 1fr;
             }
         }
-
 
         .brand {
             display: flex;
@@ -891,8 +780,6 @@
         }
 
 
-
-
         .logo-icon img {
             width: 47px;
             height: 47px;
@@ -900,8 +787,6 @@
             padding: 2px;
             border-radius: 50%;
         }
-
-
 
 
         .brand-name {
@@ -915,13 +800,9 @@
     </style>
 
 
-
-
 </head>
 
-
 <body>
-
 
     <aside class="sidebar">
         <div class="brand">
@@ -930,22 +811,17 @@
             </div>
             <span class="brand-name">FEDELICIOUS</span>
         </div>
-        <ul class="nav-menu" style="list-style: none;">
-            <li><a href="admin.html" class="nav-link"><i class="fa-solid fa-gauge-high"></i> DASHBOARD</a></li>
-            <li><a href="order_admin.html" class="nav-link"><i class="fas fa-shopping-cart"></i> ORDERS</a></li>
-            <li><a href="reservation_admin.html" class="nav-link"><i class="fas fa-calendar-alt"></i> RESERVATIONS</a>
-            </li>
-            <li><a href="menusetting.html" class="nav-link active"><i class="fas fa-utensils"></i> MENU SETTINGS</a></li>
-            <li><a href="salesreport.html" class="nav-link"><i class="fas fa-chart-line"></i> SALES REPORT</a></li>
-            <li><a href="customeractivity.html" class="nav-link"><i class="fa fa-user"></i> CUSTOMER ACTIVITY</a></li>
-            <li><a href="admin_management.html" class="nav-link" id="superAdminLink"><i class="fas fa-user-shield"></i> SYSTEM
-                    ADMINS</a></li>
-        </ul>
-        <a href="#" class="nav-link logout-link" style="margin-top: auto; color: #e74c3c;" onclick="logout()"><i
-                class="fas fa-sign-out-alt"></i>
+        <a href="admin.html"><i class="fa-solid fa-gauge-high"></i> DASHBOARD</a>
+        <a href="order_admin.html"><i class="fas fa-shopping-cart"></i> ORDERS</a>
+        <a href="reservation_admin.html"><i class="fas fa-calendar-alt"></i> RESERVATIONS</a>
+        <a href="menusetting.html" class="active"><i class="fas fa-utensils"></i> MENU SETTINGS</a>
+        <a href="salesreport.html"><i class="fas fa-chart-line"></i> SALES REPORT</a>
+        <a href="customeractivity.html" class="nav-link"><i class="fa fa-user"></i> CUSTOMER ACTIVITY</a>
+        <a href="admin_management.html" class="nav-link" id="superAdminLink"><i class="fas fa-user-shield"></i> SYSTEM
+            ADMINS</a>
+        <a href="#" style="margin-top: auto; color: #e74c3c;" onclick="logout()"><i class="fas fa-sign-out-alt"></i>
             SIGN OUT</a>
     </aside>
-
 
     <main class="main">
         <div class="header-section">
@@ -960,15 +836,12 @@
             </div>
         </div>
 
-
         <div class="category-bar" id="cat-filter-bar">
             <div class="cat-chip active" onclick="filterMenu('all', this)">All Items</div>
         </div>
 
-
         <div class="menu-grid" id="menu-display"></div>
     </main>
-
 
     <div class="modal" id="foodModal">
         <div class="modal-content food-modal">
@@ -1020,7 +893,6 @@
         </div>
     </div>
 
-
     <div class="modal" id="catModal">
         <div class="modal-content">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 20px;">
@@ -1040,38 +912,31 @@
                 </div>
             </div>
 
-
             <div id="category-list-container" class="category-list-shell"
                 style="max-height: 300px; overflow-y:auto; margin-bottom:20px; border-top:1px solid #eee;">
             </div>
-
 
             <button type="button" onclick="closeModal()"
                 style="width:100%; padding:12px; border-radius:10px; border:1px solid #ddd; background:none;">Close</button>
         </div>
     </div>
 
-
     <script src="auth-session.js"></script>
     <script>
-        const adminSession = requireAdminAccess();
         const API_URL = "https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net/api/Menu/admin";
         const API_TOGGLE_AVAILABILITY_URL = "https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net/api/Menu/toggle-availability";
         const MENU_AVAILABILITY_KEY = "fede_menu_availability_overrides";
-
-
+        const adminSession = requireAdminAccess();
         let base64Image = "";
         let isEditMode = false;
         let menuItemsData = [];
         let categoriesData = [];
         let activeCategoryFilter = "all";
 
-
         async function init() {
             await loadCategories();
             await loadMenu();
         }
-
 
         function escapeHtml(value) {
             return String(value ?? "")
@@ -1082,7 +947,6 @@
                 .replace(/'/g, "&#39;");
         }
 
-
         function getAvailabilityOverrides() {
             try {
                 return JSON.parse(localStorage.getItem(MENU_AVAILABILITY_KEY) || "{}");
@@ -1091,70 +955,57 @@
             }
         }
 
-
         function saveAvailabilityOverride(menuId, value) {
             if (menuId == null) {
                 return;
             }
-
 
             const overrides = getAvailabilityOverrides();
             overrides[String(menuId)] = Boolean(value);
             localStorage.setItem(MENU_AVAILABILITY_KEY, JSON.stringify(overrides));
         }
 
-
         function removeAvailabilityOverride(menuId) {
             if (menuId == null) {
                 return;
             }
-
 
             const overrides = getAvailabilityOverrides();
             delete overrides[String(menuId)];
             localStorage.setItem(MENU_AVAILABILITY_KEY, JSON.stringify(overrides));
         }
 
-
         function readAvailabilityValue(item) {
             const rawValue = item?.is_available ?? item?.isAvailable ?? item?.available ?? item?.status ?? item?.availability;
-
 
             if (typeof rawValue === "boolean") {
                 return rawValue;
             }
 
-
             if (typeof rawValue === "number") {
                 return rawValue === 1;
             }
 
-
             if (typeof rawValue === "string") {
                 const normalized = rawValue.trim().toLowerCase();
-
 
                 if (["false", "0", "inactive", "hidden", "not available", "unavailable"].includes(normalized)) {
                     return false;
                 }
-
 
                 if (["true", "1", "active", "visible", "available"].includes(normalized)) {
                     return true;
                 }
             }
 
-
             return true;
         }
-
 
         function normalizeMenuItem(item = {}) {
             const menuId = item.menu_id ?? item.id ?? item.menuId;
             const overrides = getAvailabilityOverrides();
             const localOverride = menuId != null ? overrides[String(menuId)] : undefined;
             const isAvailable = typeof localOverride === "boolean" ? localOverride : readAvailabilityValue(item);
-
 
             return {
                 ...item,
@@ -1169,23 +1020,19 @@
             };
         }
 
-
         function renderAvailabilityState(available) {
             const title = document.getElementById("availabilityTitle");
             const caption = document.getElementById("availabilityCaption");
 
-
             if (!title || !caption) {
                 return;
             }
-
 
             title.textContent = available ? "Available to customers" : "Hidden from customers";
             caption.textContent = available
                 ? "This item will appear on customer menu pages."
                 : "This item will stay in admin only and will not show on customer pages.";
         }
-
 
         function previewImage(input) {
             if (input.files && input.files[0]) {
@@ -1198,7 +1045,6 @@
             }
         }
 
-
         async function loadMenu() {
             const container = document.getElementById("menu-display");
             try {
@@ -1210,7 +1056,6 @@
                 container.innerHTML = "<p>Error loading menu.</p>";
             }
         }
-
 
         function renderMenu(data) {
             const container = document.getElementById('menu-display');
@@ -1250,17 +1095,14 @@
             });
         }
 
-
         async function loadCategories() {
             try {
                 const res = await fetch(`${API_URL}/categories`);
                 categoriesData = await res.json();
 
-
                 document.getElementById('categoryId').innerHTML = categoriesData
                     .map(c => `<option value="${c.category_id}">${escapeHtml(c.category_name)}</option>`)
                     .join('');
-
 
                 const filterBar = document.getElementById('cat-filter-bar');
                 filterBar.innerHTML = `<div class="cat-chip ${activeCategoryFilter === 'all' ? 'active' : ''}" onclick="filterMenu('all', this)">All Items</div>`;
@@ -1268,7 +1110,6 @@
                     const isActive = String(activeCategoryFilter) === String(c.category_id);
                     filterBar.innerHTML += `<div class="cat-chip ${isActive ? 'active' : ''}" onclick="filterMenu(${c.category_id}, this)">${escapeHtml(c.category_name)}</div>`;
                 });
-
 
                 const listContainer = document.getElementById('category-list-container');
                 listContainer.innerHTML = categoriesData.length
@@ -1283,10 +1124,8 @@
                 `).join('')
                     : `<div class="category-empty">No categories yet. Add your first menu section above.</div>`;
 
-
             } catch (e) { console.error(e); }
         }
-
 
         function filterMenu(catId, element) {
             activeCategoryFilter = catId;
@@ -1294,7 +1133,6 @@
             element.classList.add('active');
             applyCurrentFilter();
         }
-
 
         function applyCurrentFilter() {
             if (activeCategoryFilter === 'all') {
@@ -1304,7 +1142,6 @@
                 renderMenu(filtered);
             }
         }
-
 
         async function addNewCategoryRow() {
             const input = document.getElementById('newCategoryName');
@@ -1321,13 +1158,11 @@
             loadCategories();
         }
 
-
         async function deleteCategory(id) {
             if (!confirm("Delete this category? Menu items in this category might be affected.")) return;
             await fetch(`${API_URL}/categories/${id}`, { method: 'DELETE' });
             loadCategories();
         }
-
 
         document.getElementById('foodForm').onsubmit = async (e) => {
             e.preventDefault();
@@ -1344,7 +1179,6 @@
             };
             const method = isEditMode ? 'PUT' : 'POST';
             const url = isEditMode ? `${API_URL}/${id}` : API_URL;
-
 
             const res = await fetch(url, {
                 method: method,
@@ -1371,7 +1205,6 @@
             }
         };
 
-
         function prepareEdit(index) {
             const item = menuItemsData.find(entry => String(entry.menu_id) === String(index));
             if (!item) {
@@ -1391,33 +1224,27 @@
             document.getElementById('foodModal').style.display = 'flex';
         }
 
-
         async function toggleFoodAvailability(menuId) {
             const item = menuItemsData.find(entry => String(entry.menu_id) === String(menuId));
             if (!item) {
                 return;
             }
 
-
             const nextAvailability = !(item.is_available !== false);
             const button = document.querySelector(`button.status-toggle-btn[onclick="toggleFoodAvailability(${menuId})"]`);
-
 
             if (button) {
                 button.disabled = true;
             }
-
 
             try {
                 const response = await fetch(`${API_TOGGLE_AVAILABILITY_URL}/${menuId}`, {
                     method: 'PUT'
                 });
 
-
                 if (!response.ok) {
                     throw new Error(`Toggle request failed with status ${response.status}`);
                 }
-
 
                 saveAvailabilityOverride(menuId, nextAvailability);
                 await loadMenu();
@@ -1431,14 +1258,12 @@
             }
         }
 
-
         async function deleteFood(id) {
             if (!confirm("Delete this food?")) return;
             await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
             removeAvailabilityOverride(id);
             loadMenu();
         }
-
 
         function openFoodModal() {
             isEditMode = false;
@@ -1450,7 +1275,6 @@
             base64Image = "";
             document.getElementById('foodModal').style.display = 'flex';
         }
-
 
         function openCatModal() {
             const input = document.getElementById('newCategoryName');
@@ -1466,12 +1290,10 @@
             });
         }
 
-
         document.addEventListener('DOMContentLoaded', () => {
             if (!adminSession) {
                 return;
             }
-
 
             updateSuperAdminLink(adminSession.role);
             document.getElementById('foodAvailability')?.addEventListener('change', (event) => {
@@ -1487,6 +1309,5 @@
         });
     </script>
 </body>
-
 
 </html>

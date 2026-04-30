@@ -2,8 +2,6 @@
 <html lang="en">
 
 
-
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -16,11 +14,7 @@
 </head>
 
 
-
-
 <body>
-
-
 
 
     <nav class="navbar">
@@ -33,8 +27,6 @@
             </div>
 
 
-
-
             <!-- Hamburger button (mobile only) -->
             <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
                 <span></span>
@@ -43,16 +35,12 @@
             </button>
 
 
-
-
             <ul class="nav-links">
-                <li><a href="index.html">HOME</a></li>
+                <li><a href="landing.html">HOME</a></li>
                 <li><a href="menu.html">MENU</a></li>
                 <li><a href="reservation.html">RESERVATION</a></li>
                 <li><a href="orders.html" class="active">ORDERS</a></li>
             </ul>
-
-
 
 
             <div class="nav-actions">
@@ -78,12 +66,10 @@
         </div>
 
 
-
-
         <!-- Mobile drawer menu -->
         <div class="mobile-menu" id="mobileMenu">
             <ul>
-                <li><a href="index.html">HOME</a></li>
+                <li><a href="landing.html">HOME</a></li>
                 <li><a href="menu.html">MENU</a></li>
                 <li><a href="reservation.html">RESERVATION</a></li>
                 <li><a href="orders.html" class="active">ORDERS</a></li>
@@ -92,14 +78,10 @@
     </nav>
 
 
-
-
     <header class="order-header">
         <h1 class="order-title">ORDER HISTORY</h1>
         <p class="order-subtitle">TRANSACTION & STATUS TRACKING</p>
     </header>
-
-
 
 
     <section class="history-shell">
@@ -109,11 +91,8 @@
             <button type="button" class="tab-btn" data-filter="reservation">Reservations</button>
         </div>
 
-
         <main id="orders-list" class="order-container"></main>
     </section>
-
-
 
 
     <div id="orderModal" class="modal-overlay">
@@ -132,19 +111,13 @@
             </div>
 
 
-
-
             <div class="modal-info-grid" id="modalInfo"></div>
-
-
 
 
             <div class="item-breakdown">
                 <h3 class="breakdown-header">ITEM BREAKDOWN</h3>
                 <div id="modalItems"></div>
             </div>
-
-
 
 
             <div class="modal-footer">
@@ -156,8 +129,6 @@
             </div>
         </div>
     </div>
-
-
 
 
     <div id="cancelModal" class="modal-overlay">
@@ -174,8 +145,6 @@
                 <h2 class="modal-title">Cancel Order?</h2>
                 <p id="cancelOrderId" class="order-id-sub">---</p>
             </div>
-
-
 
 
             <div class="cancel-body">
@@ -205,15 +174,12 @@
             </div>
 
 
-
-
             <div class="modal-actions-row">
                 <button class="action-btn-text" id="closeCancel">CLOSE</button>
                 <button class="action-btn-primary" id="confirmCancelBtn">CONFIRM CANCEL</button>
             </div>
         </div>
     </div>
-
 
     <div id="contactCancelModal" class="modal-overlay">
         <div class="modal-card contact-modal-card">
@@ -230,11 +196,9 @@
                 <p class="order-id-sub">Cancellation assistance</p>
             </div>
 
-
             <div class="contact-copy">
                 This order can no longer be cancelled online. Please contact us directly so we can help you.
             </div>
-
 
             <div class="contact-details">
                 <div class="contact-row">
@@ -247,17 +211,12 @@
                 </div>
             </div>
 
-
             <button type="button" class="close-btn-rect contact-ok-btn" id="contactCancelOk">OK</button>
         </div>
     </div>
 
 
-
-
 </body>
-
-
 
 
 <style>
@@ -271,8 +230,6 @@
     }
 
 
-
-
     * {
         margin: 0;
         padding: 0;
@@ -281,16 +238,12 @@
     }
 
 
-
-
     body {
         background-color: var(--primary-green);
         color: white;
         padding-top: 120px;
         line-height: 1.6;
     }
-
-
 
 
     /* ── NAVBAR ─────────────────────────────────────────────────────── */
@@ -305,8 +258,6 @@
     }
 
 
-
-
     .nav-container {
         display: flex;
         justify-content: space-between;
@@ -316,15 +267,11 @@
     }
 
 
-
-
     .brand {
         display: flex;
         align-items: center;
         gap: 12px;
     }
-
-
 
 
     .brand-icon img {
@@ -337,8 +284,6 @@
     }
 
 
-
-
     .brand-name {
         font-family: 'Playfair Display', serif;
         font-weight: 700;
@@ -347,15 +292,11 @@
     }
 
 
-
-
     .nav-links {
         display: flex;
         list-style: none;
         gap: 35px;
     }
-
-
 
 
     .nav-links a {
@@ -368,8 +309,6 @@
     }
 
 
-
-
     .nav-links a.active,
     .nav-links a:hover {
         color: var(--accent-orange);
@@ -378,14 +317,11 @@
     }
 
 
-
-
     .nav-actions {
         display: flex;
         align-items: center;
         gap: 20px;
     }
-
 
     .user-profile-link {
         align-items: center;
@@ -396,7 +332,6 @@
         border: 1px solid rgba(255, 255, 255, 0.06);
     }
 
-
     .nav-user-name {
         max-width: 120px;
         overflow: hidden;
@@ -406,8 +341,6 @@
         font-size: 0.92rem;
         font-weight: 600;
     }
-
-
 
 
     .nav-icon {
@@ -421,13 +354,9 @@
     }
 
 
-
-
     .nav-icon:hover {
         color: var(--accent-orange);
     }
-
-
 
 
     .user-circle {
@@ -441,12 +370,9 @@
         flex-shrink: 0;
     }
 
-
     .user-profile-link:hover .nav-user-name {
         color: var(--accent-orange);
     }
-
-
 
 
     /* ── Hamburger ──────────────────────────────────────────────────── */
@@ -465,8 +391,6 @@
     }
 
 
-
-
     .hamburger span {
         display: block;
         width: 24px;
@@ -475,8 +399,6 @@
         border-radius: 2px;
         transition: transform 0.3s ease, opacity 0.3s ease;
     }
-
-
 
 
     .hamburger.open span:nth-child(1) {
@@ -492,8 +414,6 @@
     }
 
 
-
-
     /* ── Mobile drawer ──────────────────────────────────────────────── */
     .mobile-menu {
         display: none;
@@ -507,14 +427,10 @@
     }
 
 
-
-
     .mobile-menu.open {
         max-height: 300px;
         padding: 20px 8%;
     }
-
-
 
 
     .mobile-menu ul {
@@ -523,8 +439,6 @@
         flex-direction: column;
         gap: 18px;
     }
-
-
 
 
     .mobile-menu a {
@@ -538,14 +452,10 @@
     }
 
 
-
-
     .mobile-menu a.active,
     .mobile-menu a:hover {
         color: var(--accent-orange);
     }
-
-
 
 
     /* ── HEADER ─────────────────────────────────────────────────────── */
@@ -555,15 +465,11 @@
     }
 
 
-
-
     .order-title {
         font-family: 'Playfair Display', serif;
         font-size: 4.5rem;
         line-height: 1;
     }
-
-
 
 
     .order-subtitle {
@@ -574,13 +480,11 @@
         margin-top: 10px;
     }
 
-
     .history-shell {
         max-width: 1100px;
         margin: 0 auto;
         padding: 0 5% 100px;
     }
-
 
     .history-tabs {
         display: flex;
@@ -589,7 +493,6 @@
         gap: 12px;
         margin-bottom: 28px;
     }
-
 
     .tab-btn {
         min-height: 46px;
@@ -606,7 +509,6 @@
         transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
     }
 
-
     .tab-btn:hover,
     .tab-btn.active {
         background: var(--accent-orange);
@@ -616,16 +518,12 @@
     }
 
 
-
-
     /* ── ORDER CARDS ────────────────────────────────────────────────── */
     .order-container {
         max-width: none;
         margin: 0;
         padding: 0;
     }
-
-
 
 
     .order-card {
@@ -642,7 +540,6 @@
         gap: 20px;
     }
 
-
     .order-info {
         display: flex;
         align-items: center;
@@ -650,7 +547,6 @@
         flex: 1;
         min-width: 0;
     }
-
 
     .order-id-num {
         display: flex;
@@ -663,15 +559,11 @@
     }
 
 
-
-
     .order-card:hover {
         transform: translateY(-5px);
         border-color: rgba(255, 112, 67, 0.3);
         box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
     }
-
-
 
 
     .order-main {
@@ -680,8 +572,6 @@
         gap: 30px;
         flex: 1;
     }
-
-
 
 
     .status-icon {
@@ -697,16 +587,12 @@
     }
 
 
-
-
     .order-id {
         font-weight: 800;
         font-size: 1.3rem;
         display: block;
         margin-bottom: 6px;
     }
-
-
 
 
     .status-badge {
@@ -720,14 +606,11 @@
     }
 
 
-
-
     .order-meta {
         color: var(--text-muted);
         font-size: 0.85rem;
         margin-top: 10px;
     }
-
 
     .empty-state {
         padding: 56px 24px;
@@ -738,7 +621,6 @@
         box-shadow: 0 18px 35px rgba(0, 0, 0, 0.18);
     }
 
-
     .empty-state i {
         display: block;
         margin-bottom: 16px;
@@ -746,13 +628,10 @@
         color: var(--accent-orange);
     }
 
-
     .empty-state p {
         color: var(--text-muted);
         font-size: 0.96rem;
     }
-
-
 
 
     .price-amount {
@@ -763,7 +642,6 @@
         color: var(--accent-orange);
     }
 
-
     .order-price {
         font-family: 'Playfair Display', serif;
         font-size: 2.15rem;
@@ -773,14 +651,12 @@
         margin-bottom: 14px;
     }
 
-
     .btn-group {
         display: flex;
         justify-content: flex-end;
         flex-wrap: wrap;
         gap: 10px;
     }
-
 
     .view-btn,
     .cancel-btn {
@@ -800,18 +676,15 @@
         text-transform: uppercase;
     }
 
-
     .view-btn {
         background: var(--input-bg);
         color: white;
     }
 
-
     .view-btn:hover {
         background: #133a2a;
         border-color: rgba(255, 255, 255, 0.08);
     }
-
 
     .cancel-btn {
         background: transparent;
@@ -819,14 +692,11 @@
         border-color: rgba(255, 112, 67, 0.18);
     }
 
-
     .cancel-btn:hover {
         background: rgba(255, 112, 67, 0.12);
         color: white;
         border-color: rgba(255, 112, 67, 0.34);
     }
-
-
 
 
     .action-btn {
@@ -846,15 +716,11 @@
     }
 
 
-
-
     .action-btn:hover {
         background: var(--accent-orange);
         border-color: var(--accent-orange);
         transform: rotate(90deg);
     }
-
-
 
 
     /* ── MODALS ─────────────────────────────────────────────────────── */
@@ -871,12 +737,10 @@
         overflow-y: auto;
     }
 
-
     .contact-modal-card {
         max-width: 430px;
         text-align: center;
     }
-
 
     .contact-copy {
         color: var(--text-muted);
@@ -884,13 +748,11 @@
         margin-bottom: 18px;
     }
 
-
     .contact-details {
         display: grid;
         gap: 12px;
         margin-bottom: 24px;
     }
-
 
     .contact-row {
         padding: 14px 16px;
@@ -898,7 +760,6 @@
         background: rgba(255, 255, 255, 0.04);
         border: 1px solid rgba(255, 255, 255, 0.05);
     }
-
 
     .contact-label {
         display: block;
@@ -910,7 +771,6 @@
         text-transform: uppercase;
     }
 
-
     .contact-row strong {
         color: white;
         font-size: 1rem;
@@ -918,11 +778,9 @@
         word-break: break-word;
     }
 
-
     .contact-ok-btn {
         width: 100%;
     }
-
 
     .modal-close-x {
         position: absolute;
@@ -939,13 +797,10 @@
         transition: color 0.2s ease, transform 0.2s ease;
     }
 
-
     .modal-close-x:hover {
         color: white;
         transform: scale(1.05);
     }
-
-
 
 
     .modal-header {
@@ -957,8 +812,6 @@
     }
 
 
-
-
     .modal-title {
         font-family: 'Playfair Display', serif;
         font-size: 1.8rem;
@@ -966,8 +819,6 @@
         margin-top: 15px;
         margin-bottom: 5px;
     }
-
-
 
 
     .order-id-sub {
@@ -978,16 +829,12 @@
     }
 
 
-
-
     .receipt-box {
         background: #d35400;
         padding: 12px;
         border-radius: 12px;
         display: inline-flex;
     }
-
-
 
 
     .alert-box {
@@ -998,15 +845,11 @@
     }
 
 
-
-
     .modal-info-grid {
         border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         padding-bottom: 20px;
         margin-bottom: 20px;
     }
-
-
 
 
     .info-row {
@@ -1019,14 +862,10 @@
     }
 
 
-
-
     .info-label {
         color: var(--text-muted);
         flex-shrink: 0;
     }
-
-
 
 
     .info-value {
@@ -1034,8 +873,6 @@
         color: white;
         text-align: right;
     }
-
-
 
 
     .badge {
@@ -1047,22 +884,16 @@
     }
 
 
-
-
     .badge-confirmed {
         background: rgba(46, 204, 113, 0.15);
         color: #2ecc71;
     }
 
 
-
-
     .badge-paid {
         background: rgba(52, 152, 219, 0.15);
         color: #3498db;
     }
-
-
 
 
     .breakdown-header {
@@ -1073,13 +904,9 @@
     }
 
 
-
-
     .breakdown-header.text-center {
         text-align: center;
     }
-
-
 
 
     .item-row {
@@ -1092,15 +919,11 @@
     }
 
 
-
-
     .item-price {
         font-weight: 700;
         color: white;
         flex-shrink: 0;
     }
-
-
 
 
     .modal-footer {
@@ -1111,8 +934,6 @@
         padding-top: 20px;
         gap: 15px;
     }
-
-
 
 
     .modal-overlay {
@@ -1136,15 +957,11 @@
     }
 
 
-
-
     .modal-overlay.active {
         opacity: 1;
         visibility: visible;
         pointer-events: auto;
     }
-
-
 
 
     .total-label {
@@ -1156,8 +973,6 @@
     }
 
 
-
-
     .total-amount-display {
         font-family: 'Playfair Display', serif;
         font-size: 2.5rem;
@@ -1165,8 +980,6 @@
         color: white;
         line-height: 1;
     }
-
-
 
 
     .close-btn-rect {
@@ -1186,13 +999,9 @@
     }
 
 
-
-
     .close-btn-rect:hover {
         background: #133a2a;
     }
-
-
 
 
     .cancel-options {
@@ -1204,13 +1013,9 @@
     }
 
 
-
-
     .cancel-radio input {
         display: none;
     }
-
-
 
 
     .radio-box {
@@ -1226,8 +1031,6 @@
     }
 
 
-
-
     .cancel-radio input:checked+.radio-box,
     .radio-box:hover {
         background: #133a2a;
@@ -1236,15 +1039,11 @@
     }
 
 
-
-
     .modal-actions-row {
         display: flex;
         gap: 15px;
         justify-content: center;
     }
-
-
 
 
     .action-btn-text,
@@ -1263,21 +1062,15 @@
     }
 
 
-
-
     .action-btn-text {
         background: transparent;
         color: #2ecc71;
     }
 
 
-
-
     .action-btn-text:hover {
         background: rgba(46, 204, 113, 0.1);
     }
-
-
 
 
     .action-btn-primary {
@@ -1286,14 +1079,10 @@
     }
 
 
-
-
     .cancel-body:has(input:checked)~.modal-actions-row .action-btn-primary {
         background: #133a2a;
         color: #2ecc71;
     }
-
-
 
 
     /* ── Tablet landscape (≤1024px) ─────────────────────────────────── */
@@ -1303,13 +1092,9 @@
         }
 
 
-
-
         .order-card {
             padding: 25px 30px;
         }
-
-
 
 
         .price-amount {
@@ -1319,8 +1104,6 @@
     }
 
 
-
-
     /* ── Tablet portrait / large phone landscape (≤900px) ───────────── */
     @media (max-width: 900px) {
         .hamburger {
@@ -1328,25 +1111,18 @@
         }
 
 
-
-
         .nav-links {
             display: none;
         }
-
 
         .nav-user-name {
             display: none;
         }
 
 
-
-
         .mobile-menu {
             display: flex;
         }
-
-
 
 
         .navbar {
@@ -1355,20 +1131,14 @@
         }
 
 
-
-
         body {
             padding-top: 80px;
         }
 
 
-
-
         .order-title {
             font-size: 3.2rem;
         }
-
-
 
 
         .order-subtitle {
@@ -1377,13 +1147,9 @@
         }
 
 
-
-
         .order-header {
             margin-bottom: 35px;
         }
-
-
 
 
         .order-container {
@@ -1391,19 +1157,14 @@
         }
 
 
-
-
         .order-card {
             padding: 22px 25px;
             border-radius: 25px;
         }
 
-
         .order-info {
             gap: 18px;
         }
-
-
 
 
         .status-icon {
@@ -1413,15 +1174,11 @@
         }
 
 
-
-
         .price-amount {
             font-size: 1.6rem;
             margin-right: 15px;
         }
     }
-
-
 
 
     /* ── Phone portrait (≤600px) ────────────────────────────────────── */
@@ -1431,13 +1188,9 @@
         }
 
 
-
-
         .brand-name {
             font-size: 1.2rem;
         }
-
-
 
 
         body {
@@ -1445,13 +1198,9 @@
         }
 
 
-
-
         .order-title {
             font-size: 2.6rem;
         }
-
-
 
 
         .order-header {
@@ -1459,13 +1208,9 @@
         }
 
 
-
-
         .order-container {
             padding: 0 4% 60px;
         }
-
-
 
 
         /* Stack card content vertically on small phones */
@@ -1478,8 +1223,6 @@
         }
 
 
-
-
         .order-main,
         .order-info {
             width: 100%;
@@ -1487,13 +1230,10 @@
         }
 
 
-
-
         .price-amount {
             margin-right: 0;
             font-size: 1.5rem;
         }
-
 
         .order-price {
             font-size: 1.7rem;
@@ -1501,20 +1241,15 @@
         }
 
 
-
-
         .btn-group {
             width: 100%;
             justify-content: stretch;
         }
 
-
         .view-btn,
         .cancel-btn {
             flex: 1;
         }
-
-
 
 
         .modal-card {
@@ -1523,20 +1258,14 @@
         }
 
 
-
-
         .modal-title {
             font-size: 1.5rem;
         }
 
 
-
-
         .total-amount-display {
             font-size: 2rem;
         }
-
-
 
 
         .modal-footer {
@@ -1546,22 +1275,16 @@
         }
 
 
-
-
         .close-btn-rect {
             width: 100%;
             text-align: center;
         }
 
 
-
-
         .modal-actions-row {
             flex-direction: column;
             gap: 10px;
         }
-
-
 
 
         .action-btn-text,
@@ -1571,15 +1294,11 @@
         }
 
 
-
-
         .radio-box {
             font-size: 0.82rem;
             padding: 13px 16px;
         }
     }
-
-
 
 
     /* ── Very small phones (≤360px) ─────────────────────────────────── */
@@ -1588,17 +1307,13 @@
             font-size: 2.1rem;
         }
 
-
         .history-tabs {
             gap: 10px;
         }
 
-
         .tab-btn {
             width: 100%;
         }
-
-
 
 
         .order-card {
@@ -1606,14 +1321,10 @@
         }
 
 
-
-
         .modal-card {
             padding: 22px 16px;
         }
     }
-
-
 
 
     /* ── Touch-device tap states ────────────────────────────────────── */
@@ -1624,21 +1335,15 @@
         }
 
 
-
-
         .action-btn:active {
             background: var(--accent-orange);
             border-color: var(--accent-orange);
         }
 
 
-
-
         .close-btn-rect:active {
             background: #133a2a;
         }
-
-
 
 
         .action-btn-text:active {
@@ -1648,8 +1353,6 @@
 </style>
 
 
-
-
 <script src="cart-ui.js"></script>
 <script>
     const API_BASE = 'https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net/api';
@@ -1657,39 +1360,31 @@
     const API_RES = `${API_BASE}/Reservation`;
     const API_GET_ID_BY_NAME = `${API_BASE}/Auth/getCustomerId/`;
 
-
     let allHistoryItems = [];
-
 
     function renderNavUserName() {
         const navUserName = document.getElementById("nav-user-name");
         const accountLink = document.querySelector(".user-profile-link");
         const fullName = (localStorage.getItem("fullName") || "").trim();
 
-
         if (!navUserName || !accountLink) {
             return;
         }
 
-
         if (!fullName || fullName.toLowerCase() === "null") {
             navUserName.textContent = "Hi, Guest";
             navUserName.title = "Account";
-            accountLink.href = "login.html";
+            accountLink.href = "index.html";
             return;
         }
-
 
         navUserName.textContent = `Hi, ${fullName.split(/\s+/)[0]}`;
         navUserName.title = fullName;
         accountLink.href = "user.html";
     }
 
-
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
-
-
 
 
     hamburger.addEventListener('click', () => {
@@ -1699,8 +1394,6 @@
     });
 
 
-
-
     mobileMenu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
             hamburger.classList.remove('open');
@@ -1708,8 +1401,6 @@
             hamburger.setAttribute('aria-expanded', false);
         });
     });
-
-
 
 
     document.addEventListener('DOMContentLoaded', async () => {
@@ -1723,7 +1414,6 @@
                 const userData = await idRes.json();
                 const customerId = userData.customer_id || userData.customerId;
 
-
                 await fetchCombinedHistory(customerId);
             } catch (err) {
                 showError("Hindi mahanap ang iyong record. Siguraduhing naka-login ka.");
@@ -1734,12 +1424,10 @@
         }
     });
 
-
     function logout() {
         localStorage.clear();
-        window.location.href = "login.html";
+        window.location.href = "index.html";
     }
-
 
     function showError(msg) {
         document.getElementById('orders-list').innerHTML = `
@@ -1747,22 +1435,19 @@
             <i class="fas fa-lock" style="color:var(--accent-orange)"></i>
             <p>${msg}</p>
             <br>
-            <a href="login.html" style="color:var(--accent-orange); text-decoration:none; font-weight:700; border: 1px solid var(--accent-orange); padding: 10px 20px; border-radius: 10px;">Bumalik sa Login</a>
+            <a href="index.html" style="color:var(--accent-orange); text-decoration:none; font-weight:700; border: 1px solid var(--accent-orange); padding: 10px 20px; border-radius: 10px;">Bumalik sa Login</a>
         </div>
     `;
     }
 
-
     async function fetchCombinedHistory(cId) {
         allHistoryItems = [];
-
 
         try {
             const [resOrders, resRes] = await Promise.all([
                 fetch(`${API_ORDER}/customer/${cId}`),
                 fetch(`${API_RES}/customer/${cId}`)
             ]);
-
 
             if (resOrders.ok) {
                 const orders = await resOrders.json();
@@ -1778,7 +1463,6 @@
                     extraInfo: o.delivery_address || 'N/A'
                 }));
             }
-
 
             if (resRes.ok) {
                 const reservations = await resRes.json();
@@ -1799,18 +1483,14 @@
             console.error("History fetch error:", e);
         }
 
-
         allHistoryItems.sort((a, b) => new Date(b.date) - new Date(a.date));
-
 
         if (allHistoryItems.length > 0) {
             document.getElementById('tabs-container').style.display = 'flex';
         }
 
-
         renderHistory('all');
     }
-
 
     function renderHistory(filterType, btnElement = null) {
         const listDiv = document.getElementById('orders-list');
@@ -1820,17 +1500,14 @@
             btnElement.classList.add('active');
         }
 
-
         const filteredItems = filterType === 'all'
             ? allHistoryItems
             : allHistoryItems.filter(item => item.category === filterType);
-
 
         if (filteredItems.length === 0) {
             listDiv.innerHTML = `<div class="empty-state"><i class="fas fa-receipt"></i><p>You dont have any records for this category.</p></div>`;
             return;
         }
-
 
         listDiv.innerHTML = filteredItems.map((item) => {
             const dateStr = new Date(item.date).toLocaleDateString('en-PH', { year: 'numeric', month: 'short', day: 'numeric' });
@@ -1841,9 +1518,7 @@
             if (s.includes('verifi') || s.includes('process') || s.includes('pending')) badgeClass += ' verifying';
             if (s.includes('complet') || s.includes('approv') || s.includes('paid')) badgeClass += ' completed';
 
-
             const globalIndex = allHistoryItems.findIndex(x => x.id === item.id && x.category === item.category);
-
 
             return `
             <div class="order-card" id="card-${item.category}-${item.id}">
@@ -1851,7 +1526,7 @@
                     <i class="fa-solid ${isReservation ? 'fa-chair' : 'fa-utensils'}" style="color:var(--accent-orange); font-size:1.8rem; width: 30px; text-align: center;"></i>
                     <div>
                         <div class="order-id-num">
-                            ${isReservation ? 'RES' : 'ORD'}-#${item.id}
+                            ${isReservation ? 'RES' : 'ORD'}-#${item.id} 
                             <span class="${badgeClass}">${item.status}</span>
                         </div>
                         <div class="order-meta">${dateStr} | ${item.type}</div>
@@ -1869,7 +1544,6 @@
         }).join('');
     }
 
-
     // ==========================================
     // CANCEL LOGIC (Nagpapakita ng Warning)
     // ==========================================
@@ -1883,13 +1557,11 @@
         // Kapag ito ay naghihintay ng verification, o hindi na 'unpaid', hindi na pwede i-cancel basta basta
         const isPaidOrProcessing = payStatus !== 'unpaid' || itemStatus.includes('verifi') || itemStatus.includes('pending') || itemStatus.includes('complet') || itemStatus.includes('approv') || itemStatus.includes('prepar');
 
-
         if (isPaidOrProcessing) {
             // ILABAS ANG WARNING BOX KUNG BAYAD NA O PENDING VERIFICATION
             document.getElementById('warning-modal-overlay').style.display = 'flex';
             return;
         }
-
 
         // Kung totoong UNPAID at walang progress, pwede i-cancel
         if (!confirm(`Sigurado ka bang gusto mong i-cancel ang ${item.category} na ito?`)) return;
@@ -1914,7 +1586,6 @@
         }
     }
 
-
     // ==========================================
     // MODAL LOGIC (View Complete Info)
     // ==========================================
@@ -1934,7 +1605,6 @@
         <div class="info-row"><span class="info-label">Payment Status</span><span class="info-value">${item.paymentStatus}</span></div>
     `;
 
-
         if (isRes) {
             contentHTML += `
             <div class="info-row"><span class="info-label">Guests</span><span class="info-value">${item.guests} Persons</span></div>
@@ -1952,11 +1622,9 @@
         `;
         }
 
-
         document.getElementById('modal-content').innerHTML = contentHTML;
         document.getElementById('info-modal-overlay').style.display = 'flex';
     }
-
 
     // Function para magsara ng kahit anong modal
     function closeModal(modalId) {
@@ -1971,7 +1639,6 @@
             pendingCancelIndex: null
         };
 
-
         const ordersListEl = document.getElementById("orders-list");
         const tabs = Array.from(document.querySelectorAll(".tab-btn"));
         const orderModalEl = document.getElementById("orderModal");
@@ -1983,17 +1650,14 @@
         const confirmCancelBtnEl = document.getElementById("confirmCancelBtn");
         const contactCancelOkEl = document.getElementById("contactCancelOk");
 
-
         function showMessage(message) {
             if (window.FedeCart && typeof window.FedeCart.showToast === "function") {
                 window.FedeCart.showToast(message);
                 return;
             }
 
-
             alert(message);
         }
-
 
         function openOverlay(overlay) {
             if (overlay) {
@@ -2001,13 +1665,11 @@
             }
         }
 
-
         function closeOverlay(overlay) {
             if (overlay) {
                 overlay.classList.remove("active");
             }
         }
-
 
         function syncTabs(filterType) {
             state.activeFilter = filterType;
@@ -2015,7 +1677,6 @@
                 tab.classList.toggle("active", tab.dataset.filter === filterType);
             });
         }
-
 
         function buildEmptyState(iconClass, message, linkHtml) {
             return `
@@ -2027,26 +1688,22 @@
         `;
         }
 
-
         window.showError = function (message) {
             ordersListEl.innerHTML = buildEmptyState(
                 "fas fa-lock",
                 message,
-                '<br><a href="login.html" style="color:var(--accent-orange); text-decoration:none; font-weight:700; border: 1px solid var(--accent-orange); padding: 10px 20px; border-radius: 10px;">Back to Login</a>'
+                '<br><a href="index.html" style="color:var(--accent-orange); text-decoration:none; font-weight:700; border: 1px solid var(--accent-orange); padding: 10px 20px; border-radius: 10px;">Back to Login</a>'
             );
         };
 
-
         window.fetchCombinedHistory = async function (customerId) {
             state.items = [];
-
 
             try {
                 const [ordersResponse, reservationsResponse] = await Promise.all([
                     fetch(`${API_ORDER}/customer/${customerId}`),
                     fetch(`${API_RES}/customer/${customerId}`)
                 ]);
-
 
                 if (ordersResponse.ok) {
                     const orders = await ordersResponse.json();
@@ -2062,7 +1719,6 @@
                         extraInfo: order.delivery_address || "N/A"
                     }));
                 }
-
 
                 if (reservationsResponse.ok) {
                     const reservations = await reservationsResponse.json();
@@ -2083,26 +1739,21 @@
                 console.error("History fetch error:", error);
             }
 
-
             state.items.sort((a, b) => new Date(b.date) - new Date(a.date));
             window.renderHistory(state.activeFilter);
         };
 
-
         window.renderHistory = function (filterType) {
             syncTabs(filterType || "all");
-
 
             const filteredItems = state.activeFilter === "all"
                 ? state.items
                 : state.items.filter((item) => item.category === state.activeFilter);
 
-
             if (!filteredItems.length) {
                 ordersListEl.innerHTML = buildEmptyState("fas fa-receipt", "You dont have any records for this category.");
                 return;
             }
-
 
             ordersListEl.innerHTML = filteredItems.map((item) => {
                 const dateStr = new Date(item.date).toLocaleDateString("en-PH", {
@@ -2115,7 +1766,6 @@
                 const statusLower = statusText.toLowerCase();
                 let badgeClass = "status-badge";
 
-
                 if (statusLower.includes("verifi") || statusLower.includes("process") || statusLower.includes("pending")) {
                     badgeClass += " verifying";
                 }
@@ -2123,11 +1773,9 @@
                     badgeClass += " completed";
                 }
 
-
                 const globalIndex = state.items.findIndex((historyItem) => {
                     return historyItem.id === item.id && historyItem.category === item.category;
                 });
-
 
                 return `
                 <div class="order-card" id="card-${item.category}-${item.id}">
@@ -2153,13 +1801,11 @@
             }).join("");
         };
 
-
         window.attemptCancel = function (globalIndex) {
             const item = state.items[globalIndex];
             if (!item) {
                 return;
             }
-
 
             const paymentStatus = String(item.paymentStatus || "unpaid").toLowerCase();
             const itemStatus = String(item.status || "").toLowerCase();
@@ -2170,18 +1816,15 @@
                 || itemStatus.includes("approv")
                 || itemStatus.includes("prepar");
 
-
             if (isLocked) {
                 showMessage("To cancel your order, please contact:\n\n📞 09123456789\n📧 fedelicious@email.com");
                 return;
             }
 
-
             state.pendingCancelIndex = globalIndex;
             document.getElementById("cancelOrderId").textContent = `${item.category === "reservation" ? "RES" : "ORD"}-#${item.id}`;
             openOverlay(cancelModalEl);
         };
-
 
         async function confirmCancel() {
             if (state.pendingCancelIndex == null || !state.items[state.pendingCancelIndex]) {
@@ -2189,20 +1832,16 @@
                 return;
             }
 
-
             const item = state.items[state.pendingCancelIndex];
-
 
             try {
                 const endpoint = `${API_BASE}/${item.category === "order" ? "Order" : "Reservation"}/${item.id}`;
                 const response = await fetch(endpoint, { method: "DELETE" });
 
-
                 if (!response.ok) {
                     showMessage("Hindi na ma-cancel ang record na ito.");
                     return;
                 }
-
 
                 state.items.splice(state.pendingCancelIndex, 1);
                 state.pendingCancelIndex = null;
@@ -2215,13 +1854,11 @@
             }
         }
 
-
         window.openDetailsModal = function (globalIndex) {
             const item = state.items[globalIndex];
             if (!item) {
                 return;
             }
-
 
             const isReservation = item.category === "reservation";
             const dateStr = new Date(item.date).toLocaleDateString("en-PH", {
@@ -2229,7 +1866,6 @@
                 month: "long",
                 day: "numeric"
             });
-
 
             orderModalEl.querySelector(".modal-title").textContent = isReservation ? "Reservation Details" : "Order Details";
             document.getElementById("modalOrderId").textContent = `${isReservation ? "RES" : "ORD"}-#${item.id}`;
@@ -2254,13 +1890,11 @@
             openOverlay(orderModalEl);
         };
 
-
         document.addEventListener("DOMContentLoaded", function () {
             tabs.forEach((tab) => {
                 if (tab.dataset.bound === "true") {
                     return;
                 }
-
 
                 tab.dataset.bound = "true";
                 tab.addEventListener("click", function () {
@@ -2268,32 +1902,26 @@
                 });
             });
 
-
             if (closeModalXEl) {
                 closeModalXEl.addEventListener("click", () => closeOverlay(orderModalEl));
             }
-
 
             if (closeModalBtnEl) {
                 closeModalBtnEl.addEventListener("click", () => closeOverlay(orderModalEl));
             }
 
-
             if (closeCancelBtnEl) {
                 closeCancelBtnEl.addEventListener("click", () => closeOverlay(cancelModalEl));
             }
-
 
             if (confirmCancelBtnEl) {
                 confirmCancelBtnEl.addEventListener("click", confirmCancel);
             }
 
-
             [orderModalEl, cancelModalEl].forEach((overlay) => {
                 if (!overlay) {
                     return;
                 }
-
 
                 overlay.addEventListener("click", (event) => {
                     if (event.target === overlay) {
@@ -2301,7 +1929,6 @@
                     }
                 });
             });
-
 
             document.addEventListener("keydown", (event) => {
                 if (event.key === "Escape") {
@@ -2317,13 +1944,11 @@
         const contactCancelModalEl = document.getElementById("contactCancelModal");
         const contactCancelOkEl = document.getElementById("contactCancelOk");
 
-
         function openContactCancelModal() {
             if (contactCancelModalEl) {
                 contactCancelModalEl.classList.add("active");
             }
         }
-
 
         function closeContactCancelModal() {
             if (contactCancelModalEl) {
@@ -2331,26 +1956,21 @@
             }
         }
 
-
         document.addEventListener("click", function (event) {
             const cancelButton = event.target.closest(".cancel-btn");
-
 
             if (!cancelButton) {
                 return;
             }
-
 
             event.preventDefault();
             event.stopPropagation();
             openContactCancelModal();
         }, true);
 
-
         if (contactCancelOkEl) {
             contactCancelOkEl.addEventListener("click", closeContactCancelModal);
         }
-
 
         if (contactCancelModalEl) {
             contactCancelModalEl.addEventListener("click", function (event) {
@@ -2359,7 +1979,6 @@
                 }
             });
         }
-
 
         document.addEventListener("keydown", function (event) {
             if (event.key === "Escape") {
