@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fedelicious | Login</title>
+    <link rel="icon" type="image/png" href="images/icon1.png">
+</head>
+
+
+<body>
+
+
+    <div class="page-container">
+        <div class="hero-section">
+            <div class="overlay"></div>
+            <div class="hero-content">
+                <h1>Fedelicious</h1>
+                <p>Talisay's most sophisticated wing experience, curated for the bold.</p>
+            </div>
+        </div>
+
+
+        <div class="form-section">
+            <div class="form-box">
+
+
+                <div class="logo-icon">
+                    <img src="images/fede.jpg" alt="Fedelicious Logo">
+                </div>
+
+
+                <div id="loginView">
+                    <h2>Welcome Back</h2>
+                    <p class="subtitle">LOGIN TO START YOUR EXPERIENCE</p>
+
+
+                    <div class="input-group">
+                        <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                        <input type="text" id="loginId" placeholder="Email / Username">
+                    </div>
+
+
+                    <div class="input-group">
+                        <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                        </svg>
+                        <input type="password" id="loginPass" placeholder="Password">
+                    </div>
+
+
+                    <button class="btn-primary" onclick="login()">Sign In</button>
+                    <p class="forgot-password-text">
+                        Nakalimutan ang password?
+                        <a href="reset-password.html" class="forgot-password-link">Reset Now</a>
+                    </p>
+
+
+                    <p class="toggle-text">
+                        Don't have an account?
+                        <span onclick="toggleView()">Register Now</span>
+                    </p>
+                </div>
+
+
+                <div id="registerView" class="hidden">
+                    <h2>Register Now</h2>
+                    <p class="subtitle">BECOME PART OF OUR PREMIUM COMMUNITY</p>
+
+
+                    <div class="input-group">
+                        <input type="text" id="regFullName" placeholder="Full Name">
+                    </div>
+
+
+                    <div class="input-group">
+                        <input type="email" id="regEmail" placeholder="Gmail Address">
+                    </div>
+
+
+                    <div class="input-group">
+                        <input type="textarea" id="regAddress" placeholder="Complete Address"></textarea>
+                    </div>
+
+
+                    <div class="input-group">
+                        <input type="password" id="regPass" placeholder="Password">
+                    </div>
+
+
+                    <div class="info-box">
+                        <svg class="info-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <p>A verification link will be sent to your Gmail account before you can fully register.</p>
+                    </div>
+
+
+                    <button class="btn-primary" onclick="register()">Register Now</button>
+
+
+                    <p class="toggle-text">
+                        Already have an account?
+                        <span onclick="toggleView()">Back to Login</span>
+                    </p>
+                </div>
+
+
+                <div id="error" class="error-msg"></div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Poppins:wght@300;400;600&display=swap');
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+
+        :root {
+            --primary-green: #0d2b1f;
+            --accent-orange: #ff7043;
+            --card-bg: #143528;
+            --text-muted: #8ca398;
+            --input-border: #1a4d38;
+            --glass-white: rgba(255, 255, 255, 0.04);
+        }
+
+
+        body {
+            background-color: var(--primary-green);
+            color: white;
+            overflow: hidden;
+        }
+
+
+        .page-container {
+            display: flex;
+            height: 100vh;
+            width: 100%;
+        }
+
+
+        .hero-section {
+            flex: 1.2;
+            position: relative;
+            background-image: url('images/bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(7, 20, 15, 0.95), rgba(7, 20, 15, 0.4));
+            z-index: 1;
+        }
+
+
+        .hero-content {
+            z-index: 2;
+            max-width: 500px;
+            text-align: center;
+        }
+
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 5.5rem;
+            font-style: italic;
+            margin-bottom: 10px;
+            letter-spacing: -2px;
+        }
+
+
+        .hero-content p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            line-height: 1.6;
+            font-style: italic;
+            color: var(--text-muted);
+        }
+
+
+        .form-section {
+            flex: 0.8;
+            background-color: var(--primary-green);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            border-left: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+
+        .form-box {
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+        }
+
+
+        .logo-icon {
+            background-color: var(--accent-orange);
+            width: 85px;
+            height: 85px;
+            margin: 0 auto 25px;
+            border-radius: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+
+        .logo-icon img {
+            width: 60%;
+            height: 60%;
+            object-fit: contain;
+            border-radius: 40px;
+        }
+
+
+        .form-box h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 5px;
+        }
+
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+
+        .input-group {
+            margin-bottom: 20px;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+
+        .input-icon {
+            position: absolute;
+            left: 20px;
+            width: 20px;
+            height: 20px;
+            color: var(--text-muted);
+            pointer-events: none;
+        }
+
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 18px 25px 18px 55px;
+            background: var(--glass-white);
+            border: 1px solid var(--input-border);
+            border-radius: 50px;
+            color: white;
+            font-size: 0.95rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+
+        textarea {
+            border-radius: 20px;
+            resize: none;
+            padding: 20px 25px;
+            height: 120px;
+        }
+
+
+        input:focus,
+        textarea:focus {
+            border-color: var(--accent-orange);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+
+        input::placeholder,
+        textarea::placeholder {
+            color: rgba(255, 255, 255, 0.25);
+        }
+
+
+        .btn-primary {
+            width: 100%;
+            padding: 18px;
+            background-color: var(--accent-orange);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+
+        .btn-primary:hover {
+            background-color: #ff8a65;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 112, 67, 0.3);
+        }
+
+
+        .forgot-password-text {
+            margin-top: 14px;
+            color: var(--text-muted);
+            font-size: 0.88rem;
+        }
+
+
+        .forgot-password-link {
+            margin-left: 6px;
+            color: var(--accent-orange);
+            font-weight: 700;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+
+        .forgot-password-link:hover {
+            color: #ff8a65;
+        }
+
+
+        .toggle-text {
+            margin-top: 35px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+
+        .toggle-text span {
+            color: #ffd7ba;
+            font-weight: 700;
+            margin-left: 5px;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+
+        .toggle-text span:hover {
+            color: var(--accent-orange);
+        }
+
+
+        .info-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 15px 20px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+
+        .info-icon {
+            width: 22px;
+            height: 22px;
+            color: var(--accent-orange);
+            flex-shrink: 0;
+        }
+
+
+        .info-box p {
+            color: #ffd7ba;
+            font-size: 0.8rem;
+            line-height: 1.5;
+            font-weight: 300;
+        }
+
+
+        .error-msg {
+            font-size: 13px;
+            text-align: center;
+            margin-top: 15px;
+            min-height: 20px;
+        }
+
+
+        .hidden {
+            display: none;
+        }
+
+
+        @media (max-width: 900px) {
+            .page-container {
+                flex-direction: column;
+            }
+
+
+            .hero-section {
+                flex: 0.4;
+                min-height: 35vh;
+            }
+
+
+            .hero-content h1 {
+                font-size: 3.5rem;
+            }
+
+
+            .hero-content p {
+                display: none;
+            }
+
+
+            .form-section {
+                flex: 0.6;
+                padding: 40px 20px;
+            }
+        }
+    </style>
+
+
+
+
+    <script>
+        const BASE_URL = "https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net";
+
+
+        // Toggle between login/register views
+        function toggleView() {
+            document.getElementById('loginView').classList.toggle('hidden');
+            document.getElementById('registerView').classList.toggle('hidden');
+            document.getElementById('error').innerText = "";
+        }
+
+
+        // API helper
+        async function apiRequest(endpoint, body) {
+            const res = await fetch(`${BASE_URL}${endpoint}`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(body)
+            });
+
+
+            const data = await res.json().catch(() => ({}));
+
+
+            if (!res.ok) throw new Error(data.message || data.title || "Unauthorized");
+            return data;
+        }
+
+
+        // LOGIN
+        async function login() {
+            const identifier = document.getElementById("loginId").value.trim();
+            const password = document.getElementById("loginPass").value.trim();
+            const errorDisplay = document.getElementById("error");
+
+
+            if (!identifier || !password) {
+                errorDisplay.style.color = "#ff6b6b";
+                errorDisplay.innerText = "Please fill in all fields.";
+                return;
+            }
+
+
+            errorDisplay.style.color = "white";
+            errorDisplay.innerText = "Authenticating...";
+
+
+            try {
+                let sessionData = null;
+                let finalRole = "";
+
+
+                // Try Admin login first
+                try {
+                    const adminData = await apiRequest("/api/Auth/login/admin", {
+                        email: identifier,
+                        password: password
+                    });
+
+
+                    sessionData = adminData.user || adminData.User || adminData;
+                    finalRole = sessionData.role || sessionData.Role || "Admin";
+
+
+                } catch (e) {
+                    // Fallback to Customer login
+                    const customerData = await apiRequest("/api/Auth/login/customer", {
+                        email: identifier,
+                        password: password
+                    });
+
+
+                    sessionData = customerData.user || customerData.User || customerData;
+                    finalRole = "Customer";
+                }
+
+
+                if (sessionData) {
+                    localStorage.setItem("role", finalRole);
+                    localStorage.setItem("fullName", sessionData.full_name || sessionData.fullName || sessionData.Full_Name);
+
+
+                    if (finalRole === "Customer") {
+                        localStorage.setItem("customer_id", sessionData.customer_id || sessionData.id || sessionData.Customer_Id);
+                    } else {
+                        localStorage.setItem("adminId", sessionData.admin_id || sessionData.id || sessionData.Admin_Id);
+                    }
+
+
+                    errorDisplay.style.color = "#4ade80";
+                    errorDisplay.innerText = "Login Successful! Redirecting...";
+
+
+                    setTimeout(() => {
+                        window.location.href = (finalRole.includes("Admin")) ? "admin.html" : "index.html";
+                    }, 800);
+                }
+
+
+            } catch (err) {
+                errorDisplay.style.color = "#ff6b6b";
+                errorDisplay.innerText = err.message || "Invalid credentials or account not verified.";
+            }
+        }
+
+
+        // REGISTER
+        async function register() {
+            const fullName = document.getElementById("regFullName").value.trim();
+            const email = document.getElementById("regEmail").value.trim();
+            const address = document.getElementById("regAddress").value.trim();
+            const password = document.getElementById("regPass").value.trim();
+            const errorDisplay = document.getElementById("error");
+
+
+            if (!fullName || !email || !address || !password) {
+                errorDisplay.style.color = "#ff6b6b";
+                errorDisplay.innerText = "Please fill in all fields.";
+                return;
+            }
+
+
+            try {
+                await apiRequest("/api/Auth/register", {
+                    full_name: fullName,
+                    email: email,
+                    address: address,
+                    password: password
+                });
+
+
+                errorDisplay.style.color = "#4ade80";
+                errorDisplay.innerText = "Registration successful! You may now log in.";
+
+
+                setTimeout(() => {
+                    toggleView();
+                    document.getElementById("loginId").value = email;
+                }, 2000);
+
+
+            } catch (err) {
+                errorDisplay.style.color = "#ff6b6b";
+                errorDisplay.innerText = err.message || "Registration Failed.";
+            }
+        }
+    </script>
+
+
+</body>
+
+
+</html>
