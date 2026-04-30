@@ -521,8 +521,9 @@
             background: #e74c3c;
             color: white;
         }
-    </style>
+    <link rel="stylesheet" href="admin-notifications.css">
 </head>
+
 
 <body>
 
@@ -546,20 +547,39 @@
     </aside>
 
     <main class="main">
-        <div class="header-section">
-            <div>
-                <h2 style="font-weight: 800;">ORDERS INTELLIGENCE</h2>
-                <p style="font-size: 0.85rem; color: var(--text-muted);">Confirm orders and notify customers via
-                    automation</p>
-            </div>
+        <div class="header-section" style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                <div>
+                    <h2 style="font-weight: 800;">ORDERS INTELLIGENCE</h2>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">Confirm orders and notify customers via automation</p>
+                </div>
+                
+                <div style="display: flex; align-items: center; gap: 20px;">
+                    <div class="filter-tabs">
+                        <button class="tab-btn active" id="tab-all" onclick="filterOrders('all')">All Orders</button>
+                        <button class="tab-btn" id="tab-confirmed" onclick="filterOrders('confirmed')">Confirmed</button>
+                        <button class="tab-btn" id="tab-pending" onclick="filterOrders('pending')">Pending <span id="pending-badge">0</span></button>
+                    </div>
 
-            <div class="filter-tabs">
-                <button class="tab-btn active" id="tab-all" onclick="filterOrders('all')">All Orders</button>
-                <button class="tab-btn" id="tab-confirmed" onclick="filterOrders('confirmed')">Confirmed</button>
-                <button class="tab-btn" id="tab-pending" onclick="filterOrders('pending')">Pending <span
-                        id="pending-badge">0</span></button>
+                    <!-- NOTIFICATION BELL -->
+                    <div class="notification-wrapper" id="notificationToggle">
+                        <i class="fa-solid fa-bell notification-bell"></i>
+                        <span class="notification-badge" id="notifBadge">0</span>
+                        <div class="notification-dropdown" id="notifDropdown">
+                            <div class="notification-header">
+                                <span>Notifications</span>
+                                <small style="color: var(--accent-orange); cursor: pointer;" onclick="clearNotifications()">Clear All</small>
+                            </div>
+                            <div id="notifList">
+                                <div style="padding: 20px; text-align: center; color: #95a5a6; font-size: 13px;">No new notifications</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+        <div id="toast-container"></div>
+
 
         <div class="stats-row">
             <div class="stat-card stat-total">
@@ -596,6 +616,9 @@
     </div>
 
     <script src="auth-session.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.min.js"></script>
+    <script src="admin-notifications.js"></script>
+
     <script>
         const API_SP = "https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net/api/Sp/orders";
         const API_ORDER = "https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net/api/Order";

@@ -8,6 +8,8 @@
     <link rel="icon" type="image/png" href="images/icon1.png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="admin-notifications.css">
+
 
     <style>
         :root {
@@ -824,17 +826,38 @@
     </aside>
 
     <main class="main">
-        <div class="header-section">
-            <div>
-                <h2>Menu Settings</h2>
-                <p>Manage your food items and categories</p>
-            </div>
-            <div class="action-btns">
-                <button class="btn-add btn-cat" onclick="openCatModal()"><i class="fas fa-edit"></i> Manage
-                    Categories</button>
-                <button class="btn-add" onclick="openFoodModal()"><i class="fas fa-plus"></i> Add Food</button>
+        <div class="header-section" style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                <div>
+                    <h2 style="font-weight: 800;">Menu Intelligence</h2>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">Manage your food items and categories</p>
+                </div>
+                
+                <div style="display: flex; align-items: center; gap: 20px;">
+                    <div class="action-btns">
+                        <button class="btn-add btn-cat" onclick="openCatModal()"><i class="fas fa-edit"></i> Manage Categories</button>
+                        <button class="btn-add" onclick="openFoodModal()"><i class="fas fa-plus"></i> Add Food</button>
+                    </div>
+
+                    <!-- NOTIFICATION BELL -->
+                    <div class="notification-wrapper" id="notificationToggle">
+                        <i class="fa-solid fa-bell notification-bell"></i>
+                        <span class="notification-badge" id="notifBadge">0</span>
+                        <div class="notification-dropdown" id="notifDropdown">
+                            <div class="notification-header">
+                                <span>Notifications</span>
+                                <small style="color: var(--accent-orange); cursor: pointer;" onclick="clearNotifications()">Clear All</small>
+                            </div>
+                            <div id="notifList">
+                                <div style="padding: 20px; text-align: center; color: #95a5a6; font-size: 13px;">No new notifications</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+        <div id="toast-container"></div>
+
 
         <div class="category-bar" id="cat-filter-bar">
             <div class="cat-chip active" onclick="filterMenu('all', this)">All Items</div>
@@ -922,6 +945,9 @@
     </div>
 
     <script src="auth-session.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.min.js"></script>
+    <script src="admin-notifications.js"></script>
+
     <script>
         const API_URL = "https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net/api/Menu/admin";
         const API_TOGGLE_AVAILABILITY_URL = "https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net/api/Menu/toggle-availability";

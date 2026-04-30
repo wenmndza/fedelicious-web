@@ -9,7 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-
     <style>
         :root {
             --primary-green: #b2eec7;
@@ -333,139 +332,8 @@
             letter-spacing: 1px;
         }
 
-        /* --- NOTIFICATION STYLES --- */
-        .notification-wrapper {
-            position: relative;
-            cursor: pointer;
-            margin-right: 20px;
-        }
-
-        .notification-bell {
-            font-size: 22px;
-            color: var(--text-dark);
-            transition: 0.3s;
-        }
-
-        .notification-bell:hover {
-            color: var(--accent-orange);
-            transform: scale(1.1);
-        }
-
-        .notification-badge {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background: #e74c3c;
-            color: white;
-            font-size: 10px;
-            font-weight: 700;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid white;
-            display: none; /* Hidden by default */
-        }
-
-        .notification-dropdown {
-            position: absolute;
-            top: 45px;
-            right: 0;
-            width: 320px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            display: none;
-            z-index: 1000;
-            max-height: 400px;
-            overflow-y: auto;
-            border: 1px solid var(--panel-border);
-        }
-
-        .notification-header {
-            padding: 15px;
-            border-bottom: 1px solid #eee;
-            font-weight: 700;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .notification-item {
-            padding: 12px 15px;
-            border-bottom: 1px solid #f9f9f9;
-            transition: 0.2s;
-            display: flex;
-            gap: 12px;
-            align-items: flex-start;
-        }
-
-        .notification-item:hover {
-            background: #f8f9fa;
-        }
-
-        .notification-item.new {
-            background: #e8f5e9;
-        }
-
-        .notification-icon {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .notif-order { background: #3498db; color: white; }
-        .notif-res { background: #9b59b6; color: white; }
-
-        .notification-content {
-            font-size: 13px;
-        }
-
-        .notification-time {
-            font-size: 10px;
-            color: #95a5a6;
-            margin-top: 4px;
-        }
-
-        /* TOAST CONTAINER */
-        #toast-container {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .toast-card {
-            background: white;
-            padding: 15px 25px;
-            border-radius: 15px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            border-left: 5px solid var(--accent-orange);
-            min-width: 300px;
-            animation: slideInRight 0.5s ease-out forwards;
-        }
-
-        @keyframes slideInRight {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        .toast-card.order { border-left-color: #3498db; }
-        .toast-card.res { border-left-color: #9b59b6; }
-
     </style>
+    <link rel="stylesheet" href="admin-notifications.css">
 </head>
 
 <body>
@@ -582,6 +450,7 @@
 
     <script src="auth-session.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.min.js"></script>
+    <script src="admin-notifications.js"></script>
 
     <script>
         const API_BASE = 'https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net/api';
@@ -641,36 +510,8 @@
 
                     return 'N/A';
                 };
-                const extractNumericValue = (data, preferredKeys = []) => {
-                    if (typeof data === 'number') {
-                        return data;
-                    }
-
-                    if (Array.isArray(data)) {
-                        return data.length ? extractNumericValue(data[0], preferredKeys) : 0;
-                    }
-
-                    if (data && typeof data === 'object') {
-                        for (const key of preferredKeys) {
-                            const value = Number(data[key]);
-                            if (Number.isFinite(value)) {
-                                return value;
-                            }
-                        }
-
-                        for (const value of Object.values(data)) {
-                            const numericValue = Number(value);
-                            if (Number.isFinite(numericValue)) {
-                                return numericValue;
-                            }
-                        }
-                    }
-
-                    return 0;
-                };
 
                 // --- 1. REVENUE TODAY ---
-                // Since Swagger shows an array [ { "daily_revenue": 132.92 } ], we access index [0]
                 let todayRev = 0;
                 if (Array.isArray(todayDataArray) && todayDataArray.length > 0) {
                     todayRev = todayDataArray[0].daily_revenue || todayDataArray[0].Daily_revenue || 0;
@@ -716,162 +557,6 @@
                 message: "Sign out from the admin dashboard?"
             });
         }
-
-        // ==========================================
-        // SIGNALR REAL-TIME NOTIFICATIONS
-        // ==========================================
-        const hubUrl = "https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net/notificationHub"; // Production Azure SignalR Hub
-        
-        // Notification Persistence
-        let notifications = JSON.parse(localStorage.getItem('fedelicious_notifications') || '[]');
-        let unreadCount = parseInt(localStorage.getItem('fedelicious_unread_count') || '0');
-
-        const connection = new signalR.HubConnectionBuilder()
-            .withUrl(hubUrl, {
-                skipNegotiation: true,
-                transport: signalR.HttpTransportType.WebSockets
-            })
-            .withAutomaticReconnect()
-            .build();
-
-        async function startSignalR() {
-            try {
-                await connection.start();
-                console.log("SignalR Connected to Hub.");
-                renderNotifications();
-            } catch (err) {
-                console.error("SignalR Connection Error: ", err);
-                setTimeout(startSignalR, 5000);
-            }
-        }
-
-        connection.on("ReceiveNotification", (notif) => {
-            console.log("New Notification Received:", notif);
-            
-            // 1. Add to local list
-            const newNotif = {
-                id: Date.now(),
-                type: (notif.type || notif.Type || "").toLowerCase(),
-                message: notif.message || notif.Message,
-                timestamp: new Date().toLocaleTimeString(),
-                isRead: false
-            };
-            
-            notifications.unshift(newNotif);
-            unreadCount++;
-            
-            // 2. Persist
-            saveNotifications();
-            
-            // 3. UI Update
-            renderNotifications();
-            showToast(newNotif);
-            
-            // 4. Sound Effect
-            playNotifSound();
-
-            // 5. REFRESH DASHBOARD DATA (No refresh needed!)
-            if (typeof loadDashboardData === 'function') {
-                loadDashboardData();
-            }
-        });
-
-        function saveNotifications() {
-            localStorage.setItem('fedelicious_notifications', JSON.stringify(notifications.slice(0, 50))); // Limit to 50
-            localStorage.setItem('fedelicious_unread_count', unreadCount);
-        }
-
-        function renderNotifications() {
-            const list = document.getElementById('notifList');
-            const badge = document.getElementById('notifBadge');
-            
-            if (unreadCount > 0) {
-                badge.innerText = unreadCount;
-                badge.style.display = 'flex';
-            } else {
-                badge.style.display = 'none';
-            }
-
-            if (notifications.length === 0) {
-                list.innerHTML = '<div style="padding: 20px; text-align: center; color: #95a5a6; font-size: 13px;">No new notifications</div>';
-                return;
-            }
-
-            list.innerHTML = notifications.map(n => `
-                <div class="notification-item ${!n.isRead ? 'new' : ''}">
-                    <div class="notification-icon ${n.type === 'order' ? 'notif-order' : 'notif-res'}">
-                        <i class="fas ${n.type === 'order' ? 'fa-shopping-cart' : 'fa-calendar-check'}"></i>
-                    </div>
-                    <div class="notification-content">
-                        <div style="font-weight: 600;">${n.type === 'order' ? 'New Order' : 'New Reservation'}</div>
-                        <div>${n.message}</div>
-                        <div class="notification-time">${n.timestamp}</div>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function showToast(notif) {
-            const container = document.getElementById('toast-container');
-            const toast = document.createElement('div');
-            toast.className = `toast-card ${notif.type === 'order' ? 'order' : 'res'}`;
-            
-            toast.innerHTML = `
-                <div class="notification-icon ${notif.type === 'order' ? 'notif-order' : 'notif-res'}" style="width:40px; height:40px;">
-                    <i class="fas ${notif.type === 'order' ? 'fa-shopping-cart' : 'fa-calendar-check'}"></i>
-                </div>
-                <div>
-                    <div style="font-weight: 700; font-size: 14px;">${notif.type === 'order' ? 'ORDER RECEIVED' : 'RESERVATION MADE'}</div>
-                    <div style="font-size: 13px;">${notif.message}</div>
-                </div>
-            `;
-            
-            container.appendChild(toast);
-            
-            setTimeout(() => {
-                toast.style.opacity = '0';
-                toast.style.transform = 'translateX(100%)';
-                toast.style.transition = '0.5s';
-                setTimeout(() => toast.remove(), 500);
-            }, 5000);
-        }
-
-        function clearNotifications() {
-            notifications = [];
-            unreadCount = 0;
-            saveNotifications();
-            renderNotifications();
-        }
-
-        function playNotifSound() {
-            try {
-                const audio = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
-                audio.play();
-            } catch (e) { console.error("Sound play blocked"); }
-        }
-
-        // Toggle Dropdown
-        document.getElementById('notificationToggle').onclick = (e) => {
-            const dropdown = document.getElementById('notifDropdown');
-            const isVisible = dropdown.style.display === 'block';
-            dropdown.style.display = isVisible ? 'none' : 'block';
-            
-            if (!isVisible) {
-                unreadCount = 0;
-                notifications.forEach(n => n.isRead = true);
-                saveNotifications();
-                renderNotifications();
-            }
-            e.stopPropagation();
-        };
-
-        window.onclick = () => {
-            document.getElementById('notifDropdown').style.display = 'none';
-        };
-
-        // Start SignalR
-        startSignalR();
-
     </script>
 </body>
 

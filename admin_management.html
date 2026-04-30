@@ -359,7 +359,9 @@
             .dashboard-container { padding: 20px; }
         }
     </style>
+    <link rel="stylesheet" href="admin-notifications.css">
 </head>
+
 
 <body>
 
@@ -386,11 +388,31 @@
     <main class="main-content">
         <div class="topbar">
             <h2>System Administrators</h2>
-            <div class="admin-profile" style="display: flex; align-items: center; gap: 10px;">
-                <span id="admin-name" style="font-weight: 600;">Admin</span>
-                <i class="fa-solid fa-circle-user" style="font-size: 32px; color: var(--accent-orange);"></i>
+            <div style="display: flex; align-items: center; gap: 20px;">
+                <!-- NOTIFICATION BELL -->
+                <div class="notification-wrapper" id="notificationToggle">
+                    <i class="fa-solid fa-bell notification-bell"></i>
+                    <span class="notification-badge" id="notifBadge">0</span>
+                    <div class="notification-dropdown" id="notifDropdown">
+                        <div class="notification-header">
+                            <span>Notifications</span>
+                            <small style="color: var(--accent-orange); cursor: pointer;" onclick="clearNotifications()">Clear All</small>
+                        </div>
+                        <div id="notifList">
+                            <div style="padding: 20px; text-align: center; color: #95a5a6; font-size: 13px;">No new notifications</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="admin-profile" style="display: flex; align-items: center; gap: 10px;">
+                    <span id="admin-name" style="font-weight: 600;">Admin</span>
+                    <i class="fa-solid fa-circle-user" style="font-size: 32px; color: var(--accent-orange);"></i>
+                </div>
             </div>
         </div>
+
+        <div id="toast-container"></div>
+
 
         <div class="dashboard-container">
             <div class="dashboard-grid">
@@ -501,6 +523,9 @@
 
 
     <script src="auth-session.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.min.js"></script>
+    <script src="admin-notifications.js"></script>
+
     <script>
         const API_BASE = "https://fedeliciousapi20260427050618-bmbgddcycgaseyff.southeastasia-01.azurewebsites.net/api";
         const API_URL = `${API_BASE}/AdminManagement`;
